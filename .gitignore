@@ -1,0 +1,4 @@
+# Ignore generated documentation files
+doc/
+# Ignore Qt user project settings
+*.user

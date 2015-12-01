@@ -51,17 +51,17 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Actions setup
 
-    actnFileOpen = new QAction(QIcon::fromTheme("document-open", QIcon(":/res/img/document-open-folder.png")),
+    actnFileOpen = new QAction(QIcon::fromTheme("document-open", QIcon(":/img/document-open-folder.png")),
                                trUtf8("Open folder..."), this);
     connect(actnFileOpen, SIGNAL(triggered()), this, SLOT(onFileOpen()));
     menuFile->addAction(actnFileOpen);
 
-    actnFileExit = new QAction(QIcon::fromTheme("application-exit", QIcon(":/res/img/application-exit.png")),
+    actnFileExit = new QAction(QIcon::fromTheme("application-exit", QIcon(":/img/application-exit.png")),
                                trUtf8("Exit"), this);
     connect(actnFileExit, SIGNAL(triggered()), this, SLOT(onFileExit()));
     menuFile->addAction(actnFileExit);
 
-    actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/res/img/help-about.png")),
+    actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/img/help-about.png")),
                                 trUtf8("About"), this);
     connect(actnHelpAbout, SIGNAL(triggered()), this, SLOT(onHelpAbout()));
     menuHelp->addAction(actnHelpAbout);

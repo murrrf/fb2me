@@ -13,13 +13,13 @@ TEMPLATE = app
 VERSION = 0.0.1
 DEFINES += VERSIONSTR=\\\"$${VERSION}\\\"
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += src/main.cpp\
+        src/mainwindow.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += src/mainwindow.h
 
 RESOURCES += \
-    fb2me.qrc
+    res/fb2me.qrc
 
 OTHER_FILES += \
     README.md \

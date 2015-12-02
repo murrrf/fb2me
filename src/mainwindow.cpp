@@ -16,8 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  ***********************************************************************/
- 
- #include "mainwindow.h"
+
+#include "mainwindow.h"
 
 /**
  * @file
@@ -102,6 +102,7 @@ MainWindow::MainWindow(QWidget *parent)
     // Central widget setup
 
     splMain = new QSplitter(Qt::Vertical);
+    splMain->setChildrenCollapsible(false);
 
     tblMain = new QTableView();
     splMain->addWidget(tblMain);
@@ -109,6 +110,8 @@ MainWindow::MainWindow(QWidget *parent)
     edtLog = new QTextEdit();
     edtLog->setReadOnly(true);
     splMain->addWidget(edtLog);
+
+    splMain->setStretchFactor(0, 1); // First widget must be wide than second
 
     this->setCentralWidget(splMain);
 }
@@ -141,19 +144,30 @@ void MainWindow::onFileExit()
 
 void MainWindow::onHelpAbout()
 {
-    QMessageBox::about(this, trUtf8("About FB2ME"), QString(
-                           "<p align='center'><big><b>%1</b></big><br/>%2 %3<br/>%4</p>"
-                           "<p align='center'>%5<br/><small>%6</small></p>"
-                           "<p align='center'>%7<br/><small>%8</small></p>").arg(
-                           trUtf8("FB2 Metadata Editor"),
-                           trUtf8("Version"), QApplication::applicationVersion(),
-                           trUtf8("A metadata editor for fb2 files"),
-                           trUtf8("Copyright &copy; %1 Veter").arg("2015"),
-                           trUtf8("Released under the <a href= %1>GPL 3</a> license").arg("\"http://www.gnu.org/licenses/gpl.html\""),
-                           trUtf8("Fallback icons from the Oxygen icon theme"),
-                           trUtf8("Used under the <a href=%1>LGPL 3</a> license").arg("\"http://www.gnu.org/licenses/lgpl.html\""))
-                      );
+    QString caption = trUtf8("About FB2ME");
 
+    QString header = "<p align='center'>"
+                     "<big><b>%1</b></big><br/>"
+                     "%2 %3<br/>"
+                     "%4"
+                     "</p>";
+
+    QString record = "<p>%1<br/><small>%2</small></p>";
+
+    QString message = header.arg(trUtf8("FB2 Metadata Editor"),
+                                 trUtf8("Version"), QApplication::applicationVersion(),
+                                 trUtf8("A metadata editor for FictionBook files"));
+    message += record.arg(
+                   trUtf8("Copyright &copy; %1 Veter").arg("2015"),
+                   trUtf8("Released under the <a href=%1>GPL 3</a> license").arg("\"http://www.gnu.org/licenses/gpl.html\""));
+    message += record.arg(
+                   trUtf8("Fallback icons from the <a href=%1>Oxygen</a> icon theme").arg("\"https://techbase.kde.org/Projects/Oxygen\""),
+                   trUtf8("Used under the <a href=%1>LGPL 3</a> license").arg("\"http://www.gnu.org/licenses/lgpl.html\""));
+    message += record.arg(
+                   trUtf8("ZIP archive support from <a href=%1>miniz.c</a> library").arg("\"https://code.google.com/p/miniz\""),
+                   trUtf8("Released as <a href=%1>public domain</a>").arg("\"http://unlicense.org\""));
+
+    QMessageBox::about(this, caption, message);
 }
 
 void MainWindow::onHelpAboutQt()

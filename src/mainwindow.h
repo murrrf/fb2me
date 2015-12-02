@@ -20,8 +20,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
-
 /**
  * @file
  * @~russian
@@ -30,6 +28,8 @@
  * @~english
  * @brief The module of the main window.
  */
+
+#include <QMainWindow>
 
 // Forward class declarations
 class QSplitter;

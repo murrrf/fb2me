@@ -17,41 +17,45 @@
  *
  ***********************************************************************/
 
-/*
+#ifndef FB2RECORD_H
+#define FB2RECORD_H
+
+/**
  * @file
  * @~russian
- * @brief Главный исходный файл приложения.
+ * @brief Модуль единичной записи метаданных.
  *
  * @~english
- * @brief Main application source file.
+ * @brief Module of single metadata record.
  */
 
-#include "mainwindow.h"
-#include <QApplication>
-
-/*
+/**
  * @~russian
- * @brief Точка входа приложения.
- * @param argc Число аргументов командной строки.
- * @param argv Список аргументов командной строки.
- * @return Код возврата.
+ * @brief Класс единичной записи метаданных.
  *
  * @~english
- * @brief Application entry point.
- * @param argc Number of command-line arguments.
- * @param argv List of command-line arguments.
- * @return Return code.
+ * @brief Single metadata record class.
  */
-int main(int argc, char *argv[])
+class FB2Record
 {
-    QApplication app(argc, argv);
+public:
+    /**
+     * @~russian
+     * @brief Конструктор записи.
+     *
+     * @~english
+     * @brief Constructor of a record.
+     */
+    FB2Record();
 
-    app.setApplicationName("FB2ME");
-    app.setApplicationVersion(VERSIONSTR);
-    app.setOrganizationDomain("veter.name");
-    app.setOrganizationName("Veter");
-    MainWindow w;
-    w.show();
+    /**
+     * @~russian
+     * @brief Деструктор записи.
+     *
+     * @~english
+     * @brief Destructor of a record.
+     */
+//    ~FB2Record();
+};
 
-    return app.exec();
-}
+#endif // FB2RECORD_H

@@ -20,38 +20,14 @@
 /*
  * @file
  * @~russian
- * @brief Главный исходный файл приложения.
+ * @brief Файл реализации для одиночной записи метаданных.
  *
  * @~english
- * @brief Main application source file.
+ * @brief Source file for single metadata record.
  */
 
-#include "mainwindow.h"
-#include <QApplication>
+#include "fb2record.h"
 
-/*
- * @~russian
- * @brief Точка входа приложения.
- * @param argc Число аргументов командной строки.
- * @param argv Список аргументов командной строки.
- * @return Код возврата.
- *
- * @~english
- * @brief Application entry point.
- * @param argc Number of command-line arguments.
- * @param argv List of command-line arguments.
- * @return Return code.
- */
-int main(int argc, char *argv[])
+FB2Record::FB2Record()
 {
-    QApplication app(argc, argv);
-
-    app.setApplicationName("FB2ME");
-    app.setApplicationVersion(VERSIONSTR);
-    app.setOrganizationDomain("veter.name");
-    app.setOrganizationName("Veter");
-    MainWindow w;
-    w.show();
-
-    return app.exec();
 }

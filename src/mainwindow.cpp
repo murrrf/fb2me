@@ -19,7 +19,7 @@
 
 #include "mainwindow.h"
 
-/**
+/*
  * @file
  * @~russian
  * @brief Файл реализации для главного окна программы.

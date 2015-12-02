@@ -14,9 +14,13 @@ VERSION = 0.0.2
 DEFINES += VERSIONSTR=\\\"$${VERSION}\\\"
 
 SOURCES += src/main.cpp\
-        src/mainwindow.cpp
+        src/mainwindow.cpp \
+    src/tablemodel.cpp \
+    src/fb2record.cpp
 
-HEADERS  += src/mainwindow.h
+HEADERS  += src/mainwindow.h \
+    src/tablemodel.h \
+    src/fb2record.h
 
 RESOURCES += \
     res/fb2me.qrc

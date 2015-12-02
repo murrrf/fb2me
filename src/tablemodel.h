@@ -17,41 +17,55 @@
  *
  ***********************************************************************/
 
-/*
+#ifndef TABLEMODEL_H
+#define TABLEMODEL_H
+
+/**
  * @file
  * @~russian
- * @brief Главный исходный файл приложения.
+ * @brief Модуль модели данных.
  *
  * @~english
- * @brief Main application source file.
+ * @brief The module of the data model.
  */
 
-#include "mainwindow.h"
-#include <QApplication>
+#include <QAbstractTableModel>
 
-/*
+/**
  * @~russian
- * @brief Точка входа приложения.
- * @param argc Число аргументов командной строки.
- * @param argv Список аргументов командной строки.
- * @return Код возврата.
+ * @brief Класс модели данных.
  *
  * @~english
- * @brief Application entry point.
- * @param argc Number of command-line arguments.
- * @param argv List of command-line arguments.
- * @return Return code.
+ * @brief The TableModel class.
  */
-int main(int argc, char *argv[])
+class TableModel : public QAbstractTableModel
 {
-    QApplication app(argc, argv);
+    Q_OBJECT
+public:
+    /**
+     * @~russian
+     * @brief Конструктор модели данных.
+     * @param parent Объект-родитель модели.
+     *
+     * @~english
+     * @brief Constructor of a data model.
+     * @param parent Parent object.
+     */
+    explicit TableModel(QObject *parent = 0);
 
-    app.setApplicationName("FB2ME");
-    app.setApplicationVersion(VERSIONSTR);
-    app.setOrganizationDomain("veter.name");
-    app.setOrganizationName("Veter");
-    MainWindow w;
-    w.show();
+    /**
+     * @~russian
+     * @brief Деструктор модели данных.
+     *
+     * @~english
+     * @brief Destructor of a data model.
+     */
+//    ~TableModel();
 
-    return app.exec();
-}
+signals:
+
+public slots:
+
+};
+
+#endif // TABLEMODEL_H

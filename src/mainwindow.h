@@ -125,6 +125,24 @@ private:
 
     /**
      * @~russian
+     * @brief Действие «Добавить папку» меню «Файл».
+     *
+     * @~english
+     * @brief Append Directory action.
+     */
+    QAction *actnFileAppendDir;
+
+    /**
+     * @~russian
+     * @brief Действие «Добавить папку и все ее подпапки» меню «Файл».
+     *
+     * @~english
+     * @brief Append Directory Recursively action.
+     */
+    QAction *actnFileAppendDirRecursively;
+
+    /**
+     * @~russian
      * @brief Действие «Выход» меню «Файл».
      *
      * @~english
@@ -181,6 +199,19 @@ private:
      */
     QTextEdit *edtLog;
 
+    /**
+     * @~russian
+     * @brief Рабочая директория.
+     *
+     * Директория, указываемая при открытии диалогов добавления файлов и папок.
+     *
+     * @~english
+     * @brief Working Directory.
+     *
+     * The directory specified for an open dialogue to add files and folders.
+     */
+    QString workingDir;
+
 private slots:
 
     /**
@@ -191,6 +222,24 @@ private slots:
      * @brief Open action handler.
      */
     void onFileOpen();
+
+    /**
+     * @~russian
+     * @brief Обработчик действия «Добавить папку».
+     *
+     * @~english
+     * @brief Append Directory action handler.
+     */
+    void onFileAppendDir();
+
+    /**
+     * @~russian
+     * @brief Обработчик действия «Добавить папку и все ее подпапки».
+     *
+     * @~english
+     * @brief Append Directory Recursively action handler.
+     */
+    void onFileAppendDirRecursively();
 
     /**
      * @~russian

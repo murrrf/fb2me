@@ -39,6 +39,8 @@
 #include <QSplitter>
 #include <QTextEdit>
 #include <QApplication>
+#include <QFileDialog>
+#include <QStandardPaths>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -70,10 +72,20 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Actions setup
 
-    actnFileOpen = new QAction(QIcon::fromTheme("document-open", QIcon(":/img/document-open-folder.png")),
-                               trUtf8("Open folder..."), this);
+    actnFileOpen = new QAction(QIcon::fromTheme("document-open", QIcon(":/img/document-open.png")),
+                               trUtf8("Open file..."), this);
     connect(actnFileOpen, SIGNAL(triggered()), this, SLOT(onFileOpen()));
     menuFile->addAction(actnFileOpen);
+
+    actnFileAppendDir = new QAction(QIcon::fromTheme("folder-open", QIcon(":/img/document-open-folder.png")),
+                                    trUtf8("Append directory..."), this);
+    connect(actnFileAppendDir, SIGNAL(triggered()), this, SLOT(onFileAppendDir()));
+    menuFile->addAction(actnFileAppendDir);
+
+    actnFileAppendDirRecursively = new QAction(QIcon::fromTheme("folder-open", QIcon(":/img/folder-open.png")),
+            trUtf8("Append directory recursively..."), this);
+    connect(actnFileAppendDirRecursively, SIGNAL(triggered()), this, SLOT(onFileAppendDirRecursively()));
+    menuFile->addAction(actnFileAppendDirRecursively);
 
     actnFileExit = new QAction(QIcon::fromTheme("application-exit", QIcon(":/img/application-exit.png")),
                                trUtf8("Exit"), this);
@@ -97,6 +109,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Toolbar setup
 
+    barTools->addAction(actnFileOpen);
+    barTools->addAction(actnFileAppendDir);
+    barTools->addAction(actnFileAppendDirRecursively);
+    barTools->addSeparator();
     barTools->addAction(actnHelpAbout);
 
     // Central widget setup
@@ -114,6 +130,14 @@ MainWindow::MainWindow(QWidget *parent)
     splMain->setStretchFactor(0, 1); // First widget must be wide than second
 
     this->setCentralWidget(splMain);
+
+    // Additional settings
+#if defined Q_OS_UNIX
+    QStringList homedir = QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
+#elif defined Q_OS_WINDOWS
+    QStringList homedir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation);
+#endif
+    workingDir = homedir.at(0);
 }
 
 MainWindow::~MainWindow()
@@ -124,6 +148,8 @@ MainWindow::~MainWindow()
     delete actnHelpAboutQt;
     delete actnHelpAbout;
     delete actnFileExit;
+    delete actnFileAppendDirRecursively;
+    delete actnFileAppendDir;
     delete actnFileOpen;
     delete barStatus;
     delete barTools;
@@ -133,6 +159,16 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::onFileOpen()
+{
+    QFileDialog::getOpenFileName(this, trUtf8("Open file"), workingDir, trUtf8("Fictionbook files(*.fb2)"));
+}
+
+void MainWindow::onFileAppendDir()
+{
+
+}
+
+void MainWindow::onFileAppendDirRecursively()
 {
 
 }

@@ -17,8 +17,6 @@
  *
  ***********************************************************************/
 
-#include "mainwindow.h"
-
 /*
  * @file
  * @~russian
@@ -27,6 +25,8 @@
  * @~english
  * @brief Source file for main GUI window.
  */
+
+#include "mainwindow.h"
 
 #include <QWidget>
 #include <QVBoxLayout>

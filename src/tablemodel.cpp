@@ -17,8 +17,6 @@
  *
  ***********************************************************************/
 
-#include "tablemodel.h"
-
 /*
  * @file
  * @~russian
@@ -27,6 +25,9 @@
  * @~english
  * @brief Source file for data model.
  */
+
+#include "tablemodel.h"
+#include "fb2record.h"
 
 TableModel::TableModel(QObject *parent) :
     QAbstractTableModel(parent)

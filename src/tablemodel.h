@@ -31,6 +31,8 @@
 
 #include <QAbstractTableModel>
 
+class FB2Record;
+
 /**
  * @~russian
  * @brief Класс модели данных.

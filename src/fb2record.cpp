@@ -27,7 +27,10 @@
  */
 
 #include "fb2record.h"
+#include "person.h"
 
 FB2Record::FB2Record()
 {
 }
+
+

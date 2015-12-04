@@ -17,12 +17,14 @@ SOURCES += src/main.cpp\
     src/mainwindow.cpp \
     src/tablemodel.cpp \
     src/fb2record.cpp \
-    src/person.cpp
+    src/person.cpp \
+    src/reader.cpp
 
 HEADERS  += src/mainwindow.h \
     src/tablemodel.h \
     src/fb2record.h \
-    src/person.h
+    src/person.h \
+    src/reader.h
 
 # 3rd party components
 SOURCES += 3rdparty/miniz.c

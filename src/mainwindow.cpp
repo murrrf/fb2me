@@ -28,6 +28,8 @@
 
 #include "mainwindow.h"
 
+#include "reader.h"
+
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QMenuBar>
@@ -160,17 +162,26 @@ MainWindow::~MainWindow()
 
 void MainWindow::onFileOpen()
 {
-    QFileDialog::getOpenFileName(this, trUtf8("Open file"), workingDir, trUtf8("Fictionbook files(*.fb2)"));
+    QStringList filenames = QFileDialog::getOpenFileNames(this, trUtf8("Open file"), workingDir,
+                           trUtf8("Fictionbook files(*.fb2 *.fb2.zip)"));
+
+    Reader *reader = new Reader(filenames);
 }
 
 void MainWindow::onFileAppendDir()
 {
-
+    QString dir = QFileDialog::getExistingDirectory(this, trUtf8("Append Directory"), workingDir,
+                  QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    Reader *reader = new Reader(dir, false);
+    reader->start();
 }
 
 void MainWindow::onFileAppendDirRecursively()
 {
-
+    QString dir = QFileDialog::getExistingDirectory(this, trUtf8("Append Directory"), workingDir,
+                  QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    Reader *reader = new Reader(dir, true);
+    reader->start();
 }
 
 void MainWindow::onFileExit()

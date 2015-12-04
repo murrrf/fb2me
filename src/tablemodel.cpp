@@ -27,9 +27,100 @@
  */
 
 #include "tablemodel.h"
-#include "fb2record.h"
 
-TableModel::TableModel(QObject *parent) :
-    QAbstractTableModel(parent)
+TableModel::TableModel(QObject *parent): QAbstractTableModel(parent)
 {
+}
+
+Qt::ItemFlags TableModel::flags(const QModelIndex &index) const
+{
+    Qt::ItemFlags tmp = Qt::NoItemFlags;
+
+    if (index.column() == colCheckColumn)
+    {
+        tmp |= Qt::ItemIsUserCheckable;
+    }
+
+    tmp |= Qt::ItemIsEnabled;
+    return tmp;
+}
+
+int TableModel::rowCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent);
+    return Data.count();
+}
+
+int TableModel::columnCount(const QModelIndex &parent) const
+{
+    Q_UNUSED(parent);
+    return static_cast<int>(colCounterField);
+}
+
+QVariant TableModel::data(const QModelIndex &index, int role) const
+{
+    if (!index.isValid())
+        return QVariant();
+
+    switch (role)
+    {
+    case Qt::DisplayRole:
+        switch (index.column())
+        {
+        case colBookTitle:
+            return Data.value(index.row()).getBookTitle();
+            break;
+
+        default:
+            break;
+        }
+
+        break;
+
+    default:
+        break;
+    }
+
+    return QVariant();
+}
+
+QVariant TableModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    if (role == Qt::DisplayRole)
+    {
+        if (orientation == Qt::Horizontal)
+        {
+            switch (section)
+            {
+            case colBookTitle:
+                return trUtf8(T_BOOKTITLE);
+                break;
+
+            case colBookAuthor:
+                return trUtf8(T_BOOKAUTHOR);
+                break;
+
+            case colSeries:
+                return trUtf8(T_SERIES);
+                break;
+
+            case colGenres:
+                return trUtf8(T_GENRES);
+                break;
+
+            case colEncoding:
+                return trUtf8(T_ENCODING);
+                break;
+
+            case colIsArchive:
+                return trUtf8(T_ISARCHIVE);
+                break;
+
+            default:
+                break;
+            }
+        };
+    }
+
+    return QVariant();
 }

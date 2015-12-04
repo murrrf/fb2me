@@ -30,8 +30,9 @@
  */
 
 #include <QAbstractTableModel>
+#include <QVector>
 
-class FB2Record;
+#include "fb2record.h"
 
 /**
  * @~russian
@@ -55,7 +56,7 @@ public:
      */
     explicit TableModel(QObject *parent = 0);
 
-    /**
+    /*
      * @~russian
      * @brief Деструктор модели данных.
      *
@@ -64,9 +65,91 @@ public:
      */
 //    ~TableModel();
 
+    /**
+     * @~russian
+     * @brief Обработчик флагов ячейки.
+     * @param index Ячейка таблицы.
+     * @return Флаги ячейки.
+     *
+     * @~russian
+     * @brief Cell flags handler.
+     * @param index Cell of the table.
+     * @return Flags.
+     */
+    Qt::ItemFlags flags(const QModelIndex &index) const;
+
+    /**
+     * @~russian
+     * @brief Счетчик строк таблицы.
+     * @param parent Таблица, для которой считаются строки.
+     * @return Количество строк.
+     *
+     * @~english
+     * @brief Table row count.
+     * @param parent Table for which is considered to be number of rows.
+     * @return Row count.
+     */
+    int rowCount(const QModelIndex &parent) const;
+
+    /**
+     * @~russian
+     * @brief Счетчик столбцов таблицы.
+     * @param parent Таблица, для которой считаются столбцы.
+     * @return Количество строк.
+     *
+     * @~english
+     * @brief table column count.
+     * @param parent Table for which is considered to be number of columns.
+     * @return Column count.
+     */
+    int columnCount(const QModelIndex &parent) const;
+
+    /**
+     * @~russian
+     * @brief Обработчик отображения данных таблицы.
+     * @param index Ячейка таблицы.
+     * @param role Обрабатываемое событие.
+     * @return Результат обработки.
+     *
+     * @~english
+     * @brief Handler display of table data.
+     * @param index Table cell.
+     * @param role Handled role.
+     * @return Displayed result.
+     */
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+
+    /**
+     * @~russian
+     * @brief Обработчик отображения заголовков таблицы.
+     * @param section Номер строки или столбца ячейки.
+     * @param orientation Направление отображения - строки или столбцы.
+     * @param role Обрабатываемое событие.
+     * @return Результат обработки.
+     *
+     * @~english
+     * @brief Handler display of table header.
+     * @param section Number of row or column count.
+     * @param orientation Orientation of display.
+     * @param role Handled role.
+     * @return Displayed result.
+     */
+    QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+
+
 signals:
 
 public slots:
+
+private:
+    /**
+     * @~russian
+     * @brief Хранилище данных модели.
+     *
+     * @~english
+     * @brief Storage of model data.
+     */
+    QVector<FB2Record> Data;
 
 };
 

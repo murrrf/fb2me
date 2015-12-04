@@ -28,6 +28,7 @@
 
 #include "mainwindow.h"
 
+#include "tablemodel.h"
 #include "reader.h"
 
 #include <QWidget>
@@ -122,8 +123,11 @@ MainWindow::MainWindow(QWidget *parent)
     splMain = new QSplitter(Qt::Vertical);
     splMain->setChildrenCollapsible(false);
 
-    tblMain = new QTableView();
-    splMain->addWidget(tblMain);
+    tblData = new QTableView();
+    splMain->addWidget(tblData);
+
+    mdlData = new TableModel(this);
+    tblData->setModel(mdlData);
 
     edtLog = new QTextEdit();
     edtLog->setReadOnly(true);
@@ -145,7 +149,8 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete edtLog;
-    delete tblMain;
+    delete mdlData;
+    delete tblData;
     delete splMain;
     delete actnHelpAboutQt;
     delete actnHelpAbout;
@@ -163,7 +168,7 @@ MainWindow::~MainWindow()
 void MainWindow::onFileOpen()
 {
     QStringList filenames = QFileDialog::getOpenFileNames(this, trUtf8("Open file"), workingDir,
-                           trUtf8("Fictionbook files(*.fb2 *.fb2.zip)"));
+                            trUtf8("Fictionbook files(*.fb2 *.fb2.zip)"));
 
     Reader *reader = new Reader(filenames);
 }

@@ -27,10 +27,19 @@
  */
 
 #include "fb2record.h"
-#include "person.h"
 
 FB2Record::FB2Record()
 {
+}
+
+void FB2Record::setBookTitle(QString title)
+{
+    BookTitle = title;
+}
+
+QString FB2Record::getBookTitle()
+{
+    return BookTitle;
 }
 
 

@@ -32,8 +32,7 @@
 #include <QString>
 #include <QVector>
 
-// Forward declarations
-class Person;
+#include "person.h"
 
 /**
  * @~russian
@@ -48,6 +47,32 @@ enum Status
     stIncorrectAuthorField, ///< @~russian Поле «Автор» не соответствует стандарту. @~english Non-standard «Author» field.
     stMixedCyrLat ///< @~russian В строке, составленной из имени автора и названия книги, смешаны кириллица и латиница. @~english Mixed cyrillic and latin symbols in author and title.
 };
+
+/**
+ * @~russian
+ * @brief Перечисление полей записи.
+ *
+ * @~english
+ * @brief Enumeration of fields of the record.
+ */
+enum Columns
+{
+    colCheckColumn, ///< @~russian Псевдополе - столбец с флажком. @~english Pseudofield - column with checkbox.
+    colBookTitle, ///< @~russian Поле «Название книги». @~english Book title field.
+    colBookAuthor, ///< @~russian Поле «Автор(ы) книги». @~english List of book authors field.
+    colSeries, ///< @~russian Поле «Серия». @~english Series field.
+    colGenres, ///< @~russian Поле «Жанр». @~english Genres field.
+    colEncoding, ///< @~russian Поле «Кодировка». @~english Encoding field.
+    colIsArchive, ///< @~russian Поле «Сжатый файл». @~english Is File Compressed field.
+    colCounterField ///< @~russian Псевдополе - маркер конца перечисления. @warning Не использовать его иным образом! @~english Pseudofield - end marker listing. @warning Do not use it otherwise!
+};
+
+static const char T_BOOKTITLE[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Book title");
+static const char T_BOOKAUTHOR[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Book author");
+static const char T_SERIES[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Series");
+static const char T_GENRES[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Genres");
+static const char T_ENCODING[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Encoding");
+static const char T_ISARCHIVE[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Archived");
 
 /**
  * @~russian
@@ -76,6 +101,28 @@ public:
      * @brief Destructor of a record.
      */
 //    ~FB2Record();
+
+    /**
+     * @~russian
+     * @brief Установка названия книги.
+     * @param title Название книги
+     *
+     * @~english
+     * @brief Setting of book title.
+     * @param title Book title.
+     */
+    void setBookTitle(QString title);
+
+    /**
+     * @~russian
+     * @brief Получение названия книги.
+     * @return Название книги.
+     *
+     * @~english
+     * @brief Getting of book title.
+     * @return Book title.
+     */
+    QString getBookTitle();
 
 private:
     /*

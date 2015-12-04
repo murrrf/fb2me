@@ -49,32 +49,41 @@ class Reader : public QThread
     Q_OBJECT
 public:
     /**
-     * @~
-     * @brief Reader
-     * @param files
+     * @~russian
+     * @brief Конструктор потока чтения.
+     * @param files Список файлов для чтения.
      *
-     * @~
-     * @brief Reader
-     * @param files
+     * @~english
+     * @brief Constructor of reading thread.
+     * @param files List of file names for reading.
      */
     Reader(QStringList files);
 
     /**
      * @~
-     * @brief Reader
-     * @param dir
-     * @param recursive
+     * @brief Конструктор потока чтения.
+     * @param dir Папка, в которой будут считываться файлы.
+     * @param recursive Обрабатывать ли подпапки:@n
+     * @c true - да;@n
+     * @c false - нет.
      *
      * @~
-     * @brief Reader
-     * @param dir
-     * @param recursive
+     * @brief Constructor of reading thread.
+     * @param dir The folder in which files will be read.
+     * @param recursive Read folder recursively:@n
+     * @c true - yes;@n
+     * @ false - no.
      */
     Reader(QString dir, bool recursive);
 
+    /**
+     * @~russian
+     * @brief Тело потока вычисления.
+     *
+     * @~english
+     * @brief Body of the thread.
+     */
     void run();
-
-    void stop();
 
 signals:
 

@@ -36,6 +36,8 @@ class QSplitter;
 class QTableView;
 class QTextEdit;
 
+class TableModel;
+
 /**
  * @~russian
  * @brief Класс главного окна программы.
@@ -188,7 +190,7 @@ private:
      * @~english
      * @brief Table of metadata.
      */
-    QTableView *tblMain;
+    QTableView *tblData;
 
     /**
      * @~russian
@@ -211,6 +213,15 @@ private:
      * The directory specified for an open dialogue to add files and folders.
      */
     QString workingDir;
+
+    /**
+     * @~russian
+     * @brief Модель данных, отображаемых в таблице.
+     *
+     * @~english
+     * @brief Data model displayed in table.
+     */
+    TableModel *mdlData;
 
 private slots:
 

@@ -20,9 +20,17 @@
 #ifndef PERSON_H
 #define PERSON_H
 
+/**
+ * @file
+ * @~russian
+ * @brief Модуль описания автора.
+ *
+ * @~english
+ * @brief The module of author description.
+ */
+
 #include <QString>
 #include <QVector>
-
 
 /**
  * @~russian

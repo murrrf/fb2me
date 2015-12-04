@@ -120,4 +120,6 @@ private:
      */
     QVector<Person> BookAuthor;
 
+};
+
 #endif // FB2RECORD_H

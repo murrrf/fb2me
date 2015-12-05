@@ -19,6 +19,7 @@
 
 #include "reader.h"
 
+#include <QDirIterator>
 
 Reader::Reader(QStringList files)
 {
@@ -34,7 +35,22 @@ Reader::Reader(QStringList files)
 
 Reader::Reader(QString dir, bool recursive)
 {
+    filenames.clear();
+    if (recursive)
+    {
+        QDirIterator it(dir, QStringList()<< "*.fb2" << "fb2.zip", QDir::NoDotAndDotDot || QDir::Files,
+                        QDirIterator::Subdirectories);
+    }
+    else
+    {
+        QDirIterator it(dir, QStringList()<< "*.fb2" << "fb2.zip", QDir::NoDotAndDotDot || QDir::Files);
+    };
+    while (it.hasNext())
+    {
+        filenames.append(it.next());
+    }
 
+    run();
 }
 
 void Reader::run()

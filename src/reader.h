@@ -60,14 +60,14 @@ public:
     Reader(QStringList files);
 
     /**
-     * @~
+     * @~russian
      * @brief Конструктор потока чтения.
      * @param dir Папка, в которой будут считываться файлы.
      * @param recursive Обрабатывать ли подпапки:@n
      * @c true - да;@n
      * @c false - нет.
      *
-     * @~
+     * @~english
      * @brief Constructor of reading thread.
      * @param dir The folder in which files will be read.
      * @param recursive Read folder recursively:@n
@@ -88,6 +88,14 @@ public:
 signals:
 
 public slots:
+    /**
+     * @~russian
+     * @brief Список имен файлов.
+     * 
+     * @~english
+     * @brief List of file names.
+     */
+    QStringList filenames;
 
 };
 

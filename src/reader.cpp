@@ -22,7 +22,14 @@
 
 Reader::Reader(QStringList files)
 {
+    filenames.clear();
+    QStringList::iterator it;
+    for (it = files.begin(); it != files.end(); it++)
+    {
+        filenames.append(*it);
+    }
 
+    run();
 }
 
 Reader::Reader(QString dir, bool recursive)

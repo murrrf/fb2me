@@ -116,6 +116,10 @@ QVariant TableModel::headerData(int section, Qt::Orientation orientation, int ro
                 return trUtf8(T_ISARCHIVE);
                 break;
 
+            case colFileSize:
+                return trUtf8(T_FILESIZE);
+                break;
+              
             default:
                 break;
             }

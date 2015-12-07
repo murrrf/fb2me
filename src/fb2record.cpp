@@ -42,6 +42,16 @@ qint64 FB2Record::getSize()
     return size;
 }
 
+void FB2Record::setFileName(const QString &Filename)
+{
+    filename = Filename;
+}
+
+QString FB2Record::getFileName()
+{
+    return filename;
+}
+
 void FB2Record::setBookTitle(QString title)
 {
     BookTitle = title;

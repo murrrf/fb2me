@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = fb2me
 TEMPLATE = app
-VERSION = 0.0.3
+VERSION = 0.0.4
 DEFINES += VERSIONSTR=\\\"$${VERSION}\\\"
 
 SOURCES += src/main.cpp\

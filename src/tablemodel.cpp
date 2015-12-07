@@ -71,9 +71,17 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
             return Data.value(index.row()).getBookTitle();
             break;
 
+        case colFileSize:
+            return Data.value(index.row()).getSize();
+            break;
+
         default:
             break;
         }
+
+        break;
+
+    case Qt::CheckStateRole:
 
         break;
 
@@ -137,4 +145,9 @@ void TableModel::onBeginReading()
 void TableModel::onEndReading()
 {
     endResetModel();
+}
+
+void TableModel::onAppendRecord(const FB2Record &record)
+{
+    Data.append(record);
 }

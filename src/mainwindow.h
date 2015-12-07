@@ -234,6 +234,7 @@ private:
      * @param rd Pointer to reading thread.
      */
     void setReaderSigSlots(Reader *rd);
+
 public slots:
 
     /**

@@ -71,7 +71,7 @@ public:
      * @param index Ячейка таблицы.
      * @return Флаги ячейки.
      *
-     * @~russian
+     * @~english
      * @brief Cell flags handler.
      * @param index Cell of the table.
      * @return Flags.
@@ -140,8 +140,35 @@ public:
 signals:
 
 public slots:
+
+    /**
+     * @~russian
+     * @brief Обработчик события начала чтения файлов.
+     *
+     * @~english
+     * @brief The event handler start reading files.
+     */
     void onBeginReading();
+
+    /**
+     * @~russian
+     * @brief Обработчик события окончания чтения файлов.
+     *
+     * @~english
+     * @brief The event handler finish reading files.
+     */
     void onEndReading();
+
+    /**
+     * @~russian
+     * @brief Обработчик события добавления новой записи в модель.
+     * @param record Добавляемая запись.
+     *
+     * @~english
+     * @brief The event handler add a new entry into the model.
+     * @param record Appended record.
+     */
+    void onAppendRecord(const FB2Record &record);
 
 private:
     /**

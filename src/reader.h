@@ -33,6 +33,8 @@
  * Reading is performed in a separate thread.
  */
 
+#include "fb2record.h"
+
 #include <QThread>
 #include <QString>
 #include <QStringList>
@@ -86,7 +88,27 @@ public:
     void run();
 
 signals:
+    /**
+     * @~russian
+     * @brief Отсылка сообщения в журнал сообщений.
+     * @param msg Текст сообщения.
+     *
+     * @~english
+     * @brief Sending messages to the message log.
+     * @param msg Message text.
+     */
     void EventMessage(const QString &msg);
+
+    /**
+     * @~russian
+     * @brief Добавление новой записи в модель данных.
+     * @param record Добавляемая запись.
+     *
+     * @~english
+     * @brief Append new record to data model.
+     * @param record Appended record.
+     */
+    void AppendRecord(const FB2Record &record);
 
 public slots:
 

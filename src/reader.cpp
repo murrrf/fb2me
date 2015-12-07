@@ -20,6 +20,7 @@
 #include "reader.h"
 
 #include <QDirIterator>
+#include <QFileInfo>
 
 Reader::Reader(QStringList files)
 {
@@ -61,5 +62,20 @@ Reader::Reader(QString dir, bool recursive)
 
 void Reader::run()
 {
+    QStringList::iterator it;
 
+    for (it = filenames.begin(); it != filenames.end(); it++)
+    {
+        FB2Record *rec = new FB2Record();
+        QFileInfo f(*it);
+
+        if ((f.isFile()) && (!f.isSymLink()))
+        {
+            rec->setSize(f.size());
+            rec->setFileName(f.canonicalFilePath());
+        }
+
+        emit AppendRecord(*rec);
+        delete rec;
+    }
 }

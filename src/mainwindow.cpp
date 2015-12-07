@@ -144,6 +144,8 @@ MainWindow::MainWindow(QWidget *parent)
     QStringList homedir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation);
 #endif
     workingDir = homedir.at(0);
+
+    qRegisterMetaType<FB2Record>("FB2Record");
 }
 
 MainWindow::~MainWindow()
@@ -170,6 +172,7 @@ void MainWindow::setReaderSigSlots(Reader *rd)
     connect(rd, SIGNAL(started()), mdlData, SLOT(onBeginReading()));
     connect(rd, SIGNAL(finished()), mdlData, SLOT(onEndReading()));
     connect(rd, SIGNAL(finished()), rd, SLOT(deleteLater()));
+    connect(rd, SIGNAL(AppendRecord(FB2Record)), mdlData, SLOT(onAppendRecord(FB2Record)));
     connect(rd, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
 
     rd->start();

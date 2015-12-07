@@ -128,6 +128,28 @@ public:
 
     /**
      * @~russian
+     * @brief Установка имени файла.
+     * @param Filename Имя файла.
+     *
+     * @~english
+     * @brief Setting of file name.
+     * @param Filename File name.
+     */
+    void setFileName(const QString &Filename);
+
+    /**
+     * @~russian
+     * @brief Получение имени файла.
+     * @return Имя файла.
+     *
+     * @~english
+     * @brief Getting of file name.
+     * @return File name.
+     */
+    QString getFileName();
+
+    /**
+     * @~russian
      * @brief Установка названия книги.
      * @param title Название книги
      *
@@ -164,6 +186,15 @@ private:
      * @brief Status of the record.
      */
     Status status;
+
+    /**
+     * @~russian
+     * @brief Полное имя файла.
+     *
+     * @~english
+     * @brief Full file name.
+     */
+    QString filename;
 
     /**
      * @~russian

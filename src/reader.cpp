@@ -25,6 +25,7 @@ Reader::Reader(QStringList files)
 {
     filenames.clear();
     QStringList::iterator it;
+
     for (it = files.begin(); it != files.end(); it++)
     {
         filenames.append(*it);
@@ -36,19 +37,29 @@ Reader::Reader(QStringList files)
 Reader::Reader(QString dir, bool recursive)
 {
     filenames.clear();
+
+    QStringList ext = QStringList() << "*.fb2" << "*.fb2.zip";
+    QDir::Filters filters = QDir::NoDotAndDotDot | QDir::Files;
+
     if (recursive)
     {
-        QDirIterator it(dir, QStringList()<< "*.fb2" << "fb2.zip", QDir::NoDotAndDotDot || QDir::Files,
-                        QDirIterator::Subdirectories);
+        QDirIterator it(dir, ext, filters, QDirIterator::Subdirectories);
+
+        while (it.hasNext())
+        {
+            filenames.append(it.next());
+        }
     }
     else
     {
-        QDirIterator it(dir, QStringList()<< "*.fb2" << "fb2.zip", QDir::NoDotAndDotDot || QDir::Files);
+        QDirIterator it(dir, ext, filters);
+
+        while (it.hasNext())
+        {
+            filenames.append(it.next());
+        }
     };
-    while (it.hasNext())
-    {
-        filenames.append(it.next());
-    }
+
 
     run();
 }

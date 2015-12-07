@@ -88,6 +88,8 @@ public:
 signals:
 
 public slots:
+
+private:
     /**
      * @~russian
      * @brief Список имен файлов.

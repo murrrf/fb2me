@@ -32,6 +32,16 @@ FB2Record::FB2Record()
 {
 }
 
+void FB2Record::setSize(qint64 Size)
+{
+    size = Size;
+}
+
+qint64 FB2Record::getSize()
+{
+    return size;
+}
+
 void FB2Record::setBookTitle(QString title)
 {
     BookTitle = title;

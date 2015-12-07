@@ -106,6 +106,28 @@ public:
 
     /**
      * @~russian
+     * @brief Установка размера файла.
+     * @param Size Размер файла.
+     *
+     * @~english
+     * @brief Setting of file size.
+     * @param Size File size.
+     */
+    void setSize(qint64 Size);
+
+    /**
+     * @~russian
+     * @brief Получение размера файла.
+     * @return Размер файла.
+     *
+     * @~english
+     * @brief Getting of file size.
+     * @return File size.
+     */
+    qint64 getSize();
+
+    /**
+     * @~russian
      * @brief Установка названия книги.
      * @param title Название книги
      *
@@ -142,6 +164,15 @@ private:
      * @brief Status of the record.
      */
     Status status;
+
+    /**
+     * @~russian
+     * @brief Размер файла.
+     *
+     * @~english
+     * @brief File size.
+     */
+    qint64 size;
 
     /**
      * @~russian

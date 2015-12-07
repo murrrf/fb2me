@@ -37,6 +37,7 @@ class QTableView;
 class QTextEdit;
 
 class TableModel;
+class Reader;
 
 /**
  * @~russian
@@ -222,6 +223,29 @@ private:
      * @brief Data model displayed in table.
      */
     TableModel *mdlData;
+
+    /**
+     * @~russian
+     * @brief Соединение сигналов потока чтения со слотами обработки.
+     * @param rd Указатель на поток чтения.
+     *
+     * @~english
+     * @brief Connection of signals of reading thread with handler slots.
+     * @param rd Pointer to reading thread.
+     */
+    void setReaderSigSlots(Reader *rd);
+public slots:
+
+    /**
+     * @~russian
+     * @brief Обработчик сообщений, направляемых в журнал событий.
+     * @param msg Сообщение.
+     *
+     * @~english
+     * @brief Message handler sent to the event log.
+     * @param msg Message.
+     */
+    void onEventMessage(const QString &msg);
 
 private slots:
 

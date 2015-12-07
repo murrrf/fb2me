@@ -86,6 +86,7 @@ public:
     void run();
 
 signals:
+    void EventMessage(const QString &msg);
 
 public slots:
 
@@ -93,7 +94,7 @@ private:
     /**
      * @~russian
      * @brief Список имен файлов.
-     * 
+     *
      * @~english
      * @brief List of file names.
      */

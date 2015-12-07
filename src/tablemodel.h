@@ -140,6 +140,8 @@ public:
 signals:
 
 public slots:
+    void onBeginReading();
+    void onEndReading();
 
 private:
     /**

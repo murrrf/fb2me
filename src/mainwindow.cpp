@@ -165,12 +165,28 @@ MainWindow::~MainWindow()
     delete barMainMenu;
 }
 
+void MainWindow::setReaderSigSlots(Reader *rd)
+{
+    connect(rd, SIGNAL(started()), mdlData, SLOT(onBeginReading()));
+    connect(rd, SIGNAL(finished()), mdlData, SLOT(onEndReading()));
+    connect(rd, SIGNAL(finished()), rd, SLOT(deleteLater()));
+    connect(rd, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
+
+    rd->start();
+}
+
+void MainWindow::onEventMessage(const QString &msg)
+{
+    edtLog->append(msg);
+}
+
 void MainWindow::onFileOpen()
 {
     QStringList filenames = QFileDialog::getOpenFileNames(this, trUtf8("Open file"), workingDir,
                             trUtf8("Fictionbook files(*.fb2 *.fb2.zip)"));
 
     Reader *reader = new Reader(filenames);
+    setReaderSigSlots(reader);
 }
 
 void MainWindow::onFileAppendDir()
@@ -178,7 +194,7 @@ void MainWindow::onFileAppendDir()
     QString dir = QFileDialog::getExistingDirectory(this, trUtf8("Append Directory"), workingDir,
                   QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     Reader *reader = new Reader(dir, false);
-    reader->start();
+    setReaderSigSlots(reader);
 }
 
 void MainWindow::onFileAppendDirRecursively()
@@ -186,7 +202,7 @@ void MainWindow::onFileAppendDirRecursively()
     QString dir = QFileDialog::getExistingDirectory(this, trUtf8("Append Directory"), workingDir,
                   QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     Reader *reader = new Reader(dir, true);
-    reader->start();
+    setReaderSigSlots(reader);
 }
 
 void MainWindow::onFileExit()

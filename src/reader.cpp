@@ -30,8 +30,6 @@ Reader::Reader(QStringList files)
     {
         filenames.append(*it);
     }
-
-    run();
 }
 
 Reader::Reader(QString dir, bool recursive)
@@ -59,9 +57,6 @@ Reader::Reader(QString dir, bool recursive)
             filenames.append(it.next());
         }
     };
-
-
-    run();
 }
 
 void Reader::run()

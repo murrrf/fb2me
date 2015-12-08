@@ -248,6 +248,32 @@ public slots:
      */
     void onEventMessage(const QString &msg);
 
+    /**
+     * @~russian
+     * @brief Обработчик начала длительной операции.
+     *
+     * Переключает курсор для наглядности.
+     *
+     * @~english
+     * @brief Handler beginning of a lengthy operation.
+     *
+     * Switches mouse pointer for clarity.
+     */
+    void onBlockInput();
+
+    /**
+     * @~russian
+     * @brief Обработчик окончания длительной операции.
+     *
+     * Переключает курсор для наглядности.
+     *
+     * @~english
+     * @brief Handler end of a lengthy operation.
+     *
+     * Switches mouse pointer for clarity.
+     */
+    void onUnblockInput();
+
 private slots:
 
     /**

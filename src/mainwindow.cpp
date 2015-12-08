@@ -177,8 +177,10 @@ MainWindow::~MainWindow()
 void MainWindow::setReaderSigSlots(Reader *rd)
 {
     connect(rd, SIGNAL(started()), mdlData, SLOT(onBeginReading()));
+    connect(rd,SIGNAL(started()),this,SLOT(onBlockInput()));
     connect(rd, SIGNAL(finished()), mdlData, SLOT(onEndReading()));
     connect(rd, SIGNAL(finished()), rd, SLOT(deleteLater()));
+    connect(rd,SIGNAL(finished()),this,SLOT(onUnblockInput()));
     connect(rd, SIGNAL(AppendRecord(FB2Record)), mdlData, SLOT(onAppendRecord(FB2Record)));
     connect(rd, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
 
@@ -189,6 +191,17 @@ void MainWindow::onEventMessage(const QString &msg)
 {
     // TODO More formatted message with datetime label
     edtLog->append(msg);
+}
+
+void MainWindow::onBlockInput()
+{
+    QApplication::setOverrideCursor(Qt::BusyCursor);
+    QApplication::processEvents();
+}
+
+void MainWindow::onUnblockInput()
+{
+    QApplication::restoreOverrideCursor();
 }
 
 void MainWindow::onFileOpen()

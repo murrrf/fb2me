@@ -74,6 +74,9 @@ void Reader::run()
             rec->setSize(f.size());
             rec->setFileName(f.canonicalFilePath());
             rec->setIsArchive(isFileArchive(*it));
+            // TODO Add unzipping for compressed files
+
+            // TODO Add XML parsing
         }
 
         emit AppendRecord(*rec);

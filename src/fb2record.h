@@ -48,6 +48,8 @@ enum Status
     stMixedCyrLat ///< @~russian В строке, составленной из имени автора и названия книги, смешаны кириллица и латиница. @~english Mixed cyrillic and latin symbols in author and title.
 };
 
+// TODO Move columns enumeration to data model file
+
 /**
  * @~russian
  * @brief Перечисление полей записи.
@@ -67,6 +69,8 @@ enum Columns
     colFileSize, ///< @~russian Поле «Размер файла». @~english File size field.
     colCounterField ///< @~russian Псевдополе - маркер конца перечисления. @warning Не использовать его иным образом! @~english Pseudofield - end marker listing. @warning Do not use it otherwise!
 };
+
+// TODO Move columns names to data model HeaderData() function
 
 static const char T_BOOKTITLE[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Book title");
 static const char T_BOOKAUTHOR[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Book author");

@@ -110,6 +110,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(actnHelpAboutQt, SIGNAL(triggered()), this, SLOT(onHelpAboutQt()));
     menuHelp->addAction(actnHelpAboutQt);
 
+    // TODO Add menus for all planned functions
+
     // Toolbar setup
 
     barTools->addAction(actnFileOpen);
@@ -135,6 +137,8 @@ MainWindow::MainWindow(QWidget *parent)
     edtLog = new QTextEdit();
     edtLog->setReadOnly(true);
     splMain->addWidget(edtLog);
+
+    // TODO Add context menu for Message Log
 
     splMain->setStretchFactor(0, 1); // First widget must be wide than second
 
@@ -183,6 +187,7 @@ void MainWindow::setReaderSigSlots(Reader *rd)
 
 void MainWindow::onEventMessage(const QString &msg)
 {
+    // TODO More formatted message with datetime label
     edtLog->append(msg);
 }
 

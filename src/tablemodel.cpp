@@ -163,4 +163,5 @@ void TableModel::onAppendRecord(const FB2Record &record)
 {
     Data.append(record);
     emit EventMessage(trUtf8("File \"%1\" added").arg(record.getFileName()));
+    // TODO Replace QVector to QMap for avoiding record duplication
 }

@@ -71,6 +71,18 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
             return Data.value(index.row()).getBookTitle();
             break;
 
+        case colIsArchive:
+            if (Data.value(index.row()).isArchive())
+            {
+                return trUtf8("yes");
+            }
+            else
+            {
+                return trUtf8("no");
+            }
+
+            break;
+
         case colFileSize:
             return Data.value(index.row()).getSize();
             break;

@@ -122,6 +122,27 @@ private:
      */
     QStringList filenames;
 
+    /**
+     * @~russian
+     * @brief Проверка, является ли файл архивом.
+     *
+     * В настоящее время проверка осуществляется простым тестом расширения файла.@n
+     * Возможно, в будущем будет применен более точный алгоритм проверки.
+     * @param filename Имя файла.
+     * @return @c true - если файл - архив;@n
+     * @c false - обычный файл.
+     *
+     * @~english
+     * @brief Check whether a file is archive.
+     *
+     * Currently, check with a simple test file extension.@n
+     * Perhaps in the future will be used more detailed checking algorithm.
+     * @param filename File name.
+     * @return @c true - if file is archive;@n
+     * @c false - if not.
+     */
+    bool isFileArchive(const QString &filename);
+
 };
 
 #endif // READER_H

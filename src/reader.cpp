@@ -73,9 +73,16 @@ void Reader::run()
         {
             rec->setSize(f.size());
             rec->setFileName(f.canonicalFilePath());
+            rec->setIsArchive(isFileArchive(*it));
         }
 
         emit AppendRecord(*rec);
         delete rec;
     }
+}
+
+bool Reader::isFileArchive(const QString &filename)
+{
+    QFileInfo f(filename);
+    return (f.suffix().toLower() == "zip");
 }

@@ -150,6 +150,36 @@ public:
 
     /**
      * @~russian
+     * @brief Установка флага «Файл-архив».
+     *
+     * @c true - если файл - архив;@n
+     * @c false - обычный файл.
+     * @param IsArchive Устанавливаемое значение.
+     *
+     * @~english
+     * @brief Setting the flag "archive file."
+     *
+     * @c true - if file is archive;@n
+     * @c false - if not.
+     * @param IsArchive Setting value.
+     */
+    void setIsArchive(bool IsArchive);
+
+    /**
+     * @~russian
+     * @brief Получение значения флага «Файл-архив».
+     * @return @c true - если файл - архив;@n
+     * @c false - обычный файл.
+     *
+     * @~english
+     * @brief Getting the flag "archive file."
+     * @return @c true - if file is archive;@n
+     * @c false - if not.
+     */
+    bool isArchive();
+
+    /**
+     * @~russian
      * @brief Установка названия книги.
      * @param title Название книги
      *
@@ -204,6 +234,21 @@ private:
      * @brief File size.
      */
     qint64 size;
+
+    /**
+     * @~russian
+     * @brief Является ли файл архивом.
+     *
+     * @c true - если файл - архив;@n
+     * @c false - обычный файл.
+     *
+     * @~english
+     * @brief Is a file archive?
+     *
+     * @c true - if file is archive;@n
+     * @c false - if not.
+     */
+    bool archived;
 
     /**
      * @~russian

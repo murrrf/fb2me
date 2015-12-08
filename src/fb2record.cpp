@@ -30,6 +30,7 @@
 
 FB2Record::FB2Record()
 {
+    archived = false;
 }
 
 void FB2Record::setSize(qint64 Size)
@@ -50,6 +51,16 @@ void FB2Record::setFileName(const QString &Filename)
 QString FB2Record::getFileName()
 {
     return filename;
+}
+
+void FB2Record::setIsArchive(bool IsArchive)
+{
+    archived = IsArchive;
+}
+
+bool FB2Record::isArchive()
+{
+    return archived;
 }
 
 void FB2Record::setBookTitle(QString title)

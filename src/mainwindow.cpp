@@ -128,6 +128,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     mdlData = new TableModel(this);
     tblData->setModel(mdlData);
+    tblData->resizeColumnToContents(colCheckColumn);
+
+    connect(mdlData, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
 
     edtLog = new QTextEdit();
     edtLog->setReadOnly(true);

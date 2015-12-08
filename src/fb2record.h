@@ -146,7 +146,7 @@ public:
      * @brief Getting of file name.
      * @return File name.
      */
-    QString getFileName();
+    QString getFileName() const;
 
     /**
      * @~russian

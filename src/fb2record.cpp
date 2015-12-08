@@ -48,7 +48,7 @@ void FB2Record::setFileName(const QString &Filename)
     filename = Filename;
 }
 
-QString FB2Record::getFileName()
+QString FB2Record::getFileName() const
 {
     return filename;
 }

@@ -162,4 +162,5 @@ void TableModel::onEndReading()
 void TableModel::onAppendRecord(const FB2Record &record)
 {
     Data.append(record);
+    emit EventMessage(trUtf8("File \"%1\" added").arg(record.getFileName()));
 }

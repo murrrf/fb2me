@@ -78,6 +78,12 @@ void FB2Record::addGenre(QString genre_name, int genre_match)
     Genres.append(qMakePair(genre_name, genre_match));
 }
 
+genre_rec FB2Record::getGenresList()
+{
+    return Genres;
+
+}
+
 void FB2Record::setEncoding(QString Encoding)
 {
     encoding = Encoding;

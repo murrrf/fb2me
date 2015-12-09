@@ -190,6 +190,19 @@ private:
      */
     QVector<FB2Record> Data;
 
+    /**
+     * @~russian
+     * @brief Получение и форматирование списка жанров записи.
+     * @param index Индекс записи в хранилище данных модели.
+     * @return Форматированная строка со списком жанров.
+     *
+     * @~english
+     * @brief Getting and formatting a list of genres recording.
+     * @param index The index of record in the data storage.
+     * @return Formatted string with a list of genres.
+     */
+    QString getFormattedGenresList(int index) const;
+
 };
 
 #endif // TABLEMODEL_H

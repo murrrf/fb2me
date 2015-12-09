@@ -129,7 +129,9 @@ void Reader::parseFile(QString &filename, FB2Record &record)
                         if (reader.name() == "title-info")
                         {
                             qDebug() << "title-info";
-
+                            // TODO Read Genres
+                            // TODO Read Author list
+                            // TODO Read Book Title
                         }
                     }
                 }

@@ -83,6 +83,15 @@ static const char T_FILESIZE[] =  QT_TRANSLATE_NOOP_UTF8("TableModel", "File siz
 
 /**
  * @~russian
+ * @brief Псевдоним типа для списка жанров книги.
+ *
+ * @~english
+ * @brief Type definition for genres list of the book.
+ */
+typedef QVector<QPair<QString, int> > genre_rec;
+
+/**
+ * @~russian
  * @brief Класс единичной записи метаданных.
  *
  * @~english
@@ -224,6 +233,21 @@ public:
 
     /**
      * @~russian
+     * @brief Получение списка жанров файла.
+     *
+     * Для дальнейшего форматирования список выдается «как есть».
+     * @return Список жанров.
+     *
+     * @~english
+     * @brief Getting the list of genres of the file.
+     *
+     * For a further formatting list  issued "as is".
+     * @return List of genres.
+     */
+    genre_rec getGenresList();
+
+    /**
+     * @~russian
      * @brief Установка кодировки файла.
      * @param Encoding Кодировка.
      *
@@ -327,7 +351,7 @@ private:
      * @~english
      * @brief Genres list of the file.
      */
-    QVector<QPair<QString, int> > Genres;
+    genre_rec Genres;
 
     /**
      * @~russian

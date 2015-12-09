@@ -71,6 +71,20 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
             return Data.value(index.row()).getBookTitle();
             break;
 
+        case colBookAuthor:
+            break;
+
+        case colSeries:
+            break;
+
+        case colGenres:
+            return getFormattedGenresList(index.row());
+            break;
+
+        case colEncoding:
+            return Data.value(index.row()).getEncoding();
+            break;
+
         case colIsArchive:
             if (Data.value(index.row()).isArchive())
             {
@@ -83,9 +97,6 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
 
             break;
 
-        case colEncoding:
-            return Data.value(index.row()).getEncoding();
-            break;
 
         case colFileSize:
             return Data.value(index.row()).getSize();
@@ -168,4 +179,19 @@ void TableModel::onAppendRecord(const FB2Record &record)
     Data.append(record);
     emit EventMessage(trUtf8("File \"%1\" added").arg(record.getFileName()));
     // TODO Replace QVector to QMap for avoiding record duplication
+}
+
+QString TableModel::getFormattedGenresList(int index) const
+{
+    QStringList res;
+    genre_rec tmp = Data.value(index).getGenresList();
+    genre_rec::iterator it;
+
+    for (it = tmp.begin(); it != tmp.end(); it++)
+    {
+        res.append(QString("%1 (%2%%)").arg((*it).first, (*it).second));
+    }
+
+    return res.join("\n");
+
 }

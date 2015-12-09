@@ -177,10 +177,10 @@ MainWindow::~MainWindow()
 void MainWindow::setReaderSigSlots(Reader *rd)
 {
     connect(rd, SIGNAL(started()), mdlData, SLOT(onBeginReading()));
-    connect(rd,SIGNAL(started()),this,SLOT(onBlockInput()));
+    connect(rd, SIGNAL(started()), this, SLOT(onBlockInput()));
     connect(rd, SIGNAL(finished()), mdlData, SLOT(onEndReading()));
     connect(rd, SIGNAL(finished()), rd, SLOT(deleteLater()));
-    connect(rd,SIGNAL(finished()),this,SLOT(onUnblockInput()));
+    connect(rd, SIGNAL(finished()), this, SLOT(onUnblockInput()));
     connect(rd, SIGNAL(AppendRecord(FB2Record)), mdlData, SLOT(onAppendRecord(FB2Record)));
     connect(rd, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
 

@@ -37,7 +37,7 @@ Reader::Reader(QString dir, bool recursive)
 {
     filenames.clear();
 
-    QStringList ext = QStringList() << "*.fb2" << "*.fb2.zip";
+    QStringList ext = QStringList() << "*.fb2";// << "*.fb2.zip";
     QDir::Filters filters = QDir::NoDotAndDotDot | QDir::Files;
 
     if (recursive)

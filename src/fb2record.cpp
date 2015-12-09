@@ -73,4 +73,9 @@ QString FB2Record::getBookTitle()
     return BookTitle;
 }
 
+void FB2Record::addGenre(QString genre_name, int genre_match)
+{
+    Genres.append(qMakePair(genre_name, genre_match));
+}
+
 

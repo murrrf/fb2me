@@ -31,6 +31,7 @@
 
 #include <QString>
 #include <QVector>
+#include <QPair>
 
 #include "person.h"
 
@@ -204,6 +205,8 @@ public:
      */
     QString getBookTitle();
 
+    void addGenre(QString genre_name, int genre_match = 100);
+
 private:
     /*
      * @~russian
@@ -279,6 +282,8 @@ private:
      * One or more, required.
      */
     QVector<Person> BookAuthor;
+
+    QVector<QPair<QString, int> > Genres;
 
 };
 

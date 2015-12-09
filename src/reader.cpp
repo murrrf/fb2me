@@ -21,6 +21,9 @@
 
 #include <QDirIterator>
 #include <QFileInfo>
+#include <QXmlStreamReader>
+
+#include <QDebug>
 
 Reader::Reader(QStringList files)
 {
@@ -77,6 +80,7 @@ void Reader::run()
             // TODO Add unzipping for compressed files
 
             // TODO Add XML parsing
+            parseFile((*it), *rec);
         }
 
         emit AppendRecord(*rec);
@@ -88,4 +92,48 @@ bool Reader::isFileArchive(const QString &filename)
 {
     QFileInfo f(filename);
     return (f.suffix().toLower() == "zip");
+}
+
+void Reader::parseFile(QString &filename, FB2Record &record)
+{
+    QFile file(filename);
+
+    if (!file.open(QFile::ReadOnly | QFile::Text))
+    {
+//        qDebug() << "Cannot read file" << file.errorString();
+        return;
+    }
+
+    QXmlStreamReader reader(&file);
+    reader.readNext();
+
+    if (reader.isStartDocument())
+    {
+        record.setEncoding(reader.documentEncoding().toString());
+    }
+
+    if (reader.readNextStartElement())
+    {
+        if (reader.name() == "FictionBook")
+        {
+            qDebug() << "FictionBook";
+
+            if (reader.readNextStartElement())
+            {
+                if (reader.name() == "description")
+                {
+                    qDebug() << "description";
+
+                    if (reader.readNextStartElement())
+                    {
+                        if (reader.name() == "title-info")
+                        {
+                            qDebug() << "title-info";
+
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

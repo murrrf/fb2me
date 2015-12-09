@@ -83,6 +83,10 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
 
             break;
 
+        case colEncoding:
+            return Data.value(index.row()).getEncoding();
+            break;
+
         case colFileSize:
             return Data.value(index.row()).getSize();
             break;

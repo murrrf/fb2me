@@ -205,7 +205,44 @@ public:
      */
     QString getBookTitle();
 
+    /**
+     * @~russian
+     * @brief Добавление жанра в список жанров.
+     * @param genre_name Наименование жанра.
+     * @param genre_match Совпадение с жанром в процентах.
+     *
+     * Если не указано, то 100% (полное совпадение).
+     *
+     * @~english
+     * @brief Adding genre to the list of genres.
+     * @param genre_name Name of the genre.
+     * @param genre_match If not specified, the 100% (complete agreement).
+     *
+     * If not specified, the 100% (complete agreement).
+     */
     void addGenre(QString genre_name, int genre_match = 100);
+
+    /**
+     * @~russian
+     * @brief Установка кодировки файла.
+     * @param Encoding Кодировка.
+     *
+     * @~english
+     * @brief Setting of file encoding.
+     * @param Encoding Encoding
+     */
+    void setEncoding(QString Encoding);
+
+    /**
+     * @~russian
+     * @brief Получение кодировки файла.
+     * @return Кодировка.
+     *
+     * @~english
+     * @brief Getting of file encoding.
+     * @return Encoding
+     */
+    QString getEncoding() const;
 
 private:
     /*
@@ -283,7 +320,23 @@ private:
      */
     QVector<Person> BookAuthor;
 
+    /**
+     * @~russian
+     * @brief Список жанров файла.
+     *
+     * @~english
+     * @brief Genres list of the file.
+     */
     QVector<QPair<QString, int> > Genres;
+
+    /**
+     * @~russian
+     * @brief Кодировка файла.
+     *
+     * @~english
+     * @brief Encoding of the file.
+     */
+    QString encoding;
 
 };
 

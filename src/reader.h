@@ -143,6 +143,19 @@ private:
      */
     bool isFileArchive(const QString &filename);
 
+    /**
+     * @~russian
+     * @brief Разбор файла и заполнение полей записи значениями, полученными из файла.
+     * @param filename Имя файла.
+     * @param record Запись, в которой сохраняются значения.
+     *
+     * @~english
+     * @brief Parsing the file and populates the fields recording the values obtained from the file.
+     * @param filename Name of the file.
+     * @param record Record, in which are stored values.
+     */
+    void parseFile(QString &filename, FB2Record &record);
+
 };
 
 #endif // READER_H

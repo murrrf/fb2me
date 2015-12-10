@@ -186,10 +186,11 @@ QString TableModel::getFormattedGenresList(int index) const
     QStringList res;
     genre_rec tmp = Data.value(index).getGenresList();
     genre_rec::iterator it;
+    int cnt = 0;
 
     for (it = tmp.begin(); it != tmp.end(); it++)
     {
-        res.append(QString("%1 (%2%%)").arg((*it).first, (*it).second));
+        res.append(QString("%1 (%2\%)").arg((*it).first, QString::number((*it).second)));
     }
 
     return res.join("\n");

@@ -129,7 +129,29 @@ void Reader::parseFile(QString &filename, FB2Record &record)
                         if (reader.name() == "title-info")
                         {
                             qDebug() << "title-info";
-                            // TODO Read Genres
+
+                            while (reader.readNextStartElement())
+                            {
+                                if (reader.name() == "genre")
+                                {
+                                    QString genre = reader.readElementText();
+                                    qDebug() << "genre" << genre;
+
+                                    if (reader.attributes().hasAttribute("match"))
+                                    {
+                                        int match = reader.attributes().value("match").toInt();
+                                        record.addGenre(genre, match);
+                                        qDebug() << "match" << match;
+                                    }
+                                    else
+                                        record.addGenre(genre);
+                                }
+
+                                // End of description, stop reading
+                                if (reader.name() == "body")
+                                    break;
+                            }
+
                             // TODO Read Author list
                             // TODO Read Book Title
                         }

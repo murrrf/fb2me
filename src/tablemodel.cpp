@@ -72,6 +72,7 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
             break;
 
         case colBookAuthor:
+            return Data.value(index.row()).getAuthorList().join("\n");
             break;
 
         case colSeries:

@@ -268,6 +268,32 @@ public:
      */
     QString getEncoding() const;
 
+    /**
+     * @~russian
+     * @brief Добавление нового автора в список авторов записи.
+     * @param author Добавляемый автор.
+     *
+     * @~english
+     * @brief Adding a new author in the list of authors of the record.
+     * @param author Author.
+     */
+    void addAuthor(Person author);
+
+    /**
+     * @~russian
+     * @brief Получение списка авторов.
+     *
+     * Список выдается в формате "Фамилия Имя Отчество", каждый автор на отдельной строке.
+     * @return Список авторов.
+     *
+     * @~english
+     * @brief Getting a list of authors.
+     *
+     * List issued in the format of "Full Name", every author on a separate line.
+     * @return List of authors.
+     */
+    QStringList getAuthorList();
+
 private:
     /*
      * @~russian

@@ -28,6 +28,8 @@
 
 #include "fb2record.h"
 
+#include <QStringList>
+
 FB2Record::FB2Record()
 {
     archived = false;
@@ -92,6 +94,24 @@ void FB2Record::setEncoding(QString Encoding)
 QString FB2Record::getEncoding() const
 {
     return encoding;
+}
+
+void FB2Record::addAuthor(Person author)
+{
+    BookAuthor.append(author);
+}
+
+QStringList FB2Record::getAuthorList()
+{
+    QStringList tmp;
+    QVector<Person>::iterator it;
+
+    for (it = BookAuthor.begin(); it != BookAuthor.end(); it++)
+    {
+        tmp.append((*it).getFullNameLFM());
+    }
+
+    return tmp;
 }
 
 

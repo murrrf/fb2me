@@ -153,47 +153,50 @@ void Reader::parseFile(QString &filename, FB2Record &record)
 
                                 if (reader.name() == "author")
                                 {
+                                    Person *tmpAuthor = new Person();
+
                                     while (reader.readNextStartElement())
                                     {
-                                        qDebug() << "reader.name()" << reader.name();
-
                                         if (reader.name() == "first-name")
                                         {
-                                            qDebug() << reader.readElementText();
+                                            tmpAuthor->setFirstName(reader.readElementText());
                                         }
                                         else
                                             if (reader.name() == "middle-name")
                                             {
-                                                qDebug() << reader.readElementText();
+                                                tmpAuthor->setMiddleName(reader.readElementText());
                                             }
                                             else
                                                 if (reader.name() == "last-name")
                                                 {
-                                                    qDebug() << reader.readElementText();
+                                                    tmpAuthor->setLastName(reader.readElementText());
                                                 }
                                                 else
                                                     if (reader.name() == "nickname")
                                                     {
-                                                        qDebug() << reader.readElementText();
+                                                        tmpAuthor->setNickname(reader.readElementText());
                                                     }
                                                     else
                                                         if (reader.name() == "home-page")
                                                         {
-                                                            qDebug() << reader.readElementText();
+                                                            tmpAuthor->addHomePage(reader.readElementText());
                                                         }
                                                         else
                                                             if (reader.name() == "email")
                                                             {
-                                                                qDebug() << reader.readElementText();
+                                                                tmpAuthor->addEmail(reader.readElementText());
                                                             }
                                                             else
                                                                 if (reader.name() == "id")
                                                                 {
-                                                                    qDebug() << reader.readElementText();
+                                                                    tmpAuthor->setId(reader.readElementText());
                                                                 }
                                                                 else
                                                                     reader.skipCurrentElement();
                                     }
+
+                                    record.addAuthor(*tmpAuthor);
+                                    delete tmpAuthor;
                                 }
 
                                 if (reader.name() == "book-title")

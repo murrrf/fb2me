@@ -130,8 +130,12 @@ void Reader::parseFile(QString &filename, FB2Record &record)
                         {
                             qDebug() << "title-info";
 
+
+
                             while (reader.readNextStartElement())
                             {
+                                qDebug() << "next start el name" << reader.name();
+
                                 if (reader.name() == "genre")
                                 {
                                     QString genre = reader.readElementText();
@@ -147,13 +151,64 @@ void Reader::parseFile(QString &filename, FB2Record &record)
                                         record.addGenre(genre);
                                 }
 
+                                if (reader.name() == "author")
+                                {
+                                    while (reader.readNextStartElement())
+                                    {
+                                        qDebug() << "reader.name()" << reader.name();
+
+                                        if (reader.name() == "first-name")
+                                        {
+                                            qDebug() << reader.readElementText();
+                                        }
+                                        else
+                                            if (reader.name() == "middle-name")
+                                            {
+                                                qDebug() << reader.readElementText();
+                                            }
+                                            else
+                                                if (reader.name() == "last-name")
+                                                {
+                                                    qDebug() << reader.readElementText();
+                                                }
+                                                else
+                                                    if (reader.name() == "nickname")
+                                                    {
+                                                        qDebug() << reader.readElementText();
+                                                    }
+                                                    else
+                                                        if (reader.name() == "home-page")
+                                                        {
+                                                            qDebug() << reader.readElementText();
+                                                        }
+                                                        else
+                                                            if (reader.name() == "email")
+                                                            {
+                                                                qDebug() << reader.readElementText();
+                                                            }
+                                                            else
+                                                                if (reader.name() == "id")
+                                                                {
+                                                                    qDebug() << reader.readElementText();
+                                                                }
+                                                                else
+                                                                    reader.skipCurrentElement();
+                                    }
+                                }
+
+                                if (reader.name() == "book-title")
+                                {
+                                    record.setBookTitle(reader.readElementText());
+                                }
+
                                 // End of description, stop reading
                                 if (reader.name() == "body")
                                     break;
                             }
 
+                            qDebug() << "end next start el name";
+
                             // TODO Read Author list
-                            // TODO Read Book Title
                         }
                     }
                 }

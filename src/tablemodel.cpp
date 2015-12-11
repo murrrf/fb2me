@@ -185,9 +185,8 @@ void TableModel::onAppendRecord(const FB2Record &record)
 QString TableModel::getFormattedGenresList(int index) const
 {
     QStringList res;
-    genre_rec tmp = Data.value(index).getGenresList();
-    genre_rec::iterator it;
-    int cnt = 0;
+    genre_t tmp = Data.value(index).getGenresList();
+    genre_t::iterator it;
 
     for (it = tmp.begin(); it != tmp.end(); it++)
     {

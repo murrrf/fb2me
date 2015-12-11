@@ -80,7 +80,7 @@ void FB2Record::addGenre(QString genre_name, int genre_match)
     Genres.append(qMakePair(genre_name, genre_match));
 }
 
-genre_rec FB2Record::getGenresList()
+genre_t FB2Record::getGenresList()
 {
     return Genres;
 
@@ -112,6 +112,16 @@ QStringList FB2Record::getAuthorList()
     }
 
     return tmp;
+}
+
+void FB2Record::addSequence(QString sequence, int number)
+{
+    Sequences.append(qMakePair(sequence, number));
+}
+
+sequence_t FB2Record::getSequenceList()
+{
+    return Sequences;
 }
 
 

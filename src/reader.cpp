@@ -188,6 +188,20 @@ void Reader::parseFile(QString &filename, FB2Record &record)
                                 {
                                     record.setBookTitle(reader.readElementText());
                                 }
+
+                                // TODO Sequence can not be read because there are tags between the title of the book and the sequence
+                                if (reader.name() == "sequence")
+                                {
+                                    QString sequence = reader.readElementText();
+
+                                    if (reader.attributes().hasAttribute("number"))
+                                    {
+                                        int number = reader.attributes().value("number").toInt();
+                                        record.addSequence(sequence, number);
+                                    }
+                                    else
+                                        record.addSequence(sequence);
+                                }
                             }
                         }
                     }

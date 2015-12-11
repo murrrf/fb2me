@@ -88,7 +88,17 @@ static const char T_FILESIZE[] =  QT_TRANSLATE_NOOP_UTF8("TableModel", "File siz
  * @~english
  * @brief Type definition for genres list of the book.
  */
-typedef QVector<QPair<QString, int> > genre_rec;
+typedef QVector<QPair<QString, int> > genre_t;
+
+/**
+ * @~russian
+ * @brief Псевдоним типа для списка серий книги.
+ *
+ * @~english
+ * @brief Type definition for series list of the book.
+ */
+typedef QVector<QPair<QString, int> > sequence_t;
+
 
 /**
  * @~russian
@@ -225,7 +235,7 @@ public:
      * @~english
      * @brief Adding genre to the list of genres.
      * @param genre_name Name of the genre.
-     * @param genre_match If not specified, the 100% (complete agreement).
+     * @param genre_match The coincidence with the genre as a percentage.
      *
      * If not specified, the 100% (complete agreement).
      */
@@ -244,7 +254,7 @@ public:
      * For a further formatting list  issued "as is".
      * @return List of genres.
      */
-    genre_rec getGenresList();
+    genre_t getGenresList();
 
     /**
      * @~russian
@@ -293,6 +303,38 @@ public:
      * @return List of authors.
      */
     QStringList getAuthorList();
+
+    /**
+     * @~russian
+     * @brief Добавление серии в список серий.
+     * @param sequence Наименование серии.
+     * @param number Номер произведения в серии.
+     *
+     * Если не указано, то 0 (ненумерованое произведение серии).
+     *
+     * @~english
+     * @brief Adding new sequence to the list of series.
+     * @param sequence Name of the sequence.
+     * @param number Book number in the sequence.
+     *
+     * If not specified, 0 (unnumbered book in the series).
+     */
+    void addSequence(QString sequence, int number = 0);
+
+    /**
+     * @~russian
+     * @brief Получение списка серий файла.
+     *
+     * Для дальнейшего форматирования список выдается «как есть».
+     * @return Список серий.
+     *
+     * @~english
+     * @brief Getting the list of series of the file.
+     *
+     * For a further formatting list  issued "as is".
+     * @return List of series.
+     */
+    sequence_t getSequenceList();
 
 private:
     /*
@@ -377,7 +419,16 @@ private:
      * @~english
      * @brief Genres list of the file.
      */
-    genre_rec Genres;
+    genre_t Genres;
+
+    /**
+     * @~russian
+     * @brief Список серий файла.
+     *
+     * @~english
+     * @brief Series list of the file.
+     */
+    sequence_t Sequences;
 
     /**
      * @~russian

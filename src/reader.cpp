@@ -79,7 +79,6 @@ void Reader::run()
             rec->setIsArchive(isFileArchive(*it));
             // TODO Add unzipping for compressed files
 
-            // TODO Add XML parsing
             parseFile((*it), *rec);
         }
 
@@ -116,36 +115,24 @@ void Reader::parseFile(QString &filename, FB2Record &record)
     {
         if (reader.name() == "FictionBook")
         {
-            qDebug() << "FictionBook";
-
             if (reader.readNextStartElement())
             {
                 if (reader.name() == "description")
                 {
-                    qDebug() << "description";
-
                     if (reader.readNextStartElement())
                     {
                         if (reader.name() == "title-info")
                         {
-                            qDebug() << "title-info";
-
-
-
                             while (reader.readNextStartElement())
                             {
-                                qDebug() << "next start el name" << reader.name();
-
                                 if (reader.name() == "genre")
                                 {
                                     QString genre = reader.readElementText();
-                                    qDebug() << "genre" << genre;
 
                                     if (reader.attributes().hasAttribute("match"))
                                     {
                                         int match = reader.attributes().value("match").toInt();
                                         record.addGenre(genre, match);
-                                        qDebug() << "match" << match;
                                     }
                                     else
                                         record.addGenre(genre);
@@ -161,38 +148,36 @@ void Reader::parseFile(QString &filename, FB2Record &record)
                                         {
                                             tmpAuthor->setFirstName(reader.readElementText());
                                         }
-                                        else
-                                            if (reader.name() == "middle-name")
-                                            {
-                                                tmpAuthor->setMiddleName(reader.readElementText());
-                                            }
-                                            else
-                                                if (reader.name() == "last-name")
-                                                {
-                                                    tmpAuthor->setLastName(reader.readElementText());
-                                                }
-                                                else
-                                                    if (reader.name() == "nickname")
-                                                    {
-                                                        tmpAuthor->setNickname(reader.readElementText());
-                                                    }
-                                                    else
-                                                        if (reader.name() == "home-page")
-                                                        {
-                                                            tmpAuthor->addHomePage(reader.readElementText());
-                                                        }
-                                                        else
-                                                            if (reader.name() == "email")
-                                                            {
-                                                                tmpAuthor->addEmail(reader.readElementText());
-                                                            }
-                                                            else
-                                                                if (reader.name() == "id")
-                                                                {
-                                                                    tmpAuthor->setId(reader.readElementText());
-                                                                }
-                                                                else
-                                                                    reader.skipCurrentElement();
+
+                                        if (reader.name() == "middle-name")
+                                        {
+                                            tmpAuthor->setMiddleName(reader.readElementText());
+                                        }
+
+                                        if (reader.name() == "last-name")
+                                        {
+                                            tmpAuthor->setLastName(reader.readElementText());
+                                        }
+
+                                        if (reader.name() == "nickname")
+                                        {
+                                            tmpAuthor->setNickname(reader.readElementText());
+                                        }
+
+                                        if (reader.name() == "home-page")
+                                        {
+                                            tmpAuthor->addHomePage(reader.readElementText());
+                                        }
+
+                                        if (reader.name() == "email")
+                                        {
+                                            tmpAuthor->addEmail(reader.readElementText());
+                                        }
+
+                                        if (reader.name() == "id")
+                                        {
+                                            tmpAuthor->setId(reader.readElementText());
+                                        }
                                     }
 
                                     record.addAuthor(*tmpAuthor);
@@ -203,15 +188,7 @@ void Reader::parseFile(QString &filename, FB2Record &record)
                                 {
                                     record.setBookTitle(reader.readElementText());
                                 }
-
-                                // End of description, stop reading
-                                if (reader.name() == "body")
-                                    break;
                             }
-
-                            qDebug() << "end next start el name";
-
-                            // TODO Read Author list
                         }
                     }
                 }

@@ -137,71 +137,74 @@ void Reader::parseFile(QString &filename, FB2Record &record)
                                     else
                                         record.addGenre(genre);
                                 }
-
-                                if (reader.name() == "author")
-                                {
-                                    Person *tmpAuthor = new Person();
-
-                                    while (reader.readNextStartElement())
+                                else
+                                    if (reader.name() == "author")
                                     {
-                                        if (reader.name() == "first-name")
+                                        Person *tmpAuthor = new Person();
+
+                                        while (reader.readNextStartElement())
                                         {
-                                            tmpAuthor->setFirstName(reader.readElementText());
+                                            if (reader.name() == "first-name")
+                                            {
+                                                tmpAuthor->setFirstName(reader.readElementText());
+                                            }
+
+                                            if (reader.name() == "middle-name")
+                                            {
+                                                tmpAuthor->setMiddleName(reader.readElementText());
+                                            }
+
+                                            if (reader.name() == "last-name")
+                                            {
+                                                tmpAuthor->setLastName(reader.readElementText());
+                                            }
+
+                                            if (reader.name() == "nickname")
+                                            {
+                                                tmpAuthor->setNickname(reader.readElementText());
+                                            }
+
+                                            if (reader.name() == "home-page")
+                                            {
+                                                tmpAuthor->addHomePage(reader.readElementText());
+                                            }
+
+                                            if (reader.name() == "email")
+                                            {
+                                                tmpAuthor->addEmail(reader.readElementText());
+                                            }
+
+                                            if (reader.name() == "id")
+                                            {
+                                                tmpAuthor->setId(reader.readElementText());
+                                            }
                                         }
 
-                                        if (reader.name() == "middle-name")
-                                        {
-                                            tmpAuthor->setMiddleName(reader.readElementText());
-                                        }
-
-                                        if (reader.name() == "last-name")
-                                        {
-                                            tmpAuthor->setLastName(reader.readElementText());
-                                        }
-
-                                        if (reader.name() == "nickname")
-                                        {
-                                            tmpAuthor->setNickname(reader.readElementText());
-                                        }
-
-                                        if (reader.name() == "home-page")
-                                        {
-                                            tmpAuthor->addHomePage(reader.readElementText());
-                                        }
-
-                                        if (reader.name() == "email")
-                                        {
-                                            tmpAuthor->addEmail(reader.readElementText());
-                                        }
-
-                                        if (reader.name() == "id")
-                                        {
-                                            tmpAuthor->setId(reader.readElementText());
-                                        }
-                                    }
-
-                                    record.addAuthor(*tmpAuthor);
-                                    delete tmpAuthor;
-                                }
-
-                                if (reader.name() == "book-title")
-                                {
-                                    record.setBookTitle(reader.readElementText());
-                                }
-
-                                // TODO Sequence can not be read because there are tags between the title of the book and the sequence
-                                if (reader.name() == "sequence")
-                                {
-                                    QString sequence = reader.readElementText();
-
-                                    if (reader.attributes().hasAttribute("number"))
-                                    {
-                                        int number = reader.attributes().value("number").toInt();
-                                        record.addSequence(sequence, number);
+                                        record.addAuthor(*tmpAuthor);
+                                        delete tmpAuthor;
                                     }
                                     else
-                                        record.addSequence(sequence);
-                                }
+                                        if (reader.name() == "book-title")
+                                        {
+                                            record.setBookTitle(reader.readElementText());
+                                        }
+                                        else
+                                            if (reader.name() == "sequence")
+                                            {
+                                                if (reader.attributes().hasAttribute("name"))
+                                                {
+                                                    QString sequence = reader.attributes().value("name").toString();
+
+                                                    if (reader.attributes().hasAttribute("number"))
+                                                    {
+                                                        int number = reader.attributes().value("number").toInt();
+                                                        record.addSequence(sequence, number);
+                                                    }
+                                                    else
+                                                        record.addSequence(sequence);
+                                                }
+                                            }
+                                            else reader.skipCurrentElement();
                             }
                         }
                     }

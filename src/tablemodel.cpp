@@ -76,6 +76,7 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
             break;
 
         case colSeries:
+            return getFormattedSeriesList(index.row());
             break;
 
         case colGenres:
@@ -194,5 +195,18 @@ QString TableModel::getFormattedGenresList(int index) const
     }
 
     return res.join("\n");
+}
 
+QString TableModel::getFormattedSeriesList(int index) const
+{
+    QStringList res;
+    sequence_t tmp = Data.value(index).getSequenceList();
+    sequence_t::iterator it;
+
+    for (it = tmp.begin(); it != tmp.end(); it++)
+    {
+        res.append(QString("%1 - %2").arg((*it).first, QString::number((*it).second)));
+    }
+
+    return res.join("\n");
 }

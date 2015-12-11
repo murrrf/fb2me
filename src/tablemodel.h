@@ -203,6 +203,18 @@ private:
      */
     QString getFormattedGenresList(int index) const;
 
+    /**
+     * @~russian
+     * @brief Получение и форматирование списка серий записи.
+     * @param index Индекс записи в хранилище данных модели.
+     * @return Форматированная строка со списком серий.
+     *
+     * @~english
+     * @brief Getting and formatting a list of series recording.
+     * @param index The index of record in the data storage.
+     * @return Formatted string with a list of series.
+     */
+    QString getFormattedSeriesList(int index) const;
 };
 
 #endif // TABLEMODEL_H

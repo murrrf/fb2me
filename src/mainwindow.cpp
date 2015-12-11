@@ -44,6 +44,7 @@
 #include <QApplication>
 #include <QFileDialog>
 #include <QStandardPaths>
+#include <QDateTime>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -189,8 +190,7 @@ void MainWindow::setReaderSigSlots(Reader *rd)
 
 void MainWindow::onEventMessage(const QString &msg)
 {
-    // TODO More formatted message with datetime label
-    edtLog->append(msg);
+    edtLog->append(QString("%1: %2").arg(QDateTime::currentDateTime().toString("hh:mm:ss:zzz"), msg));
 }
 
 void MainWindow::onBlockInput()

@@ -130,31 +130,31 @@ QVariant TableModel::headerData(int section, Qt::Orientation orientation, int ro
             switch (section)
             {
             case colBookTitle:
-                return trUtf8(T_BOOKTITLE);
+                return trUtf8("Book title");
                 break;
 
             case colBookAuthor:
-                return trUtf8(T_BOOKAUTHOR);
+                return trUtf8("Book author");
                 break;
 
             case colSeries:
-                return trUtf8(T_SERIES);
+                return trUtf8("Series");
                 break;
 
             case colGenres:
-                return trUtf8(T_GENRES);
+                return trUtf8("Genres");
                 break;
 
             case colEncoding:
-                return trUtf8(T_ENCODING);
+                return trUtf8("Encoding");
                 break;
 
             case colIsArchive:
-                return trUtf8(T_ISARCHIVE);
+                return trUtf8("Archived");
                 break;
 
             case colFileSize:
-                return trUtf8(T_FILESIZE);
+                return trUtf8("File size");
                 break;
 
             default:

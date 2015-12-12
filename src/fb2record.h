@@ -71,16 +71,6 @@ enum Columns
     colCounterField ///< @~russian Псевдополе - маркер конца перечисления. @warning Не использовать его иным образом! @~english Pseudofield - end marker listing. @warning Do not use it otherwise!
 };
 
-// TODO Move columns names to data model HeaderData() function
-
-static const char T_BOOKTITLE[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Book title");
-static const char T_BOOKAUTHOR[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Book author");
-static const char T_SERIES[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Series");
-static const char T_GENRES[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Genres");
-static const char T_ENCODING[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Encoding");
-static const char T_ISARCHIVE[] = QT_TRANSLATE_NOOP_UTF8("TableModel", "Archived");
-static const char T_FILESIZE[] =  QT_TRANSLATE_NOOP_UTF8("TableModel", "File size");
-
 /**
  * @~russian
  * @brief Псевдоним типа для списка жанров книги.

@@ -36,6 +36,26 @@
 
 /**
  * @~russian
+ * @brief Перечисление полей записи.
+ *
+ * @~english
+ * @brief Enumeration of fields of the record.
+ */
+enum Columns
+{
+    colCheckColumn, ///< @~russian Псевдополе - столбец с флажком. @~english Pseudofield - column with checkbox.
+    colBookTitle, ///< @~russian Поле «Название книги». @~english Book title field.
+    colBookAuthor, ///< @~russian Поле «Автор(ы) книги». @~english List of book authors field.
+    colSeries, ///< @~russian Поле «Серия». @~english Series field.
+    colGenres, ///< @~russian Поле «Жанр». @~english Genres field.
+    colEncoding, ///< @~russian Поле «Кодировка». @~english Encoding field.
+    colIsArchive, ///< @~russian Поле «Сжатый файл». @~english Is File Compressed field.
+    colFileSize, ///< @~russian Поле «Размер файла». @~english File size field.
+    colCounterField ///< @~russian Псевдополе - маркер конца перечисления. @warning Не использовать его иным образом! @~english Pseudofield - end marker listing. @warning Do not use it otherwise!
+};
+
+/**
+ * @~russian
  * @brief Класс модели данных.
  *
  * @~english

@@ -77,8 +77,6 @@ void Reader::run()
             rec->setSize(f.size());
             rec->setFileName(f.canonicalFilePath());
             rec->setIsArchive(isFileArchive(*it));
-            // TODO Add unzipping for compressed files
-
             parseFile((*it), *rec);
         }
 
@@ -95,15 +93,25 @@ bool Reader::isFileArchive(const QString &filename)
 
 void Reader::parseFile(QString &filename, FB2Record &record)
 {
+    QFileInfo f(filename);
     QFile file(filename);
+    QXmlStreamReader reader;
 
-    if (!file.open(QFile::ReadOnly | QFile::Text))
+    if (f.suffix() == "fb2")
     {
-//        qDebug() << "Cannot read file" << file.errorString();
-        return;
-    }
+        if (!file.open(QFile::ReadOnly | QFile::Text))
+        {
+            return;
+        }
 
-    QXmlStreamReader reader(&file);
+        reader.setDevice(&file);
+    }
+    else
+        if (f.suffix() == "zip")
+        {
+            // TODO Add unzipping for compressed files
+        }
+
     reader.readNext();
 
     if (reader.isStartDocument())

@@ -146,15 +146,15 @@ private:
     /**
      * @~russian
      * @brief Разбор файла и заполнение полей записи значениями, полученными из файла.
-     * @param data Файл в виде потока байтов.
+     * @param filename Имя файла.
      * @param record Запись, в которой сохраняются значения.
      *
      * @~english
      * @brief Parsing the file and populates the fields recording the values obtained from the file.
-     * @param data File as byte array.
+     * @param filename Name of the file.
      * @param record Record, in which are stored values.
      */
-    void parseFile(QByteArray &data, FB2Record &record);
+    void parseFile(QString &filename, FB2Record &record);
 
 };
 

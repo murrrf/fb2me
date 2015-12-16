@@ -160,14 +160,16 @@ private:
      * @~russian
      * @brief Распаковка сжатого файла в массив байтов.
      * @param filename Имя файла.
-     * @return Массив байтов, содержащий в себе распакованный файл.
+     * @param Массив байтов, содержащий в себе распакованный файл.
+     * @return Код результата.
      *
      * @~english
      * @brief Unpack the compressed file into a byte array.
      * @param filename File name.
-     * @return An array of bytes containing the decompressed file.
+     * @param An array of bytes containing the decompressed file.
+     * @return Result code.
      */
-    QByteArray unzipFile(QString &filename);
+    int unzipFile(QString &filename, QByteArray &file);
 
 };
 

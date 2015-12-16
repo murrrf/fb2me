@@ -224,13 +224,14 @@ void Reader::parseFile(QString &filename, FB2Record &record)
     }
 }
 
-QByteArray Reader::unzipFile(QString &filename)
+int Reader::unzipFile(QString &filename, QByteArray &file)
 {
-    QByteArray result;
+    int status;
 
     mz_zip_archive archive;
     memset(&archive, 0, sizeof(archive));
+    status = mz_zip_reader_init_file(&archive, filename.toStdString().c_str(), 0);
 
- if(mz_zip_reader_init_file(&archive,filename.toStdString().c_str(),0)!=MZ_OK)
-     return result;
+    if (status != MZ_OK)
+        return status;
 }

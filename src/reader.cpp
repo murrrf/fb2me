@@ -23,6 +23,8 @@
 #include <QFileInfo>
 #include <QXmlStreamReader>
 
+#include "../3rdparty/miniz.c"
+
 #include <QDebug>
 
 Reader::Reader(QStringList files)
@@ -220,4 +222,15 @@ void Reader::parseFile(QString &filename, FB2Record &record)
             }
         }
     }
+}
+
+QByteArray Reader::unzipFile(QString &filename)
+{
+    QByteArray result;
+
+    mz_zip_archive archive;
+    memset(&archive, 0, sizeof(archive));
+
+ if(mz_zip_reader_init_file(&archive,filename.toStdString().c_str(),0)!=MZ_OK)
+     return result;
 }

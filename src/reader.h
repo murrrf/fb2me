@@ -156,6 +156,19 @@ private:
      */
     void parseFile(QString &filename, FB2Record &record);
 
+    /**
+     * @~russian
+     * @brief Распаковка сжатого файла в массив байтов.
+     * @param filename Имя файла.
+     * @return Массив байтов, содержащий в себе распакованный файл.
+     *
+     * @~english
+     * @brief Unpack the compressed file into a byte array.
+     * @param filename File name.
+     * @return An array of bytes containing the decompressed file.
+     */
+    QByteArray unzipFile(QString &filename);
+
 };
 
 #endif // READER_H

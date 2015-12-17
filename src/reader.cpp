@@ -42,7 +42,7 @@ Reader::Reader(QString dir, bool recursive)
 {
     filenames.clear();
 
-    QStringList ext = QStringList() << "*.fb2";// << "*.fb2.zip";
+    QStringList ext = QStringList() << "*.fb2" << "*.fb2.zip";
     QDir::Filters filters = QDir::NoDotAndDotDot | QDir::Files;
 
     if (recursive)
@@ -97,6 +97,7 @@ void Reader::parseFile(QString &filename, FB2Record &record)
 {
     QFileInfo f(filename);
     QFile file(filename);
+    QByteArray data;
     QXmlStreamReader reader;
 
     if (f.suffix() == "fb2")
@@ -111,7 +112,14 @@ void Reader::parseFile(QString &filename, FB2Record &record)
     else
         if (f.suffix() == "zip")
         {
-            // TODO Add unzipping for compressed files
+            int res = unzipFile(filename, data);
+
+            if (0 != res)
+            {
+                return;
+            }
+
+            reader.addData(data);
         }
 
     reader.readNext();
@@ -227,11 +235,40 @@ void Reader::parseFile(QString &filename, FB2Record &record)
 int Reader::unzipFile(QString &filename, QByteArray &file)
 {
     mz_bool status;
-
     mz_zip_archive archive;
     memset(&archive, 0, sizeof(archive));
     status = mz_zip_reader_init_file(&archive, filename.toStdString().c_str(), 0);
 
-    if (status != MZ_OK)
+    if (status < MZ_OK)
         return status;
+
+    if (mz_zip_reader_get_num_files(&archive) != 1)
+    {
+        emit EventMessage(trUtf8("The archive %1 more than one file, or no files in the archive").arg(filename));
+        return MZ_PARAM_ERROR;
+    }
+
+    mz_zip_archive_file_stat file_stat;
+    status = mz_zip_reader_file_stat(&archive, 0, &file_stat);
+
+    if (status < MZ_OK)
+    {
+        emit EventMessage(trUtf8("Error reading the file %1").arg(filename));
+        mz_zip_reader_end(&archive);
+        return MZ_PARAM_ERROR;
+    }
+
+    size_t uncompressed_size = file_stat.m_uncomp_size;
+    void *p = mz_zip_reader_extract_file_to_heap(&archive, file_stat.m_filename, &uncompressed_size, 0);
+
+    if (!p)
+    {
+        emit EventMessage(trUtf8("Error extracting file %1").arg(filename));
+        mz_zip_reader_end(&archive);
+        return MZ_PARAM_ERROR;
+    }
+
+    file.append(static_cast<char *>(p));
+    mz_zip_reader_end(&archive);
+    return 0;
 }

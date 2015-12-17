@@ -27,6 +27,7 @@ HEADERS  += src/mainwindow.h \
     src/reader.h
 
 # 3rd party components
+HEADERS += 3rdparty/miniz.h
 SOURCES += 3rdparty/miniz.c
 
 RESOURCES += \

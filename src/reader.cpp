@@ -23,7 +23,7 @@
 #include <QFileInfo>
 #include <QXmlStreamReader>
 
-#include "../3rdparty/miniz.c"
+#include "../3rdparty/miniz.h"
 
 #include <QDebug>
 
@@ -226,7 +226,7 @@ void Reader::parseFile(QString &filename, FB2Record &record)
 
 int Reader::unzipFile(QString &filename, QByteArray &file)
 {
-    int status;
+    mz_bool status;
 
     mz_zip_archive archive;
     memset(&archive, 0, sizeof(archive));

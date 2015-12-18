@@ -156,6 +156,33 @@ public:
      */
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
 
+    /**
+     * @~russian
+     * @brief Установка пользовательского значения в ячейку таблицы.
+     *
+     * Применяется только для изменения состояния записи (выбранная/невыбранная),
+     * так как все остальные значения редактируются через отдельное диалоговое окно.
+     * @param index Ячейка таблицы.
+     * @param value Устанавливаемое значение.
+     * @param role Обрабатываемое событие.
+     * @return Результат установки значения:@n
+     * @c true - в случае успеха;@n
+     * @c false - в случае ошибки.
+     *
+     * @~english
+     * @brief Setting custom values in a table cell.
+     *
+     * It applies only to change the recording state (selected / unselected),
+     * since all other values are edited through a separate dialog box.
+     * @param index Table cell.
+     * @param value Setting value.
+     * @param role Handled role.
+     * @return The result of setting values:@n
+     * @c true - if successful;@n
+     * @c false - in case of error.
+     */
+    bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
+
 signals:
 
     /**
@@ -247,7 +274,7 @@ private:
      * @param index Model index for which state of the record is determined.
      * @return State of the record.
      */
-    Qt::CheckState getState(QModelIndex index) const;
+    Qt::CheckState getState(const QModelIndex &index) const;
 };
 
 #endif // TABLEMODEL_H

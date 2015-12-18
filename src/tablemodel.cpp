@@ -171,6 +171,28 @@ QVariant TableModel::headerData(int section, Qt::Orientation orientation, int ro
     return QVariant();
 }
 
+bool TableModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    if (!index.isValid())
+        return false;
+
+    if (role == Qt::CheckStateRole)
+    {
+        if (static_cast<Qt::CheckState>(value.toInt()) == Qt::Checked)
+        {
+            //user has checked item
+            return true;
+        }
+        else
+        {
+            //user has unchecked item
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void TableModel::onBeginReading()
 {
     beginResetModel();
@@ -216,7 +238,7 @@ QString TableModel::getFormattedSeriesList(int index) const
     return res.join("\n");
 }
 
-Qt::CheckState TableModel::getState(QModelIndex index) const
+Qt::CheckState TableModel::getState(const QModelIndex &index) const
 {
     // TODO Add the code for determining the state of recording
     bool b = false;

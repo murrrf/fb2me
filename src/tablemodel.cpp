@@ -111,7 +111,12 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
         break;
 
     case Qt::CheckStateRole:
+        if (index.column() != colCheckColumn)
+        {
+            return QVariant();
+        }
 
+        return QVariant(static_cast<int>(getState(index)));
         break;
 
     default:
@@ -209,4 +214,12 @@ QString TableModel::getFormattedSeriesList(int index) const
     }
 
     return res.join("\n");
+}
+
+Qt::CheckState TableModel::getState(QModelIndex index) const
+{
+    // TODO Add the code for determining the state of recording
+    bool b = false;
+    Qt::CheckState cs = b ? Qt::Checked : Qt::Unchecked;
+    return cs;
 }

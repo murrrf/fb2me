@@ -235,6 +235,19 @@ private:
      * @return Formatted string with a list of series.
      */
     QString getFormattedSeriesList(int index) const;
+
+    /**
+     * @~russian
+     * @brief Определение, является ли запись помеченной.
+     * @param index Элемент модели, для которого определяется состояние записи.
+     * @return Состояние записи.
+     *
+     * @~english
+     * @brief Determining whether an entry is marked.
+     * @param index Model index for which state of the record is determined.
+     * @return State of the record.
+     */
+    Qt::CheckState getState(QModelIndex index) const;
 };
 
 #endif // TABLEMODEL_H

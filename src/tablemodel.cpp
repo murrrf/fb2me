@@ -203,7 +203,7 @@ void TableModel::onEndReading()
     endResetModel();
 }
 
-void TableModel::onAppendRecord(const FB2Record &record)
+void TableModel::onAppendRecord(const FileRecord &record)
 {
     Data.append(record);
     emit EventMessage(trUtf8("File \"%1\" added").arg(record.getFileName()));

@@ -29,7 +29,7 @@
 #include "mainwindow.h"
 
 #include "tablemodel.h"
-#include "reader.h"
+#include "filereader.h"
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -153,7 +153,7 @@ MainWindow::MainWindow(QWidget *parent)
 #endif
     workingDir = homedir.at(0);
 
-    qRegisterMetaType<FB2Record>("FB2Record");
+    qRegisterMetaType<FileRecord>("FileRecord");
 }
 
 MainWindow::~MainWindow()
@@ -175,14 +175,14 @@ MainWindow::~MainWindow()
     delete barMainMenu;
 }
 
-void MainWindow::setReaderSigSlots(Reader *rd)
+void MainWindow::setReaderSigSlots(FileReader *rd)
 {
     connect(rd, SIGNAL(started()), mdlData, SLOT(onBeginReading()));
     connect(rd, SIGNAL(started()), this, SLOT(onBlockInput()));
     connect(rd, SIGNAL(finished()), mdlData, SLOT(onEndReading()));
     connect(rd, SIGNAL(finished()), rd, SLOT(deleteLater()));
     connect(rd, SIGNAL(finished()), this, SLOT(onUnblockInput()));
-    connect(rd, SIGNAL(AppendRecord(FB2Record)), mdlData, SLOT(onAppendRecord(FB2Record)));
+    connect(rd, SIGNAL(AppendRecord(FileRecord)), mdlData, SLOT(onAppendRecord(FileRecord)));
     connect(rd, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
 
     rd->start();
@@ -209,7 +209,7 @@ void MainWindow::onFileOpen()
     QStringList filenames = QFileDialog::getOpenFileNames(this, trUtf8("Open file"), workingDir,
                             trUtf8("Fictionbook files(*.fb2 *.fb2.zip)"));
 
-    Reader *reader = new Reader(filenames);
+    FileReader *reader = new FileReader(filenames);
     setReaderSigSlots(reader);
 }
 
@@ -217,7 +217,7 @@ void MainWindow::onFileAppendDir()
 {
     QString dir = QFileDialog::getExistingDirectory(this, trUtf8("Append Directory"), workingDir,
                   QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    Reader *reader = new Reader(dir, false);
+    FileReader *reader = new FileReader(dir, false);
     setReaderSigSlots(reader);
 }
 
@@ -225,7 +225,7 @@ void MainWindow::onFileAppendDirRecursively()
 {
     QString dir = QFileDialog::getExistingDirectory(this, trUtf8("Append Directory"), workingDir,
                   QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    Reader *reader = new Reader(dir, true);
+    FileReader *reader = new FileReader(dir, true);
     setReaderSigSlots(reader);
 }
 

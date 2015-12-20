@@ -26,82 +26,82 @@
  * @brief Source file for single metadata record.
  */
 
-#include "fb2record.h"
+#include "filerecord.h"
 
 #include <QStringList>
 
-FB2Record::FB2Record()
+FileRecord::FileRecord()
 {
     archived = false;
 }
 
-void FB2Record::setSize(qint64 Size)
+void FileRecord::setSize(qint64 Size)
 {
     size = Size;
 }
 
-qint64 FB2Record::getSize()
+qint64 FileRecord::getSize()
 {
     return size;
 }
 
-void FB2Record::setFileName(const QString &Filename)
+void FileRecord::setFileName(const QString &Filename)
 {
     filename = Filename;
 }
 
-QString FB2Record::getFileName() const
+QString FileRecord::getFileName() const
 {
     return filename;
 }
 
-void FB2Record::setIsArchive(bool IsArchive)
+void FileRecord::setIsArchive(bool IsArchive)
 {
     archived = IsArchive;
 }
 
-bool FB2Record::isArchive()
+bool FileRecord::isArchive()
 {
     return archived;
 }
 
-void FB2Record::setBookTitle(QString title)
+void FileRecord::setBookTitle(QString title)
 {
     BookTitle = title;
 }
 
-QString FB2Record::getBookTitle()
+QString FileRecord::getBookTitle()
 {
     return BookTitle;
 }
 
-void FB2Record::addGenre(QString genre_name, int genre_match)
+void FileRecord::addGenre(QString genre_name, int genre_match)
 {
     Genres.append(qMakePair(genre_name, genre_match));
 }
 
-genre_t FB2Record::getGenresList()
+genre_t FileRecord::getGenresList()
 {
     return Genres;
 
 }
 
-void FB2Record::setEncoding(QString Encoding)
+void FileRecord::setEncoding(QString Encoding)
 {
     encoding = Encoding;
 }
 
-QString FB2Record::getEncoding() const
+QString FileRecord::getEncoding() const
 {
     return encoding;
 }
 
-void FB2Record::addAuthor(Person author)
+void FileRecord::addAuthor(Person author)
 {
     BookAuthor.append(author);
 }
 
-QStringList FB2Record::getAuthorList()
+QStringList FileRecord::getAuthorList()
 {
     QStringList tmp;
     QVector<Person>::iterator it;
@@ -114,12 +114,12 @@ QStringList FB2Record::getAuthorList()
     return tmp;
 }
 
-void FB2Record::addSequence(QString sequence, int number)
+void FileRecord::addSequence(QString sequence, int number)
 {
     Sequences.append(qMakePair(sequence, number));
 }
 
-sequence_t FB2Record::getSequenceList()
+sequence_t FileRecord::getSequenceList()
 {
     return Sequences;
 }

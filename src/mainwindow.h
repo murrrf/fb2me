@@ -37,7 +37,7 @@ class QTableView;
 class QTextEdit;
 
 class TableModel;
-class Reader;
+class FileReader;
 
 /**
  * @~russian
@@ -233,7 +233,7 @@ private:
      * @brief Connection of signals of reading thread with handler slots.
      * @param rd Pointer to reading thread.
      */
-    void setReaderSigSlots(Reader *rd);
+    void setReaderSigSlots(FileReader *rd);
 
 public slots:
 

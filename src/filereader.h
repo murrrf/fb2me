@@ -17,8 +17,8 @@
  *
  ***********************************************************************/
 
-#ifndef READER_H
-#define READER_H
+#ifndef FILEREADER_H
+#define FILEREADER_H
 
 /**
  * @file
@@ -33,7 +33,7 @@
  * Reading is performed in a separate thread.
  */
 
-#include "fb2record.h"
+#include "filerecord.h"
 
 #include <QThread>
 #include <QString>
@@ -46,7 +46,7 @@
  * @~english
  * @brief Thread of file reading.
  */
-class Reader : public QThread
+class FileReader : public QThread
 {
     Q_OBJECT
 public:
@@ -59,7 +59,7 @@ public:
      * @brief Constructor of reading thread.
      * @param files List of file names for reading.
      */
-    Reader(QStringList files);
+    FileReader(QStringList files);
 
     /**
      * @~russian
@@ -76,7 +76,7 @@ public:
      * @c true - yes;@n
      * @ false - no.
      */
-    Reader(QString dir, bool recursive);
+    FileReader(QString dir, bool recursive);
 
     /**
      * @~russian
@@ -108,7 +108,7 @@ signals:
      * @brief Append new record to data model.
      * @param record Appended record.
      */
-    void AppendRecord(const FB2Record &record);
+    void AppendRecord(const FileRecord &record);
 
 public slots:
 
@@ -154,7 +154,7 @@ private:
      * @param filename Name of the file.
      * @param record Record, in which are stored values.
      */
-    void parseFile(QString &filename, FB2Record &record);
+    void parseFile(QString &filename, FileRecord &record);
 
     /**
      * @~russian
@@ -173,4 +173,4 @@ private:
 
 };
 
-#endif // READER_H
+#endif // FILEREADER_H

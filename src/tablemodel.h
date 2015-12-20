@@ -32,7 +32,7 @@
 #include <QAbstractTableModel>
 #include <QVector>
 
-#include "fb2record.h"
+#include "filerecord.h"
 
 /**
  * @~russian
@@ -225,7 +225,7 @@ public slots:
      * @brief The event handler add a new entry into the model.
      * @param record Appended record.
      */
-    void onAppendRecord(const FB2Record &record);
+    void onAppendRecord(const FileRecord &record);
 
 private:
     /**
@@ -235,7 +235,7 @@ private:
      * @~english
      * @brief Storage of model data.
      */
-    QVector<FB2Record> Data;
+    QVector<FileRecord> Data;
 
     /**
      * @~russian

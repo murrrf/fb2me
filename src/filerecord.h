@@ -17,8 +17,8 @@
  *
  ***********************************************************************/
 
-#ifndef FB2RECORD_H
-#define FB2RECORD_H
+#ifndef FILERECORD_H
+#define FILERECORD_H
 
 /**
  * @file
@@ -75,7 +75,7 @@ typedef QVector<QPair<QString, int> > sequence_t;
  * @~english
  * @brief Single metadata record class.
  */
-class FB2Record
+class FileRecord
 {
 public:
     /**
@@ -85,7 +85,7 @@ public:
      * @~english
      * @brief Constructor of a record.
      */
-    FB2Record();
+    FileRecord();
 
     /*
      * @~russian
@@ -94,7 +94,7 @@ public:
      * @~english
      * @brief Destructor of a record.
      */
-//    ~FB2Record();
+//    ~FileRecord();
 
     /**
      * @~russian
@@ -409,4 +409,4 @@ private:
 
 };
 
-#endif // FB2RECORD_H
+#endif // FILERECORD_H

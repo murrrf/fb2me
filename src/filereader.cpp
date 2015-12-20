@@ -17,7 +17,7 @@
  *
  ***********************************************************************/
 
-#include "reader.h"
+#include "filereader.h"
 
 #include <QDirIterator>
 #include <QFileInfo>
@@ -27,7 +27,7 @@
 
 #include <QDebug>
 
-Reader::Reader(QStringList files)
+FileReader::FileReader(QStringList files)
 {
     filenames.clear();
     QStringList::iterator it;
@@ -38,7 +38,7 @@ Reader::Reader(QStringList files)
     }
 }
 
-Reader::Reader(QString dir, bool recursive)
+FileReader::FileReader(QString dir, bool recursive)
 {
     filenames.clear();
 
@@ -65,13 +65,13 @@ Reader::Reader(QString dir, bool recursive)
     };
 }
 
-void Reader::run()
+void FileReader::run()
 {
     QStringList::iterator it;
 
     for (it = filenames.begin(); it != filenames.end(); it++)
     {
-        FB2Record *rec = new FB2Record();
+        FileRecord *rec = new FileRecord();
         QFileInfo f(*it);
 
         if ((f.isFile()) && (!f.isSymLink()))
@@ -87,13 +87,13 @@ void Reader::run()
     }
 }
 
-bool Reader::isFileArchive(const QString &filename)
+bool FileReader::isFileArchive(const QString &filename)
 {
     QFileInfo f(filename);
     return (f.suffix().toLower() == "zip");
 }
 
-void Reader::parseFile(QString &filename, FB2Record &record)
+void FileReader::parseFile(QString &filename, FileRecord &record)
 {
     QFileInfo f(filename);
     QFile file(filename);
@@ -232,7 +232,7 @@ void Reader::parseFile(QString &filename, FB2Record &record)
     }
 }
 
-int Reader::unzipFile(QString &filename, QByteArray &file)
+int FileReader::unzipFile(QString &filename, QByteArray &file)
 {
     mz_bool status;
     mz_zip_archive archive;

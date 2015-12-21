@@ -304,6 +304,36 @@ public:
      */
     sequence_t getSequenceList();
 
+    /**
+     * @~russian
+     * @brief Установка и снятие пометки «Запись выбрана».
+     * @param Selected Статус записи:
+     * @c true - запись помечена как выбранная;@n
+     * @c false - запись помечена как невыбранная.
+     *
+     * @~english
+     * @brief Set and unset record as selected.
+     * @param Selected Status of entry:
+     * @c true - a record marked as selected;@n
+     * @c false - a record marked as unselected.
+     */
+    void setSelected(bool Selected);
+
+    /**
+     * @~russian
+     * @brief Получение пометки, выбрана ли запись.
+     * @return Статус записи:
+     * @c true - запись помечена как выбранная;@n
+     * @c false - запись помечена как невыбранная.
+     *
+     * @~english
+     * @brief Getting state whether the record is selected.
+     * @return Status of entry:
+     * @c true - a record marked as selected;@n
+     * @c false - a record marked as unselected.
+     */
+    bool isSelected();
+
 private:
     /*
      * @~russian
@@ -406,6 +436,15 @@ private:
      * @brief Encoding of the file.
      */
     QString encoding;
+
+    /**
+     * @~russian
+     * @brief Состояние пометки записи.
+     *
+     * @~english
+     * @brief The status of record selection.
+     */
+    bool selected;
 
 };
 

@@ -33,6 +33,7 @@
 FileRecord::FileRecord()
 {
     archived = false;
+    selected = false;
 }
 
 void FileRecord::setSize(qint64 Size)
@@ -122,6 +123,16 @@ void FileRecord::addSequence(QString sequence, int number)
 sequence_t FileRecord::getSequenceList()
 {
     return Sequences;
+}
+
+void FileRecord::setSelected(bool Selected)
+{
+    selected = Selected;
+}
+
+bool FileRecord::isSelected()
+{
+    return selected;
 }
 
 

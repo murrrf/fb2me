@@ -180,12 +180,12 @@ bool TableModel::setData(const QModelIndex &index, const QVariant &value, int ro
     {
         if (static_cast<Qt::CheckState>(value.toInt()) == Qt::Checked)
         {
-            //user has checked item
+            Data[index.row()].setSelected(true);
             return true;
         }
         else
         {
-            //user has unchecked item
+            Data[index.row()].setSelected(false);
             return true;
         }
     }
@@ -240,8 +240,6 @@ QString TableModel::getFormattedSeriesList(int index) const
 
 Qt::CheckState TableModel::getState(const QModelIndex &index) const
 {
-    // TODO Add the code for determining the state of recording
-    bool b = false;
-    Qt::CheckState cs = b ? Qt::Checked : Qt::Unchecked;
+    Qt::CheckState cs = Data.value(index.row()).isSelected() ? Qt::Checked : Qt::Unchecked;
     return cs;
 }

@@ -16,15 +16,15 @@ DEFINES += VERSIONSTR=\\\"$${VERSION}\\\"
 SOURCES += src/main.cpp\
     src/mainwindow.cpp \
     src/tablemodel.cpp \
-    src/fb2record.cpp \
+    src/filerecord.cpp \
     src/person.cpp \
-    src/reader.cpp
+    src/filereader.cpp
 
 HEADERS  += src/mainwindow.h \
     src/tablemodel.h \
-    src/fb2record.h \
+    src/filerecord.h \
     src/person.h \
-    src/reader.h
+    src/filereader.h
 
 # 3rd party components
 HEADERS += 3rdparty/miniz.h

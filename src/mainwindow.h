@@ -93,6 +93,14 @@ private:
 
     /**
      * @~russian
+     * @brief Меню «Инструменты».
+     *
+     * @~english
+     * @brief The Tools menu.
+     */
+    QMenu *menuTools;
+    /**
+     * @~russian
      * @brief Меню «Справка».
      *
      * @~english
@@ -153,6 +161,24 @@ private:
      * @brief Exit action.
      */
     QAction *actnFileExit;
+
+    /**
+     * @~russian
+     * @brief Действие «Распаковать» меню «Инструменты».
+     *
+     * @~english
+     * @brief Uncompress selected files action.
+     */
+    QAction *actnToolsUncompress;
+
+    /**
+     * @~russian
+     * @brief Действие «Запаковать» меню «Инструменты».
+     *
+     * @~english
+     * @brief Compress selected files action.
+     */
+    QAction *actnToolsCompress;
 
     /**
      * @~russian

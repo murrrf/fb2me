@@ -58,9 +58,11 @@ MainWindow::MainWindow(QWidget *parent)
     barMainMenu = new QMenuBar();
 
     menuFile = new QMenu(trUtf8("File"), this);
+    menuTools = new QMenu(trUtf8("Tools"), this);
     menuHelp = new QMenu(trUtf8("Help"), this);
 
     barMainMenu->addMenu(menuFile);
+    barMainMenu->addMenu(menuTools);
     barMainMenu->addMenu(menuHelp);
     barMainMenu->show();
     barMainMenu->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -96,6 +98,12 @@ MainWindow::MainWindow(QWidget *parent)
                                trUtf8("Exit"), this);
     connect(actnFileExit, SIGNAL(triggered()), this, SLOT(onFileExit()));
     menuFile->addAction(actnFileExit);
+
+    actnToolsUncompress = new QAction(trUtf8("Uncompress"), this);
+    menuTools->addAction(actnToolsUncompress);
+
+    actnToolsCompress = new QAction(trUtf8("Compress"), this);
+    menuTools->addAction(actnToolsCompress);
 
     actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/img/help-about.png")),
                                 trUtf8("About"), this);
@@ -169,6 +177,8 @@ MainWindow::~MainWindow()
     delete splMain;
     delete actnHelpAboutQt;
     delete actnHelpAbout;
+    delete actnToolsCompress;
+    delete actnToolsUncompress;
     delete actnFileExit;
     delete actnFileAppendDirRecursively;
     delete actnFileAppendDir;
@@ -176,6 +186,7 @@ MainWindow::~MainWindow()
     delete barStatus;
     delete barTools;
     delete menuHelp;
+    delete menuTools;
     delete menuFile;
     delete barMainMenu;
 }

@@ -35,6 +35,7 @@
 class QSplitter;
 class QTableView;
 class QTextEdit;
+class QTabWidget;
 
 class TableModel;
 class FileReader;
@@ -192,6 +193,15 @@ private:
      * @brief Table of metadata.
      */
     QTableView *tblData;
+
+    /**
+     * @~russian
+     * @brief Переключатель закладок для панели информации.
+     *
+     * @~english
+     * @brief Tab switcher for information panel.
+     */
+    QTabWidget *tabInfo;
 
     /**
      * @~russian

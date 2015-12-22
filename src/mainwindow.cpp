@@ -45,6 +45,7 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QDateTime>
+#include <QTabWidget>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -135,9 +136,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(mdlData, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
 
+    tabInfo = new QTabWidget();
+    splMain->addWidget(tabInfo);
+
     edtLog = new QTextEdit();
     edtLog->setReadOnly(true);
-    splMain->addWidget(edtLog);
+    tabInfo->addTab(edtLog, trUtf8("Message Log"));
 
     // TODO Add context menu for Message Log
 
@@ -159,6 +163,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete edtLog;
+    delete tabInfo;
     delete mdlData;
     delete tblData;
     delete splMain;

@@ -72,7 +72,7 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
             break;
 
         case colBookAuthor:
-            return Data.value(index.row()).getAuthorList().join("\n");
+            return Data.value(index.row()).getAuthorList().join(";\n");
             break;
 
         case colSeries:
@@ -218,10 +218,13 @@ QString TableModel::getFormattedGenresList(int index) const
 
     for (it = tmp.begin(); it != tmp.end(); it++)
     {
-        res.append(QString("%1 (%2\%)").arg((*it).first, QString::number((*it).second)));
+        if ((*it).second == 100)
+            res.append(QString("%1").arg((*it).first));
+        else
+            res.append(QString("%1 (%2\%)").arg((*it).first, QString::number((*it).second)));
     }
 
-    return res.join("\n");
+    return res.join(";\n");
 }
 
 QString TableModel::getFormattedSeriesList(int index) const
@@ -235,7 +238,7 @@ QString TableModel::getFormattedSeriesList(int index) const
         res.append(QString("%1 - %2").arg((*it).first, QString::number((*it).second)));
     }
 
-    return res.join("\n");
+    return res.join(";\n");
 }
 
 Qt::CheckState TableModel::getState(const QModelIndex &index) const

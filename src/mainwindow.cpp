@@ -208,6 +208,53 @@ void MainWindow::setReaderSigSlots(FileReader *rd)
     rd->start();
 }
 
+void MainWindow::uncompressFile(const QString &archivename)
+{
+    mz_bool status;
+    mz_zip_archive archive;
+    memset(&archive, 0, sizeof(archive));
+    status = mz_zip_reader_init_file(&archive, archivename.toStdString().c_str(), 0);
+
+    if (status < MZ_OK)
+    {
+        onEventMessage(trUtf8("Cannot open archive %1").arg(archivename));
+        return;
+    }
+
+    if (mz_zip_reader_get_num_files(&archive) != 1)
+    {
+        onEventMessage(trUtf8("The archive %1 more than one file, or no files in the archive").arg(archivename));
+        return;
+    }
+
+    mz_zip_archive_file_stat file_stat;
+    status = mz_zip_reader_file_stat(&archive, 0, &file_stat);
+
+    if (status < MZ_OK)
+    {
+        onEventMessage(trUtf8("Error reading the archive %1").arg(archivename));
+        mz_zip_reader_end(&archive);
+        return;
+    }
+
+    QFileInfo tmp(archivename);
+    status = mz_zip_reader_extract_file_to_file(&archive, file_stat.m_filename,
+             QString(tmp.canonicalPath() + "/" + file_stat.m_filename).toStdString().c_str(), 0);
+
+    if (status < MZ_OK)
+    {
+        onEventMessage(trUtf8("Error extracting file %2 from archive %1").arg(archivename, QString(file_stat.m_filename)));
+    }
+
+    mz_zip_reader_end(&archive);
+    return;
+}
+
+void MainWindow::compressFile(const QString &filename)
+{
+
+}
+
 void MainWindow::onEventMessage(const QString &msg)
 {
     edtLog->append(QString("%1: %2").arg(QDateTime::currentDateTime().toString("hh:mm:ss:zzz"), msg));

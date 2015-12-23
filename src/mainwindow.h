@@ -271,6 +271,9 @@ private:
      */
     void setReaderSigSlots(FileReader *rd);
 
+    void uncompressFile(const QString &archivename);
+    void compressFile(const QString &filename);
+
 public slots:
 
     /**

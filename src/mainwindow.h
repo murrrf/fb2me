@@ -350,6 +350,24 @@ private slots:
 
     /**
      * @~russian
+     * @brief Обработчик действия «Распаковать».
+     *
+     * @~english
+     * @brief Uncompress action handler.
+     */
+    void onToolsUncompress();
+
+    /**
+     * @~russian
+     * @brief Обработчик действия «Запаковать».
+     *
+     * @~english
+     * @brief Compress action handler.
+     */
+    void onToolsCompress();
+
+    /**
+     * @~russian
      * @brief Обработчик действия «О программе».
      *
      * @~english

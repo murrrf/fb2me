@@ -30,6 +30,10 @@
 
 #include "tablemodel.h"
 #include "filereader.h"
+#ifndef MINIZ_HEADER_FILE_ONLY
+#define MINIZ_HEADER_FILE_ONLY
+#endif
+#include "3rdparty/miniz.h"
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -248,6 +252,16 @@ void MainWindow::onFileAppendDirRecursively()
 void MainWindow::onFileExit()
 {
     close();
+}
+
+void MainWindow::onToolsUncompress()
+{
+
+}
+
+void MainWindow::onToolsCompress()
+{
+
 }
 
 void MainWindow::onHelpAbout()

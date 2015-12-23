@@ -252,7 +252,38 @@ void MainWindow::uncompressFile(const QString &archivename)
 
 void MainWindow::compressFile(const QString &filename)
 {
+    mz_bool status;
+    mz_zip_archive archive;
+    memset(&archive, 0, sizeof(archive));
+    QString archivename = QString(filename + ".zip");
+    QFileInfo tmp(archivename);
 
+    if (tmp.exists())
+    {
+// TODO Add code for generate new filename if archive already exist
+    }
+
+    status = mz_zip_writer_init_file(archive, archivename.toStdString().c_str(), 0);
+
+    if (status < MZ_OK)
+    {
+        onEventMessage(trUtf8("Cannot create archive %1").arg(archivename));
+        return;
+    }
+
+    status = mz_zip_writer_add_file(archive, archivename.toStdString().c_str(), filename.toStdString().c_str(), "",
+                                    (uint16)strlen(""), MZ_BEST_COMPRESSION);
+
+    if (status < MZ_OK)
+    {
+        onEventMessage(trUtf8("Cannot compress file %2  to archive %1").arg(archivename, filename));
+        mz_zip_writer_finalize_archive(archive);
+        mz_zip_writer_end(archive);
+        return;
+    }
+
+    mz_zip_writer_finalize_archive(archive);
+    mz_zip_writer_end(archive);
 }
 
 void MainWindow::onEventMessage(const QString &msg)

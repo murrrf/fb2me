@@ -302,6 +302,20 @@ void MainWindow::onUnblockInput()
     QApplication::restoreOverrideCursor();
 }
 
+void MainWindow::onSetSelected(int count)
+{
+    if (count>0)
+    {
+        actnToolsUncompress.setEnabled(true);
+        actnToolsCompress.setEnabled(true);
+    }
+    else
+    {
+        actnToolsUncompress.setEnabled(false);
+        actnToolsCompress.setEnabled(false);
+    }
+}
+
 void MainWindow::onFileOpen()
 {
     QStringList filenames = QFileDialog::getOpenFileNames(this, trUtf8("Open file"), workingDir,

@@ -332,6 +332,17 @@ public slots:
      */
     void onUnblockInput();
 
+    /**
+     * @~russian
+     * @brief Обработчик установки количества выбранных записей в таблице.
+     * @param count Количество выбранных файлов.
+     *
+     * @~english
+     * @brief Handler of setting of selected files count.
+     * @param count Number of selected files.
+     */
+    void onSetSelected(int count);
+
 private slots:
 
     /**

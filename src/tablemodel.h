@@ -195,6 +195,17 @@ signals:
      * @param msg Message text.
      */
     void EventMessage(const QString &msg);
+ 
+    /**
+     * @~russian
+     * @brief Отсылка количества помеченных записей.
+     * @param count Количество помеченных записей.
+     *
+     * @~english
+     * @brief Sending number of marked records.
+     * @param count Number of market records.
+     */
+    void SetSelected(int count);
 
 public slots:
 
@@ -275,6 +286,15 @@ private:
      * @return State of the record.
      */
     Qt::CheckState getState(const QModelIndex &index) const;
+
+    /**
+     * @~russian
+     * @brief Общее количество помеченных записей.
+     *
+     * @~english
+     * @brief Number of marked records.
+     */
+    int cntSelectedFiles;
 };
 
 #endif // TABLEMODEL_H

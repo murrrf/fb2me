@@ -181,11 +181,15 @@ bool TableModel::setData(const QModelIndex &index, const QVariant &value, int ro
         if (static_cast<Qt::CheckState>(value.toInt()) == Qt::Checked)
         {
             Data[index.row()].setSelected(true);
+            cntSelectedFiles++;
+            emit SetSelected(cntSelectedFiles);
             return true;
         }
         else
         {
             Data[index.row()].setSelected(false);
+            cntSelectedFiles--;
+            emit SetSelected(cntSelectedFiles);
             return true;
         }
     }

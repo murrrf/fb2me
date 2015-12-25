@@ -271,28 +271,6 @@ private:
      */
     void setReaderSigSlots(FileReader *rd);
 
-    /**
-     * @~russian
-     * @brief Распаковка содержимого указанного архива.
-     * @param archivename Имя архива.
-     *
-     * @~english
-     * @brief Unpack the contents of the specified file.
-     * @param archivename Archive name.
-     */
-    void uncompressFile(const QString &archivename);
-
-    /**
-     * @~russian
-     * @brief Упаковка указанного файла в архив.
-     * @param filename Имя файла.
-     *
-     * @~english
-     * @brief Packing the specified file to the archive.
-     * @param filename File name.
-     */
-    void compressFile(const QString &filename);
-
 public slots:
 
     /**
@@ -380,24 +358,6 @@ private slots:
      * @brief Exit action handler.
      */
     void onFileExit();
-
-    /**
-     * @~russian
-     * @brief Обработчик действия «Распаковать».
-     *
-     * @~english
-     * @brief Uncompress action handler.
-     */
-    void onToolsUncompress();
-
-    /**
-     * @~russian
-     * @brief Обработчик действия «Запаковать».
-     *
-     * @~english
-     * @brief Compress action handler.
-     */
-    void onToolsCompress();
 
     /**
      * @~russian

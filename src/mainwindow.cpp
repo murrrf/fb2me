@@ -107,12 +107,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     actnToolsUncompress = new QAction(trUtf8("Uncompress"), this);
     actnToolsUncompress->setEnabled(false);
-    connect(actnToolsUncompress, SIGNAL(triggered()), this, SLOT(onToolsUncompress()));
     menuTools->addAction(actnToolsUncompress);
 
     actnToolsCompress = new QAction(trUtf8("Compress"), this);
     actnToolsCompress->setEnabled(false);
-    connect(actnToolsCompress, SIGNAL(triggered()), this, SLOT(onToolsCompress()));
     menuTools->addAction(actnToolsCompress);
 
     actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/img/help-about.png")),
@@ -154,6 +152,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(mdlData, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
     connect(mdlData, SIGNAL(SetSelected(int)), this, SLOT(onSetSelected(int)));
+
+    connect(actnToolsUncompress, SIGNAL(triggered()), mdlData, SLOT(onUnzipSelected()));
+    connect(actnToolsCompress, SIGNAL(triggered()), mdlData, SLOT(onZipSelected()));
 
     tabInfo = new QTabWidget();
     splMain->addWidget(tabInfo);
@@ -215,84 +216,6 @@ void MainWindow::setReaderSigSlots(FileReader *rd)
     rd->start();
 }
 
-void MainWindow::uncompressFile(const QString &archivename)
-{
-    mz_bool status;
-    mz_zip_archive archive;
-    memset(&archive, 0, sizeof(archive));
-    status = mz_zip_reader_init_file(&archive, archivename.toStdString().c_str(), 0);
-
-    if (status < MZ_OK)
-    {
-        onEventMessage(trUtf8("Cannot open archive %1").arg(archivename));
-        return;
-    }
-
-    if (mz_zip_reader_get_num_files(&archive) != 1)
-    {
-        onEventMessage(trUtf8("The archive %1 more than one file, or no files in the archive").arg(archivename));
-        return;
-    }
-
-    mz_zip_archive_file_stat file_stat;
-    status = mz_zip_reader_file_stat(&archive, 0, &file_stat);
-
-    if (status < MZ_OK)
-    {
-        onEventMessage(trUtf8("Error reading the archive %1").arg(archivename));
-        mz_zip_reader_end(&archive);
-        return;
-    }
-
-    QFileInfo tmp(archivename);
-    status = mz_zip_reader_extract_file_to_file(&archive, file_stat.m_filename,
-             QString(tmp.canonicalPath() + "/" + file_stat.m_filename).toStdString().c_str(), 0);
-
-    if (status < MZ_OK)
-    {
-        onEventMessage(trUtf8("Error extracting file %2 from archive %1").arg(archivename, QString(file_stat.m_filename)));
-    }
-
-    mz_zip_reader_end(&archive);
-    return;
-}
-
-void MainWindow::compressFile(const QString &filename)
-{
-    mz_bool status;
-    mz_zip_archive archive;
-    memset(&archive, 0, sizeof(archive));
-    QString archivename = QString(filename + ".zip");
-    QFileInfo tmp(archivename);
-
-    if (tmp.exists())
-    {
-// TODO Add code for generate new filename if archive already exist
-    }
-
-    status = mz_zip_writer_init_file(&archive, archivename.toStdString().c_str(), 0);
-
-    if (status < MZ_OK)
-    {
-        onEventMessage(trUtf8("Cannot create archive %1").arg(archivename));
-        return;
-    }
-
-    status = mz_zip_writer_add_file(&archive, archivename.toStdString().c_str(), filename.toStdString().c_str(), "",
-                                    (mz_uint16)strlen(""), MZ_BEST_COMPRESSION);
-
-    if (status < MZ_OK)
-    {
-        onEventMessage(trUtf8("Cannot compress file %2  to archive %1").arg(archivename, filename));
-        mz_zip_writer_finalize_archive(&archive);
-        mz_zip_writer_end(&archive);
-        return;
-    }
-
-    mz_zip_writer_finalize_archive(&archive);
-    mz_zip_writer_end(&archive);
-}
-
 void MainWindow::onEventMessage(const QString &msg)
 {
     edtLog->append(QString("%1: %2").arg(QDateTime::currentDateTime().toString("hh:mm:ss:zzz"), msg));
@@ -351,16 +274,6 @@ void MainWindow::onFileAppendDirRecursively()
 void MainWindow::onFileExit()
 {
     close();
-}
-
-void MainWindow::onToolsUncompress()
-{
-
-}
-
-void MainWindow::onToolsCompress()
-{
-
 }
 
 void MainWindow::onHelpAbout()

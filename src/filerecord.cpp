@@ -135,4 +135,78 @@ bool FileRecord::isSelected()
     return selected;
 }
 
+QString FileRecord::unzipFile()
+{
+    mz_bool status;
+    mz_zip_archive archive;
+    memset(&archive, 0, sizeof(archive));
+    status = mz_zip_reader_init_file(&archive, filename.toStdString().c_str(), 0);
+
+    if (status < MZ_OK)
+    {
+        return(trUtf8("Cannot open archive %1").arg(filename));
+    }
+
+    if (mz_zip_reader_get_num_files(&archive) != 1)
+    {
+        return(trUtf8("The archive %1 more than one file, or no files in the archive").arg(filename));
+    }
+
+    mz_zip_archive_file_stat file_stat;
+    status = mz_zip_reader_file_stat(&archive, 0, &file_stat);
+
+    if (status < MZ_OK)
+    {
+        mz_zip_reader_end(&archive);
+        return(trUtf8("Error reading the archive %1").arg(filename));
+    }
+
+    QFileInfo tmp(archivename);
+    status = mz_zip_reader_extract_file_to_file(&archive, file_stat.m_filename,
+             QString(tmp.canonicalPath() + "/" + file_stat.m_filename).toStdString().c_str(), 0);
+
+    if (status < MZ_OK)
+    {
+        return(trUtf8("Error extracting file %2 from archive %1").arg(filename, QString(file_stat.m_filename)));
+    }
+
+    mz_zip_reader_end(&archive);
+    return(trUtf8("Archive %1 succesfully unzipped").arg(filename));
+}
+
+QString FileRecord::zipFile()
+{
+    mz_bool status;
+    mz_zip_archive archive;
+    memset(&archive, 0, sizeof(archive));
+    QString archivename = QString(filename + ".zip");
+    QFileInfo tmp(archivename);
+
+    if (tmp.exists())
+    {
+// TODO Add code for generate new filename if archive already exist
+    }
+
+    status = mz_zip_writer_init_file(&archive, archivename.toStdString().c_str(), 0);
+
+    if (status < MZ_OK)
+    {
+        return(trUtf8("Cannot create archive %1").arg(archivename));
+    }
+
+    status = mz_zip_writer_add_file(&archive, archivename.toStdString().c_str(), filename.toStdString().c_str(), "",
+                                    (mz_uint16)strlen(""), MZ_BEST_COMPRESSION);
+
+    if (status < MZ_OK)
+    {
+        mz_zip_writer_finalize_archive(&archive);
+        mz_zip_writer_end(&archive);
+        return(trUtf8("Cannot compress file %2  to archive %1").arg(archivename, filename));
+    }
+
+    mz_zip_writer_finalize_archive(&archive);
+    mz_zip_writer_end(&archive);
+    return(trUtf8("File %1 successfully ziped").arg(filename));
+}
+
 

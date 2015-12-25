@@ -215,6 +215,16 @@ void TableModel::onAppendRecord(const FileRecord &record)
     // TODO Replace QVector to QMap for avoiding record duplication
 }
 
+void TableModel::onUnzipSelected()
+{
+
+}
+
+void TableModel::onZipSelected()
+{
+
+}
+
 QString TableModel::getFormattedGenresList(int index) const
 {
     QStringList res;

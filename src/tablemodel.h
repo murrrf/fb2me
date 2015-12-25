@@ -238,6 +238,24 @@ public slots:
      */
     void onAppendRecord(const FileRecord &record);
 
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Распаковать отмеченные файлы».
+     *
+     * @~english
+     * @brief Unzip selected files action handler.
+     */
+    void onUnzipSelected();
+
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Запаковать отмеченные файлы».
+     *
+     * @~english
+     * @brief Zip selected files action handler.
+     */
+    void onZipSelected();
+
 private:
     /**
      * @~russian

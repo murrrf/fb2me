@@ -334,6 +334,40 @@ public:
      */
     bool isSelected();
 
+    /**
+     * @~russian
+     * @brief Распаковка содержимого указанного архива.
+     * @return Сообщение о результате операции.
+     *
+     * @~english
+     * @brief Unpack the contents of the specified file.
+     * @return Message result.
+     */
+    QString unzipFile();
+
+    /**
+     * @~russian
+     * @brief Упаковка указанного файла в архив.
+     * @return Сообщение о результате операции.
+     *
+     * @~english
+     * @brief Packing the specified file to the archive.
+     * @return Message result.
+     */
+    QString zipFile();
+
+signals:
+    /**
+     * @~russian
+     * @brief Отсылка сообщения в журнал сообщений.
+     * @param msg Текст сообщения.
+     *
+     * @~english
+     * @brief Sending messages to the message log.
+     * @param msg Message text.
+     */
+    void EventMessage(const QString &msg);
+
 private:
     /*
      * @~russian

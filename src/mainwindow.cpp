@@ -98,15 +98,21 @@ MainWindow::MainWindow(QWidget *parent)
     connect(actnFileAppendDirRecursively, SIGNAL(triggered()), this, SLOT(onFileAppendDirRecursively()));
     menuFile->addAction(actnFileAppendDirRecursively);
 
+    menuFile->addSeparator();
+
     actnFileExit = new QAction(QIcon::fromTheme("application-exit", QIcon(":/img/application-exit.png")),
                                trUtf8("Exit"), this);
     connect(actnFileExit, SIGNAL(triggered()), this, SLOT(onFileExit()));
     menuFile->addAction(actnFileExit);
 
     actnToolsUncompress = new QAction(trUtf8("Uncompress"), this);
+    actnToolsUncompress->setEnabled(false);
+    connect(actnToolsUncompress, SIGNAL(triggered()), this, SLOT(onToolsUncompress()));
     menuTools->addAction(actnToolsUncompress);
 
     actnToolsCompress = new QAction(trUtf8("Compress"), this);
+    actnToolsCompress->setEnabled(false);
+    connect(actnToolsCompress, SIGNAL(triggered()), this, SLOT(onToolsCompress()));
     menuTools->addAction(actnToolsCompress);
 
     actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/img/help-about.png")),
@@ -147,6 +153,7 @@ MainWindow::MainWindow(QWidget *parent)
     tblData->resizeColumnToContents(colCheckColumn);
 
     connect(mdlData, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
+    connect(mdlData, SIGNAL(SetSelected(int)), this, SLOT(onSetSelected(int)));
 
     tabInfo = new QTabWidget();
     splMain->addWidget(tabInfo);
@@ -304,7 +311,7 @@ void MainWindow::onUnblockInput()
 
 void MainWindow::onSetSelected(int count)
 {
-    if (count>0)
+    if (count > 0)
     {
         actnToolsUncompress->setEnabled(true);
         actnToolsCompress->setEnabled(true);

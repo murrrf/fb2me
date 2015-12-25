@@ -30,6 +30,7 @@
 
 TableModel::TableModel(QObject *parent): QAbstractTableModel(parent)
 {
+    cntSelectedFiles = 0;
 }
 
 Qt::ItemFlags TableModel::flags(const QModelIndex &index) const

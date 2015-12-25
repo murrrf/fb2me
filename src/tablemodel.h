@@ -195,7 +195,7 @@ signals:
      * @param msg Message text.
      */
     void EventMessage(const QString &msg);
- 
+
     /**
      * @~russian
      * @brief Отсылка количества помеченных записей.

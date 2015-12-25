@@ -263,7 +263,7 @@ void MainWindow::compressFile(const QString &filename)
 // TODO Add code for generate new filename if archive already exist
     }
 
-    status = mz_zip_writer_init_file(archive, archivename.toStdString().c_str(), 0);
+    status = mz_zip_writer_init_file(&archive, archivename.toStdString().c_str(), 0);
 
     if (status < MZ_OK)
     {
@@ -271,19 +271,19 @@ void MainWindow::compressFile(const QString &filename)
         return;
     }
 
-    status = mz_zip_writer_add_file(archive, archivename.toStdString().c_str(), filename.toStdString().c_str(), "",
-                                    (uint16)strlen(""), MZ_BEST_COMPRESSION);
+    status = mz_zip_writer_add_file(&archive, archivename.toStdString().c_str(), filename.toStdString().c_str(), "",
+                                    (mz_uint16)strlen(""), MZ_BEST_COMPRESSION);
 
     if (status < MZ_OK)
     {
         onEventMessage(trUtf8("Cannot compress file %2  to archive %1").arg(archivename, filename));
-        mz_zip_writer_finalize_archive(archive);
-        mz_zip_writer_end(archive);
+        mz_zip_writer_finalize_archive(&archive);
+        mz_zip_writer_end(&archive);
         return;
     }
 
-    mz_zip_writer_finalize_archive(archive);
-    mz_zip_writer_end(archive);
+    mz_zip_writer_finalize_archive(&archive);
+    mz_zip_writer_end(&archive);
 }
 
 void MainWindow::onEventMessage(const QString &msg)
@@ -306,13 +306,13 @@ void MainWindow::onSetSelected(int count)
 {
     if (count>0)
     {
-        actnToolsUncompress.setEnabled(true);
-        actnToolsCompress.setEnabled(true);
+        actnToolsUncompress->setEnabled(true);
+        actnToolsCompress->setEnabled(true);
     }
     else
     {
-        actnToolsUncompress.setEnabled(false);
-        actnToolsCompress.setEnabled(false);
+        actnToolsUncompress->setEnabled(false);
+        actnToolsCompress->setEnabled(false);
     }
 }
 

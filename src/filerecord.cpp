@@ -34,6 +34,7 @@
 #include "3rdparty/miniz.h"
 
 #include <QStringList>
+#include <QDir>
 
 FileRecord::FileRecord()
 {
@@ -166,9 +167,9 @@ QString FileRecord::unzipFile()
         return(trUtf8("Error reading the archive %1").arg(filename));
     }
 
-    QFileInfo tmp(archivename);
-    status = mz_zip_reader_extract_file_to_file(&archive, file_stat.m_filename,
-             QString(tmp.canonicalPath() + "/" + file_stat.m_filename).toStdString().c_str(), 0);
+    QFileInfo tmp(filename);
+    QString resultFileName = QDir::toNativeSeparators(QString(tmp.canonicalPath() + "/" + file_stat.m_filename));
+    status = mz_zip_reader_extract_file_to_file(&archive, file_stat.m_filename, resultFileName.toStdString().c_str(), 0);
 
     if (status < MZ_OK)
     {
@@ -176,7 +177,15 @@ QString FileRecord::unzipFile()
     }
 
     mz_zip_reader_end(&archive);
-    return(trUtf8("Archive %1 succesfully unzipped").arg(filename));
+
+    QString oldFileName = filename;
+    setFileName(resultFileName);
+    qint64 oldSize = getSize();
+    setSize(tmp.size());
+    setIsArchive(false);
+
+    return(trUtf8("Archive %1 succesfully unzipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
+                                                                    QString::number(getSize())));
 }
 
 QString FileRecord::zipFile()

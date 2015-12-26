@@ -30,10 +30,6 @@
 
 #include "tablemodel.h"
 #include "filereader.h"
-#ifndef MINIZ_HEADER_FILE_ONLY
-#define MINIZ_HEADER_FILE_ONLY
-#endif
-#include "3rdparty/miniz.h"
 
 #include <QWidget>
 #include <QVBoxLayout>

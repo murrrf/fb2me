@@ -28,6 +28,11 @@
 
 #include "filerecord.h"
 
+#ifndef MINIZ_HEADER_FILE_ONLY
+#define MINIZ_HEADER_FILE_ONLY
+#endif
+#include "3rdparty/miniz.h"
+
 #include <QStringList>
 
 FileRecord::FileRecord()

@@ -193,34 +193,42 @@ QString FileRecord::zipFile()
     mz_bool status;
     mz_zip_archive archive;
     memset(&archive, 0, sizeof(archive));
-    QString archivename = QString(filename + ".zip");
-    QFileInfo tmp(archivename);
+    QString archiveName = QString(filename + ".zip");
+    QFileInfo tmp(archiveName);
 
     if (tmp.exists())
     {
 // TODO Add code for generate new filename if archive already exist
     }
 
-    status = mz_zip_writer_init_file(&archive, archivename.toStdString().c_str(), 0);
+    status = mz_zip_writer_init_file(&archive, archiveName.toStdString().c_str(), 0);
 
     if (status < MZ_OK)
     {
-        return(trUtf8("Cannot create archive %1").arg(archivename));
+        return(trUtf8("Cannot create archive %1").arg(archiveName));
     }
 
-    status = mz_zip_writer_add_file(&archive, archivename.toStdString().c_str(), filename.toStdString().c_str(), "",
+    status = mz_zip_writer_add_file(&archive, archiveName.toStdString().c_str(), filename.toStdString().c_str(), "",
                                     (mz_uint16)strlen(""), MZ_BEST_COMPRESSION);
 
     if (status < MZ_OK)
     {
         mz_zip_writer_finalize_archive(&archive);
         mz_zip_writer_end(&archive);
-        return(trUtf8("Cannot compress file %2  to archive %1").arg(archivename, filename));
+        return(trUtf8("Cannot compress file %2  to archive %1").arg(archiveName, filename));
     }
 
     mz_zip_writer_finalize_archive(&archive);
     mz_zip_writer_end(&archive);
-    return(trUtf8("File %1 successfully ziped").arg(filename));
+
+    QString oldFileName = getFileName();
+    setFileName(archiveName);
+    qint64 oldSize = getSize();
+    setSize(tmp.size());
+    setIsArchive(true);
+
+    return(trUtf8("File %1 successfully zipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
+                                                                QString::number(getSize())));
 }
 
 

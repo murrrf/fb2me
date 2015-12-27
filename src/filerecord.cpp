@@ -35,6 +35,7 @@
 
 #include <QStringList>
 #include <QDir>
+#include <QFile>
 
 FileRecord::FileRecord()
 {
@@ -183,6 +184,7 @@ QString FileRecord::unzipFile()
     qint64 oldSize = getSize();
     setSize(tmp.size());
     setIsArchive(false);
+    QFile::remove(oldFileName);
 
     return(trUtf8("Archive %1 succesfully unzipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
                                                                     QString::number(getSize())));
@@ -226,6 +228,7 @@ QString FileRecord::zipFile()
     qint64 oldSize = getSize();
     setSize(tmp.size());
     setIsArchive(true);
+    QFile::remove(oldFileName);
 
     return(trUtf8("File %1 successfully zipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
                                                                 QString::number(getSize())));

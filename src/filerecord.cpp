@@ -33,9 +33,11 @@
 #endif
 #include "3rdparty/miniz.h"
 
+#include <QString>
 #include <QStringList>
 #include <QDir>
 #include <QFile>
+#include <QApplication>
 
 FileRecord::FileRecord()
 {
@@ -151,12 +153,12 @@ QString FileRecord::unzipFile()
 
     if (status < MZ_OK)
     {
-        return(trUtf8("Cannot open archive %1").arg(filename));
+        return(qApp->tr("Cannot open archive %1").arg(filename));
     }
 
     if (mz_zip_reader_get_num_files(&archive) != 1)
     {
-        return(trUtf8("The archive %1 more than one file, or no files in the archive").arg(filename));
+        return(qApp->tr("The archive %1 more than one file, or no files in the archive").arg(filename));
     }
 
     mz_zip_archive_file_stat file_stat;
@@ -165,7 +167,7 @@ QString FileRecord::unzipFile()
     if (status < MZ_OK)
     {
         mz_zip_reader_end(&archive);
-        return(trUtf8("Error reading the archive %1").arg(filename));
+        return(qApp->tr("Error reading the archive %1").arg(filename));
     }
 
     QFileInfo tmp(filename);
@@ -174,7 +176,7 @@ QString FileRecord::unzipFile()
 
     if (status < MZ_OK)
     {
-        return(trUtf8("Error extracting file %2 from archive %1").arg(filename, QString(file_stat.m_filename)));
+        return(qApp->tr("Error extracting file %2 from archive %1").arg(filename, QString(file_stat.m_filename)));
     }
 
     mz_zip_reader_end(&archive);
@@ -186,7 +188,7 @@ QString FileRecord::unzipFile()
     setIsArchive(false);
     QFile::remove(oldFileName);
 
-    return(trUtf8("Archive %1 succesfully unzipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
+    return(qApp->tr("Archive %1 succesfully unzipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
                                                                     QString::number(getSize())));
 }
 
@@ -207,7 +209,7 @@ QString FileRecord::zipFile()
 
     if (status < MZ_OK)
     {
-        return(trUtf8("Cannot create archive %1").arg(archiveName));
+        return(qApp->tr("Cannot create archive %1").arg(archiveName));
     }
 
     status = mz_zip_writer_add_file(&archive, archiveName.toStdString().c_str(), filename.toStdString().c_str(), "",
@@ -217,7 +219,7 @@ QString FileRecord::zipFile()
     {
         mz_zip_writer_finalize_archive(&archive);
         mz_zip_writer_end(&archive);
-        return(trUtf8("Cannot compress file %2  to archive %1").arg(archiveName, filename));
+        return(qApp->tr("Cannot compress file %2  to archive %1").arg(archiveName, filename));
     }
 
     mz_zip_writer_finalize_archive(&archive);
@@ -230,7 +232,7 @@ QString FileRecord::zipFile()
     setIsArchive(true);
     QFile::remove(oldFileName);
 
-    return(trUtf8("File %1 successfully zipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
+    return(qApp->tr("File %1 successfully zipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
                                                                 QString::number(getSize())));
 }
 

@@ -356,18 +356,6 @@ public:
      */
     QString zipFile();
 
-signals:
-    /**
-     * @~russian
-     * @brief Отсылка сообщения в журнал сообщений.
-     * @param msg Текст сообщения.
-     *
-     * @~english
-     * @brief Sending messages to the message log.
-     * @param msg Message text.
-     */
-    void EventMessage(const QString &msg);
-
 private:
     /*
      * @~russian

@@ -256,6 +256,24 @@ public slots:
      */
     void onZipSelected();
 
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Отметить все файлы» меню «Файл».
+     *
+     * @~english
+     * @brief Select All Files action handler.
+     */
+    void onSelectAll();
+
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Обратить выделение» меню «Файл».
+     *
+     * @~english
+     * @brief Invert Selection action handler.
+     */
+    void onInvertSelection();
+
 private:
     /**
      * @~russian

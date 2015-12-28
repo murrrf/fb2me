@@ -96,6 +96,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     menuFile->addSeparator();
 
+    actnFileSelectAll = new QAction(trUtf8("Select all"), this);
+    menuFile->addAction(actnFileSelectAll);
+
+    actnFileInvertSelection = new QAction(trUtf8("Invert selection"), this);
+    menuFile->addAction(actnFileInvertSelection);
+
+    menuFile->addSeparator();
+
     actnFileExit = new QAction(QIcon::fromTheme("application-exit", QIcon(":/img/application-exit.png")),
                                trUtf8("Exit"), this);
     connect(actnFileExit, SIGNAL(triggered()), this, SLOT(onFileExit()));
@@ -152,6 +160,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(actnToolsUncompress, SIGNAL(triggered()), mdlData, SLOT(onUnzipSelected()));
     connect(actnToolsCompress, SIGNAL(triggered()), mdlData, SLOT(onZipSelected()));
 
+    connect(actnFileSelectAll, SIGNAL(triggered()), mdlData, SLOT(onSelectAll()));
+    connect(actnFileInvertSelection, SIGNAL(triggered()), mdlData, SLOT(onInvertSelection()));
+
     tabInfo = new QTabWidget();
     splMain->addWidget(tabInfo);
 
@@ -188,6 +199,8 @@ MainWindow::~MainWindow()
     delete actnToolsCompress;
     delete actnToolsUncompress;
     delete actnFileExit;
+    delete actnFileInvertSelection;
+    delete actnFileSelectAll;
     delete actnFileAppendDirRecursively;
     delete actnFileAppendDir;
     delete actnFileOpen;

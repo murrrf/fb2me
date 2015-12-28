@@ -245,6 +245,26 @@ void TableModel::onZipSelected()
     }
 }
 
+void TableModel::onSelectAll()
+{
+    QVector<FileRecord>::iterator it;
+
+    for (it = Data.begin(); it != Data.end(); it++)
+    {
+        (*it).setSelected(true);
+    }
+}
+
+void TableModel::onInvertSelection()
+{
+    QVector<FileRecord>::iterator it;
+
+    for (it = Data.begin(); it != Data.end(); it++)
+    {
+        (*it).setSelected(!(*it).isSelected());
+    }
+}
+
 QString TableModel::getFormattedGenresList(int index) const
 {
     QStringList res;

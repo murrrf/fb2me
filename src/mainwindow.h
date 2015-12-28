@@ -155,6 +155,24 @@ private:
 
     /**
      * @~russian
+     * @brief Действие «Отметить все файлы» меню «Файл».
+     *
+     * @~english
+     * @brief Select All Files action.
+     */
+    QAction *actnFileSelectAll;
+
+    /**
+     * @~russian
+     * @brief Действие «Обратить выделение» меню «Файл».
+     *
+     * @~english
+     * @brief Invert Selection action.
+     */
+    QAction *actnFileInvertSelection;
+
+    /**
+     * @~russian
      * @brief Действие «Выход» меню «Файл».
      *
      * @~english

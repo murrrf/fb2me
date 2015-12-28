@@ -217,12 +217,32 @@ void TableModel::onAppendRecord(const FileRecord &record)
 
 void TableModel::onUnzipSelected()
 {
+    QVector<FileRecord>::iterator it;
+    QString result;
 
+    for (it = Data.begin(); it != Data.end(); it++)
+    {
+        if ((*it).isSelected())
+        {
+            result = (*it).unzipFile();
+            emit EventMessage(result);
+        }
+    }
 }
 
 void TableModel::onZipSelected()
 {
+    QVector<FileRecord>::iterator it;
+    QString result;
 
+    for (it = Data.begin(); it != Data.end(); it++)
+    {
+        if ((*it).isSelected())
+        {
+            result = (*it).zipFile();
+            emit EventMessage(result);
+        }
+    }
 }
 
 QString TableModel::getFormattedGenresList(int index) const

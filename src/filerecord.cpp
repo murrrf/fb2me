@@ -151,6 +151,8 @@ QString FileRecord::unzipFile()
     memset(&archive, 0, sizeof(archive));
     status = mz_zip_reader_init_file(&archive, filename.toStdString().c_str(), 0);
 
+    qint64 oldSize = getSize();
+
     if (status < MZ_OK)
     {
         return (qApp->tr("Cannot open archive %1").arg(filename));
@@ -183,8 +185,8 @@ QString FileRecord::unzipFile()
 
     QString oldFileName = filename;
     setFileName(resultFileName);
-    qint64 oldSize = getSize();
-    setSize(tmp.size());
+    QFileInfo tmp2(filename);
+    setSize(tmp2.size());
     setIsArchive(false);
     QFile::remove(oldFileName);
 
@@ -199,6 +201,8 @@ QString FileRecord::zipFile()
     memset(&archive, 0, sizeof(archive));
     QString archiveName = QString(filename + ".zip");
     QFileInfo tmp(archiveName);
+
+    qint64 oldSize = getSize();
 
     if (tmp.exists())
     {
@@ -227,8 +231,8 @@ QString FileRecord::zipFile()
 
     QString oldFileName = getFileName();
     setFileName(archiveName);
-    qint64 oldSize = getSize();
-    setSize(tmp.size());
+    QFileInfo tmp2(filename);
+    setSize(tmp2.size());
     setIsArchive(true);
     QFile::remove(oldFileName);
 

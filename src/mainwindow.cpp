@@ -58,10 +58,12 @@ MainWindow::MainWindow(QWidget *parent)
     barMainMenu = new QMenuBar();
 
     menuFile = new QMenu(trUtf8("File"), this);
+    menuSelect=new QMenu(trUtf8("Select"),this);
     menuTools = new QMenu(trUtf8("Tools"), this);
     menuHelp = new QMenu(trUtf8("Help"), this);
 
     barMainMenu->addMenu(menuFile);
+    barMainMenu->addMenu(menuSelect);
     barMainMenu->addMenu(menuTools);
     barMainMenu->addMenu(menuHelp);
     barMainMenu->show();
@@ -96,18 +98,16 @@ MainWindow::MainWindow(QWidget *parent)
 
     menuFile->addSeparator();
 
-    actnFileSelectAll = new QAction(trUtf8("Select all"), this);
-    menuFile->addAction(actnFileSelectAll);
-
-    actnFileInvertSelection = new QAction(trUtf8("Invert selection"), this);
-    menuFile->addAction(actnFileInvertSelection);
-
-    menuFile->addSeparator();
-
     actnFileExit = new QAction(QIcon::fromTheme("application-exit", QIcon(":/img/application-exit.png")),
                                trUtf8("Exit"), this);
     connect(actnFileExit, SIGNAL(triggered()), this, SLOT(onFileExit()));
     menuFile->addAction(actnFileExit);
+
+    actnSelectSelectAll = new QAction(trUtf8("Select all"), this);
+    menuSelect->addAction(actnSelectSelectAll);
+
+    actnSelectInvertSelection = new QAction(trUtf8("Invert selection"), this);
+    menuSelect->addAction(actnSelectInvertSelection);
 
     actnToolsUncompress = new QAction(trUtf8("Uncompress"), this);
     actnToolsUncompress->setEnabled(false);
@@ -160,8 +160,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(actnToolsUncompress, SIGNAL(triggered()), mdlData, SLOT(onUnzipSelected()));
     connect(actnToolsCompress, SIGNAL(triggered()), mdlData, SLOT(onZipSelected()));
 
-    connect(actnFileSelectAll, SIGNAL(triggered()), mdlData, SLOT(onSelectAll()));
-    connect(actnFileInvertSelection, SIGNAL(triggered()), mdlData, SLOT(onInvertSelection()));
+    connect(actnSelectSelectAll, SIGNAL(triggered()), mdlData, SLOT(onSelectAll()));
+    connect(actnSelectInvertSelection, SIGNAL(triggered()), mdlData, SLOT(onInvertSelection()));
 
     tabInfo = new QTabWidget();
     splMain->addWidget(tabInfo);
@@ -199,8 +199,8 @@ MainWindow::~MainWindow()
     delete actnToolsCompress;
     delete actnToolsUncompress;
     delete actnFileExit;
-    delete actnFileInvertSelection;
-    delete actnFileSelectAll;
+    delete actnSelectInvertSelection;
+    delete actnSelectSelectAll;
     delete actnFileAppendDirRecursively;
     delete actnFileAppendDir;
     delete actnFileOpen;
@@ -208,6 +208,7 @@ MainWindow::~MainWindow()
     delete barTools;
     delete menuHelp;
     delete menuTools;
+    delete menuSelect;
     delete menuFile;
     delete barMainMenu;
 }

@@ -93,12 +93,22 @@ private:
 
     /**
      * @~russian
+     * @brief Меню «Выбор».
+     *
+     * @~english
+     * @brief The Select menu.
+     */
+    QMenu *menuSelect;
+
+    /**
+     * @~russian
      * @brief Меню «Инструменты».
      *
      * @~english
      * @brief The Tools menu.
      */
     QMenu *menuTools;
+
     /**
      * @~russian
      * @brief Меню «Справка».
@@ -155,30 +165,30 @@ private:
 
     /**
      * @~russian
-     * @brief Действие «Отметить все файлы» меню «Файл».
-     *
-     * @~english
-     * @brief Select All Files action.
-     */
-    QAction *actnFileSelectAll;
-
-    /**
-     * @~russian
-     * @brief Действие «Обратить выделение» меню «Файл».
-     *
-     * @~english
-     * @brief Invert Selection action.
-     */
-    QAction *actnFileInvertSelection;
-
-    /**
-     * @~russian
      * @brief Действие «Выход» меню «Файл».
      *
      * @~english
      * @brief Exit action.
      */
     QAction *actnFileExit;
+
+    /**
+     * @~russian
+     * @brief Действие «Отметить все файлы» меню «Выбор».
+     *
+     * @~english
+     * @brief Select All Files action.
+     */
+    QAction *actnSelectSelectAll;
+
+    /**
+     * @~russian
+     * @brief Действие «Обратить выделение» меню «Выбор».
+     *
+     * @~english
+     * @brief Invert Selection action.
+     */
+    QAction *actnSelectInvertSelection;
 
     /**
      * @~russian

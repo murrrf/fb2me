@@ -224,8 +224,15 @@ void TableModel::onUnzipSelected()
     {
         if ((*it).isSelected())
         {
-            result = (*it).unzipFile();
-            emit EventMessage(result);
+            if (!(*it).isArchive())
+            {
+                emit EventMessage(trUtf8("File %1 already uncompressed").arg((*it).getFileName()));
+            }
+            else
+            {
+                result = (*it).unzipFile();
+                emit EventMessage(result);
+            }
         }
     }
 }
@@ -239,8 +246,15 @@ void TableModel::onZipSelected()
     {
         if ((*it).isSelected())
         {
-            result = (*it).zipFile();
-            emit EventMessage(result);
+            if ((*it).isArchive())
+            {
+                emit EventMessage(trUtf8("File %1 already compressed").arg((*it).getFileName()));
+            }
+            else
+            {
+                result = (*it).zipFile();
+                emit EventMessage(result);
+            }
         }
     }
 }

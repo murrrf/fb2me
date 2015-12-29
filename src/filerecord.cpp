@@ -212,8 +212,8 @@ QString FileRecord::zipFile()
         return (qApp->tr("Cannot create archive %1").arg(archiveName));
     }
 
-    status = mz_zip_writer_add_file(&archive, archiveName.toStdString().c_str(), filename.toStdString().c_str(), "",
-                                    (mz_uint16)strlen(""), MZ_BEST_COMPRESSION);
+    status = mz_zip_writer_add_file(&archive, tmp.completeBaseName().toStdString().c_str(), filename.toStdString().c_str(),
+                                    "", (mz_uint16)strlen(""), MZ_BEST_COMPRESSION);
 
     if (status < MZ_OK)
     {

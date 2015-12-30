@@ -267,16 +267,24 @@ void TableModel::onSelectAll()
     {
         (*it).setSelected(true);
     }
+
+    emit SetSelected(Data.size());
 }
 
 void TableModel::onInvertSelection()
 {
     QVector<FileRecord>::iterator it;
+    cntSelectedFiles = 0;
 
     for (it = Data.begin(); it != Data.end(); it++)
     {
         (*it).setSelected(!(*it).isSelected());
+
+        if ((*it).isSelected())
+            cntSelectedFiles++;
     }
+
+    emit SetSelected(cntSelectedFiles);
 }
 
 QString TableModel::getFormattedGenresList(int index) const

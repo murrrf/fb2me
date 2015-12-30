@@ -58,7 +58,7 @@ MainWindow::MainWindow(QWidget *parent)
     barMainMenu = new QMenuBar();
 
     menuFile = new QMenu(trUtf8("File"), this);
-    menuSelect=new QMenu(trUtf8("Select"),this);
+    menuSelect = new QMenu(trUtf8("Select"), this);
     menuTools = new QMenu(trUtf8("Tools"), this);
     menuHelp = new QMenu(trUtf8("Help"), this);
 
@@ -80,6 +80,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->setStatusBar(barStatus);
 
     // Actions setup
+
+    //TODO Add comments for separate actions
 
     actnFileOpen = new QAction(QIcon::fromTheme("document-open", QIcon(":/img/document-open.png")),
                                trUtf8("Open file..."), this);
@@ -108,6 +110,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     actnSelectInvertSelection = new QAction(trUtf8("Invert selection"), this);
     menuSelect->addAction(actnSelectInvertSelection);
+
+    // TODO Add action for select only compressed files
 
     actnToolsUncompress = new QAction(trUtf8("Uncompress"), this);
     actnToolsUncompress->setEnabled(false);
@@ -162,6 +166,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(actnSelectSelectAll, SIGNAL(triggered()), mdlData, SLOT(onSelectAll()));
     connect(actnSelectInvertSelection, SIGNAL(triggered()), mdlData, SLOT(onInvertSelection()));
+
+    tblData->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(tblData, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onTableContextMenuRequested(QPoint)));
 
     tabInfo = new QTabWidget();
     splMain->addWidget(tabInfo);
@@ -317,4 +324,26 @@ void MainWindow::onHelpAbout()
 void MainWindow::onHelpAboutQt()
 {
     QMessageBox::aboutQt(this);
+}
+
+void MainWindow::onTableContextMenuRequested(const QPoint &point)
+{
+    QModelIndex ind = tblData->indexAt(point);
+
+    if (!ind.isValid())
+        return;
+
+    QMenu *menu = new QMenu(this);
+
+    QAction *uncompress = new QAction(trUtf8("Uncompress"), this);
+    menu->addAction(uncompress);
+    uncompress->setProperty("index", QVariant(ind));
+    connect(uncompress, SIGNAL(triggered()), mdlData, SLOT(onUnzipCurrent()));
+
+    QAction *compress = new QAction(trUtf8("Compress"), this);
+    menu->addAction(compress);
+    compress->setProperty("index", QVariant(ind));
+    connect(compress, SIGNAL(triggered()), mdlData, SLOT(onZipCurrent()));
+
+    menu->popup(tblData->viewport()->mapToGlobal(point));
 }

@@ -249,12 +249,30 @@ public slots:
 
     /**
      * @~russian
+     * @brief Обработчик сигнала «Распаковать выбранный файл».
+     *
+     * @~english
+     * @brief Unzip current file action handler.
+     */
+    void onUnzipCurrent();
+
+    /**
+     * @~russian
      * @brief Обработчик сигнала «Запаковать отмеченные файлы».
      *
      * @~english
      * @brief Zip selected files action handler.
      */
     void onZipSelected();
+
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Запаковать выбранный файл».
+     *
+     * @~english
+     * @brief Zip current file action handler.
+     */
+    void onZipCurrent();
 
     /**
      * @~russian

@@ -237,6 +237,16 @@ void TableModel::onUnzipSelected()
     }
 }
 
+void TableModel::onUnzipCurrent()
+{
+    QModelIndex ind = sender()->property("index").toModelIndex();
+
+    if (Data.value(ind.row()).isArchive())
+        emit EventMessage(Data[ind.row()].unzipFile());
+    else
+        emit EventMessage(trUtf8("File %1 already uncompressed").arg(Data.value(ind.row()).getFileName()));
+}
+
 void TableModel::onZipSelected()
 {
     QVector<FileRecord>::iterator it;
@@ -257,6 +267,16 @@ void TableModel::onZipSelected()
             }
         }
     }
+}
+
+void TableModel::onZipCurrent()
+{
+    QModelIndex ind = sender()->property("index").toModelIndex();
+
+    if (!Data.value(ind.row()).isArchive())
+        emit EventMessage(Data[ind.row()].zipFile());
+    else
+        emit EventMessage(trUtf8("File %1 already compressed").arg(Data.value(ind.row()).getFileName()));
 }
 
 void TableModel::onSelectAll()

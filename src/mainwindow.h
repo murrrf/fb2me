@@ -405,6 +405,17 @@ private slots:
      */
     void onHelpAboutQt();
 
+    /**
+     * @~russian
+     * @brief Обработчик контекстного меню таблицы.
+     * @param point Точка, в которой вызвано меню.
+     *
+     * @~english
+     * @brief Table context menu handler.
+     * @param point The point at which the menu is called.
+     */
+    void onTableContextMenuRequested(const QPoint &point);
+
 };
 
 #endif // MAINWINDOW_H

@@ -26,6 +26,10 @@
  * @brief Source file for main GUI window.
  */
 
+// TODO Add settings dialog
+// TODO Add templates for rename and move files
+// TODO Realize edit of XML files (main task of application...)
+
 #include "mainwindow.h"
 
 #include "tablemodel.h"
@@ -46,7 +50,7 @@
 #include <QStandardPaths>
 #include <QDateTime>
 #include <QTabWidget>
-
+#include <QDebug>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -169,6 +173,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     tblData->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(tblData, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onTableContextMenuRequested(QPoint)));
+    tblData->setSelectionBehavior(QAbstractItemView::SelectRows);
 
     tabInfo = new QTabWidget();
     splMain->addWidget(tabInfo);
@@ -345,5 +350,8 @@ void MainWindow::onTableContextMenuRequested(const QPoint &point)
     compress->setProperty("index", QVariant(ind));
     connect(compress, SIGNAL(triggered()), mdlData, SLOT(onZipCurrent()));
 
+    tblData->selectRow(ind.row());
     menu->popup(tblData->viewport()->mapToGlobal(point));
+
+    // TODO Improve context menu
 }

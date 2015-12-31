@@ -85,7 +85,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Actions setup
 
-    //TODO Add comments for separate actions
+    // Setup Files menu
 
     actnFileOpen = new QAction(QIcon::fromTheme("document-open", QIcon(":/img/document-open.png")),
                                trUtf8("Open file..."), this);
@@ -109,11 +109,15 @@ MainWindow::MainWindow(QWidget *parent)
     connect(actnFileExit, SIGNAL(triggered()), this, SLOT(onFileExit()));
     menuFile->addAction(actnFileExit);
 
+    // Setup Select menu
+
     actnSelectSelectAll = new QAction(trUtf8("Select all"), this);
     menuSelect->addAction(actnSelectSelectAll);
 
     actnSelectInvertSelection = new QAction(trUtf8("Invert selection"), this);
     menuSelect->addAction(actnSelectInvertSelection);
+
+    // Setup Tools menu
 
     // TODO Add action for select only compressed files
 
@@ -124,6 +128,8 @@ MainWindow::MainWindow(QWidget *parent)
     actnToolsCompress = new QAction(trUtf8("Compress"), this);
     actnToolsCompress->setEnabled(false);
     menuTools->addAction(actnToolsCompress);
+
+    // Setup Help menu
 
     actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/img/help-about.png")),
                                 trUtf8("About"), this);

@@ -183,6 +183,15 @@ private:
 
     /**
      * @~russian
+     * @brief Действие «Отметить только архивы» меню «Выбор».
+     *
+     * @~english
+     * @brief Select Compressed Files Only action.
+     */
+    QAction *actnSelectOnlyCompressed;
+
+    /**
+     * @~russian
      * @brief Действие «Обратить выделение» меню «Выбор».
      *
      * @~english

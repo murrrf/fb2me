@@ -114,12 +114,13 @@ MainWindow::MainWindow(QWidget *parent)
     actnSelectAllFiles = new QAction(trUtf8("Select all"), this);
     menuSelect->addAction(actnSelectAllFiles);
 
+    actnSelectOnlyCompressed = new QAction(trUtf8("Select compressed files only"), this);
+    menuSelect->addAction(actnSelectOnlyCompressed);
+
     actnSelectInvertSelection = new QAction(trUtf8("Invert selection"), this);
     menuSelect->addAction(actnSelectInvertSelection);
 
     // Setup Tools menu
-
-    // TODO Add action for select only compressed files
 
     actnToolsUncompress = new QAction(trUtf8("Uncompress"), this);
     actnToolsUncompress->setEnabled(false);
@@ -218,6 +219,7 @@ MainWindow::~MainWindow()
     delete actnToolsUncompress;
     delete actnFileExit;
     delete actnSelectInvertSelection;
+    delete actnSelectOnlyCompressed;
     delete actnSelectAllFiles;
     delete actnFileAppendDirRecursively;
     delete actnFileAppendDir;

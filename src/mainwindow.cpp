@@ -111,8 +111,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Setup Select menu
 
-    actnSelectSelectAll = new QAction(trUtf8("Select all"), this);
-    menuSelect->addAction(actnSelectSelectAll);
+    actnSelectAllFiles = new QAction(trUtf8("Select all"), this);
+    menuSelect->addAction(actnSelectAllFiles);
 
     actnSelectInvertSelection = new QAction(trUtf8("Invert selection"), this);
     menuSelect->addAction(actnSelectInvertSelection);
@@ -174,7 +174,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(actnToolsUncompress, SIGNAL(triggered()), mdlData, SLOT(onUnzipSelected()));
     connect(actnToolsCompress, SIGNAL(triggered()), mdlData, SLOT(onZipSelected()));
 
-    connect(actnSelectSelectAll, SIGNAL(triggered()), mdlData, SLOT(onSelectAll()));
+    connect(actnSelectAllFiles, SIGNAL(triggered()), mdlData, SLOT(onSelectAll()));
     connect(actnSelectInvertSelection, SIGNAL(triggered()), mdlData, SLOT(onInvertSelection()));
 
     tblData->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -218,7 +218,7 @@ MainWindow::~MainWindow()
     delete actnToolsUncompress;
     delete actnFileExit;
     delete actnSelectInvertSelection;
-    delete actnSelectSelectAll;
+    delete actnSelectAllFiles;
     delete actnFileAppendDirRecursively;
     delete actnFileAppendDir;
     delete actnFileOpen;

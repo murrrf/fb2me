@@ -179,7 +179,7 @@ private:
      * @~english
      * @brief Select All Files action.
      */
-    QAction *actnSelectSelectAll;
+    QAction *actnSelectAllFiles;
 
     /**
      * @~russian

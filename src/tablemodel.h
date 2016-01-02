@@ -276,7 +276,7 @@ public slots:
 
     /**
      * @~russian
-     * @brief Обработчик сигнала «Отметить все файлы» меню «Файл».
+     * @brief Обработчик сигнала «Отметить все файлы» меню «Выбор».
      *
      * @~english
      * @brief Select All Files action handler.
@@ -285,7 +285,16 @@ public slots:
 
     /**
      * @~russian
-     * @brief Обработчик сигнала «Обратить выделение» меню «Файл».
+     * @brief Обработчик сигнала «Отметить только архивы» меню «Выбор».
+     *
+     * @~english
+     * @brief Select Compressed Files action handler.
+     */
+    void onSelectZip();
+
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Обратить выделение» меню «Выбор».
      *
      * @~english
      * @brief Invert Selection action handler.

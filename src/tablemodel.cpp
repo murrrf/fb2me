@@ -293,6 +293,22 @@ void TableModel::onSelectAll()
     emit SetSelected(Data.size());
 }
 
+void TableModel::onSelectZip()
+{
+    QVector<FileRecord>::iterator it;
+    cntSelectedFiles = 0;
+
+    for (it = Data.begin(); it != Data.end(); it++)
+    {
+        (*it).setSelected((*it).isArchive());
+
+        if ((*it).isSelected())
+            cntSelectedFiles++;
+    }
+
+    emit SetSelected(cntSelectedFiles);
+}
+
 void TableModel::onInvertSelection()
 {
     QVector<FileRecord>::iterator it;

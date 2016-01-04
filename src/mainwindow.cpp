@@ -130,6 +130,11 @@ MainWindow::MainWindow(QWidget *parent)
     actnToolsCompress->setEnabled(false);
     menuTools->addAction(actnToolsCompress);
 
+    menuTools->addSeparator();
+
+    actnToolsSettings = new QAction(trUtf8("Settings"), this);
+    menuTools->addAction(actnToolsSettings);
+
     // Setup Help menu
 
     actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/img/help-about.png")),
@@ -215,6 +220,7 @@ MainWindow::~MainWindow()
     delete splMain;
     delete actnHelpAboutQt;
     delete actnHelpAbout;
+    delete actnToolsSettings;
     delete actnToolsCompress;
     delete actnToolsUncompress;
     delete actnFileExit;

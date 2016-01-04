@@ -219,6 +219,15 @@ private:
 
     /**
      * @~russian
+     * @brief Действие «Настройки» меню «Инструменты».
+     *
+     * @~english
+     * @brief Open settings window action.
+     */
+    QAction *actnToolsSettings;
+
+    /**
+     * @~russian
      * @brief Действие «О программе» меню «Справка».
      *
      * @~english

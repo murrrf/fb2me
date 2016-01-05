@@ -132,13 +132,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     menuTools->addSeparator();
 
-    actnToolsSettings = new QAction(trUtf8("Settings"), this);
+    actnToolsSettings = new QAction(trUtf8("Settings..."), this);
     menuTools->addAction(actnToolsSettings);
 
     // Setup Help menu
 
     actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/img/help-about.png")),
-                                trUtf8("About"), this);
+                                trUtf8("About..."), this);
     connect(actnHelpAbout, SIGNAL(triggered()), this, SLOT(onHelpAbout()));
     menuHelp->addAction(actnHelpAbout);
 
@@ -148,7 +148,7 @@ MainWindow::MainWindow(QWidget *parent)
 #else
         QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"),
 #endif
-        trUtf8("About Qt"), this);
+        trUtf8("About Qt..."), this);
     connect(actnHelpAboutQt, SIGNAL(triggered()), this, SLOT(onHelpAboutQt()));
     menuHelp->addAction(actnHelpAboutQt);
 

@@ -58,8 +58,8 @@ public:
      * @param parent Указатель на родительское окно.
      *
      * @~english
-     * @brief Parent window pointer.
-     * @param parent The main window constructor.
+     * @brief The main window constructor.
+     * @param parent Parent window pointer.
      */
     MainWindow(QWidget *parent = 0);
 

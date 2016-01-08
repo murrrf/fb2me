@@ -22,6 +22,11 @@
 SettingsWindow::SettingsWindow(QWidget *parent)
     : QDialog(parent)
 {
+    boxButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    connect(boxButtons, SIGNAL(accepted()), this, SLOT(accept()));
+    connect(boxButtons, SIGNAL(rejected()), this, SLOT(reject()));
 
+    boxMain = new QVBoxLayout();
+    boxMain->addWidget(boxButtons);
 }
 

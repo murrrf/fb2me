@@ -31,6 +31,11 @@
 
 #include <QDialog>
 
+// Forward class declarations
+class QVBoxLayout;
+class QDialogButtonBox;
+class QPushButton;
+
 /**
  * @~russian
  * @brief Класс окна настроек.
@@ -52,6 +57,26 @@ public:
      * @param parent Parent window pointer.
      */
     SettingsWindow(QWidget *parent = 0);
+
+private:
+
+    /**
+     * @~russian
+     * @brief Менеджер размещения элементов диалога.
+     *
+     * @~english
+     * @brief Layout manager for dialog.
+     */
+    QVBoxLayout *boxMain;
+
+    /**
+     * @~russian
+     * @brief Менеджер размещения кнопок управления диалогом.
+     *
+     * @~english
+     * @brief Layout manager for dialog buttons.
+     */
+    QDialogButtonBox *boxButtons;
 };
 
 #endif // SETTINGSWINDOW_H

@@ -407,6 +407,15 @@ private slots:
 
     /**
      * @~russian
+     * @brief Обработчик действия «Настройки».
+     *
+     * @~english
+     * @brief Display settings dialog action handler.
+     */
+    void onToolsSettings();
+
+    /**
+     * @~russian
      * @brief Обработчик действия «О программе».
      *
      * @~english

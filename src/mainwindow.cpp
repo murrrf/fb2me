@@ -34,6 +34,7 @@
 
 #include "tablemodel.h"
 #include "filereader.h"
+#include "settingswindow.h"
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -50,6 +51,7 @@
 #include <QStandardPaths>
 #include <QDateTime>
 #include <QTabWidget>
+#include <QDialog>
 #include <QDebug>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -310,6 +312,17 @@ void MainWindow::onFileAppendDirRecursively()
 void MainWindow::onFileExit()
 {
     close();
+}
+
+void MainWindow::onToolsSettings()
+{
+    SettingsWindow *settings = new SettingsWindow();
+
+    if (settings->exec() == QDialog::Accepted)
+    {
+    }
+
+    delete settings;
 }
 
 void MainWindow::onHelpAbout()

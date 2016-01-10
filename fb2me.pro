@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = fb2me
 TEMPLATE = app
-VERSION = 0.1.4
+VERSION = 0.1.5
 DEFINES += VERSIONSTR=\\\"$${VERSION}\\\"
 
 SOURCES += src/main.cpp\
@@ -18,13 +18,15 @@ SOURCES += src/main.cpp\
     src/tablemodel.cpp \
     src/filerecord.cpp \
     src/person.cpp \
-    src/filereader.cpp
+    src/filereader.cpp \
+    src/settingswindow.cpp
 
 HEADERS  += src/mainwindow.h \
     src/tablemodel.h \
     src/filerecord.h \
     src/person.h \
-    src/filereader.h
+    src/filereader.h \
+    src/settingswindow.h
 
 # 3rd party components
 HEADERS += 3rdparty/miniz.h

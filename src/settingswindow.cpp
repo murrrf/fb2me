@@ -31,5 +31,6 @@ SettingsWindow::SettingsWindow(QWidget *parent)
 
     boxMain = new QVBoxLayout();
     boxMain->addWidget(boxButtons);
+    this->setLayout(boxMain);
 }
 

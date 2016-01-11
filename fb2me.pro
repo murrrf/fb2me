@@ -19,14 +19,16 @@ SOURCES += src/main.cpp\
     src/filerecord.cpp \
     src/person.cpp \
     src/filereader.cpp \
-    src/settingswindow.cpp
+    src/settingswindow.cpp \
+    src/recordeditor.cpp
 
 HEADERS  += src/mainwindow.h \
     src/tablemodel.h \
     src/filerecord.h \
     src/person.h \
     src/filereader.h \
-    src/settingswindow.h
+    src/settingswindow.h \
+    src/recordeditor.h
 
 # 3rd party components
 HEADERS += 3rdparty/miniz.h

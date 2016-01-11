@@ -19,6 +19,9 @@
 
 #include "settingswindow.h"
 
+#include <QDialogButtonBox>
+#include <QVBoxLayout>
+
 SettingsWindow::SettingsWindow(QWidget *parent)
     : QDialog(parent)
 {

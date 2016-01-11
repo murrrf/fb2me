@@ -135,6 +135,7 @@ MainWindow::MainWindow(QWidget *parent)
     menuTools->addSeparator();
 
     actnToolsSettings = new QAction(trUtf8("Settings..."), this);
+    connect(actnToolsSettings,SIGNAL(triggered()),this,SLOT(onToolsSettings()));
     menuTools->addAction(actnToolsSettings);
 
     // Setup Help menu

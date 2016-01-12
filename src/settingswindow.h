@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2015 Veter <veter@veter.name>
+ * Copyright (C) 2015,2016 Sergej Martynov <veter@veter.name>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,6 +57,15 @@ public:
      * @param parent Parent window pointer.
      */
     SettingsWindow(QWidget *parent = 0);
+
+    /**
+     * @~russian
+     * @brief Деструктор окна настроек.
+     *
+     * @~english
+     * @brief The settings window destructor.
+     */
+    ~SettingsWindow();
 
 private:
 

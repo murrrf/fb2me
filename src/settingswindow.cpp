@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2015 Veter <veter@veter.name>
+ * Copyright (C) 2015,2016 Sergej Martynov <veter@veter.name>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,5 +32,11 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     boxMain = new QVBoxLayout();
     boxMain->addWidget(boxButtons);
     this->setLayout(boxMain);
+}
+
+SettingsWindow::~SettingsWindow()
+{
+    delete boxButtons;
+    delete boxMain;
 }
 

@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2016 Veter <veter@veter.name>
+ * Copyright (C) 2016 Sergej Martynov <veter@veter.name>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +31,10 @@
 
 #include <QDialog>
 
+// Forward class declarations
+class QVBoxLayout;
+class QDialogButtonBox;
+
 /**
  * @~russian
  * @brief Класс окна редактирования записи о файле.
@@ -53,6 +57,34 @@ public:
      * @param parent Parent window pointer.
      */
     explicit RecordEditor(QWidget *parent = 0);
+
+    /**
+     * @~russian
+     * @brief Деструктор окна редактирования записи о файле.
+     *
+     * @~english
+     * @brief The record editor window destructor.
+     */
+    ~RecordEditor();
+
+private:
+    /**
+     * @~russian
+     * @brief Менеджер размещения элементов диалога.
+     *
+     * @~english
+     * @brief Layout manager for dialog.
+     */
+    QVBoxLayout *boxMain;
+
+    /**
+     * @~russian
+     * @brief Менеджер размещения кнопок управления диалогом.
+     *
+     * @~english
+     * @brief Layout manager for dialog buttons.
+     */
+    QDialogButtonBox *boxButtons;
 
 signals:
 

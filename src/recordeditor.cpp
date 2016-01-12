@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2016 Veter <veter@veter.name>
+ * Copyright (C) 2016 Sergej Martynov <veter@veter.name>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,7 +19,23 @@
 
 #include "recordeditor.h"
 
+#include <QDialogButtonBox>
+#include <QVBoxLayout>
+
 RecordEditor::RecordEditor(QWidget *parent) :
     QDialog(parent)
 {
+    boxButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    connect(boxButtons, SIGNAL(accepted()), this, SLOT(accept()));
+    connect(boxButtons, SIGNAL(rejected()), this, SLOT(reject()));
+
+    boxMain = new QVBoxLayout();
+    boxMain->addWidget(boxButtons);
+    this->setLayout(boxMain);
+}
+
+RecordEditor::~RecordEditor()
+{
+    delete boxButtons;
+    delete boxMain;
 }

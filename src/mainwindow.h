@@ -443,6 +443,13 @@ private slots:
      */
     void onTableContextMenuRequested(const QPoint &point);
 
+    /**
+     * @~russian
+     * @brief Обработчик вызова диалога редактирования из контекстного меню.
+     *
+     * @~english
+     * @brief Handler of the call Edit dialog from the context menu.
+     */
     void onTableOpenEditor();
 
 };

@@ -35,6 +35,8 @@
 class QVBoxLayout;
 class QDialogButtonBox;
 
+class FileRecord;
+
 /**
  * @~russian
  * @brief Класс окна редактирования записи о файле.
@@ -56,7 +58,7 @@ public:
      * @brief The record editor window constructor.
      * @param parent Parent window pointer.
      */
-    explicit RecordEditor(QWidget *parent = 0);
+    explicit RecordEditor(FileRecord *rec, QWidget *parent = 0);
 
     /**
      * @~russian
@@ -66,6 +68,17 @@ public:
      * @brief The record editor window destructor.
      */
     ~RecordEditor();
+
+    /**
+     * @~russian
+     * @brief Установка нового содержимого редактируемой записи.
+     * @param rec Новая запись.
+     *
+     * @~english
+     * @brief Setting a new content for edited recording.
+     * @param rec New record.
+     */
+    void setData(FileRecord *rec);
 
 private:
     /**
@@ -85,6 +98,28 @@ private:
      * @brief Layout manager for dialog buttons.
      */
     QDialogButtonBox *boxButtons;
+
+    /**
+     * @~russian
+     * @brief Редактируемая запись.
+     *
+     * @~english
+     * @brief Edited record.
+     */
+    FileRecord *record;
+
+    /**
+     * @~russian
+     * @brief Обновление внешнего вида диалога.
+     *
+     * Вызывается для перестроения диалога при изменении содержимого редактируемой записи.
+     *
+     * @~english
+     * @brief Update the look of the dialogue.
+     *
+     * It called for dialogue when changing the contents edited record.
+     */
+    void updateUI();
 
 signals:
 

@@ -393,7 +393,9 @@ void MainWindow::onTableContextMenuRequested(const QPoint &point)
 void MainWindow::onTableOpenEditor()
 {
     QModelIndex index = sender()->property("index").toModelIndex();
-    RecordEditor *editor = new RecordEditor();
+    FileRecord record = mdlData->getRecord(index);
+
+    RecordEditor *editor = new RecordEditor(&record);
 
     if (editor->exec() == QDialog::Accepted)
     {

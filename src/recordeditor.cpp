@@ -22,7 +22,7 @@
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
 
-RecordEditor::RecordEditor(QWidget *parent) :
+RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     QDialog(parent)
 {
     boxButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -32,10 +32,24 @@ RecordEditor::RecordEditor(QWidget *parent) :
     boxMain = new QVBoxLayout();
     boxMain->addWidget(boxButtons);
     this->setLayout(boxMain);
+
+    record = rec;
+    updateUI();
 }
 
 RecordEditor::~RecordEditor()
 {
     delete boxButtons;
     delete boxMain;
+}
+
+void RecordEditor::setData(FileRecord *rec)
+{
+    record = rec;
+    updateUI();
+}
+
+void RecordEditor::updateUI()
+{
+
 }

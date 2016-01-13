@@ -183,6 +183,19 @@ public:
      */
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
 
+    /**
+     * @~russian
+     * @brief Получить запись, соответствующую указанному индексу модели.
+     * @param index Индекс возвращаемой записи.
+     * @return Искомая запись.
+     *
+     * @~english
+     * @brief Get a record corresponding to the specified index model.
+     * @param index The index of the returned record.
+     * @return The desired entry.
+     */
+    FileRecord getRecord(const QModelIndex &index);
+
 signals:
 
     /**

@@ -4,3 +4,5 @@ doc/
 *.user
 # Ignore backup source code files created by Artistic Style
 *.orig
+# Ignore non-saved files
+*.autosave

@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2015 Veter <veter@veter.name>
+ * Copyright (C) 2015,2016 Sergej Martynov <veter@veter.name>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -442,6 +442,8 @@ private slots:
      * @param point The point at which the menu is called.
      */
     void onTableContextMenuRequested(const QPoint &point);
+
+    void onTableOpenEditor();
 
 };
 

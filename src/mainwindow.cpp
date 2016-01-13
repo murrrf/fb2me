@@ -1,6 +1,6 @@
 /***********************************************************************
  *
- * Copyright (C) 2015 Veter <veter@veter.name>
+ * Copyright (C) 2015,2016 Sergej Martynov <veter@veter.name>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,6 +35,7 @@
 #include "tablemodel.h"
 #include "filereader.h"
 #include "settingswindow.h"
+#include "recordeditor.h"
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -368,6 +369,11 @@ void MainWindow::onTableContextMenuRequested(const QPoint &point)
 
     QMenu *menu = new QMenu(this);
 
+    QAction *edit = new QAction(trUtf8("Edit metadata"), this);
+    menu->addAction(edit);
+    edit->setProperty("index", QVariant(ind));
+    connect(edit, SIGNAL(triggered()), this, SLOT(onTableOpenEditor()));
+
     QAction *uncompress = new QAction(trUtf8("Uncompress"), this);
     menu->addAction(uncompress);
     uncompress->setProperty("index", QVariant(ind));
@@ -382,4 +388,16 @@ void MainWindow::onTableContextMenuRequested(const QPoint &point)
     menu->popup(tblData->viewport()->mapToGlobal(point));
 
     // TODO Improve context menu
+}
+
+void MainWindow::onTableOpenEditor()
+{
+    QModelIndex index = sender()->property("index").toModelIndex();
+    RecordEditor *editor = new RecordEditor();
+
+    if (editor->exec() == QDialog::Accepted)
+    {
+    }
+
+    delete editor;
 }

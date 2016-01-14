@@ -202,7 +202,7 @@ bool TableModel::setData(const QModelIndex &index, const QVariant &value, int ro
 
 FileRecord TableModel::getRecord(const QModelIndex &index)
 {
-    return Data[index.row()];
+    return Data.value(index.row());
 }
 
 void TableModel::onBeginReading()

@@ -52,10 +52,12 @@ public:
     /**
      * @~russian
      * @brief Конструктор окна редактирования записи о файле.
+     * @param rec Отображаемая в окне редактирования запись.
      * @param parent Указатель на родительское окно.
      *
      * @~english
      * @brief The record editor window constructor.
+     * @param rec Record displayed in the edit dialog
      * @param parent Parent window pointer.
      */
     explicit RecordEditor(FileRecord *rec, QWidget *parent = 0);

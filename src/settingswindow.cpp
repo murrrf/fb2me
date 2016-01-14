@@ -34,8 +34,11 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     QLabel *lblPatternsHelp = new QLabel(trUtf8("Help"));
     QListWidget *lstPatterns = new QListWidget();
     QPushButton *btnPatternAdd = new QPushButton(trUtf8("Add"));
+    connect(btnPatternAdd,SIGNAL(clicked()),this,SLOT(onPatternAdd()));
     QPushButton *btnPatternEdit = new QPushButton(trUtf8("Edit"));
+    connect(btnPatternEdit,SIGNAL(clicked()),this,SLOT(onPatternEdit()));
     QPushButton *btnPatternDelete = new QPushButton(trUtf8("Delete"));
+    connect(btnPatternDelete,SIGNAL(clicked()),this,SLOT(onPatternDelete()));
     QHBoxLayout *boxPatternsButtons = new QHBoxLayout();
     boxPatternsButtons->addWidget(btnPatternAdd);
     boxPatternsButtons->addWidget(btnPatternEdit);
@@ -60,5 +63,20 @@ SettingsWindow::~SettingsWindow()
 {
     delete boxButtons;
     delete boxMain;
+}
+
+void SettingsWindow::onPatternAdd()
+{
+
+}
+
+void SettingsWindow::onPatternEdit()
+{
+
+}
+
+void SettingsWindow::onPatternDelete()
+{
+
 }
 

@@ -86,6 +86,34 @@ private:
      * @brief Layout manager for dialog buttons.
      */
     QDialogButtonBox *boxButtons;
+
+private slots:
+    /**
+     * @~russian
+     * @brief Обработчик нажатия на кнопку «Добавить шаблон переименования».
+     *
+     * @~english
+     * @brief Handler clicking on the button «Add template rename».
+     */
+    void onPatternAdd();
+
+    /**
+     * @~russian
+     * @brief Обработчик нажатия на кнопку «Изменить шаблон переименования».
+     *
+     * @~english
+     * @brief Handler clicking on the button «Edit template rename».
+     */
+    void onPatternEdit();
+
+    /**
+     * @~russian
+     * @brief Обработчик нажатия на кнопку «Удалить шаблон переименования».
+     *
+     * @~english
+     * @brief Handler clicking on the button «Delete template rename».
+     */
+    void onPatternDelete();
 };
 
 #endif // SETTINGSWINDOW_H

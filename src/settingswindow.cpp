@@ -21,15 +21,37 @@
 
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
+#include <QGroupBox>
+#include <QLabel>
+#include <QListWidget>
+#include <QPushButton>
+#include <QHBoxLayout>
 
 SettingsWindow::SettingsWindow(QWidget *parent)
     : QDialog(parent)
 {
+    QGroupBox *gbxPatterns = new QGroupBox(trUtf8("Rename templates"));
+    QLabel *lblPatternsHelp = new QLabel(trUtf8("Help"));
+    QListWidget *lstPatterns = new QListWidget();
+    QPushButton *btnPatternAdd = new QPushButton(trUtf8("Add"));
+    QPushButton *btnPatternEdit = new QPushButton(trUtf8("Edit"));
+    QPushButton *btnPatternDelete = new QPushButton(trUtf8("Delete"));
+    QHBoxLayout *boxPatternsButtons = new QHBoxLayout();
+    boxPatternsButtons->addWidget(btnPatternAdd);
+    boxPatternsButtons->addWidget(btnPatternEdit);
+    boxPatternsButtons->addWidget(btnPatternDelete);
+    QVBoxLayout *boxPatterns = new QVBoxLayout();
+    boxPatterns->addWidget(lblPatternsHelp);
+    boxPatterns->addWidget(lstPatterns);
+    boxPatterns->addLayout(boxPatternsButtons);
+    gbxPatterns->setLayout(boxPatterns);
+
     boxButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     connect(boxButtons, SIGNAL(accepted()), this, SLOT(accept()));
     connect(boxButtons, SIGNAL(rejected()), this, SLOT(reject()));
 
     boxMain = new QVBoxLayout();
+    boxMain->addWidget(gbxPatterns);
     boxMain->addWidget(boxButtons);
     this->setLayout(boxMain);
 }

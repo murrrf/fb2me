@@ -26,19 +26,20 @@
 #include <QListWidget>
 #include <QPushButton>
 #include <QHBoxLayout>
+#include <QInputDialog>
 
 SettingsWindow::SettingsWindow(QWidget *parent)
     : QDialog(parent)
 {
     QGroupBox *gbxPatterns = new QGroupBox(trUtf8("Rename templates"));
     QLabel *lblPatternsHelp = new QLabel(trUtf8("Help"));
-    QListWidget *lstPatterns = new QListWidget();
+    lstPatterns = new QListWidget();
     QPushButton *btnPatternAdd = new QPushButton(trUtf8("Add"));
-    connect(btnPatternAdd,SIGNAL(clicked()),this,SLOT(onPatternAdd()));
+    connect(btnPatternAdd, SIGNAL(clicked()), this, SLOT(onPatternAdd()));
     QPushButton *btnPatternEdit = new QPushButton(trUtf8("Edit"));
-    connect(btnPatternEdit,SIGNAL(clicked()),this,SLOT(onPatternEdit()));
+    connect(btnPatternEdit, SIGNAL(clicked()), this, SLOT(onPatternEdit()));
     QPushButton *btnPatternDelete = new QPushButton(trUtf8("Delete"));
-    connect(btnPatternDelete,SIGNAL(clicked()),this,SLOT(onPatternDelete()));
+    connect(btnPatternDelete, SIGNAL(clicked()), this, SLOT(onPatternDelete()));
     QHBoxLayout *boxPatternsButtons = new QHBoxLayout();
     boxPatternsButtons->addWidget(btnPatternAdd);
     boxPatternsButtons->addWidget(btnPatternEdit);
@@ -67,12 +68,31 @@ SettingsWindow::~SettingsWindow()
 
 void SettingsWindow::onPatternAdd()
 {
+    bool ok;
+    QString text = QInputDialog::getText(this, tr("Add new template"), tr("Enter template"), QLineEdit::Normal, "", &ok);
 
+    if (ok && !text.isEmpty())
+        lstPatterns->addItem(text);
 }
 
 void SettingsWindow::onPatternEdit()
 {
+    if (lstPatterns->currentRow() > -1)
+    {
+        bool ok;
+        QString text = QInputDialog::getText(this, tr("Edit template"), tr("Enter template"), QLineEdit::Normal,
+                                             lstPatterns->item(lstPatterns->currentRow())->text(), &ok);
 
+        if (ok && !text.isEmpty())
+        {
+            if (text != lstPatterns->item(lstPatterns->currentRow())->text())
+            {
+                lstPatterns->insertItem(lstPatterns->currentRow(), text);
+                delete lstPatterns->takeItem(lstPatterns->currentRow());
+                lstPatterns->setCurrentRow(lstPatterns->currentRow() - 1);
+            }
+        }
+    }
 }
 
 void SettingsWindow::onPatternDelete()

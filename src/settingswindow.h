@@ -35,6 +35,7 @@
 class QVBoxLayout;
 class QDialogButtonBox;
 class QPushButton;
+class QListWidget;
 
 /**
  * @~russian
@@ -86,6 +87,15 @@ private:
      * @brief Layout manager for dialog buttons.
      */
     QDialogButtonBox *boxButtons;
+
+    /**
+     * @~russian
+     * @brief Список шаблонов переименования.
+     *
+     * @~english
+     * @brief List of rename templates.
+     */
+    QListWidget *lstPatterns;
 
 private slots:
     /**

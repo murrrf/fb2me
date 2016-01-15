@@ -165,6 +165,8 @@ MainWindow::MainWindow(QWidget *parent)
     barTools->addAction(actnFileAppendDir);
     barTools->addAction(actnFileAppendDirRecursively);
     barTools->addSeparator();
+    barTools->addAction(actnToolsSettings);
+    barTools->addSeparator();
     barTools->addAction(actnHelpAbout);
 
     // Central widget setup

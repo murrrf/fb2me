@@ -27,6 +27,7 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QInputDialog>
+#include <QMessageBox>
 
 SettingsWindow::SettingsWindow(QWidget *parent)
     : QDialog(parent)
@@ -69,7 +70,8 @@ SettingsWindow::~SettingsWindow()
 void SettingsWindow::onPatternAdd()
 {
     bool ok;
-    QString text = QInputDialog::getText(this, tr("Add new template"), tr("Enter template"), QLineEdit::Normal, "", &ok);
+    QString text = QInputDialog::getText(this, trUtf8("Add new template"), trUtf8("Enter template"), QLineEdit::Normal,
+                                         "", &ok);
 
     if (ok && !text.isEmpty())
         lstPatterns->addItem(text);
@@ -80,7 +82,7 @@ void SettingsWindow::onPatternEdit()
     if (lstPatterns->currentRow() > -1)
     {
         bool ok;
-        QString text = QInputDialog::getText(this, tr("Edit template"), tr("Enter template"), QLineEdit::Normal,
+        QString text = QInputDialog::getText(this, trUtf8("Edit template"), trUtf8("Enter template"), QLineEdit::Normal,
                                              lstPatterns->item(lstPatterns->currentRow())->text(), &ok);
 
         if (ok && !text.isEmpty())
@@ -97,6 +99,14 @@ void SettingsWindow::onPatternEdit()
 
 void SettingsWindow::onPatternDelete()
 {
-
+    if (lstPatterns->currentRow() > -1)
+    {
+        if (QMessageBox::question(this, trUtf8("Delete template"),
+                                  trUtf8("Delete template \"%1\"?").arg(lstPatterns->item(lstPatterns->currentRow())->text()),
+                                  QMessageBox::Ok | QMessageBox::Cancel) == QMessageBox::Ok)
+        {
+            delete lstPatterns->takeItem(lstPatterns->currentRow());
+        }
+    }
 }
 

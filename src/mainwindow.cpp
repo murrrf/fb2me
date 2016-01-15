@@ -135,7 +135,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     menuTools->addSeparator();
 
-    actnToolsSettings = new QAction(trUtf8("Settings..."), this);
+    actnToolsSettings = new QAction(QIcon::fromTheme("preferences-system", QIcon(":/img/preferences-system.png")),
+                                    trUtf8("Settings..."), this);
     connect(actnToolsSettings, SIGNAL(triggered()), this, SLOT(onToolsSettings()));
     menuTools->addAction(actnToolsSettings);
 

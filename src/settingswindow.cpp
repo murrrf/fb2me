@@ -71,7 +71,7 @@ void SettingsWindow::onPatternAdd()
 {
     bool ok;
     QString text = QInputDialog::getText(this, trUtf8("Add new template"), trUtf8("Enter template"), QLineEdit::Normal,
-                                         "", &ok);
+                                         "", &ok).trimmed();
 
     if (ok && !text.isEmpty())
         lstPatterns->addItem(text);
@@ -83,7 +83,7 @@ void SettingsWindow::onPatternEdit()
     {
         bool ok;
         QString text = QInputDialog::getText(this, trUtf8("Edit template"), trUtf8("Enter template"), QLineEdit::Normal,
-                                             lstPatterns->item(lstPatterns->currentRow())->text(), &ok);
+                                             lstPatterns->item(lstPatterns->currentRow())->text(), &ok).trimmed();
 
         if (ok && !text.isEmpty())
         {

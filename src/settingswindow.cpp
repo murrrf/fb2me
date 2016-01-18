@@ -74,7 +74,23 @@ void SettingsWindow::onPatternAdd()
                                          "", &ok).trimmed();
 
     if (ok && !text.isEmpty())
-        lstPatterns->addItem(text);
+    {
+        QList<QListWidgetItem *> found = listWidget->findItems(text, Qt::MatchExactly);
+
+        if (found.size() = 0)
+        {
+            lstPatterns->addItem(text);
+        }
+        else
+        {
+            if (QMessageBox::question(this, trUtf8("The template already exists"),
+                                      trUtf8("The template \"%1\" already exists. Do you want to add it again?").arg(text),
+                                      QMessageBox::Ok | QMessageBox::Cancel) == QMessageBox::Ok)
+            {
+                lstPatterns->addItem(text);
+            }
+        }
+    }
 }
 
 void SettingsWindow::onPatternEdit()

@@ -75,9 +75,9 @@ void SettingsWindow::onPatternAdd()
 
     if (ok && !text.isEmpty())
     {
-        QList<QListWidgetItem *> found = listWidget->findItems(text, Qt::MatchExactly);
+        QList<QListWidgetItem *> found = lstPatterns->findItems(text, Qt::MatchExactly);
 
-        if (found.size() = 0)
+        if (found.size() == 0)
         {
             lstPatterns->addItem(text);
         }

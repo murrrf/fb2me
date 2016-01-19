@@ -34,6 +34,8 @@
 SettingsWindow::SettingsWindow(QWidget *parent)
     : QDialog(parent)
 {
+    // Set up UI
+
     QGroupBox *gbxPatterns = new QGroupBox(trUtf8("Rename templates"));
     QLabel *lblPatternsHelp = new QLabel(trUtf8("Help"));
     lstPatterns = new QListWidget();
@@ -61,6 +63,16 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     boxMain->addWidget(gbxPatterns);
     boxMain->addWidget(boxButtons);
     this->setLayout(boxMain);
+
+    // Read settings from file
+    QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
+    int size = settings.beginReadArray(NAMES::nameTemplateGroup);
+
+    for (int i = 0; i < size; i++)
+    {
+        settings.setArrayIndex(i);
+        lstPatterns->addItem(settings.value(NAMES::nameTemplate).toString());
+    }
 }
 
 SettingsWindow::~SettingsWindow()
@@ -72,12 +84,12 @@ SettingsWindow::~SettingsWindow()
 void SettingsWindow::accept()
 {
     QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
-    settings.beginWriteArray("Rename Templates");
+    settings.beginWriteArray(NAMES::nameTemplateGroup);
 
     for (int i = 0; i < lstPatterns->count(); i++)
     {
         settings.setArrayIndex(i);
-        settings.setValue("Template", lstPatterns->item(i)->text());
+        settings.setValue(NAMES::nameTemplate, lstPatterns->item(i)->text());
     }
 
     settings.endArray();

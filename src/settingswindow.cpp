@@ -18,6 +18,7 @@
  ***********************************************************************/
 
 #include "settingswindow.h"
+#include "consts.h"
 
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
@@ -28,6 +29,7 @@
 #include <QHBoxLayout>
 #include <QInputDialog>
 #include <QMessageBox>
+#include <QSettings>
 
 SettingsWindow::SettingsWindow(QWidget *parent)
     : QDialog(parent)
@@ -65,6 +67,22 @@ SettingsWindow::~SettingsWindow()
 {
     delete boxButtons;
     delete boxMain;
+}
+
+void SettingsWindow::accept()
+{
+    QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
+    settings.beginWriteArray("Rename Templates");
+
+    for (int i = 0; i < lstPatterns->count(); i++)
+    {
+        settings.setArrayIndex(i);
+        settings.setValue("Template", lstPatterns->item(i)->text());
+    }
+
+    settings.endArray();
+
+    QDialog::accept();
 }
 
 void SettingsWindow::onPatternAdd()

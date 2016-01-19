@@ -48,6 +48,7 @@ class SettingsWindow : public QDialog
 {
     Q_OBJECT
 public:
+
     /**
      * @~russian
      * @brief Конструктор окна настроек.
@@ -67,6 +68,17 @@ public:
      * @brief The settings window destructor.
      */
     ~SettingsWindow();
+
+public slots:
+
+    /**
+     * @~russian
+     * @brief Обработчик закрытия диалога по нажатию кнопки «ОК».
+     *
+     * @~english
+     * @brief Handler close the dialog by pressing the «OK».
+     */
+    void accept();
 
 private:
 
@@ -98,6 +110,7 @@ private:
     QListWidget *lstPatterns;
 
 private slots:
+
     /**
      * @~russian
      * @brief Обработчик нажатия на кнопку «Добавить шаблон переименования».

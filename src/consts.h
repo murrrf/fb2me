@@ -52,6 +52,20 @@ const QString nameDeveloper = "Veter";
  * @brief The name of application.
  */
 const QString nameApplication = "fb2me";
+/**
+ * @~russian
+ * @brief Группа настроек «Шаблоны переименования».
+ * @~english
+ * @brief Group of settings «Templates of rename».
+ */
+const QString nameTemplateGroup = "Rename Templates";
+/**
+ * @~russian
+ * @brief Настройка «Шаблон переименования».
+ * @~english
+ * @brief Setting «Template of rename».
+ */
+const QString nameTemplate = "Template";
 }
 
 #endif // CONSTS_H

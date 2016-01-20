@@ -317,6 +317,17 @@ private:
      */
     void setReaderSigSlots(FileReader *rd);
 
+    /**
+     * @~russian
+     * @brief Создание подменю переименования файлов.
+     * @param list Список шаблонов переименования.
+     *
+     * @~english
+     * @brief Create submenu of rename files.
+     * @param list List of renaming templates.
+     */
+    void addTemplatesListToMenu(const QStringList &list);
+
 public slots:
 
     /**

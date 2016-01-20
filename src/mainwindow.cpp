@@ -36,6 +36,7 @@
 #include "filereader.h"
 #include "settingswindow.h"
 #include "recordeditor.h"
+#include "consts.h"
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -53,6 +54,7 @@
 #include <QDateTime>
 #include <QTabWidget>
 #include <QDialog>
+#include <QSettings>
 #include <QDebug>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -139,6 +141,18 @@ MainWindow::MainWindow(QWidget *parent)
                                     trUtf8("Settings..."), this);
     connect(actnToolsSettings, SIGNAL(triggered()), this, SLOT(onToolsSettings()));
     menuTools->addAction(actnToolsSettings);
+
+    QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
+    int size = settings.beginReadArray(NAMES::nameTemplateGroup);
+    QStringList templates;
+
+    for (int i = 0; i < size; i++)
+    {
+        settings.setArrayIndex(i);
+        templates.append(settings.value(NAMES::nameTemplate).toString());
+    }
+
+    addTemplatesListToMenu(templates);
 
     // Setup Help menu
 
@@ -259,6 +273,11 @@ void MainWindow::setReaderSigSlots(FileReader *rd)
     rd->start();
 }
 
+void MainWindow::addTemplatesListToMenu(const QStringList &list)
+{
+
+}
+
 void MainWindow::onEventMessage(const QString &msg)
 {
     edtLog->append(QString("%1: %2").arg(QDateTime::currentDateTime().toString("hh:mm:ss:zzz"), msg));
@@ -325,6 +344,7 @@ void MainWindow::onToolsSettings()
 
     if (settings->exec() == QDialog::Accepted)
     {
+        addTemplatesListToMenu(settings->getTemplatesList());
     }
 
     delete settings;

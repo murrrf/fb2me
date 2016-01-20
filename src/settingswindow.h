@@ -69,6 +69,17 @@ public:
      */
     ~SettingsWindow();
 
+    /**
+     * @~russian
+     * @brief Получение списка шаблонов переименования.
+     * @return Список шаблонов.
+     *
+     * @~english
+     * @brief Getting a list of renaming templates.
+     * @return List of templates.
+     */
+    QStringList getTemplatesList();
+
 public slots:
 
     /**

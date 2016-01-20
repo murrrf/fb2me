@@ -77,8 +77,21 @@ SettingsWindow::SettingsWindow(QWidget *parent)
 
 SettingsWindow::~SettingsWindow()
 {
+    delete lstPatterns;
     delete boxButtons;
     delete boxMain;
+}
+
+QStringList SettingsWindow::getTemplatesList()
+{
+    QStringList result;
+
+    for (int i = 0; i < lstPatterns->count(); i++)
+    {
+        result.append(lstPatterns->item(i)->text());
+    }
+
+    return result;
 }
 
 void SettingsWindow::accept()

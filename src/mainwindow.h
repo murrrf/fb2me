@@ -111,6 +111,15 @@ private:
 
     /**
      * @~russian
+     * @brief Подменю «Шаблоны переименования» меню «Инструменты».
+     *
+     * @~english
+     * @brief The Rename templates submenu of Tools menu.
+     */
+    QMenu *subToolsRename;
+
+    /**
+     * @~russian
      * @brief Меню «Справка».
      *
      * @~english

@@ -135,6 +135,9 @@ MainWindow::MainWindow(QWidget *parent)
     actnToolsCompress->setEnabled(false);
     menuTools->addAction(actnToolsCompress);
 
+    subToolsRename = new QMenu(trUtf8("Rename templates"), this);
+    menuTools->addMenu(subToolsRename);
+
     menuTools->addSeparator();
 
     actnToolsSettings = new QAction(QIcon::fromTheme("preferences-system", QIcon(":/img/preferences-system.png")),
@@ -241,6 +244,8 @@ MainWindow::~MainWindow()
     delete splMain;
     delete actnHelpAboutQt;
     delete actnHelpAbout;
+    subToolsRename->clear();
+    delete subToolsRename;
     delete actnToolsSettings;
     delete actnToolsCompress;
     delete actnToolsUncompress;
@@ -275,7 +280,13 @@ void MainWindow::setReaderSigSlots(FileReader *rd)
 
 void MainWindow::addTemplatesListToMenu(const QStringList &list)
 {
-
+    subToolsRename->clear();
+    foreach(QString name, list)
+    {
+        QAction *action = new QAction(name, this);
+        action->setProperty("template", name);
+        subToolsRename->addAction(action);
+    }
 }
 
 void MainWindow::onEventMessage(const QString &msg)

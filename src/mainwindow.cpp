@@ -287,6 +287,9 @@ void MainWindow::addTemplatesListToMenu(const QStringList &list)
         action->setProperty("template", name);
         subToolsRename->addAction(action);
     }
+
+    // TODO Add handler for created actions
+    // TODO Disable actions if no records selected
 }
 
 void MainWindow::onEventMessage(const QString &msg)

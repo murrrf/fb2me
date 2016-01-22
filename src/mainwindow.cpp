@@ -463,3 +463,18 @@ void MainWindow::onTableOpenEditor()
 
     delete editor;
 }
+
+void MainWindow::onMoveTo()
+{
+
+}
+
+void MainWindow::onCopyTo()
+{
+
+}
+
+void MainWindow::onInplaceRename()
+{
+
+}

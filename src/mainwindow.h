@@ -517,6 +517,35 @@ private slots:
      */
     void onTableOpenEditor();
 
+private slots:
+
+    /**
+     * @~russian
+     * @brief Обработчик пункта подменю «Переместить и переименовать по шаблону» меню «Инструменты».
+     *
+     * @~english
+     * @brief Handler for submenu item «Move and rename according to the template» of Tools menu.
+     */
+    void onMoveTo();
+
+    /**
+     * @~russian
+     * @brief Обработчик пункта подменю «Копировать и переименовать по шаблону» меню «Инструменты».
+     *
+     * @~english
+     * @brief Handler for submenu item «Copy and rename according to the template» of Tools menu.
+     */
+    void onCopyTo();
+
+    /**
+     * @~russian
+     * @brief Обработчик пункта подменю «Переименовать на месте по шаблону» меню «Инструменты».
+     *
+     * @~english
+     * @brief Handler for submenu item «In-place rename according to the template» of Tools menu.
+     */
+    void onInplaceRename();
+
 };
 
 #endif // MAINWINDOW_H

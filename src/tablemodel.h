@@ -314,6 +314,33 @@ public slots:
      */
     void onInvertSelection();
 
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Переместить и переименовать по шаблону» меню «Инструменты».
+     *
+     * @~english
+     * @brief Handler for «Move and rename according to the template» action of Tools menu.
+     */
+    void onMoveTo();
+
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Копировать и переименовать по шаблону» меню «Инструменты».
+     *
+     * @~english
+     * @brief Handler for «Copy and rename according to the template» action of Tools menu.
+     */
+    void onCopyTo();
+
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Переименовать на месте по шаблону» меню «Инструменты».
+     *
+     * @~english
+     * @brief Handler for «In-place rename according to the template» action of Tools menu.
+     */
+    void onInplaceRename();
+
 private:
     /**
      * @~russian
@@ -371,6 +398,28 @@ private:
      * @brief Number of marked records.
      */
     int cntSelectedFiles;
+
+    /**
+     * @~russian
+     * @brief Подстановка значений полей записи в строку нового имени переименовываемого файла.
+     *
+     * Поскольку для удобства пользовательского редактирования строка шаблона состоит из человекопонятных подстановок,
+     * для формирования итогового имени переименуемого файла требуется подставить значения полей записи в шаблон.
+     * @param pattern Строка шаблона.
+     * @param record Запись с данными.
+     * @return Итоговая строка имени файла.
+     *
+     * @~english
+     * @brief Substituting the values of record fields in the string of new filename.
+     *
+     * @todo Full description need to be translated.
+     *
+     * @param pattern The template string.
+     * @param record Data record.
+     * @return The result filename string.
+     */
+    QString fromTemplateToPath(const QString &pattern, const FileRecord& record);
+
 };
 
 #endif // TABLEMODEL_H

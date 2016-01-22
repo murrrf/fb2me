@@ -330,6 +330,21 @@ void TableModel::onInvertSelection()
     emit SetSelected(cntSelectedFiles);
 }
 
+void TableModel::onMoveTo()
+{
+
+}
+
+void TableModel::onCopyTo()
+{
+
+}
+
+void TableModel::onInplaceRename()
+{
+
+}
+
 QString TableModel::getFormattedGenresList(int index) const
 {
     QStringList res;
@@ -365,4 +380,9 @@ Qt::CheckState TableModel::getState(const QModelIndex &index) const
 {
     Qt::CheckState cs = Data.value(index.row()).isSelected() ? Qt::Checked : Qt::Unchecked;
     return cs;
+}
+
+QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord &record)
+{
+
 }

@@ -298,21 +298,21 @@ void MainWindow::addTemplatesListToMenu(const QStringList &list)
         QAction *move = new QAction(name, this);
         move->setProperty("template", name);
         move->setEnabled(false);
-        connect(move, SIGNAL(triggered()), this, SLOT(onMoveTo()));
+        connect(move, SIGNAL(triggered()), mdlData, SLOT(onMoveTo()));
         subToolsMoveTo->addAction(move);
         lstMoveTo.append(move);
 
         QAction *copy = new QAction(name, this);
         copy->setProperty("template", name);
         copy->setEnabled(false);
-        connect(copy, SIGNAL(triggered()), this, SLOT(onCopyTo()));
+        connect(copy, SIGNAL(triggered()), mdlData, SLOT(onCopyTo()));
         subToolsCopyTo->addAction(copy);
         lstCopyTo.append(copy);
 
         QAction *rename = new QAction(name, this);
         rename->setProperty("template", name);
         rename->setEnabled(false);
-        connect(rename, SIGNAL(triggered()), this, SLOT(onInplaceRename()));
+        connect(rename, SIGNAL(triggered()), mdlData, SLOT(onInplaceRename()));
         subToolsInplaceRename->addAction(rename);
         lstInplaceRename.append(rename);
     }
@@ -499,19 +499,4 @@ void MainWindow::onTableOpenEditor()
     }
 
     delete editor;
-}
-
-void MainWindow::onMoveTo()
-{
-
-}
-
-void MainWindow::onCopyTo()
-{
-
-}
-
-void MainWindow::onInplaceRename()
-{
-
 }

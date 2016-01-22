@@ -297,22 +297,25 @@ void MainWindow::addTemplatesListToMenu(const QStringList &list)
     {
         QAction *move = new QAction(name, this);
         move->setProperty("template", name);
+        move->setEnabled(false);
+        connect(move, SIGNAL(triggered()), this, SLOT(onMoveTo()));
         subToolsMoveTo->addAction(move);
         lstMoveTo.append(move);
 
         QAction *copy = new QAction(name, this);
         copy->setProperty("template", name);
+        copy->setEnabled(false);
+        connect(copy, SIGNAL(triggered()), this, SLOT(onCopyTo()));
         subToolsCopyTo->addAction(copy);
         lstCopyTo.append(copy);
 
         QAction *rename = new QAction(name, this);
         rename->setProperty("template", name);
+        rename->setEnabled(false);
+        connect(rename, SIGNAL(triggered()), this, SLOT(onInplaceRename()));
         subToolsInplaceRename->addAction(rename);
         lstInplaceRename.append(rename);
     }
-
-    // TODO Add handler for created actions
-    // TODO Disable actions if no records selected
 }
 
 void MainWindow::onEventMessage(const QString &msg)
@@ -337,11 +340,45 @@ void MainWindow::onSetSelected(int count)
     {
         actnToolsUncompress->setEnabled(true);
         actnToolsCompress->setEnabled(true);
+
+        QList<QAction *>::iterator it;
+
+        for (it = lstMoveTo.begin(); it < lstMoveTo.end(); it++)
+        {
+            (*it)->setEnabled(true);
+        }
+
+        for (it = lstCopyTo.begin(); it < lstCopyTo.end(); it++)
+        {
+            (*it)->setEnabled(true);
+        }
+
+        for (it = lstInplaceRename.begin(); it < lstInplaceRename.end(); it++)
+        {
+            (*it)->setEnabled(true);
+        }
     }
     else
     {
         actnToolsUncompress->setEnabled(false);
         actnToolsCompress->setEnabled(false);
+
+        QList<QAction *>::iterator it;
+
+        for (it = lstMoveTo.begin(); it < lstMoveTo.end(); it++)
+        {
+            (*it)->setEnabled(false);
+        }
+
+        for (it = lstCopyTo.begin(); it < lstCopyTo.end(); it++)
+        {
+            (*it)->setEnabled(false);
+        }
+
+        for (it = lstInplaceRename.begin(); it < lstInplaceRename.end(); it++)
+        {
+            (*it)->setEnabled(false);
+        }
     }
 }
 

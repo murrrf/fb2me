@@ -26,8 +26,6 @@
  * @brief Source file for main GUI window.
  */
 
-// TODO Add settings dialog
-// TODO Add templates for rename and move files
 // TODO Realize edit of XML files (main task of application...)
 
 #include "mainwindow.h"
@@ -135,8 +133,12 @@ MainWindow::MainWindow(QWidget *parent)
     actnToolsCompress->setEnabled(false);
     menuTools->addAction(actnToolsCompress);
 
-    subToolsRename = new QMenu(trUtf8("Rename templates"), this);
-    menuTools->addMenu(subToolsRename);
+    subToolsMoveTo = new QMenu(trUtf8("Move to"), this);
+    menuTools->addMenu(subToolsMoveTo);
+    subToolsCopyTo = new QMenu(trUtf8("Copy to"), this);
+    menuTools->addMenu(subToolsCopyTo);
+    subToolsInplaceRename = new QMenu(trUtf8("In-place rename"), this);
+    menuTools->addMenu(subToolsInplaceRename);
 
     menuTools->addSeparator();
 
@@ -244,8 +246,12 @@ MainWindow::~MainWindow()
     delete splMain;
     delete actnHelpAboutQt;
     delete actnHelpAbout;
-    subToolsRename->clear();
-    delete subToolsRename;
+    subToolsInplaceRename->clear();
+    delete subToolsInplaceRename;
+    subToolsCopyTo->clear();
+    delete subToolsCopyTo;
+    subToolsMoveTo->clear();
+    delete subToolsMoveTo;
     delete actnToolsSettings;
     delete actnToolsCompress;
     delete actnToolsUncompress;
@@ -280,12 +286,29 @@ void MainWindow::setReaderSigSlots(FileReader *rd)
 
 void MainWindow::addTemplatesListToMenu(const QStringList &list)
 {
-    subToolsRename->clear();
+    subToolsMoveTo->clear();
+    lstMoveTo.clear();
+    subToolsCopyTo->clear();
+    lstCopyTo.clear();
+    subToolsInplaceRename->clear();
+    lstInplaceRename.clear();
+
     foreach(QString name, list)
     {
-        QAction *action = new QAction(name, this);
-        action->setProperty("template", name);
-        subToolsRename->addAction(action);
+        QAction *move = new QAction(name, this);
+        move->setProperty("template", name);
+        subToolsMoveTo->addAction(move);
+        lstMoveTo.append(move);
+
+        QAction *copy = new QAction(name, this);
+        copy->setProperty("template", name);
+        subToolsCopyTo->addAction(copy);
+        lstCopyTo.append(copy);
+
+        QAction *rename = new QAction(name, this);
+        rename->setProperty("template", name);
+        subToolsInplaceRename->addAction(rename);
+        lstInplaceRename.append(rename);
     }
 
     // TODO Add handler for created actions

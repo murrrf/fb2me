@@ -157,8 +157,6 @@ MainWindow::MainWindow(QWidget *parent)
         templates.append(settings.value(NAMES::nameTemplate).toString());
     }
 
-    addTemplatesListToMenu(templates);
-
     // Setup Help menu
 
     actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/img/help-about.png")),
@@ -199,6 +197,8 @@ MainWindow::MainWindow(QWidget *parent)
     mdlData = new TableModel(this);
     tblData->setModel(mdlData);
     tblData->resizeColumnToContents(colCheckColumn);
+
+    addTemplatesListToMenu(templates);
 
     connect(mdlData, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
     connect(mdlData, SIGNAL(SetSelected(int)), this, SLOT(onSetSelected(int)));

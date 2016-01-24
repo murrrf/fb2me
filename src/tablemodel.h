@@ -418,7 +418,7 @@ private:
      * @param record Data record.
      * @return The result filename string.
      */
-    QString fromTemplateToPath(const QString &pattern, const FileRecord& record);
+    QString fromTemplateToPath(const QString &pattern, const FileRecord &record);
 
 };
 

@@ -111,6 +111,11 @@ void FileRecord::addAuthor(Person author)
     BookAuthor.append(author);
 }
 
+Person FileRecord::getAuthor(int index)
+{
+    return BookAuthor.at(index);
+}
+
 QStringList FileRecord::getAuthorList()
 {
     QStringList tmp;

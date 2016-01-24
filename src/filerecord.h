@@ -259,6 +259,19 @@ public:
 
     /**
      * @~russian
+     * @brief Получение автора из списка авторов.
+     * @param index Позиция автора в списке.
+     * @return Запись об авторе.
+     *
+     * @~english
+     * @brief Getting the author from the list of authors.
+     * @param index Author's position in the list.
+     * @return Author's record.
+     */
+    Person getAuthor(int index);
+
+    /**
+     * @~russian
      * @brief Получение списка авторов.
      *
      * Список выдается в формате "Фамилия Имя Отчество", каждый автор на отдельной строке.

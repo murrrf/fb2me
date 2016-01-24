@@ -80,7 +80,7 @@ QString Person::getLastName()
     return last_name;
 }
 
-QString Person::getFirstLetterOfLastName()
+QString Person::getFirstLetterOfLastName() const
 {
     return last_name.at(0);
 }

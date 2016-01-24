@@ -201,7 +201,7 @@ public:
      * @brief Get first letter of the last name of the author.
      * @return First letter of the last name.
      */
-    QString getFirstLetterOfLastName();
+    QString getFirstLetterOfLastName() const;
 
     /**
      * @~russian

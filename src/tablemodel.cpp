@@ -384,15 +384,16 @@ Qt::CheckState TableModel::getState(const QModelIndex &index) const
 
 QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord &record)
 {
+    QString result = pattern;
     Person author = record.getAuthor(0);
-    pattern.replace("%A", author.getFirstLetterOfLastName());
-    pattern.replace("%F", author.getFirstName());
-    pattern.replace("%M", author.getMiddleName());
-    pattern.replace("%L", author.getLastName());
-    pattern.replace("%B", record.getBookTitle());
+    result.replace("%A", author.getFirstLetterOfLastName());
+    result.replace("%F", author.getFirstName());
+    result.replace("%M", author.getMiddleName());
+    result.replace("%L", author.getLastName());
+    result.replace("%B", record.getBookTitle());
     QString sequence = record.getSequenceList().at(0).first;
-    pattern.replace("%S", sequence);
+    result.replace("%S", sequence);
     QString number = QString::number(record.getSequenceList().at(0).second);
-    pattern.replace("%N", number);
-    return pattern;
+    result.replace("%N", number);
+    return result;
 }

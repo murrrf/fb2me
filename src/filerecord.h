@@ -190,7 +190,7 @@ public:
      * @brief Getting of book title.
      * @return Book title.
      */
-    QString getBookTitle();
+    QString getBookTitle() const;
 
     /**
      * @~russian
@@ -268,7 +268,7 @@ public:
      * @param index Author's position in the list.
      * @return Author's record.
      */
-    Person getAuthor(int index);
+    Person getAuthor(int index) const;
 
     /**
      * @~russian
@@ -315,7 +315,7 @@ public:
      * For a further formatting list  issued "as is".
      * @return List of series.
      */
-    sequence_t getSequenceList();
+    sequence_t getSequenceList() const;
 
     /**
      * @~russian

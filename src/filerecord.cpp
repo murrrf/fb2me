@@ -80,7 +80,7 @@ void FileRecord::setBookTitle(QString title)
     BookTitle = title;
 }
 
-QString FileRecord::getBookTitle()
+QString FileRecord::getBookTitle() const
 {
     return BookTitle;
 }
@@ -111,7 +111,7 @@ void FileRecord::addAuthor(Person author)
     BookAuthor.append(author);
 }
 
-Person FileRecord::getAuthor(int index)
+Person FileRecord::getAuthor(int index) const
 {
     return BookAuthor.at(index);
 }
@@ -134,7 +134,7 @@ void FileRecord::addSequence(QString sequence, int number)
     Sequences.append(qMakePair(sequence, number));
 }
 
-sequence_t FileRecord::getSequenceList()
+sequence_t FileRecord::getSequenceList() const
 {
     return Sequences;
 }

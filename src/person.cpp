@@ -80,6 +80,11 @@ QString Person::getLastName()
     return last_name;
 }
 
+QString Person::getFirstLetterOfLastName()
+{
+    return last_name.at(0);
+}
+
 void Person::setNickname(QString nickName)
 {
     nickname = nickName;

@@ -194,6 +194,17 @@ public:
 
     /**
      * @~russian
+     * @brief Получение первой буквы фамилии автора.
+     * @return Первая буква фамилии автора.
+     *
+     * @~english
+     * @brief Get first letter of the last name of the author.
+     * @return First letter of the last name.
+     */
+    QString getFirstLetterOfLastName();
+
+    /**
+     * @~russian
      * @brief Установка псевдонима автора.
      * @param nickName Псевдоним автора.
      *

@@ -120,15 +120,6 @@ private:
 
     /**
      * @~russian
-     * @brief Список действий, включенных в подменю «Переместить и переименовать по шаблону» меню «Инструменты».
-
-     * @~english
-     * @brief The list of actions included in the submenu «Move and rename according to the template» of Tools menu.
-     */
-    QList<QAction *>lstMoveTo;
-
-    /**
-     * @~russian
      * @brief Подменю «Копировать и переименовать по шаблону» меню «Инструменты».
      *
      * @~english
@@ -138,30 +129,12 @@ private:
 
     /**
      * @~russian
-     * @brief Список действий, включенных в подменю «Копировать и переименовать по шаблону» меню «Инструменты».
-
-     * @~english
-     * @brief The list of actions included in the submenu «Copy and rename according to the template» of Tools menu.
-     */
-    QList<QAction *>lstCopyTo;
-
-    /**
-     * @~russian
      * @brief Подменю «Переименовать на месте» меню «Инструменты».
      *
      * @~english
      * @brief The submenu «In-place rename» of Tools menu.
      */
     QMenu *subToolsInplaceRename;
-
-    /**
-     * @~russian
-     * @brief Список действий, включенных в подменю «Переименовать на месте» меню «Инструменты».
-
-     * @~english
-     * @brief The list of actions included in the «In-place rename» of Tools menu.
-     */
-    QList<QAction *>lstInplaceRename;
 
     /**
      * @~russian

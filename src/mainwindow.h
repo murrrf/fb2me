@@ -445,6 +445,33 @@ private slots:
 
     /**
      * @~russian
+     * @brief Обработчик сигнала «Переместить и переименовать по шаблону» меню «Инструменты».
+     *
+     * @~english
+     * @brief Handler for «Move and rename according to the template» action of Tools menu.
+     */
+    void onToolsMoveTo();
+
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Копировать и переименовать по шаблону» меню «Инструменты».
+     *
+     * @~english
+     * @brief Handler for «Copy and rename according to the template» action of Tools menu.
+     */
+    void onToolsCopyTo();
+
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Переименовать на месте по шаблону» меню «Инструменты».
+     *
+     * @~english
+     * @brief Handler for «In-place rename according to the template» action of Tools menu.
+     */
+    void onToolsInplaceRename();
+
+    /**
+     * @~russian
      * @brief Обработчик действия «Настройки».
      *
      * @~english

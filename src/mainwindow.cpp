@@ -295,19 +295,19 @@ void MainWindow::addTemplatesListToMenu(const QStringList &list)
         QAction *move = new QAction(name, this);
         move->setProperty("template", name);
         move->setEnabled(false);
-        connect(move, SIGNAL(triggered()), mdlData, SLOT(onMoveTo()));
+        connect(move, SIGNAL(triggered()), this, SLOT(onToolsMoveTo()));
         subToolsMoveTo->addAction(move);
 
         QAction *copy = new QAction(name, this);
         copy->setProperty("template", name);
         copy->setEnabled(false);
-        connect(copy, SIGNAL(triggered()), mdlData, SLOT(onCopyTo()));
+        connect(copy, SIGNAL(triggered()), this, SLOT(onToolsCopyTo()));
         subToolsCopyTo->addAction(copy);
 
         QAction *rename = new QAction(name, this);
         rename->setProperty("template", name);
         rename->setEnabled(false);
-        connect(rename, SIGNAL(triggered()), mdlData, SLOT(onInplaceRename()));
+        connect(rename, SIGNAL(triggered()), this, SLOT(onToolsInplaceRename()));
         subToolsInplaceRename->addAction(rename);
     }
 }
@@ -404,6 +404,29 @@ void MainWindow::onFileAppendDirRecursively()
 void MainWindow::onFileExit()
 {
     close();
+}
+
+void MainWindow::onToolsMoveTo()
+{
+    QString basedir = QFileDialog::getExistingDirectory(this, trUtf8("Move files to folder"), workingDir,
+                      QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    QString pattern = sender()->property("template").toString();
+    emit mdlData->MoveTo(basedir, pattern);
+}
+
+void MainWindow::onToolsCopyTo()
+{
+    QString basedir = QFileDialog::getExistingDirectory(this, trUtf8("Copy files to folder"), workingDir,
+                      QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    QString pattern = sender()->property("template").toString();
+    emit mdlData->CopyTo(basedir, pattern);
+}
+
+void MainWindow::onToolsInplaceRename()
+{
+    QString basedir = QString();
+    QString pattern = sender()->property("template").toString();
+    emit mdlData->InplaceRename(basedir, pattern);
 }
 
 void MainWindow::onToolsSettings()

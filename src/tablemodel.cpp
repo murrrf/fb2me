@@ -33,6 +33,9 @@
 TableModel::TableModel(QObject *parent): QAbstractTableModel(parent)
 {
     cntSelectedFiles = 0;
+    connect(this, SIGNAL(MoveTo(QString, QString)), this, SLOT(onMoveTo(QString, QString)));
+    connect(this, SIGNAL(CopyTo(QString, QString)), this, SLOT(onCopyTo(QString, QString)));
+    connect(this, SIGNAL(InplaceRename(QString, QString)), this, SLOT(onInplaceRename(QString, QString)));
 }
 
 Qt::ItemFlags TableModel::flags(const QModelIndex &index) const
@@ -330,17 +333,17 @@ void TableModel::onInvertSelection()
     emit SetSelected(cntSelectedFiles);
 }
 
-void TableModel::onMoveTo()
+void TableModel::onMoveTo(QString basedir, QString pattern)
 {
 
 }
 
-void TableModel::onCopyTo()
+void TableModel::onCopyTo(QString basedir, QString pattern)
 {
 
 }
 
-void TableModel::onInplaceRename()
+void TableModel::onInplaceRename(QString basedir, QString pattern)
 {
 
 }

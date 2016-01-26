@@ -220,6 +220,46 @@ signals:
      */
     void SetSelected(int count);
 
+    /**
+     * @~russian
+     * @brief Сигнал «Переместить и переименовать по шаблону».
+     * @param basedir Базовая директория для перемещения файлов.
+     * @param pattern Шаблон переименования.
+     *
+     * @~english
+     * @brief «Move and rename according to the template» signal.
+     * @param basedir The base directory for moving files.
+     * @param pattern Renaming template.
+     */
+    void MoveTo(QString basedir, QString pattern);
+
+    /**
+     * @~russian
+     * @brief Сигнал «Копировать и переименовать по шаблону».
+     * @param basedir Базовая директория для копирования файлов.
+     * @param pattern Шаблон переименования.
+     *
+     * @~english
+     * @brief «Copy and rename according to the template» signal.
+     * @param basedir The base directory for copying files.
+     * @param pattern Renaming template.
+     */
+    void CopyTo(QString basedir, QString pattern);
+
+    /**
+     * @~russian
+     * @brief Сигнал «Переименовать на месте по шаблону».
+     * @param basedir Не используется, оставлен для единообразия.
+     * @param pattern Шаблон переименования.
+     *
+     * @~english
+     * @brief «In-place rename according to the template» signal.
+     * @param basedir Not used.
+     * @param pattern Renaming template.
+     */
+    void InplaceRename(QString basedir, QString pattern);
+
+
 public slots:
 
     /**
@@ -316,30 +356,42 @@ public slots:
 
     /**
      * @~russian
-     * @brief Обработчик сигнала «Переместить и переименовать по шаблону» меню «Инструменты».
+     * @brief Обработчик сигнала «Переместить и переименовать по шаблону».
+     * @param basedir Базовая директория для перемещения файлов.
+     * @param pattern Шаблон переименования.
      *
      * @~english
-     * @brief Handler for «Move and rename according to the template» action of Tools menu.
+     * @brief Handler for «Move and rename according to the template» signal.
+     * @param basedir The base directory for moving files.
+     * @param pattern Renaming template.
      */
-    void onMoveTo();
+    void onMoveTo(QString basedir, QString pattern);
 
     /**
      * @~russian
-     * @brief Обработчик сигнала «Копировать и переименовать по шаблону» меню «Инструменты».
+     * @brief Обработчик сигнала «Копировать и переименовать по шаблону».
+     * @param basedir Базовая директория для копирования файлов.
+     * @param pattern Шаблон переименования.
      *
      * @~english
-     * @brief Handler for «Copy and rename according to the template» action of Tools menu.
+     * @brief Handler for «Copy and rename according to the template» signal.
+     * @param basedir The base directory for copying files.
+     * @param pattern Renaming template.
      */
-    void onCopyTo();
+    void onCopyTo(QString basedir, QString pattern);
 
     /**
      * @~russian
-     * @brief Обработчик сигнала «Переименовать на месте по шаблону» меню «Инструменты».
+     * @brief Обработчик сигнала «Переименовать на месте по шаблону».
+     * @param basedir Не используется, оставлен для единообразия.
+     * @param pattern Шаблон переименования.
      *
      * @~english
-     * @brief Handler for «In-place rename according to the template» action of Tools menu.
+     * @brief Handler for «In-place rename according to the template» signal.
+     * @param basedir Not used.
+     * @param pattern Renaming template.
      */
-    void onInplaceRename();
+    void onInplaceRename(QString basedir, QString pattern);
 
 private:
     /**

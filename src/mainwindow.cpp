@@ -157,6 +157,8 @@ MainWindow::MainWindow(QWidget *parent)
         templates.append(settings.value(NAMES::nameTemplate).toString());
     }
 
+    settings.endArray();
+
     // Setup Help menu
 
     actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/img/help-about.png")),

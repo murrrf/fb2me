@@ -38,8 +38,8 @@ SettingsWindow::SettingsWindow(QWidget *parent)
 
     QGroupBox *gbxPatterns = new QGroupBox(trUtf8("Rename templates"));
     QLabel *lblPatternsHelp = new QLabel(trUtf8("%F - author's first name; %M - author's middle name;<br/>"
-                                                "%L - author's last name; %A - first letter of author's last name;<br/>"
-                                                "%B - book title; %S - sequence name; %N - sequence number"));
+                                         "%L - author's last name; %A - first letter of author's last name;<br/>"
+                                         "%B - book title; %S - sequence name; %N - sequence number"));
     lstPatterns = new QListWidget();
     QPushButton *btnPatternAdd = new QPushButton(trUtf8("Add"));
     connect(btnPatternAdd, SIGNAL(clicked()), this, SLOT(onPatternAdd()));
@@ -75,6 +75,8 @@ SettingsWindow::SettingsWindow(QWidget *parent)
         settings.setArrayIndex(i);
         lstPatterns->addItem(settings.value(NAMES::nameTemplate).toString());
     }
+
+    settings.endArray();
 }
 
 SettingsWindow::~SettingsWindow()

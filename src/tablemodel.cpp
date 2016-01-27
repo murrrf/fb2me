@@ -345,7 +345,7 @@ void TableModel::onCopyTo(QString basedir, QString pattern)
 
 void TableModel::onInplaceRename(QString basedir, QString pattern)
 {
-
+    Q_UNUSED(basedir)
 }
 
 QString TableModel::getFormattedGenresList(int index) const

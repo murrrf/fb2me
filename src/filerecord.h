@@ -369,6 +369,45 @@ public:
      */
     QString zipFile();
 
+    /**
+     * @~russian
+     * @brief Перемещение указанного файла.
+     * @param newName Имя файла после перемещения.
+     * @return Сообщение о результате операции.
+     *
+     * @~english
+     * @brief Moving of the specified file.
+     * @param newName File name after moving.
+     * @return Message result.
+     */
+    QString moveFile(QString newName);
+
+    /**
+     * @~russian
+     * @brief Копирование указанного файла.
+     * @param newName Имя файла после копирования.
+     * @return Сообщение о результате операции.
+     *
+     * @~english
+     * @brief Copying of the specified file.
+     * @param newName File name after copying.
+     * @return Message result.
+     */
+    QString copyFile(QString newName);
+
+    /**
+     * @~russian
+     * @brief Переименование указанного файла.
+     * @param newName Имя файла после переименования.
+     * @return Сообщение о результате операции.
+     *
+     * @~english
+     * @brief Renaming of the specified file.
+     * @param newName File name after renaming.
+     * @return Message result.
+     */
+    QString renameFile(QString newName);
+
 private:
     /*
      * @~russian

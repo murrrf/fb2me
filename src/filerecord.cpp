@@ -245,4 +245,19 @@ QString FileRecord::zipFile()
             QString::number(getSize())));
 }
 
+QString FileRecord::moveFile(QString newName)
+{
+
+}
+
+QString FileRecord::copyFile(QString newName)
+{
+
+}
+
+QString FileRecord::renameFile(QString newName)
+{
+
+}
+
 

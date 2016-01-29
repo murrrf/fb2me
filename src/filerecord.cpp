@@ -247,17 +247,50 @@ QString FileRecord::zipFile()
 
 QString FileRecord::moveFile(QString newName)
 {
+    newName = getNewName(newName);
 
+    if (QFile::rename(getFileName(), newName))
+    {
+        QString result = qApp->tr("File %1 successfully moved to %2").arg(getFileName(), newName);
+        setFileName(newName);
+        return result;
+    }
+    else
+    {
+        return (qApp->tr("Cannot move file %1 to %2").arg(getFileName(), newName));
+    }
 }
 
 QString FileRecord::copyFile(QString newName)
 {
+    newName = getNewName(newName);
 
+    if (QFile::copy(getFileName(), newName))
+    {
+        QString result = qApp->tr("File %1 successfully copied to %2").arg(getFileName(), newName);
+        setFileName(newName);
+        return result;
+    }
+    else
+    {
+        return (qApp->tr("Cannot copy file %1 to %2").arg(getFileName(), newName));
+    }
 }
 
 QString FileRecord::renameFile(QString newName)
 {
+    newName = getNewName(newName);
 
+    if (QFile::rename(getFileName(), newName))
+    {
+        QString result = qApp->tr("File %1 successfully renamed to %2").arg(getFileName(), newName);
+        setFileName(newName);
+        return result;
+    }
+    else
+    {
+        return (qApp->tr("Cannot rename file %1 to %2").arg(getFileName(), newName));
+    }
 }
 
 QString FileRecord::getNewName(QString fileName)

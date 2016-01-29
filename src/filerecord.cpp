@@ -260,4 +260,19 @@ QString FileRecord::renameFile(QString newName)
 
 }
 
+QString FileRecord::getNewName(QString fileName)
+{
+    int cntFile = 1;
+
+    while (QFile::exists(fileName))
+    {
+        QFileInfo newFile(fileName);
+        fileName = newFile.canonicalFilePath() + QDir::separator() + newFile.baseName() +
+                   "(" + QString::number(cntFile) + ")" + newFile.completeSuffix();
+        cntFile++;
+    }
+
+    return fileName;
+}
+
 

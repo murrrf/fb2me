@@ -520,6 +520,23 @@ private:
      */
     bool selected;
 
+    /**
+     * @~russian
+     * @brief Вспомогательная функция для получения имени файла при операциях над файлами в случае, если файл уже существует.
+     *
+     * Если файл не существует, то возвращается оригинальное имя файла.
+     * @param fileName Первоначальное имя файла.
+     * @return Итоговое имя файла.
+     *
+     * @~english
+     * @brief Helper function for the getting new file name in the file operation if the file already exists.
+     *
+     * If the file does not exist, it returns the original file name.
+     * @param fileName The original file name.
+     * @return The final name of the file.
+     */
+    QString getNewName(QString fileName);
+
 };
 
 #endif // FILERECORD_H

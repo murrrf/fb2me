@@ -29,6 +29,7 @@
 // TODO Add method for rename files
 
 #include "tablemodel.h"
+#include <QDir>
 
 TableModel::TableModel(QObject *parent): QAbstractTableModel(parent)
 {
@@ -335,7 +336,17 @@ void TableModel::onInvertSelection()
 
 void TableModel::onMoveTo(QString basedir, QString pattern)
 {
+    QVector<FileRecord>::iterator it;
+    cntSelectedFiles = 0;
 
+    for (it = Data.begin(); it != Data.end(); it++)
+    {
+        if ((*it).isSelected())
+        {
+            QString newPath = fromTemplateToPath(pattern, (*it));
+            (*it).moveFile(basedir + QDir::separator() + newPath);
+        }
+    }
 }
 
 void TableModel::onCopyTo(QString basedir, QString pattern)
@@ -389,14 +400,31 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
 {
     QString result = pattern;
     Person author = record.getAuthor(0);
+
     result.replace("%A", author.getFirstLetterOfLastName());
     result.replace("%F", author.getFirstName());
     result.replace("%M", author.getMiddleName());
     result.replace("%L", author.getLastName());
-    result.replace("%B", record.getBookTitle());
-    QString sequence = record.getSequenceList().at(0).first;
+    result.replace("%B", record.getBookTitleExt());
+
+    QString sequence;
+    QString number;
+
+    if (!record.getSequenceList().empty())
+    {
+        sequence = record.getSequenceList().at(0).first;
+        number = QString::number(record.getSequenceList().at(0).second);
+    }
+    else
+    {
+        sequence = "";
+        number = "";
+    }
+
     result.replace("%S", sequence);
-    QString number = QString::number(record.getSequenceList().at(0).second);
     result.replace("%N", number);
+
+    result.replace("  ", " ");
+
     return result;
 }

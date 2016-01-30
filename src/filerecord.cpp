@@ -85,6 +85,18 @@ QString FileRecord::getBookTitle() const
     return BookTitle;
 }
 
+QString FileRecord::getBookTitleExt() const
+{
+    QString result = BookTitle;
+
+    if (archived)
+        result += ".fb2.zip";
+    else
+        result += ".fb2";
+
+    return result;
+}
+
 void FileRecord::addGenre(QString genre_name, int genre_match)
 {
     Genres.append(qMakePair(genre_name, genre_match));

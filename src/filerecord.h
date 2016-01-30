@@ -194,6 +194,17 @@ public:
 
     /**
      * @~russian
+     * @brief Получение названия книги вместе с расширением файла.
+     * @return Полное название книги.
+     *
+     * @~english
+     * @brief Getting the title of the book, along with the file extension.
+     * @return Full book title.
+     */
+    QString getBookTitleExt() const;
+
+    /**
+     * @~russian
      * @brief Добавление жанра в список жанров.
      * @param genre_name Наименование жанра.
      * @param genre_match Совпадение с жанром в процентах.

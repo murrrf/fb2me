@@ -405,7 +405,7 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     result.replace("%F", author.getFirstName());
     result.replace("%M", author.getMiddleName());
     result.replace("%L", author.getLastName());
-    result.replace("%B", record.getBookTitleExt());
+    result.replace("%B", record.getBookTitle);
 
     QString sequence;
     QString number;
@@ -425,6 +425,11 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     result.replace("%N", number);
 
     result.replace("  ", " ");
+
+    if (record.isArchive())
+        result += ".fb2.zip";
+    else
+        result += ".fb2";
 
     return result;
 }

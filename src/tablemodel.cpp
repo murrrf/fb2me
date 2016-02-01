@@ -405,7 +405,7 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     result.replace("%F", author.getFirstName());
     result.replace("%M", author.getMiddleName());
     result.replace("%L", author.getLastName());
-    result.replace("%B", record.getBookTitle);
+    result.replace("%B", record.getBookTitle());
 
     QString sequence;
     QString number;

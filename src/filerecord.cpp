@@ -70,7 +70,7 @@ void FileRecord::setIsArchive(bool IsArchive)
     archived = IsArchive;
 }
 
-bool FileRecord::isArchive()
+bool FileRecord::isArchive() const
 {
     return archived;
 }

@@ -168,7 +168,7 @@ public:
      * @return @c true - if file is archive;@n
      * @c false - if not.
      */
-    bool isArchive();
+    bool isArchive() const;
 
     /**
      * @~russian

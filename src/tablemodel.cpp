@@ -344,7 +344,7 @@ void TableModel::onMoveTo(QString basedir, QString pattern)
         if ((*it).isSelected())
         {
             QString newPath = fromTemplateToPath(pattern, (*it));
-            (*it).moveFile(basedir + QDir::separator() + newPath);
+            emit EventMessage((*it).moveFile(basedir + QDir::separator() + newPath));
         }
     }
 }

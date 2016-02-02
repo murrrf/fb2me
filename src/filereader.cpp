@@ -230,6 +230,8 @@ void FileReader::parseFile(QString &filename, FileRecord &record)
             }
         }
     }
+
+    file.close();
 }
 
 int FileReader::unzipFile(QString &filename, QByteArray &file)

@@ -425,6 +425,7 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     result.replace("%N", number);
 
     result.replace("  ", " ");
+    result.replace(QString(2, QDir::separator()), QDir::separator());
 
     if (record.isArchive())
         result += ".fb2.zip";

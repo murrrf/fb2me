@@ -261,6 +261,11 @@ QString FileRecord::moveFile(QString newName)
 {
     newName = getNewName(newName);
 
+    if (!makeDir(newName))
+    {
+        return qApp->tr("Unable to create a directory to place the file %1").arg(newName);
+    }
+
     if (QFile::rename(getFileName(), newName))
     {
         QString result = qApp->tr("File %1 successfully moved to %2").arg(getFileName(), newName);
@@ -318,6 +323,12 @@ QString FileRecord::getNewName(QString fileName)
     }
 
     return fileName;
+}
+
+bool FileRecord::makeDir(QString fileName)
+{
+    QFileInfo file(fileName);
+    return QDir().mkpath(file.absolutePath());
 }
 
 

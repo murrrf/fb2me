@@ -548,6 +548,21 @@ private:
      */
     QString getNewName(QString fileName);
 
+    /**
+     * @~russian
+     * @brief Создание директории для размещения указанного файла.
+     * @param fileName Полный путь к файлу.
+     * @return @c true - если директория успешно создана или уже существует;@n
+     * @c false - если произошла ошибка при создании директории.
+     *
+     * @~english
+     * @brief Create a directory to host the specified file.
+     * @param fileName The full path to the file.
+     * @return @c true - if the directory is successfully created or already exist;@n
+     * @c false - if an error occurred while creating the directory.
+     */
+    bool makeDir(QString fileName);
+
 };
 
 #endif // FILERECORD_H

@@ -282,6 +282,11 @@ QString FileRecord::copyFile(QString newName)
 {
     newName = getNewName(newName);
 
+    if (!makeDir(newName))
+    {
+        return qApp->tr("Unable to create a directory to place the file %1").arg(newName);
+    }
+
     if (QFile::copy(getFileName(), newName))
     {
         QString result = qApp->tr("File %1 successfully copied to %2").arg(getFileName(), newName);
@@ -297,6 +302,11 @@ QString FileRecord::copyFile(QString newName)
 QString FileRecord::renameFile(QString newName)
 {
     newName = getNewName(newName);
+
+    if (!makeDir(newName))
+    {
+        return qApp->tr("Unable to create a directory to place the file %1").arg(newName);
+    }
 
     if (QFile::rename(getFileName(), newName))
     {

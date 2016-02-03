@@ -301,6 +301,8 @@ QString FileRecord::copyFile(QString newName)
 
 QString FileRecord::renameFile(QString newName)
 {
+    // TODO Change this method because we rename file in-place
+
     newName = getNewName(newName);
 
     if (!makeDir(newName))

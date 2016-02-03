@@ -337,7 +337,6 @@ void TableModel::onInvertSelection()
 void TableModel::onMoveTo(QString basedir, QString pattern)
 {
     QVector<FileRecord>::iterator it;
-    cntSelectedFiles = 0;
 
     for (it = Data.begin(); it != Data.end(); it++)
     {
@@ -351,12 +350,32 @@ void TableModel::onMoveTo(QString basedir, QString pattern)
 
 void TableModel::onCopyTo(QString basedir, QString pattern)
 {
+    QVector<FileRecord>::iterator it;
 
+    for (it = Data.begin(); it != Data.end(); it++)
+    {
+        if ((*it).isSelected())
+        {
+            QString newPath = fromTemplateToPath(pattern, (*it));
+            emit EventMessage((*it).copyFile(basedir + QDir::separator() + newPath));
+        }
+    }
 }
 
 void TableModel::onInplaceRename(QString basedir, QString pattern)
 {
     Q_UNUSED(basedir)
+
+    QVector<FileRecord>::iterator it;
+
+    for (it = Data.begin(); it != Data.end(); it++)
+    {
+        if ((*it).isSelected())
+        {
+            QString newPath = fromTemplateToPath(pattern, (*it));
+            emit EventMessage((*it).renameFile(newPath));
+        }
+    }
 }
 
 QString TableModel::getFormattedGenresList(int index) const

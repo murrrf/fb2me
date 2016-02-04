@@ -563,6 +563,44 @@ private:
      */
     bool makeDir(QString fileName);
 
+    /**
+     * @~russian
+     * @brief Внутренний метод форматирования сообщения о результате операции над записью.
+     *
+     * Просто передает текст сообщения дальше, но, возможно, будет изменен в дальнейшем. Добавлен в основном
+     * для единообразия с методом форматирования сообщения об ошибке.
+     * @param message Текст форматируемого сообщения.
+     * @return Отформатированное сообщение.
+     *
+     * @~english
+     * @brief Internal method of formatting of message about result of operation above the record.
+     *
+     * Just sends a text message on, but may be changed in the future.
+     * It added mainly for consistency with the method of formatting error.
+     * @param message Text of message.
+     * @return Formatted message.
+     */
+    QString msgFormat(QString message);
+
+    /**
+     * @~russian
+     * @brief Внутренний метод форматирования сообщения об ошибке во время операции над записью.
+     *
+     * Добавлен в связи с невозможностью указать, какой обработчик сообщений будет вызываться, поскольку
+     * класс записи не обладает сигнал-слотовой системой.
+     * @param message Текст форматируемого сообщения.
+     * @return Отформатированное сообщение.
+     *
+     * @~english
+     * @brief Internal method of formatting error messages during the operation on the recording.
+     *
+     * Added due to the inability to specify a message handler will be invoked,
+     * because the record class does not have the signal-slot system.
+     * @param message Text of message.
+     * @return Formatted message.
+     */
+    QString msgErrorFormat(QString message);
+
 };
 
 #endif // FILERECORD_H

@@ -343,4 +343,14 @@ bool FileRecord::makeDir(QString fileName)
     return QDir().mkpath(file.absolutePath());
 }
 
+QString FileRecord::msgFormat(QString message)
+{
+    return message;
+}
+
+QString FileRecord::msgErrorFormat(QString message)
+{
+    return ("<font color=red>" + message + "</font>");
+}
+
 

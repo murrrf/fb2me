@@ -101,6 +101,17 @@ signals:
 
     /**
      * @~russian
+     * @brief Отсылка сообщения об ошибке в журнал сообщений.
+     * @param msg Текст сообщения.
+     *
+     * @~english
+     * @brief Sending error messages to the message log.
+     * @param msg Message text.
+     */
+    void ErrorMessage(const QString &msg);
+
+    /**
+     * @~russian
      * @brief Добавление новой записи в модель данных.
      * @param record Добавляемая запись.
      *

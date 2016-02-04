@@ -203,6 +203,7 @@ MainWindow::MainWindow(QWidget *parent)
     addTemplatesListToMenu(templates);
 
     connect(mdlData, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
+    connect(mdlData, SIGNAL(ErrorMessage(QString)), this, SLOT(onErrorMessage(QString)));
     connect(mdlData, SIGNAL(SetSelected(int)), this, SLOT(onSetSelected(int)));
 
     connect(actnToolsUncompress, SIGNAL(triggered()), mdlData, SLOT(onUnzipSelected()));
@@ -282,6 +283,7 @@ void MainWindow::setReaderSigSlots(FileReader *rd)
     connect(rd, SIGNAL(finished()), this, SLOT(onUnblockInput()));
     connect(rd, SIGNAL(AppendRecord(FileRecord)), mdlData, SLOT(onAppendRecord(FileRecord)));
     connect(rd, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
+    connect(rd, SIGNAL(ErrorMessage(QString)), this, SLOT(onErrorMessage(QString)));
 
     rd->start();
 }

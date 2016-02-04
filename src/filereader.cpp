@@ -246,7 +246,7 @@ int FileReader::unzipFile(QString &filename, QByteArray &file)
 
     if (mz_zip_reader_get_num_files(&archive) != 1)
     {
-        emit EventMessage(trUtf8("The archive %1 more than one file, or no files in the archive").arg(filename));
+        emit ErrorMessage(trUtf8("The archive %1 more than one file, or no files in the archive").arg(filename));
         return MZ_PARAM_ERROR;
     }
 
@@ -255,7 +255,7 @@ int FileReader::unzipFile(QString &filename, QByteArray &file)
 
     if (status < MZ_OK)
     {
-        emit EventMessage(trUtf8("Error reading the file %1").arg(filename));
+        emit ErrorMessage(trUtf8("Error reading the file %1").arg(filename));
         mz_zip_reader_end(&archive);
         return MZ_PARAM_ERROR;
     }
@@ -265,7 +265,7 @@ int FileReader::unzipFile(QString &filename, QByteArray &file)
 
     if (!p)
     {
-        emit EventMessage(trUtf8("Error extracting file %1").arg(filename));
+        emit ErrorMessage(trUtf8("Error extracting file %1").arg(filename));
         mz_zip_reader_end(&archive);
         return MZ_PARAM_ERROR;
     }

@@ -319,6 +319,12 @@ void MainWindow::onEventMessage(const QString &msg)
     edtLog->append(QString("%1: %2").arg(QDateTime::currentDateTime().toString("hh:mm:ss:zzz"), msg));
 }
 
+void MainWindow::onErrorMessage(const QString &msg)
+{
+    edtLog->append(QString("%1: <font color=red>%2</font>").arg(QDateTime::currentDateTime().toString("hh:mm:ss:zzz"),
+                   msg));
+}
+
 void MainWindow::onBlockInput()
 {
     QApplication::setOverrideCursor(Qt::BusyCursor);

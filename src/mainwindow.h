@@ -370,6 +370,17 @@ public slots:
 
     /**
      * @~russian
+     * @brief Обработчик сообщений об ошибках, направляемых в журнал событий.
+     * @param msg Сообщение.
+     *
+     * @~english
+     * @brief Error message handler sent to the event log.
+     * @param msg Message.
+     */
+    void onErrorMessage(const QString &msg);
+
+    /**
+     * @~russian
      * @brief Обработчик начала длительной операции.
      *
      * Переключает курсор для наглядности.

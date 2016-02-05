@@ -218,14 +218,12 @@ QString FileRecord::zipFile()
     mz_zip_archive archive;
     memset(&archive, 0, sizeof(archive));
     QString archiveName = QString(filename + ".zip");
+
+    archiveName = getNewName(archiveName);
+
     QFileInfo tmp(archiveName);
 
     qint64 oldSize = getSize();
-
-    if (tmp.exists())
-    {
-// TODO Add code for generate new filename if archive already exist
-    }
 
     status = mz_zip_writer_init_file(&archive, archiveName.toStdString().c_str(), 0);
 

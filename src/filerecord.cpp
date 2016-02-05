@@ -172,12 +172,12 @@ QString FileRecord::unzipFile()
 
     if (status < MZ_OK)
     {
-        return (qApp->tr("Cannot open archive %1").arg(filename));
+        return msgErrorFormat(qApp->tr("Cannot open archive %1").arg(filename));
     }
 
     if (mz_zip_reader_get_num_files(&archive) != 1)
     {
-        return (qApp->tr("The archive %1 more than one file, or no files in the archive").arg(filename));
+        return msgErrorFormat(qApp->tr("The archive %1 more than one file, or no files in the archive").arg(filename));
     }
 
     mz_zip_archive_file_stat file_stat;
@@ -186,7 +186,7 @@ QString FileRecord::unzipFile()
     if (status < MZ_OK)
     {
         mz_zip_reader_end(&archive);
-        return (qApp->tr("Error reading the archive %1").arg(filename));
+        return msgErrorFormat(qApp->tr("Error reading the archive %1").arg(filename));
     }
 
     QFileInfo tmp(filename);
@@ -195,7 +195,8 @@ QString FileRecord::unzipFile()
 
     if (status < MZ_OK)
     {
-        return (qApp->tr("Error extracting file %2 from archive %1").arg(filename, QString(file_stat.m_filename)));
+        return msgErrorFormat(qApp->tr("Error extracting file %2 from archive %1").arg(filename,
+                              QString(file_stat.m_filename)));
     }
 
     mz_zip_reader_end(&archive);
@@ -207,8 +208,8 @@ QString FileRecord::unzipFile()
     setIsArchive(false);
     QFile::remove(oldFileName);
 
-    return (qApp->tr("Archive %1 succesfully unzipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
-            QString::number(getSize())));
+    return msgFormat(qApp->tr("Archive %1 succesfully unzipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
+                     QString::number(getSize())));
 }
 
 QString FileRecord::zipFile()
@@ -230,7 +231,7 @@ QString FileRecord::zipFile()
 
     if (status < MZ_OK)
     {
-        return (qApp->tr("Cannot create archive %1").arg(archiveName));
+        return msgErrorFormat(qApp->tr("Cannot create archive %1").arg(archiveName));
     }
 
     status = mz_zip_writer_add_file(&archive, tmp.completeBaseName().toStdString().c_str(), filename.toStdString().c_str(),
@@ -240,7 +241,7 @@ QString FileRecord::zipFile()
     {
         mz_zip_writer_finalize_archive(&archive);
         mz_zip_writer_end(&archive);
-        return (qApp->tr("Cannot compress file %2  to archive %1").arg(archiveName, filename));
+        return msgErrorFormat(qApp->tr("Cannot compress file %2  to archive %1").arg(archiveName, filename));
     }
 
     mz_zip_writer_finalize_archive(&archive);
@@ -253,8 +254,8 @@ QString FileRecord::zipFile()
     setIsArchive(true);
     QFile::remove(oldFileName);
 
-    return (qApp->tr("File %1 successfully zipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
-            QString::number(getSize())));
+    return msgFormat(qApp->tr("File %1 successfully zipped (%2 -> %3)").arg(oldFileName, QString::number(oldSize),
+                     QString::number(getSize())));
 }
 
 QString FileRecord::moveFile(QString newName)
@@ -263,18 +264,18 @@ QString FileRecord::moveFile(QString newName)
 
     if (!makeDir(newName))
     {
-        return qApp->tr("Unable to create a directory to place the file %1").arg(newName);
+        return msgErrorFormat(qApp->tr("Unable to create a directory to place the file %1").arg(newName));
     }
 
     if (QFile::rename(getFileName(), newName))
     {
         QString result = qApp->tr("File %1 successfully moved to %2").arg(getFileName(), newName);
         setFileName(newName);
-        return result;
+        return msgFormat(result);
     }
     else
     {
-        return (qApp->tr("Cannot move file %1 to %2").arg(getFileName(), newName));
+        return msgErrorFormat(qApp->tr("Cannot move file %1 to %2").arg(getFileName(), newName));
     }
 }
 
@@ -284,18 +285,18 @@ QString FileRecord::copyFile(QString newName)
 
     if (!makeDir(newName))
     {
-        return qApp->tr("Unable to create a directory to place the file %1").arg(newName);
+        return msgErrorFormat(qApp->tr("Unable to create a directory to place the file %1").arg(newName));
     }
 
     if (QFile::copy(getFileName(), newName))
     {
         QString result = qApp->tr("File %1 successfully copied to %2").arg(getFileName(), newName);
         setFileName(newName);
-        return result;
+        return msgFormat(result);
     }
     else
     {
-        return (qApp->tr("Cannot copy file %1 to %2").arg(getFileName(), newName));
+        return msgErrorFormat(qApp->tr("Cannot copy file %1 to %2").arg(getFileName(), newName));
     }
 }
 
@@ -307,18 +308,18 @@ QString FileRecord::renameFile(QString newName)
 
     if (!makeDir(newName))
     {
-        return qApp->tr("Unable to create a directory to place the file %1").arg(newName);
+        return msgErrorFormat(qApp->tr("Unable to create a directory to place the file %1").arg(newName));
     }
 
     if (QFile::rename(getFileName(), newName))
     {
         QString result = qApp->tr("File %1 successfully renamed to %2").arg(getFileName(), newName);
         setFileName(newName);
-        return result;
+        return msgFormat(result);
     }
     else
     {
-        return (qApp->tr("Cannot rename file %1 to %2").arg(getFileName(), newName));
+        return msgErrorFormat(qApp->tr("Cannot rename file %1 to %2").arg(getFileName(), newName));
     }
 }
 

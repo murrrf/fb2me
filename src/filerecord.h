@@ -580,7 +580,7 @@ private:
      * @param message Text of message.
      * @return Formatted message.
      */
-    QString msgFormat(QString message);
+    QString msgResult(QString message);
 
     /**
      * @~russian
@@ -599,7 +599,7 @@ private:
      * @param message Text of message.
      * @return Formatted message.
      */
-    QString msgErrorFormat(QString message);
+    QString msgError(QString message);
 
 };
 

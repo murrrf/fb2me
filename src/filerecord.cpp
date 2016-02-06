@@ -196,7 +196,7 @@ QString FileRecord::unzipFile()
     if (status < MZ_OK)
     {
         return msgError(qApp->tr("Error extracting file %2 from archive %1").arg(filename,
-                              QString(file_stat.m_filename)));
+                        QString(file_stat.m_filename)));
     }
 
     mz_zip_reader_end(&archive);
@@ -300,8 +300,6 @@ QString FileRecord::copyFile(QString newName)
 
 QString FileRecord::renameFile(QString newName)
 {
-    // TODO Change this method because we rename file in-place
-
     newName = getNewName(newName);
 
     if (!makeDir(newName))

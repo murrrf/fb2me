@@ -372,7 +372,8 @@ void TableModel::onInplaceRename(QString basedir, QString pattern)
     {
         if ((*it).isSelected())
         {
-            QString newPath = fromTemplateToPath(pattern, (*it));
+            QString oldPath = QFileInfo((*it).getFileName()).absolutePath();
+            QString newPath = oldPath + QDir::separator() + fromTemplateToPath(pattern, (*it));
             emit EventMessage((*it).renameFile(newPath));
         }
     }

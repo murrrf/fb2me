@@ -107,6 +107,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     menuFile->addSeparator();
 
+    actnFileClearFileList = new QAction(trUtf8("Clear list of files"), this);
+    connect(actnFileClearFileList, SIGNAL(triggered()), this, SLOT(onFileClearFileList()));
+    menuFile->addAction(actnFileClearFileList);
+
+    menuFile->addSeparator();
+
     actnFileExit = new QAction(QIcon::fromTheme("application-exit", QIcon(":/img/application-exit.png")),
                                trUtf8("Exit"), this);
     connect(actnFileExit, SIGNAL(triggered()), this, SLOT(onFileExit()));
@@ -262,6 +268,7 @@ MainWindow::~MainWindow()
     delete actnSelectInvertSelection;
     delete actnSelectOnlyCompressed;
     delete actnSelectAllFiles;
+    delete actnFileClearFileList;
     delete actnFileAppendDirRecursively;
     delete actnFileAppendDir;
     delete actnFileOpen;
@@ -409,6 +416,11 @@ void MainWindow::onFileAppendDirRecursively()
                   QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     FileReader *reader = new FileReader(dir, true);
     setReaderSigSlots(reader);
+}
+
+void MainWindow::onFileClearFileList()
+{
+
 }
 
 void MainWindow::onFileExit()

@@ -192,6 +192,15 @@ private:
 
     /**
      * @~russian
+     * @brief Действие «Очистить список файлов» меню «Файл».
+     *
+     * @~english
+     * @brief Clear file list action.
+     */
+    QAction *actnFileClearFileList;
+
+    /**
+     * @~russian
      * @brief Действие «Выход» меню «Файл».
      *
      * @~english
@@ -444,6 +453,15 @@ private slots:
      * @brief Append Directory Recursively action handler.
      */
     void onFileAppendDirRecursively();
+
+    /**
+     * @~russian
+     * @brief Обработчик действия «Очистить список файлов».
+     *
+     * @~english
+     * @brief Clear file list action handler.
+     */
+    void onFileClearFileList();
 
     /**
      * @~russian

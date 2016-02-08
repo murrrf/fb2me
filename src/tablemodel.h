@@ -404,6 +404,15 @@ public slots:
      */
     void onInplaceRename(QString basedir, QString pattern);
 
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Очистить список файлов» меню «Файл».
+     *
+     * @~english
+     * @brief Clear file list action handler.
+     */
+    void onClearList();
+
 private:
     /**
      * @~russian

@@ -379,6 +379,13 @@ void TableModel::onInplaceRename(QString basedir, QString pattern)
     }
 }
 
+void TableModel::onClearList()
+{
+    emit onBeginReading();
+    Data.clear();
+    emit onEndReading();
+}
+
 QString TableModel::getFormattedGenresList(int index) const
 {
     QStringList res;

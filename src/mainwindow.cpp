@@ -420,7 +420,7 @@ void MainWindow::onFileAppendDirRecursively()
 
 void MainWindow::onFileClearFileList()
 {
-
+    emit mdlData->onClearList();
 }
 
 void MainWindow::onFileExit()

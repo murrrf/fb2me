@@ -485,7 +485,7 @@ void MainWindow::onHelpAbout()
                    trUtf8("Fallback icons from the <a href=%1>Oxygen</a> icon theme").arg("\"https://techbase.kde.org/Projects/Oxygen\""),
                    trUtf8("Used under the <a href=%1>LGPL 3</a> license").arg("\"http://www.gnu.org/licenses/lgpl.html\""));
     message += record.arg(
-                   trUtf8("ZIP archive support from <a href=%1>miniz.c</a> library").arg("\"https://code.google.com/p/miniz\""),
+                   trUtf8("ZIP archive support from <a href=%1>miniz.c</a> library").arg("\"https://github.com/richgel999/miniz\""),
                    trUtf8("Released as <a href=%1>public domain</a>").arg("\"http://unlicense.org\""));
 
     QMessageBox::about(this, caption, message);

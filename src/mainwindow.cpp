@@ -479,7 +479,7 @@ void MainWindow::onHelpAbout()
                                  trUtf8("Version"), QApplication::applicationVersion(),
                                  trUtf8("A metadata editor for FictionBook files"));
     message += record.arg(
-                   trUtf8("Copyright &copy; %1 Veter").arg("2015"),
+                   trUtf8("Copyright &copy; %1 Veter").arg("2015, 2016"),
                    trUtf8("Released under the <a href=%1>GPL 3</a> license").arg("\"http://www.gnu.org/licenses/gpl.html\""));
     message += record.arg(
                    trUtf8("Fallback icons from the <a href=%1>Oxygen</a> icon theme").arg("\"https://techbase.kde.org/Projects/Oxygen\""),

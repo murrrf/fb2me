@@ -196,6 +196,17 @@ public:
      */
     FileRecord getRecord(const QModelIndex &index);
 
+    /**
+     * @~russian
+     * @brief Получить количество выбранных записей.
+     * @return Количество записей.
+     *
+     * @~english
+     * @brief Get the number of selected records.
+     * @return Number of records.
+     */
+    int getSelectedRecordsCount();
+
 signals:
 
     /**
@@ -469,7 +480,7 @@ private:
      * @~english
      * @brief Number of marked records.
      */
-    int cntSelectedFiles;
+    int cntSelectedRecords;
 
     /**
      * @~russian

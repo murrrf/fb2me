@@ -33,7 +33,7 @@
 
 TableModel::TableModel(QObject *parent): QAbstractTableModel(parent)
 {
-    cntSelectedFiles = 0;
+    cntSelectedRecords = 0;
     connect(this, SIGNAL(MoveTo(QString, QString)), this, SLOT(onMoveTo(QString, QString)));
     connect(this, SIGNAL(CopyTo(QString, QString)), this, SLOT(onCopyTo(QString, QString)));
     connect(this, SIGNAL(InplaceRename(QString, QString)), this, SLOT(onInplaceRename(QString, QString)));
@@ -188,15 +188,15 @@ bool TableModel::setData(const QModelIndex &index, const QVariant &value, int ro
         if (static_cast<Qt::CheckState>(value.toInt()) == Qt::Checked)
         {
             Data[index.row()].setSelected(true);
-            cntSelectedFiles++;
-            emit SetSelected(cntSelectedFiles);
+            cntSelectedRecords++;
+            emit SetSelected(cntSelectedRecords);
             return true;
         }
         else
         {
             Data[index.row()].setSelected(false);
-            cntSelectedFiles--;
-            emit SetSelected(cntSelectedFiles);
+            cntSelectedRecords--;
+            emit SetSelected(cntSelectedRecords);
             return true;
         }
     }
@@ -207,6 +207,11 @@ bool TableModel::setData(const QModelIndex &index, const QVariant &value, int ro
 FileRecord TableModel::getRecord(const QModelIndex &index)
 {
     return Data.value(index.row());
+}
+
+int TableModel::getSelectedRecordsCount()
+{
+    return cntSelectedRecords;
 }
 
 void TableModel::onBeginReading()
@@ -305,33 +310,33 @@ void TableModel::onSelectAll()
 void TableModel::onSelectZip()
 {
     QVector<FileRecord>::iterator it;
-    cntSelectedFiles = 0;
+    cntSelectedRecords = 0;
 
     for (it = Data.begin(); it != Data.end(); it++)
     {
         (*it).setSelected((*it).isArchive());
 
         if ((*it).isSelected())
-            cntSelectedFiles++;
+            cntSelectedRecords++;
     }
 
-    emit SetSelected(cntSelectedFiles);
+    emit SetSelected(cntSelectedRecords);
 }
 
 void TableModel::onInvertSelection()
 {
     QVector<FileRecord>::iterator it;
-    cntSelectedFiles = 0;
+    cntSelectedRecords = 0;
 
     for (it = Data.begin(); it != Data.end(); it++)
     {
         (*it).setSelected(!(*it).isSelected());
 
         if ((*it).isSelected())
-            cntSelectedFiles++;
+            cntSelectedRecords++;
     }
 
-    emit SetSelected(cntSelectedFiles);
+    emit SetSelected(cntSelectedRecords);
 }
 
 void TableModel::onMoveTo(QString basedir, QString pattern)

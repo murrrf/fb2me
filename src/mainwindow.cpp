@@ -321,6 +321,8 @@ void MainWindow::addTemplatesListToMenu(const QStringList &list)
         connect(rename, SIGNAL(triggered()), this, SLOT(onToolsInplaceRename()));
         subToolsInplaceRename->addAction(rename);
     }
+
+    onSetSelected(mdlData->getSelectedRecordsCount());
 }
 
 void MainWindow::onEventMessage(const QString &msg)

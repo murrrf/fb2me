@@ -53,3 +53,14 @@ void RecordEditor::updateUI()
 {
 
 }
+
+
+AuthorDisplay::AuthorDisplay()
+{
+
+}
+
+AuthorDisplay::~AuthorDisplay()
+{
+
+}

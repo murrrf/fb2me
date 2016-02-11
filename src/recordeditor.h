@@ -132,4 +132,88 @@ public slots:
 
 };
 
+/**
+ * @~russian
+ * @brief Вспомогательный класс для удобного отображения информации об авторе.
+ *
+ * @~english
+ * @brief Helper class for convenient display of information about the author.
+ */
+class AuthorDisplay
+{
+public:
+    /**
+     * @~russian
+     * @brief Конструктор класса отображения информации об авторе.
+     *
+     * @~english
+     * @brief Constructor of class of display information about the author.
+     */
+    AuthorDisplay();
+
+    /**
+     * @~russian
+     * @brief Деструктор класса.
+     *
+     * @~english
+     * @brief Destructor of class.
+     */
+    ~AuthorDisplay();
+
+private:
+    /**
+     * @~russian
+     * @brief Поле «Имя автора».
+     *
+     * @~english
+     * @brief First name of author field.
+     */
+    QLineEdit *edtFirstName;
+
+    /**
+     * @~russian
+     * @brief Поле «Отчество автора».
+     *
+     * @~english
+     * @brief Middle name of author field.
+     */
+    QLineEdit *edtMiddleName;
+
+    /**
+     * @~russian
+     * @brief Поле «Фамилия автора».
+     *
+     * @~english
+     * @brief Last name of author field.
+     */
+    QLineEdit *edtLastName;
+
+    /**
+     * @~russian
+     * @brief Кнопка «Передвинуть автора вверх».
+     *
+     * @~english
+     * @brief «Move up the author» button.
+     */
+    QPushButton *btnMoveToTop;
+
+    /**
+     * @~russian
+     * @brief Кнопка «Передвинуть автора вниз».
+     *
+     * @~english
+     * @brief «Move down the author» button.
+     */
+    QPushButton *btnMoveToBottom;
+
+    /**
+     * @~russian
+     * @brief Кнопка «Удалить автора».
+     *
+     * @~english
+     * @brief «Delete this author» button.
+     */
+    QPushButton *btnDeleteAuthor;
+};
+
 #endif // RECORDEDITOR_H

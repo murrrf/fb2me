@@ -34,8 +34,11 @@
 // Forward class declarations
 class QVBoxLayout;
 class QDialogButtonBox;
+class QLineEdit;
+class QPushButton;
 
 class FileRecord;
+class AuthorDisplay;
 
 /**
  * @~russian

@@ -21,6 +21,10 @@
 
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QGroupBox>
+#include <QGridLayout>
 
 RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     QDialog(parent)
@@ -54,13 +58,17 @@ void RecordEditor::updateUI()
 
 }
 
+//==============================================================================
+// class AuthorDisplay
+//==============================================================================
 
-AuthorDisplay::AuthorDisplay()
+AuthorDisplay::AuthorDisplay(Person *author, int index)
 {
+    gbxAuthor = new QGroupBox();
 
 }
 
 AuthorDisplay::~AuthorDisplay()
 {
-
+    delete gbxAuthor;
 }

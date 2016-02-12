@@ -36,8 +36,11 @@ class QVBoxLayout;
 class QDialogButtonBox;
 class QLineEdit;
 class QPushButton;
+class QGroupBox;
 
 class FileRecord;
+class Person;
+
 class AuthorDisplay;
 
 /**
@@ -145,11 +148,15 @@ public:
     /**
      * @~russian
      * @brief Конструктор класса отображения информации об авторе.
+     * @param author Запись об авторе.
+     * @param index Номер записи об авторе в списке авторов.
      *
      * @~english
      * @brief Constructor of class of display information about the author.
+     * @param author Record about author.
+     * @param index Number of entries about the author in the author list.
      */
-    AuthorDisplay();
+    AuthorDisplay(Person *author, int index);
 
     /**
      * @~russian
@@ -161,6 +168,15 @@ public:
     ~AuthorDisplay();
 
 private:
+    /**
+     * @~russian
+     * @brief Ограничивающая рамка.
+     *
+     * @~english
+     * @brief Border frame.
+     */
+    QGroupBox *gbxAuthor;
+
     /**
      * @~russian
      * @brief Поле «Имя автора».
@@ -195,7 +211,7 @@ private:
      * @~english
      * @brief «Move up the author» button.
      */
-    QPushButton *btnMoveToTop;
+    QPushButton *btnMoveUp;
 
     /**
      * @~russian
@@ -204,7 +220,7 @@ private:
      * @~english
      * @brief «Move down the author» button.
      */
-    QPushButton *btnMoveToBottom;
+    QPushButton *btnMoveDown;
 
     /**
      * @~russian
@@ -214,6 +230,11 @@ private:
      * @brief «Delete this author» button.
      */
     QPushButton *btnDeleteAuthor;
+
+signals:
+    void MoveAuthorUp();
+    void MoveAuthorDown();
+    void DeleteAuthor();
 };
 
 #endif // RECORDEDITOR_H

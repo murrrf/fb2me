@@ -18,6 +18,7 @@
  ***********************************************************************/
 
 #include "recordeditor.h"
+#include "person.h"
 
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
@@ -66,9 +67,45 @@ AuthorDisplay::AuthorDisplay(Person *author, int index)
 {
     gbxAuthor = new QGroupBox();
 
+    QGridLayout *tmpGrid = new QGridLayout();
+
+    edtFirstName = new QLineEdit();
+    edtFirstName->setReadOnly(true); // While there is no XML editing, data about the author only display
+    edtFirstName->setText(author->getFirstName());
+    tmpGrid->addWidget(edtFirstName, 0, 0);
+
+    edtMiddleName = new QLineEdit();
+    edtMiddleName->setReadOnly(true);
+    edtMiddleName->setText(author->getMiddleName());
+    tmpGrid->addWidget(edtMiddleName, 1, 0);
+
+    edtLastName = new QLineEdit();
+    edtLastName->setReadOnly(true);
+    edtLastName->setText(author->getLastName());
+    tmpGrid->addWidget(edtLastName, 2, 0);
+
+    btnMoveDown = new QPushButton();
+    btnMoveDown->setIcon(QIcon::fromTheme("go-down", QIcon(":/img/go-down.png")));
+    tmpGrid->addWidget(btnMoveDown, 0, 1);
+
+    btnMoveUp = new QPushButton();
+    btnMoveUp->setIcon(QIcon::fromTheme("go-up", QIcon(":/img/go-up.png")));
+    tmpGrid->addWidget(btnMoveUp, 1, 1);
+
+    btnDeleteAuthor = new QPushButton();
+    btnDeleteAuthor->setIcon(QIcon::fromTheme("edit-delete", QIcon(":/img/edit-delete.png")));
+    tmpGrid->addWidget(btnDeleteAuthor, 2, 1);
+
+    gbxAuthor->setLayout(tmpGrid);
 }
 
 AuthorDisplay::~AuthorDisplay()
 {
+    delete btnDeleteAuthor;
+    delete btnMoveUp;
+    delete btnMoveDown;
+    delete edtLastName;
+    delete edtMiddleName;
+    delete edtFirstName;
     delete gbxAuthor;
 }

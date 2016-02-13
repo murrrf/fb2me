@@ -233,8 +233,31 @@ private:
     QPushButton *btnDeleteAuthor;
 
 signals:
+    /**
+     * @~russian
+     * @brief Сигнал «Передвинуть автора вверх».
+     *
+     * @~english
+     * @brief «Move up the author» signal.
+     */
     void MoveAuthorUp();
+
+    /**
+     * @~russian
+     * @brief Сигнал «Передвинуть автора вниз».
+     *
+     * @~english
+     * @brief «Move down the author» signal.
+     */
     void MoveAuthorDown();
+
+    /**
+     * @~russian
+     * @brief Сигнал «Удалить автора».
+     *
+     * @~english
+     * @brief «Delete this author» signal.
+     */
     void DeleteAuthor();
 };
 

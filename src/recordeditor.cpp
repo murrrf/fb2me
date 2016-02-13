@@ -63,7 +63,7 @@ void RecordEditor::updateUI()
 // class AuthorDisplay
 //==============================================================================
 
-AuthorDisplay::AuthorDisplay(Person *author, int index)
+AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent)
 {
     gbxAuthor = new QGroupBox();
 
@@ -86,14 +86,17 @@ AuthorDisplay::AuthorDisplay(Person *author, int index)
 
     btnMoveDown = new QPushButton();
     btnMoveDown->setIcon(QIcon::fromTheme("go-down", QIcon(":/img/go-down.png")));
+    connect(btnMoveDown, SIGNAL(clicked()), this, SIGNAL(MoveAuthorDown()));
     tmpGrid->addWidget(btnMoveDown, 0, 1);
 
     btnMoveUp = new QPushButton();
     btnMoveUp->setIcon(QIcon::fromTheme("go-up", QIcon(":/img/go-up.png")));
+    connect(btnMoveUp, SIGNAL(clicked()), this, SIGNAL(MoveAuthorUp()));
     tmpGrid->addWidget(btnMoveUp, 1, 1);
 
     btnDeleteAuthor = new QPushButton();
     btnDeleteAuthor->setIcon(QIcon::fromTheme("edit-delete", QIcon(":/img/edit-delete.png")));
+    connect(btnDeleteAuthor, SIGNAL(clicked()), this, SIGNAL(DeleteAuthor()));
     tmpGrid->addWidget(btnDeleteAuthor, 2, 1);
 
     gbxAuthor->setLayout(tmpGrid);

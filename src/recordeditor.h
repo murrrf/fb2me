@@ -142,8 +142,9 @@ public slots:
  * @~english
  * @brief Helper class for convenient display of information about the author.
  */
-class AuthorDisplay
+class AuthorDisplay : public QWidget
 {
+    Q_OBJECT
 public:
     /**
      * @~russian
@@ -156,7 +157,7 @@ public:
      * @param author Record about author.
      * @param index Number of entries about the author in the author list.
      */
-    AuthorDisplay(Person *author, int index);
+    explicit AuthorDisplay(Person *author, int index, QWidget *parent = 0);
 
     /**
      * @~russian
@@ -165,7 +166,7 @@ public:
      * @~english
      * @brief Destructor of class.
      */
-    ~AuthorDisplay();
+    virtual ~AuthorDisplay();
 
 private:
     /**

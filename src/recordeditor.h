@@ -34,6 +34,7 @@
 // Forward class declarations
 class QVBoxLayout;
 class QDialogButtonBox;
+class QLabel;
 class QLineEdit;
 class QPushButton;
 class QGroupBox;
@@ -115,6 +116,24 @@ private:
      * @brief Edited record.
      */
     FileRecord *record;
+
+    /**
+     * @~russian
+     * @brief Метка поля отображения названия книги.
+     *
+     * @~english
+     * @brief Label of field display the title of the book.
+     */
+    QLabel *lblBookTitle;
+
+    /**
+     * @~russian
+     * @brief Поле отображения названия книги.
+     *
+     * @~english
+     * @brief Field display the title of the book.
+     */
+    QLineEdit *edtBookTitle;
 
     /**
      * @~russian

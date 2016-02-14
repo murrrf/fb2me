@@ -18,10 +18,12 @@
  ***********************************************************************/
 
 #include "recordeditor.h"
+#include "filerecord.h"
 #include "person.h"
 
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
+#include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QGroupBox>
@@ -35,8 +37,12 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     connect(boxButtons, SIGNAL(rejected()), this, SLOT(reject()));
 
     boxMain = new QVBoxLayout();
-    boxMain->addWidget(boxButtons);
     this->setLayout(boxMain);
+
+    lblBookTitle = new QLabel(trUtf8("Book title"));
+
+    edtBookTitle = new QLineEdit();
+    edtBookTitle->setReadOnly(true);
 
     record = rec;
     updateUI();
@@ -56,7 +62,10 @@ void RecordEditor::setData(FileRecord *rec)
 
 void RecordEditor::updateUI()
 {
-
+    boxMain->addWidget(lblBookTitle);
+    edtBookTitle->setText(record->getBookTitle());
+    boxMain->addWidget(edtBookTitle);
+    boxMain->addWidget(boxButtons);
 }
 
 //==============================================================================

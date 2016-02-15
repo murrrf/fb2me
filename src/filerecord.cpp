@@ -141,6 +141,11 @@ QStringList FileRecord::getAuthorList()
     return tmp;
 }
 
+int FileRecord::getAuthorCount()
+{
+    return BookAuthor.count();
+}
+
 void FileRecord::addSequence(QString sequence, int number)
 {
     Sequences.append(qMakePair(sequence, number));

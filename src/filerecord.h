@@ -298,6 +298,17 @@ public:
 
     /**
      * @~russian
+     * @brief Получение количества авторов в списке.
+     * @return Количество авторов.
+     *
+     * @~english
+     * @brief Getting the number of authors in the list.
+     * @return Number of authors.
+     */
+    int getAuthorCount();
+
+    /**
+     * @~russian
      * @brief Добавление серии в список серий.
      * @param sequence Наименование серии.
      * @param number Номер произведения в серии.

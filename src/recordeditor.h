@@ -30,6 +30,7 @@
  */
 
 #include <QDialog>
+#include <QWidget>
 
 // Forward class declarations
 class QVBoxLayout;
@@ -143,6 +144,16 @@ private:
      * @brief Frame of author list.
      */
     QGroupBox *gbxAuthorList;
+    QVBoxLayout *boxAuthorList;
+
+    /**
+     * @~russian
+     * @brief Список авторов.
+     *
+     * @~english
+     * @brief List of authors.
+     */
+    QVector<AuthorDisplay *> authorList;
 
     /**
      * @~russian
@@ -179,11 +190,13 @@ public:
      * @brief Конструктор класса отображения информации об авторе.
      * @param author Запись об авторе.
      * @param index Номер записи об авторе в списке авторов.
+     * @param parent Указатель на родительское окно.
      *
      * @~english
      * @brief Constructor of class of display information about the author.
      * @param author Record about author.
      * @param index Number of entries about the author in the author list.
+     * @param parent Parent window pointer.
      */
     explicit AuthorDisplay(Person *author, int index, QWidget *parent = 0);
 

@@ -45,6 +45,7 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     edtBookTitle->setReadOnly(true);
 
     gbxAuthorList = new QGroupBox(trUtf8("List of authors"));
+    boxAuthorList = new QVBoxLayout();
 
     record = rec;
     updateUI();
@@ -54,6 +55,7 @@ RecordEditor::~RecordEditor()
 {
     delete edtBookTitle;
     delete lblBookTitle;
+    delete boxAuthorList;
     delete gbxAuthorList;
     delete boxButtons;
     delete boxMain;
@@ -67,9 +69,39 @@ void RecordEditor::setData(FileRecord *rec)
 
 void RecordEditor::updateUI()
 {
+    // Remove old UI
+
+    QVector<AuthorDisplay *>::iterator it = authorList.end();
+
+    while (it != authorList.begin())
+    {
+        --it;
+        delete(*it);
+    }
+
+    authorList.clear();
+
+    QLayoutItem *child;
+
+    while ((child = boxMain->takeAt(0)) != 0)
+    {
+    }
+
+    // Make updated UI
+
     boxMain->addWidget(lblBookTitle);
     edtBookTitle->setText(record->getBookTitle());
     boxMain->addWidget(edtBookTitle);
+
+    for (int i = 0; i < record->getAuthorCount(); i++)
+    {
+        Person tmpAuthor = record->getAuthor(i);
+        AuthorDisplay *tmp = new AuthorDisplay(&tmpAuthor, i);
+        boxAuthorList->addWidget(tmp);
+        authorList.append(tmp);
+    }
+
+    gbxAuthorList->setLayout(boxAuthorList);
     boxMain->addWidget(gbxAuthorList);
 
     boxMain->addWidget(boxButtons);
@@ -79,7 +111,8 @@ void RecordEditor::updateUI()
 // class AuthorDisplay
 //==============================================================================
 
-AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent)
+AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
+    QWidget(parent)
 {
     gbxAuthor = new QGroupBox();
 

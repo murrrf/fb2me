@@ -44,12 +44,17 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     edtBookTitle = new QLineEdit();
     edtBookTitle->setReadOnly(true);
 
+    gbxAuthorList = new QGroupBox(trUtf8("List of authors"));
+
     record = rec;
     updateUI();
 }
 
 RecordEditor::~RecordEditor()
 {
+    delete edtBookTitle;
+    delete lblBookTitle;
+    delete gbxAuthorList;
     delete boxButtons;
     delete boxMain;
 }
@@ -65,6 +70,8 @@ void RecordEditor::updateUI()
     boxMain->addWidget(lblBookTitle);
     edtBookTitle->setText(record->getBookTitle());
     boxMain->addWidget(edtBookTitle);
+    boxMain->addWidget(gbxAuthorList);
+
     boxMain->addWidget(boxButtons);
 }
 

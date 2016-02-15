@@ -137,6 +137,15 @@ private:
 
     /**
      * @~russian
+     * @brief Рамка списка авторов.
+     *
+     * @~english
+     * @brief Frame of author list.
+     */
+    QGroupBox *gbxAuthorList;
+
+    /**
+     * @~russian
      * @brief Обновление внешнего вида диалога.
      *
      * Вызывается для перестроения диалога при изменении содержимого редактируемой записи.

@@ -39,6 +39,7 @@ class QLabel;
 class QLineEdit;
 class QPushButton;
 class QGroupBox;
+class QGridLayout;
 
 class FileRecord;
 class Person;
@@ -141,7 +142,7 @@ private:
      * @brief Рамка списка авторов.
      *
      * @~english
-     * @brief Frame of author list.
+     * @brief Frame of author list.Added the display of the book's authors. For some reason it does not work. It is necessary to fix it.
      */
     QGroupBox *gbxAuthorList;
     QVBoxLayout *boxAuthorList;
@@ -218,6 +219,15 @@ private:
      * @brief Border frame.
      */
     QGroupBox *gbxAuthor;
+
+    /**
+     * @~russian
+     * @brief Менеджер размещения элементов в рамке.
+     *
+     * @~english
+     * @brief Layout manager of elements of the frame.
+     */
+    QGridLayout *grdAuthor;
 
     /**
      * @~russian

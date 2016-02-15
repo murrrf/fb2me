@@ -71,39 +71,41 @@ void RecordEditor::updateUI()
 {
     // Remove old UI
 
-    QVector<AuthorDisplay *>::iterator it = authorList.end();
-
-    while (it != authorList.begin())
-    {
-        --it;
-        delete(*it);
-    }
-
-    authorList.clear();
-
-    QLayoutItem *child;
-
-    while ((child = boxMain->takeAt(0)) != 0)
-    {
-    }
+//    QVector<AuthorDisplay *>::iterator it = authorList.end();
+//
+//    while (it != authorList.begin())
+//    {
+//        --it;
+//        delete(*it);
+//    }
+//
+//    authorList.clear();
+//
+//    QLayoutItem *child;
+//
+//    while ((child = boxMain->takeAt(0)) != 0)
+//    {
+//    }
 
     // Make updated UI
 
-    boxMain->addWidget(lblBookTitle);
     edtBookTitle->setText(record->getBookTitle());
-    boxMain->addWidget(edtBookTitle);
+
+    gbxAuthorList->setLayout(boxAuthorList);
 
     for (int i = 0; i < record->getAuthorCount(); i++)
     {
         Person tmpAuthor = record->getAuthor(i);
-        AuthorDisplay *tmp = new AuthorDisplay(&tmpAuthor, i);
+        AuthorDisplay *tmp = new AuthorDisplay(&tmpAuthor, i, gbxAuthorList);
         boxAuthorList->addWidget(tmp);
         authorList.append(tmp);
     }
 
-    gbxAuthorList->setLayout(boxAuthorList);
-    boxMain->addWidget(gbxAuthorList);
+    // Add new UI components to layout
 
+    boxMain->addWidget(lblBookTitle);
+    boxMain->addWidget(edtBookTitle);
+    boxMain->addWidget(gbxAuthorList);
     boxMain->addWidget(boxButtons);
 }
 
@@ -116,42 +118,42 @@ AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
 {
     gbxAuthor = new QGroupBox();
 
-    QGridLayout *tmpGrid = new QGridLayout();
+    grdAuthor = new QGridLayout();
 
     edtFirstName = new QLineEdit();
     edtFirstName->setReadOnly(true); // While there is no XML editing, data about the author only display
     edtFirstName->setText(author->getFirstName());
-    tmpGrid->addWidget(edtFirstName, 0, 0);
+    grdAuthor->addWidget(edtFirstName, 0, 0);
 
     edtMiddleName = new QLineEdit();
     edtMiddleName->setReadOnly(true);
     edtMiddleName->setText(author->getMiddleName());
-    tmpGrid->addWidget(edtMiddleName, 1, 0);
+    grdAuthor->addWidget(edtMiddleName, 1, 0);
 
     edtLastName = new QLineEdit();
     edtLastName->setReadOnly(true);
     edtLastName->setText(author->getLastName());
-    tmpGrid->addWidget(edtLastName, 2, 0);
+    grdAuthor->addWidget(edtLastName, 2, 0);
 
     btnMoveDown = new QPushButton();
     btnMoveDown->setIcon(QIcon::fromTheme("go-down", QIcon(":/img/go-down.png")));
     btnMoveDown->setProperty("index", index);
     connect(btnMoveDown, SIGNAL(clicked()), this, SIGNAL(MoveAuthorDown()));
-    tmpGrid->addWidget(btnMoveDown, 0, 1);
+    grdAuthor->addWidget(btnMoveDown, 0, 1);
 
     btnMoveUp = new QPushButton();
     btnMoveUp->setIcon(QIcon::fromTheme("go-up", QIcon(":/img/go-up.png")));
     btnMoveUp->setProperty("index", index);
     connect(btnMoveUp, SIGNAL(clicked()), this, SIGNAL(MoveAuthorUp()));
-    tmpGrid->addWidget(btnMoveUp, 1, 1);
+    grdAuthor->addWidget(btnMoveUp, 1, 1);
 
     btnDeleteAuthor = new QPushButton();
     btnDeleteAuthor->setIcon(QIcon::fromTheme("edit-delete", QIcon(":/img/edit-delete.png")));
     btnDeleteAuthor->setProperty("index", index);
     connect(btnDeleteAuthor, SIGNAL(clicked()), this, SIGNAL(DeleteAuthor()));
-    tmpGrid->addWidget(btnDeleteAuthor, 2, 1);
+    grdAuthor->addWidget(btnDeleteAuthor, 2, 1);
 
-    gbxAuthor->setLayout(tmpGrid);
+    gbxAuthor->setLayout(grdAuthor);
 }
 
 AuthorDisplay::~AuthorDisplay()
@@ -162,5 +164,6 @@ AuthorDisplay::~AuthorDisplay()
     delete edtLastName;
     delete edtMiddleName;
     delete edtFirstName;
+    delete grdAuthor;
     delete gbxAuthor;
 }

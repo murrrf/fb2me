@@ -81,9 +81,7 @@ void RecordEditor::updateUI()
 //
 //    authorList.clear();
 //
-//    QLayoutItem *child;
-//
-//    while ((child = boxMain->takeAt(0)) != 0)
+//    while ((boxMain->takeAt(0)) != 0)
 //    {
 //    }
 
@@ -98,7 +96,7 @@ void RecordEditor::updateUI()
         Person tmpAuthor = record->getAuthor(i);
         AuthorDisplay *tmp = new AuthorDisplay(&tmpAuthor, i, gbxAuthorList);
         boxAuthorList->addWidget(tmp);
-        authorList.append(tmp);
+//        authorList.append(tmp);
     }
 
     // Add new UI components to layout
@@ -116,6 +114,8 @@ void RecordEditor::updateUI()
 AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
     QWidget(parent)
 {
+    this->setMinimumSize(100,100);
+
     gbxAuthor = new QGroupBox();
 
     grdAuthor = new QGridLayout();
@@ -154,6 +154,9 @@ AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
     grdAuthor->addWidget(btnDeleteAuthor, 2, 1);
 
     gbxAuthor->setLayout(grdAuthor);
+    QVBoxLayout *tmp = new QVBoxLayout();
+    tmp->addWidget(gbxAuthor);
+    this->setLayout(tmp);
 }
 
 AuthorDisplay::~AuthorDisplay()

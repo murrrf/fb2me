@@ -146,17 +146,17 @@ AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
 
     QVBoxLayout *boxRight = new QVBoxLayout();
 
-    btnMoveDown = new QPushButton();
-    btnMoveDown->setIcon(QIcon::fromTheme("go-down", QIcon(":/img/go-down.png")));
-    btnMoveDown->setProperty("index", index);
-    connect(btnMoveDown, SIGNAL(clicked()), this, SIGNAL(MoveAuthorDown()));
-    boxRight->addWidget(btnMoveDown);
-
     btnMoveUp = new QPushButton();
     btnMoveUp->setIcon(QIcon::fromTheme("go-up", QIcon(":/img/go-up.png")));
     btnMoveUp->setProperty("index", index);
     connect(btnMoveUp, SIGNAL(clicked()), this, SIGNAL(MoveAuthorUp()));
     boxRight->addWidget(btnMoveUp);
+
+    btnMoveDown = new QPushButton();
+    btnMoveDown->setIcon(QIcon::fromTheme("go-down", QIcon(":/img/go-down.png")));
+    btnMoveDown->setProperty("index", index);
+    connect(btnMoveDown, SIGNAL(clicked()), this, SIGNAL(MoveAuthorDown()));
+    boxRight->addWidget(btnMoveDown);
 
     btnDeleteAuthor = new QPushButton();
     btnDeleteAuthor->setIcon(QIcon::fromTheme("edit-delete", QIcon(":/img/edit-delete.png")));

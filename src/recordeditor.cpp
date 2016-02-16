@@ -118,42 +118,59 @@ AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
 
     gbxAuthor = new QGroupBox();
 
-    grdAuthor = new QGridLayout();
+    QVBoxLayout *boxLeft = new QVBoxLayout();
+
+    lblFirstName = new QLabel(trUtf8("First name"));
+    boxLeft->addWidget(lblFirstName);
 
     edtFirstName = new QLineEdit();
     edtFirstName->setReadOnly(true); // While there is no XML editing, data about the author only display
     edtFirstName->setText(author->getFirstName());
-    grdAuthor->addWidget(edtFirstName, 0, 0);
+    boxLeft->addWidget(edtFirstName);
+
+    lblMiddleName = new QLabel(trUtf8("Middle name"));
+    boxLeft->addWidget(lblMiddleName);
 
     edtMiddleName = new QLineEdit();
     edtMiddleName->setReadOnly(true);
     edtMiddleName->setText(author->getMiddleName());
-    grdAuthor->addWidget(edtMiddleName, 1, 0);
+    boxLeft->addWidget(edtMiddleName);
+
+    lblLastName = new QLabel(trUtf8("Last name"));
+    boxLeft->addWidget(lblLastName);
 
     edtLastName = new QLineEdit();
     edtLastName->setReadOnly(true);
     edtLastName->setText(author->getLastName());
-    grdAuthor->addWidget(edtLastName, 2, 0);
+    boxLeft->addWidget(edtLastName);
+
+    QVBoxLayout *boxRight = new QVBoxLayout();
 
     btnMoveDown = new QPushButton();
     btnMoveDown->setIcon(QIcon::fromTheme("go-down", QIcon(":/img/go-down.png")));
     btnMoveDown->setProperty("index", index);
     connect(btnMoveDown, SIGNAL(clicked()), this, SIGNAL(MoveAuthorDown()));
-    grdAuthor->addWidget(btnMoveDown, 0, 1);
+    boxRight->addWidget(btnMoveDown);
 
     btnMoveUp = new QPushButton();
     btnMoveUp->setIcon(QIcon::fromTheme("go-up", QIcon(":/img/go-up.png")));
     btnMoveUp->setProperty("index", index);
     connect(btnMoveUp, SIGNAL(clicked()), this, SIGNAL(MoveAuthorUp()));
-    grdAuthor->addWidget(btnMoveUp, 1, 1);
+    boxRight->addWidget(btnMoveUp);
 
     btnDeleteAuthor = new QPushButton();
     btnDeleteAuthor->setIcon(QIcon::fromTheme("edit-delete", QIcon(":/img/edit-delete.png")));
     btnDeleteAuthor->setProperty("index", index);
     connect(btnDeleteAuthor, SIGNAL(clicked()), this, SIGNAL(DeleteAuthor()));
-    grdAuthor->addWidget(btnDeleteAuthor, 2, 1);
+    boxRight->addWidget(btnDeleteAuthor);
 
-    gbxAuthor->setLayout(grdAuthor);
+    boxRight->addStretch();
+
+    QHBoxLayout *boxMain = new QHBoxLayout();
+    boxMain->addLayout(boxLeft);
+    boxMain->addLayout(boxRight);
+
+    gbxAuthor->setLayout(boxMain);
     QVBoxLayout *tmp = new QVBoxLayout();
     tmp->addWidget(gbxAuthor);
     this->setLayout(tmp);
@@ -165,8 +182,10 @@ AuthorDisplay::~AuthorDisplay()
     delete btnMoveUp;
     delete btnMoveDown;
     delete edtLastName;
+    delete lblLastName;
     delete edtMiddleName;
+    delete lblMiddleName;
     delete edtFirstName;
-    delete grdAuthor;
+    delete lblFirstName;
     delete gbxAuthor;
 }

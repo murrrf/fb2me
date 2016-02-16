@@ -222,12 +222,12 @@ private:
 
     /**
      * @~russian
-     * @brief Менеджер размещения элементов в рамке.
+     * @brief Метка поля «Имя автора».
      *
      * @~english
-     * @brief Layout manager of elements of the frame.
+     * @brief Label of first name of author field.
      */
-    QGridLayout *grdAuthor;
+    QLabel *lblFirstName;
 
     /**
      * @~russian
@@ -240,12 +240,30 @@ private:
 
     /**
      * @~russian
+     * @brief Метка поля «Отчество автора».
+     *
+     * @~english
+     * @brief Label of middle name of author field.
+     */
+    QLabel *lblMiddleName;
+
+    /**
+     * @~russian
      * @brief Поле «Отчество автора».
      *
      * @~english
      * @brief Middle name of author field.
      */
     QLineEdit *edtMiddleName;
+
+    /**
+     * @~russian
+     * @brief Метка поля «Фамилия автора».
+     *
+     * @~english
+     * @brief Label of last name of author field.
+     */
+    QLabel *lblLastName;
 
     /**
      * @~russian

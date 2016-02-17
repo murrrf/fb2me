@@ -144,7 +144,11 @@ AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
     edtLastName->setText(author->getLastName());
     boxLeft->addWidget(edtLastName);
 
+    boxLeft->addStretch();
+
     QVBoxLayout *boxRight = new QVBoxLayout();
+
+    boxRight->addWidget(new QLabel());
 
     btnMoveUp = new QPushButton();
     btnMoveUp->setIcon(QIcon::fromTheme("go-up", QIcon(":/img/go-up.png")));

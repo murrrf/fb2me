@@ -29,10 +29,7 @@
  * @brief Module of single metadata record.
  */
 
-#include <QString>
-#include <QVector>
-#include <QPair>
-
+#include "types.h"
 #include "person.h"
 
 /**
@@ -48,25 +45,6 @@ enum Status
     stIncorrectAuthorField, ///< @~russian Поле «Автор» не соответствует стандарту. @~english Non-standard «Author» field.
     stMixedCyrLat ///< @~russian В строке, составленной из имени автора и названия книги, смешаны кириллица и латиница. @~english Mixed cyrillic and latin symbols in author and title.
 };
-
-/**
- * @~russian
- * @brief Псевдоним типа для списка жанров книги.
- *
- * @~english
- * @brief Type definition for genres list of the book.
- */
-typedef QVector<QPair<QString, int> > genre_t;
-
-/**
- * @~russian
- * @brief Псевдоним типа для списка серий книги.
- *
- * @~english
- * @brief Type definition for series list of the book.
- */
-typedef QVector<QPair<QString, int> > sequence_t;
-
 
 /**
  * @~russian

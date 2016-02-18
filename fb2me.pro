@@ -29,7 +29,8 @@ HEADERS  += src/mainwindow.h \
     src/filereader.h \
     src/settingswindow.h \
     src/recordeditor.h \
-    src/consts.h
+    src/consts.h \
+    src/types.h
 
 # 3rd party components
 HEADERS += 3rdparty/miniz.h

@@ -34,6 +34,8 @@
 #include "3rdparty/miniz.h"
 
 #include <QString>
+#include <QVector>
+#include <QPair>
 #include <QStringList>
 #include <QDir>
 #include <QFile>

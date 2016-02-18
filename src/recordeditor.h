@@ -365,6 +365,107 @@ public:
      * @brief Destructor of class.
      */
     virtual ~SeriesDisplay();
+
+private:
+    /**
+     * @~russian
+     * @brief Ограничивающая рамка.
+     *
+     * @~english
+     * @brief Border frame.
+     */
+    QGroupBox *gbxSeries;
+
+    /**
+     * @~russian
+     * @brief Метка поля «Имя серии».
+     *
+     * @~english
+     * @brief Label of series name field.
+     */
+    QLabel *lblSeriesName;
+
+    /**
+     * @~russian
+     * @brief Поле «Имя серии».
+     *
+     * @~english
+     * @brief Series name field.
+     */
+    QLineEdit *edtSeriesName;
+
+    /**
+     * @~russian
+     * @brief Метка поля «Номер в серии».
+     *
+     * @~english
+     * @brief Label of number in the series field.
+     */
+    QLabel *lblSeriesNumber;
+
+    /**
+     * @~russian
+     * @brief Поле «Номер в серии».
+     *
+     * @~english
+     * @brief Number in the series field.
+     */
+    QLineEdit *edtSeriesNumber;
+
+    /**
+     * @~russian
+     * @brief Кнопка «Передвинуть серию вверх».
+     *
+     * @~english
+     * @brief «Move up the series» button.
+     */
+    QPushButton *btnMoveUp;
+
+    /**
+     * @~russian
+     * @brief Кнопка «Передвинуть серию вниз».
+     *
+     * @~english
+     * @brief «Move down the series» button.
+     */
+    QPushButton *btnMoveDown;
+
+    /**
+     * @~russian
+     * @brief Кнопка «Удалить серию».
+     *
+     * @~english
+     * @brief «Delete this series» button.
+     */
+    QPushButton *btnDeleteSeries;
+
+signals:
+    /**
+     * @~russian
+     * @brief Сигнал «Передвинуть серию вверх».
+     *
+     * @~english
+     * @brief «Move up the series»» signal.
+     */
+    void MoveSeriesUp();
+
+    /**
+     * @~russian
+     * @brief Сигнал «Передвинуть серию вниз».
+     *
+     * @~english
+     * @brief «Move down the series»» signal.
+     */
+    void MoveSeriesDown();
+
+    /**
+     * @~russian
+     * @brief Сигнал «Удалить серию».
+     *
+     * @~english
+     * @brief «Delete this series»» signal.
+     */
+    void DeleteSeries();
 };
 
 #endif // RECORDEDITOR_H

@@ -201,10 +201,74 @@ AuthorDisplay::~AuthorDisplay()
 SeriesDisplay::SeriesDisplay(sequence_t *series, int index, QWidget *parent):
     QWidget(parent)
 {
+    this->setMinimumSize(100,100);
 
+    gbxSeries = new QGroupBox();
+
+    QVBoxLayout *boxLeft = new QVBoxLayout();
+
+    lblSeriesName = new QLabel(trUtf8("Name of sequence"));
+    boxLeft->addWidget(lblSeriesName);
+
+    edtSeriesName = new QLineEdit();
+    edtSeriesName->setReadOnly(true); // While there is no XML editing, data about the author only display
+    edtSeriesName->setText(series->at(index).first);
+    boxLeft->addWidget(edtSeriesName);
+
+    lblSeriesNumber = new QLabel(trUtf8("Number of book in sequence"));
+    boxLeft->addWidget(lblSeriesNumber);
+
+    edtSeriesNumber = new QLineEdit();
+    edtSeriesNumber->setReadOnly(true);
+    edtSeriesNumber->setText(QString::number(series->at(index).second));
+    boxLeft->addWidget(edtSeriesNumber);
+
+    boxLeft->addStretch();
+
+    QVBoxLayout *boxRight = new QVBoxLayout();
+
+    boxRight->addWidget(new QLabel());
+
+    btnMoveUp = new QPushButton();
+    btnMoveUp->setIcon(QIcon::fromTheme("go-up", QIcon(":/img/go-up.png")));
+    btnMoveUp->setProperty("index", index);
+    connect(btnMoveUp, SIGNAL(clicked()), this, SIGNAL(MoveAuthorUp()));
+    boxRight->addWidget(btnMoveUp);
+
+    btnMoveDown = new QPushButton();
+    btnMoveDown->setIcon(QIcon::fromTheme("go-down", QIcon(":/img/go-down.png")));
+    btnMoveDown->setProperty("index", index);
+    connect(btnMoveDown, SIGNAL(clicked()), this, SIGNAL(MoveAuthorDown()));
+    boxRight->addWidget(btnMoveDown);
+
+    btnDeleteSeries = new QPushButton();
+    btnDeleteSeries->setIcon(QIcon::fromTheme("edit-delete", QIcon(":/img/edit-delete.png")));
+    btnDeleteSeries->setProperty("index", index);
+    connect(btnDeleteSeries, SIGNAL(clicked()), this, SIGNAL(DeleteSeries()));
+    boxRight->addWidget(btnDeleteSeries);
+
+    boxRight->addStretch();
+
+    QHBoxLayout *boxMain = new QHBoxLayout();
+    boxMain->addLayout(boxLeft);
+    boxMain->addLayout(boxRight);
+
+    gbxSeries->setLayout(boxMain);
+    QVBoxLayout *tmp = new QVBoxLayout();
+    tmp->addWidget(gbxSeries);
+    this->setLayout(tmp);
 }
+
+// TODO Make base class for all helpers
 
 SeriesDisplay::~SeriesDisplay()
 {
-
+    delete btnDeleteSeries;
+    delete btnMoveDown;
+    delete btnMoveUp;
+    delete edtSeriesNumber;
+    delete lblSeriesNumber;
+    delete edtSeriesName;
+    delete lblSeriesName;
+    delete gbxSeries;
 }

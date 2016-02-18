@@ -29,6 +29,8 @@
  * @brief The module of the record editor window.
  */
 
+#include "types.h"
+
 #include <QDialog>
 #include <QWidget>
 
@@ -328,6 +330,41 @@ signals:
      * @brief «Delete this author» signal.
      */
     void DeleteAuthor();
+};
+
+/**
+ * @~russian
+ * @brief Вспомогательный класс для удобного отображения информации о книжной серии.
+ *
+ * @~english
+ * @brief Helper class for convenient display of information about the book series.
+ */class SeriesDisplay : public QWidget
+{
+    Q_OBJECT
+public:
+    /**
+     * @~russian
+     * @brief Конструктор класса отображения информации о книжной серии.
+     * @param series Запись о книжной серии.
+     * @param index Номер записи о книжной серии в списке серий.
+     * @param parent Указатель на родительское окно.
+     *
+     * @~english
+     * @brief Constructor of class of display information about the book series.
+     * @param author Record about the book series.
+     * @param index Number of entries about the series in the series list.
+     * @param parent Parent window pointer.
+     */
+    SeriesDisplay(sequence_t *series, int index, QWidget *parent=0);
+
+    /**
+     * @~russian
+     * @brief Деструктор класса.
+     *
+     * @~english
+     * @brief Destructor of class.
+     */
+    virtual ~SeriesDisplay();
 };
 
 #endif // RECORDEDITOR_H

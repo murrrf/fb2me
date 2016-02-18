@@ -193,3 +193,18 @@ AuthorDisplay::~AuthorDisplay()
     delete lblFirstName;
     delete gbxAuthor;
 }
+
+//==============================================================================
+// class SeriesDisplay
+//==============================================================================
+
+SeriesDisplay::SeriesDisplay(sequence_t *series, int index, QWidget *parent):
+    QWidget(parent)
+{
+
+}
+
+SeriesDisplay::~SeriesDisplay()
+{
+
+}

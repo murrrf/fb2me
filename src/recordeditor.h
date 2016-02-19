@@ -144,7 +144,7 @@ private:
      * @brief Рамка списка авторов.
      *
      * @~english
-     * @brief Frame of author list
+     * @brief Frame of author list.
      */
     QGroupBox *gbxAuthorList;
 
@@ -159,12 +159,21 @@ private:
 
     /**
      * @~russian
-     * @brief Список авторов.
+     * @brief Рамка списка книжных серий.
      *
      * @~english
-     * @brief List of authors.
+     * @brief Frame of book series list.
      */
-    QVector<AuthorDisplay *> authorList;
+    QGroupBox *gbxSeriesList;
+
+    /**
+     * @~russian
+     * @brief Менеджер размещения списка книжных серий.
+     *
+     * @~english
+     * @brief Layout manager of book series list.
+     */
+    QVBoxLayout *boxSeriesList;
 
     /**
      * @~russian

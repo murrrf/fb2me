@@ -144,9 +144,17 @@ private:
      * @brief Рамка списка авторов.
      *
      * @~english
-     * @brief Frame of author list.Added the display of the book's authors. For some reason it does not work. It is necessary to fix it.
+     * @brief Frame of author list
      */
     QGroupBox *gbxAuthorList;
+
+    /**
+     * @~russian
+     * @brief Менеджер размещения списка авторов.
+     *
+     * @~english
+     * @brief Layout manager of author list.
+     */
     QVBoxLayout *boxAuthorList;
 
     /**

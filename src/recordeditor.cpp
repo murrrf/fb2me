@@ -47,6 +47,9 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     gbxAuthorList = new QGroupBox(trUtf8("List of authors"));
     boxAuthorList = new QVBoxLayout();
 
+    gbxSeriesList = new QGroupBox(trUtf8("List of series"));
+    boxSeriesList = new QVBoxLayout();
+
     record = rec;
     updateUI();
 }
@@ -55,6 +58,8 @@ RecordEditor::~RecordEditor()
 {
     delete edtBookTitle;
     delete lblBookTitle;
+    delete boxSeriesList;
+    delete gbxSeriesList;
     delete boxAuthorList;
     delete gbxAuthorList;
     delete boxButtons;
@@ -99,11 +104,22 @@ void RecordEditor::updateUI()
 //        authorList.append(tmp);
     }
 
+
+    gbxSeriesList->setLayout(boxSeriesList);
+
+    for (int i = 0; i < record->getSequenceList().size(); i++)
+    {
+        sequence_t tmpSequence = record->getSequenceList();
+        SeriesDisplay *tmp = new SeriesDisplay(&tmpSequence, i, gbxSeriesList);
+        boxSeriesList->addWidget(tmp);
+    }
+
     // Add new UI components to layout
 
     boxMain->addWidget(lblBookTitle);
     boxMain->addWidget(edtBookTitle);
     boxMain->addWidget(gbxAuthorList);
+    boxMain->addWidget(gbxSeriesList);
     boxMain->addWidget(boxButtons);
 }
 

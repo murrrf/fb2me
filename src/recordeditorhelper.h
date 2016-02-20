@@ -20,13 +20,45 @@
 #ifndef RECORDEDITORHELPER_H
 #define RECORDEDITORHELPER_H
 
+/**
+ * @file
+ * @~russian
+ * @brief Модуль базового класса вспомогательных классов, использующихся в окне редактирования записи о файле.
+ *
+ * @~english
+ * @brief Module of base class of helper classes used in the window of the editing of recording file.
+ */
+
 #include <QWidget>
 
-class RecordEditorHelper : public QWidget
+/**
+ * @~russian
+ * @brief Базовый класс вспомогательных классов, использующихся в окне редактирования записи о файле.
+ *
+ * @~english
+ * @brief Base class of helper classes used in the window of the editing of recording file.
+ */class RecordEditorHelper : public QWidget
 {
     Q_OBJECT
 public:
+    /**
+     * @~russian
+     * @brief Конструктор класса.
+     * @param parent Указатель на родительское окно.
+     *
+     * @~english
+     * @brief Class constructor.
+     * @param parent Parent window pointer.
+     */
     explicit RecordEditorHelper(QWidget *parent = 0);
+    /**
+     * @~russian
+     * @brief Деструктор класса.
+     *
+     * @~english
+     * @brief Class destructor.
+     */
+    ~RecordEditorHelper();
 
 signals:
 

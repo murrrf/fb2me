@@ -23,3 +23,8 @@ RecordEditorHelper::RecordEditorHelper(QWidget *parent) :
     QWidget(parent)
 {
 }
+
+RecordEditorHelper::~RecordEditorHelper()
+{
+
+}

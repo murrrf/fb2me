@@ -61,6 +61,32 @@ public:
     ~RecordEditorHelper();
 
 signals:
+    /**
+     * @~russian
+     * @brief Сигнал «Передвинуть вверх».
+     *
+     * @~english
+     * @brief «Move up» signal.
+     */
+    void MoveUp();
+
+    /**
+     * @~russian
+     * @brief Сигнал «Передвинуть вниз».
+     *
+     * @~english
+     * @brief «Move down» signal.
+     */
+    void MoveDown();
+
+    /**
+     * @~russian
+     * @brief Сигнал «Удалить».
+     *
+     * @~english
+     * @brief «Delete» signal.
+     */
+    void Delete();
 
 public slots:
 

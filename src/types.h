@@ -20,6 +20,15 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+/**
+ * @file
+ * @~russian
+ * @brief Файл для размещения определений типов, используемых более чем в одном месте.
+ *
+ * @~english
+ * @brief File to accommodate type definitions used in more than one place.
+ */
+
 #include <QString>
 #include <QVector>
 #include <QPair>

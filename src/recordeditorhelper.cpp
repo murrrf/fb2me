@@ -20,7 +20,7 @@
 #include "recordeditorhelper.h"
 
 RecordEditorHelper::RecordEditorHelper(QWidget *parent) :
-    QWidget(parent)
+    QGroupBox(parent)
 {
 }
 

@@ -29,7 +29,13 @@
  * @brief Module of base class of helper classes used in the window of the editing of recording file.
  */
 
-#include <QWidget>
+#include <QGroupBox>
+
+// Forward class declarations
+class QVBoxLayout;
+class QHBoxLayout;
+class QPushButton;
+class QGroupBox;
 
 /**
  * @~russian
@@ -37,7 +43,7 @@
  *
  * @~english
  * @brief Base class of helper classes used in the window of the editing of recording file.
- */class RecordEditorHelper : public QWidget
+ */class RecordEditorHelper : public QGroupBox
 {
     Q_OBJECT
 public:
@@ -59,6 +65,61 @@ public:
      * @brief Class destructor.
      */
     ~RecordEditorHelper();
+
+private:
+    /**
+     * @~russian
+     * @brief Главный менеджер размещения элементов.
+     *
+     * @~english
+     * @brief Main layout manager.
+     */
+    QHBoxLayout *boxMain;
+
+    /**
+     * @~russian
+     * @brief Менеджер размещения элементов левой колонки, для пользовательских элементов.
+     *
+     * @~english
+     * @brief Layout manager for the elements of the left column, to the user elements.
+     */
+    QVBoxLayout *boxLeft;
+
+    /**
+     * @~russian
+     * @brief Менеджер размещения элементов правой колонки, для кнопок управления.
+     *
+     * @~english
+     * @brief Layout manager for the elements of the right column, to the control buttons.
+     */
+    QVBoxLayout *boxRight;
+
+    /**
+     * @~russian
+     * @brief Кнопка «Переместить вверх».
+     *
+     * @~english
+     * @brief «Move up» button.
+     */
+    QPushButton *btnMoveUp;
+
+    /**
+     * @~russian
+     * @brief Кнопка «Переместить вниз».
+     *
+     * @~english
+     * @brief «Move down» button.
+     */
+    QPushButton *btnMoveDown;
+
+    /**
+     * @~russian
+     * @brief Кнопка «Удалить».
+     *
+     * @~english
+     * @brief «Delete» button.
+     */
+    QPushButton *btnDelete;
 
 signals:
     /**

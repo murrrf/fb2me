@@ -22,9 +22,43 @@
 RecordEditorHelper::RecordEditorHelper(QWidget *parent) :
     QGroupBox(parent)
 {
+    boxLeft = new QVBoxLayout();
+
+    boxRight = new QVBoxLayout();
+
+    btnMoveUp = new QPushButton();
+    btnMoveUp->setIcon(QIcon::fromTheme("go-up", QIcon(":/img/go-up.png")));
+    btnMoveUp->setProperty("index", index);
+    connect(btnMoveUp, SIGNAL(clicked()), this, SIGNAL(MoveUp()));
+    boxRight->addWidget(btnMoveUp);
+
+    btnMoveDown = new QPushButton();
+    btnMoveDown->setIcon(QIcon::fromTheme("go-down", QIcon(":/img/go-down.png")));
+    btnMoveDown->setProperty("index", index);
+    connect(btnMoveDown, SIGNAL(clicked()), this, SIGNAL(MoveDown()));
+    boxRight->addWidget(btnMoveDown);
+
+    btnDelete = new QPushButton();
+    btnDelete->setIcon(QIcon::fromTheme("edit-delete", QIcon(":/img/edit-delete.png")));
+    btnDelete->setProperty("index", index);
+    connect(btnDelete, SIGNAL(clicked()), this, SIGNAL(Delete()));
+    boxRight->addWidget(btnDelete);
+
+    boxRight->addStretch();
+
+    boxMain = new QHBoxLayout();
+    boxMain->addLayout(boxLeft);
+    boxMain->addLayout(boxRight);
+
+    this->setLayout(boxMain);
 }
 
 RecordEditorHelper::~RecordEditorHelper()
 {
-
+    delete btnDelete;
+    delete btnMoveDown;
+    delete btnMoveUp;
+    delete boxRight;
+    delete boxLeft;
+    delete boxMain;
 }

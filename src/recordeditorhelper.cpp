@@ -25,7 +25,7 @@
 #include <QGroupBox>
 #include <QVariant>
 
-RecordEditorHelper::RecordEditorHelper(RecordEditorHelper *object, int index, QWidget *parent) :
+RecordEditorHelper::RecordEditorHelper(int index, QWidget *parent) :
     QGroupBox(parent)
 {
     boxLeft = new QVBoxLayout();
@@ -67,4 +67,9 @@ RecordEditorHelper::~RecordEditorHelper()
     delete boxRight;
     delete boxLeft;
     delete boxMain;
+}
+
+void RecordEditorHelper::addItem(FieldType ft, QString label)
+{
+
 }

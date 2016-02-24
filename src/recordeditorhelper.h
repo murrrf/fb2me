@@ -40,6 +40,20 @@ class QGroupBox;
 
 /**
  * @~russian
+ * @brief Перечисление возможных типов полей.
+ *
+ * @~english
+ * @brief Enumeration of field types.
+ */
+enum FieldType
+{
+    ftLineEdit, ///< @~russian Текстовое поле ввода. @~english One-line text editor.
+    ftSpinEdit, ///< @~russian Поле ввода целых чисел. @~english Spin box.
+    ftComboBox ///< @~russian Выпадающий список. @~english Drop-down list.
+};
+
+/**
+ * @~russian
  * @brief Базовый класс вспомогательных классов, использующихся в окне редактирования записи о файле.
  *
  * @~english
@@ -68,6 +82,19 @@ public:
      * @brief Class destructor.
      */
     ~RecordEditorHelper();
+
+    /**
+     * @~russian
+     * @brief Добавление нового поля на панель.
+     * @param ft Тип поля.
+     * @param label Метка поля.
+     *
+     * @~english
+     * @brief Add new item on panel.
+     * @param ft Field type.
+     * @param label Filed label.
+     */
+    void addItem(FieldType ft, QString label);
 
 private:
     /**

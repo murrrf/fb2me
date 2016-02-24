@@ -19,7 +19,13 @@
 
 #include "recordeditorhelper.h"
 
-RecordEditorHelper::RecordEditorHelper(QWidget *parent) :
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QPushButton>
+#include <QGroupBox>
+#include <QVariant>
+
+RecordEditorHelper::RecordEditorHelper(RecordEditorHelper *object, int index, QWidget *parent) :
     QGroupBox(parent)
 {
     boxLeft = new QVBoxLayout();

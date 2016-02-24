@@ -30,6 +30,7 @@
  */
 
 #include <QGroupBox>
+#include <QWidget>
 
 // Forward class declarations
 class QVBoxLayout;
@@ -50,13 +51,15 @@ public:
     /**
      * @~russian
      * @brief Конструктор класса.
+     * @param index Номер элемента в массиве элементов.
      * @param parent Указатель на родительское окно.
      *
      * @~english
      * @brief Class constructor.
+     * @param index Number of the element in the array elements.
      * @param parent Parent window pointer.
      */
-    explicit RecordEditorHelper(QWidget *parent = 0);
+    explicit RecordEditorHelper(int index, QWidget *parent = 0);
     /**
      * @~russian
      * @brief Деструктор класса.

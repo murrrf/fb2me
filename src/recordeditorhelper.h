@@ -151,6 +151,15 @@ private:
      */
     QPushButton *btnDelete;
 
+    /**
+     * @~russian
+     * @brief Список элементов, отображающихся на панели.
+     *
+     * @~english
+     * @brief List of fields.
+     */
+    QVector<QWidget *> itemList;
+
 signals:
     /**
      * @~russian

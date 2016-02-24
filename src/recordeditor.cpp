@@ -130,7 +130,7 @@ void RecordEditor::updateUI()
 AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
     QWidget(parent)
 {
-    this->setMinimumSize(100,100);
+    this->setMinimumSize(100, 100);
 
     gbxAuthor = new QGroupBox();
 
@@ -217,7 +217,7 @@ AuthorDisplay::~AuthorDisplay()
 SeriesDisplay::SeriesDisplay(sequence_t *series, int index, QWidget *parent):
     QWidget(parent)
 {
-    this->setMinimumSize(100,100);
+    this->setMinimumSize(100, 100);
 
     gbxSeries = new QGroupBox();
 

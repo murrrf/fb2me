@@ -30,6 +30,7 @@
  */
 
 #include "types.h"
+#include "recordeditorhelper.h"
 
 #include <QDialog>
 #include <QWidget>
@@ -372,7 +373,7 @@ public:
      * @param index Number of entries about the series in the series list.
      * @param parent Parent window pointer.
      */
-    SeriesDisplay(sequence_t *series, int index, QWidget *parent=0);
+    SeriesDisplay(sequence_t *series, int index, QWidget *parent = 0);
 
     /**
      * @~russian

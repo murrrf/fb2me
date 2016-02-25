@@ -24,6 +24,10 @@
 #include <QPushButton>
 #include <QGroupBox>
 #include <QVariant>
+#include <QLabel>
+#include <QLineEdit>
+#include <QComboBox>
+#include <QSpinBox>
 
 RecordEditorHelper::RecordEditorHelper(int index, QWidget *parent) :
     QGroupBox(parent)
@@ -71,5 +75,29 @@ RecordEditorHelper::~RecordEditorHelper()
 
 void RecordEditorHelper::addItem(FieldType ft, QString label)
 {
+    QWidget *wgt;
 
+    switch (fb)
+    {
+    case ftLineEdit:
+        wgt = new QLineEdit(this);
+        break;
+
+    case ftSpinEdit:
+        wgt = new QSpinBox(this);
+        break;
+
+    case ftComboBox:
+        wgt = new QComboBox(this);
+
+    default:
+        break;
+    }
+
+    itemList.append(wgt);
+
+    QLabel *lbl = new QLabel(label, this);
+
+    boxLeft->addWidget(lbl);
+    boxLeft->addWidget(wgt);
 }

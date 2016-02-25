@@ -94,7 +94,7 @@ public:
      * @param ft Field type.
      * @param label Filed label.
      */
-    void addItem(FieldType ft, QString label);
+    QWidget addItem(FieldType ft, QString label);
 
 private:
     /**

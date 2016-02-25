@@ -73,7 +73,7 @@ RecordEditorHelper::~RecordEditorHelper()
     delete boxMain;
 }
 
-void RecordEditorHelper::addItem(FieldType ft, QString label)
+QWidget RecordEditorHelper::addItem(FieldType ft, QString label)
 {
     QWidget *wgt;
 
@@ -100,4 +100,6 @@ void RecordEditorHelper::addItem(FieldType ft, QString label)
 
     boxLeft->addWidget(lbl);
     boxLeft->addWidget(wgt);
+
+    return wgt;
 }

@@ -356,7 +356,8 @@ signals:
  *
  * @~english
  * @brief Helper class for convenient display of information about the book series.
- */class SeriesDisplay : public QWidget
+ */
+class SeriesDisplay : public QWidget
 {
     Q_OBJECT
 public:
@@ -369,7 +370,7 @@ public:
      *
      * @~english
      * @brief Constructor of class of display information about the book series.
-     * @param author Record about the book series.
+     * @param series Record about the book series.
      * @param index Number of entries about the series in the series list.
      * @param parent Parent window pointer.
      */
@@ -486,11 +487,40 @@ signals:
     void DeleteSeries();
 };
 
+/**
+ * @~russian
+ * @brief Вспомогательный класс для удобного отображения информации о жанре книги.
+ *
+ * @~english
+ * @brief Helper class for convenient display of information about the book genre.
+ */
 class GenresDisplay : public RecordEditorHelper
 {
     Q_OBJECT
 public:
+
+    /**
+     * @~russian
+     * @brief Конструктор класса отображения информации о жанре книги.
+     * @param genres Запись о жанре книги.
+     * @param index Номер записи о жанре книги в списке жанров.
+     * @param parent Указатель на родительское окно.
+     *
+     * @~english
+     * @brief Constructor of class of display information about the book genre.
+     * @param genres Record about the book genre.
+     * @param index Number of entries about the genre in the genre list.
+     * @param parent Parent window pointer.
+     */
     GenresDisplay(genre_t *genres, int index, QWidget *parent = 0);
+
+    /**
+     * @~russian
+     * @brief Деструктор класса.
+     *
+     * @~english
+     * @brief Destructor of class.
+     */
     ~GenresDisplay();
 };
 

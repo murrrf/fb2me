@@ -486,4 +486,12 @@ signals:
     void DeleteSeries();
 };
 
+class GenresDisplay : public RecordEditorHelper
+{
+    Q_OBJECT
+public:
+    GenresDisplay(genre_t *genres, int index, QWidget *parent = 0);
+    ~GenresDisplay();
+};
+
 #endif // RECORDEDITOR_H

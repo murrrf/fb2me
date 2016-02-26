@@ -28,6 +28,7 @@
 #include <QPushButton>
 #include <QGroupBox>
 #include <QGridLayout>
+#include <QComboBox>
 
 RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     QDialog(parent)
@@ -277,6 +278,10 @@ SeriesDisplay::SeriesDisplay(sequence_t *series, int index, QWidget *parent):
 
 // TODO Make base class for all helpers
 
+//==============================================================================
+// class GenresDisplay
+//==============================================================================
+
 SeriesDisplay::~SeriesDisplay()
 {
     delete btnDeleteSeries;
@@ -287,4 +292,13 @@ SeriesDisplay::~SeriesDisplay()
     delete edtSeriesName;
     delete lblSeriesName;
     delete gbxSeries;
+}
+
+
+GenresDisplay::GenresDisplay(genre_t *genres, int index, QWidget *parent):
+    RecordEditorHelper(index, parent)
+{
+    QComboBox *cb = qobject_cast<QComboBox *>(addItem(ftComboBox, trUtf8("Genre")));
+    cb->addItem(genres->at(index).first); // In the future there will be filling out a list of genres
+    cb->setCurrentIndex(cb->findText(genres->at(index).first));
 }

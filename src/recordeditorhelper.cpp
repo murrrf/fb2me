@@ -73,11 +73,11 @@ RecordEditorHelper::~RecordEditorHelper()
     delete boxMain;
 }
 
-QWidget RecordEditorHelper::addItem(FieldType ft, QString label)
+QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
 {
     QWidget *wgt;
 
-    switch (fb)
+    switch (ft)
     {
     case ftLineEdit:
         wgt = new QLineEdit(this);

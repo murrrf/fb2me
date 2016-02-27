@@ -176,6 +176,9 @@ private:
      */
     QVBoxLayout *boxSeriesList;
 
+    QGroupBox *gbxGenresList;
+    QVBoxLayout *boxGenresList;
+
     /**
      * @~russian
      * @brief Обновление внешнего вида диалога.

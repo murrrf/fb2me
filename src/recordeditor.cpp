@@ -51,6 +51,9 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     gbxSeriesList = new QGroupBox(trUtf8("List of series"));
     boxSeriesList = new QVBoxLayout();
 
+    gbxGenresList = new QGroupBox(trUtf8("List of genres"));
+    boxSeriesList = new QVBoxLayout();
+
     record = rec;
     updateUI();
 }
@@ -59,6 +62,8 @@ RecordEditor::~RecordEditor()
 {
     delete edtBookTitle;
     delete lblBookTitle;
+    delete boxGenresList;
+    delete gbxGenresList;
     delete boxSeriesList;
     delete gbxSeriesList;
     delete boxAuthorList;
@@ -113,6 +118,15 @@ void RecordEditor::updateUI()
         sequence_t tmpSequence = record->getSequenceList();
         SeriesDisplay *tmp = new SeriesDisplay(&tmpSequence, i, gbxSeriesList);
         boxSeriesList->addWidget(tmp);
+    }
+
+    gbxGenresList->setLayout(boxGenresList);
+    genre_t tmpGenres = record->getSequenceList();
+
+    for (int i = 0; i < tmpGenres.size(); i++)
+    {
+        GenresDisplay *tmp = new GenresDisplay(tmpGenres, i, gbxGenresList);
+        boxGenresList->addWidget(tmp);
     }
 
     // Add new UI components to layout

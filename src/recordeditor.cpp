@@ -292,10 +292,6 @@ SeriesDisplay::SeriesDisplay(sequence_t *series, int index, QWidget *parent):
 
 // TODO Make base class for all helpers
 
-//==============================================================================
-// class GenresDisplay
-//==============================================================================
-
 SeriesDisplay::~SeriesDisplay()
 {
     delete btnDeleteSeries;
@@ -307,6 +303,10 @@ SeriesDisplay::~SeriesDisplay()
     delete lblSeriesName;
     delete gbxSeries;
 }
+
+//==============================================================================
+// class GenresDisplay
+//==============================================================================
 
 GenresDisplay::GenresDisplay(genre_t *genres, int index, QWidget *parent):
     RecordEditorHelper(index, parent)

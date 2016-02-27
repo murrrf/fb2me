@@ -125,7 +125,7 @@ void RecordEditor::updateUI()
 
     for (int i = 0; i < tmpGenres.size(); i++)
     {
-        GenresDisplay *tmp = new GenresDisplay(tmpGenres, i, gbxGenresList);
+        GenresDisplay *tmp = new GenresDisplay(&tmpGenres, i, gbxGenresList);
         boxGenresList->addWidget(tmp);
     }
 
@@ -307,7 +307,6 @@ SeriesDisplay::~SeriesDisplay()
     delete lblSeriesName;
     delete gbxSeries;
 }
-
 
 GenresDisplay::GenresDisplay(genre_t *genres, int index, QWidget *parent):
     RecordEditorHelper(index, parent)

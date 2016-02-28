@@ -315,3 +315,8 @@ GenresDisplay::GenresDisplay(genre_t *genres, int index, QWidget *parent):
     cb->addItem(genres->at(index).first); // In the future there will be filling out a list of genres
     cb->setCurrentIndex(cb->findText(genres->at(index).first));
 }
+
+GenresDisplay::~GenresDisplay()
+{
+
+}

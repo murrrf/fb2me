@@ -52,7 +52,7 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     boxSeriesList = new QVBoxLayout();
 
     gbxGenresList = new QGroupBox(trUtf8("List of genres"));
-    boxSeriesList = new QVBoxLayout();
+    boxGenresList = new QVBoxLayout();
 
     record = rec;
     updateUI();
@@ -135,6 +135,7 @@ void RecordEditor::updateUI()
     boxMain->addWidget(edtBookTitle);
     boxMain->addWidget(gbxAuthorList);
     boxMain->addWidget(gbxSeriesList);
+    boxMain->addWidget(gbxGenresList);
     boxMain->addWidget(boxButtons);
 }
 

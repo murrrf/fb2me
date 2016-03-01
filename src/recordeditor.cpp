@@ -121,7 +121,7 @@ void RecordEditor::updateUI()
     }
 
     gbxGenresList->setLayout(boxGenresList);
-    genre_t tmpGenres = record->getSequenceList();
+    genre_t tmpGenres = record->getGenresList();
 
     for (int i = 0; i < tmpGenres.size(); i++)
     {

@@ -103,3 +103,8 @@ QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
 
     return wgt;
 }
+
+void RecordEditorHelper::addStretch(int stretch)
+{
+    boxLeft->addStretch(stretch);
+}

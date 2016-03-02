@@ -96,6 +96,17 @@ public:
      */
     QWidget *addItem(FieldType ft, QString label);
 
+    /**
+     * @~russian
+     * @brief Добавление растягиваемого промежутка в конец менеджера пользовательской колонки.
+     * @param stretch Множитель растяжения.
+     *
+     * @~english
+     * @brief Add stretchable space to the end of this box layout.
+     * @param stretch Stretch factor.
+     */
+    void addStretch(int stretch=0);
+
 private:
     /**
      * @~russian

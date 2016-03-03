@@ -33,6 +33,7 @@ RecordEditorHelper::RecordEditorHelper(int index, QWidget *parent) :
     QGroupBox(parent)
 {
     boxLeft = new QVBoxLayout();
+    boxLeft->addStretch();
 
     boxRight = new QVBoxLayout();
 
@@ -98,13 +99,8 @@ QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
 
     QLabel *lbl = new QLabel(label, this);
 
-    boxLeft->addWidget(lbl);
-    boxLeft->addWidget(wgt);
+    boxLeft->insertWidget(boxLeft->count() - 1, lbl);
+    boxLeft->insertWidget(boxLeft->count() - 1, wgt);
 
     return wgt;
-}
-
-void RecordEditorHelper::addStretch(int stretch)
-{
-    boxLeft->addStretch(stretch);
 }

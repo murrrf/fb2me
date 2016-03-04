@@ -21,7 +21,7 @@
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QPushButton>
+#include <QToolButton>
 #include <QGroupBox>
 #include <QVariant>
 #include <QLabel>
@@ -37,19 +37,19 @@ RecordEditorHelper::RecordEditorHelper(int index, QWidget *parent) :
 
     boxRight = new QVBoxLayout();
 
-    btnMoveUp = new QPushButton();
+    btnMoveUp = new QToolButton();
     btnMoveUp->setIcon(QIcon::fromTheme("go-up", QIcon(":/img/go-up.png")));
     btnMoveUp->setProperty("index", index);
     connect(btnMoveUp, SIGNAL(clicked()), this, SIGNAL(MoveUp()));
     boxRight->addWidget(btnMoveUp);
 
-    btnMoveDown = new QPushButton();
+    btnMoveDown = new QToolButton();
     btnMoveDown->setIcon(QIcon::fromTheme("go-down", QIcon(":/img/go-down.png")));
     btnMoveDown->setProperty("index", index);
     connect(btnMoveDown, SIGNAL(clicked()), this, SIGNAL(MoveDown()));
     boxRight->addWidget(btnMoveDown);
 
-    btnDelete = new QPushButton();
+    btnDelete = new QToolButton();
     btnDelete->setIcon(QIcon::fromTheme("edit-delete", QIcon(":/img/edit-delete.png")));
     btnDelete->setProperty("index", index);
     connect(btnDelete, SIGNAL(clicked()), this, SIGNAL(Delete()));

@@ -35,7 +35,7 @@
 // Forward class declarations
 class QVBoxLayout;
 class QHBoxLayout;
-class QPushButton;
+class QToolButton;
 class QGroupBox;
 
 /**
@@ -131,7 +131,7 @@ private:
      * @~english
      * @brief «Move up» button.
      */
-    QPushButton *btnMoveUp;
+    QToolButton *btnMoveUp;
 
     /**
      * @~russian
@@ -140,7 +140,7 @@ private:
      * @~english
      * @brief «Move down» button.
      */
-    QPushButton *btnMoveDown;
+    QToolButton *btnMoveDown;
 
     /**
      * @~russian
@@ -149,7 +149,7 @@ private:
      * @~english
      * @brief «Delete» button.
      */
-    QPushButton *btnDelete;
+    QToolButton *btnDelete;
 
     /**
      * @~russian

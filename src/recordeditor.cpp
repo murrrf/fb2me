@@ -144,86 +144,24 @@ void RecordEditor::updateUI()
 //==============================================================================
 
 AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
-    QWidget(parent)
+    RecordEditorHelper(index,parent)
 {
-    this->setMinimumSize(100, 100);
-
-    gbxAuthor = new QGroupBox();
-
-    QVBoxLayout *boxLeft = new QVBoxLayout();
-
-    lblFirstName = new QLabel(trUtf8("First name"));
-    boxLeft->addWidget(lblFirstName);
-
-    edtFirstName = new QLineEdit();
+    QLineEdit *edtFirstName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("First name")));
     edtFirstName->setReadOnly(true); // While there is no XML editing, data about the author only display
     edtFirstName->setText(author->getFirstName());
-    boxLeft->addWidget(edtFirstName);
 
-    lblMiddleName = new QLabel(trUtf8("Middle name"));
-    boxLeft->addWidget(lblMiddleName);
-
-    edtMiddleName = new QLineEdit();
+    QLineEdit *edtMiddleName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Middle name")));
     edtMiddleName->setReadOnly(true);
     edtMiddleName->setText(author->getMiddleName());
-    boxLeft->addWidget(edtMiddleName);
 
-    lblLastName = new QLabel(trUtf8("Last name"));
-    boxLeft->addWidget(lblLastName);
-
-    edtLastName = new QLineEdit();
+    QLineEdit *edtLastName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Middle name")));
     edtLastName->setReadOnly(true);
     edtLastName->setText(author->getLastName());
-    boxLeft->addWidget(edtLastName);
-
-    boxLeft->addStretch();
-
-    QVBoxLayout *boxRight = new QVBoxLayout();
-
-    boxRight->addWidget(new QLabel());
-
-    btnMoveUp = new QPushButton();
-    btnMoveUp->setIcon(QIcon::fromTheme("go-up", QIcon(":/img/go-up.png")));
-    btnMoveUp->setProperty("index", index);
-    connect(btnMoveUp, SIGNAL(clicked()), this, SIGNAL(MoveAuthorUp()));
-    boxRight->addWidget(btnMoveUp);
-
-    btnMoveDown = new QPushButton();
-    btnMoveDown->setIcon(QIcon::fromTheme("go-down", QIcon(":/img/go-down.png")));
-    btnMoveDown->setProperty("index", index);
-    connect(btnMoveDown, SIGNAL(clicked()), this, SIGNAL(MoveAuthorDown()));
-    boxRight->addWidget(btnMoveDown);
-
-    btnDeleteAuthor = new QPushButton();
-    btnDeleteAuthor->setIcon(QIcon::fromTheme("edit-delete", QIcon(":/img/edit-delete.png")));
-    btnDeleteAuthor->setProperty("index", index);
-    connect(btnDeleteAuthor, SIGNAL(clicked()), this, SIGNAL(DeleteAuthor()));
-    boxRight->addWidget(btnDeleteAuthor);
-
-    boxRight->addStretch();
-
-    QHBoxLayout *boxMain = new QHBoxLayout();
-    boxMain->addLayout(boxLeft);
-    boxMain->addLayout(boxRight);
-
-    gbxAuthor->setLayout(boxMain);
-    QVBoxLayout *tmp = new QVBoxLayout();
-    tmp->addWidget(gbxAuthor);
-    this->setLayout(tmp);
 }
 
 AuthorDisplay::~AuthorDisplay()
 {
-    delete btnDeleteAuthor;
-    delete btnMoveUp;
-    delete btnMoveDown;
-    delete edtLastName;
-    delete lblLastName;
-    delete edtMiddleName;
-    delete lblMiddleName;
-    delete edtFirstName;
-    delete lblFirstName;
-    delete gbxAuthor;
+
 }
 
 //==============================================================================

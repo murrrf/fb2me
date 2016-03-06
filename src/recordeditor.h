@@ -205,7 +205,7 @@ public slots:
  * @~english
  * @brief Helper class for convenient display of information about the author.
  */
-class AuthorDisplay : public QWidget
+class AuthorDisplay : public RecordEditorHelper
 {
     Q_OBJECT
 public:
@@ -232,125 +232,6 @@ public:
      * @brief Destructor of class.
      */
     virtual ~AuthorDisplay();
-
-private:
-    /**
-     * @~russian
-     * @brief Ограничивающая рамка.
-     *
-     * @~english
-     * @brief Border frame.
-     */
-    QGroupBox *gbxAuthor;
-
-    /**
-     * @~russian
-     * @brief Метка поля «Имя автора».
-     *
-     * @~english
-     * @brief Label of first name of author field.
-     */
-    QLabel *lblFirstName;
-
-    /**
-     * @~russian
-     * @brief Поле «Имя автора».
-     *
-     * @~english
-     * @brief First name of author field.
-     */
-    QLineEdit *edtFirstName;
-
-    /**
-     * @~russian
-     * @brief Метка поля «Отчество автора».
-     *
-     * @~english
-     * @brief Label of middle name of author field.
-     */
-    QLabel *lblMiddleName;
-
-    /**
-     * @~russian
-     * @brief Поле «Отчество автора».
-     *
-     * @~english
-     * @brief Middle name of author field.
-     */
-    QLineEdit *edtMiddleName;
-
-    /**
-     * @~russian
-     * @brief Метка поля «Фамилия автора».
-     *
-     * @~english
-     * @brief Label of last name of author field.
-     */
-    QLabel *lblLastName;
-
-    /**
-     * @~russian
-     * @brief Поле «Фамилия автора».
-     *
-     * @~english
-     * @brief Last name of author field.
-     */
-    QLineEdit *edtLastName;
-
-    /**
-     * @~russian
-     * @brief Кнопка «Передвинуть автора вверх».
-     *
-     * @~english
-     * @brief «Move up the author» button.
-     */
-    QPushButton *btnMoveUp;
-
-    /**
-     * @~russian
-     * @brief Кнопка «Передвинуть автора вниз».
-     *
-     * @~english
-     * @brief «Move down the author» button.
-     */
-    QPushButton *btnMoveDown;
-
-    /**
-     * @~russian
-     * @brief Кнопка «Удалить автора».
-     *
-     * @~english
-     * @brief «Delete this author» button.
-     */
-    QPushButton *btnDeleteAuthor;
-
-signals:
-    /**
-     * @~russian
-     * @brief Сигнал «Передвинуть автора вверх».
-     *
-     * @~english
-     * @brief «Move up the author» signal.
-     */
-    void MoveAuthorUp();
-
-    /**
-     * @~russian
-     * @brief Сигнал «Передвинуть автора вниз».
-     *
-     * @~english
-     * @brief «Move down the author» signal.
-     */
-    void MoveAuthorDown();
-
-    /**
-     * @~russian
-     * @brief Сигнал «Удалить автора».
-     *
-     * @~english
-     * @brief «Delete this author» signal.
-     */
-    void DeleteAuthor();
 };
 
 /**

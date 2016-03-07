@@ -171,13 +171,13 @@ AuthorDisplay::~AuthorDisplay()
 SeriesDisplay::SeriesDisplay(sequence_t *series, int index, QWidget *parent):
     RecordEditorHelper(index, parent)
 {
-    QLineEdit *name = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Name of sequence")));
-    name->setReadOnly(true);
-    name->setText(series->at(index).first);
+    QLineEdit *edtName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Name of sequence")));
+    edtName->setReadOnly(true);
+    edtName->setText(series->at(index).first);
 
-    QLineEdit *number = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Number of book in sequence")));
-    number->setReadOnly(true);
-    number->setText(QString::number(series->at(index).second));
+    QLineEdit *edtNumber = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Number of book in sequence")));
+    edtNumber->setReadOnly(true);
+    edtNumber->setText(QString::number(series->at(index).second));
 }
 
 // TODO Make base class for all helpers
@@ -194,9 +194,9 @@ SeriesDisplay::~SeriesDisplay()
 GenresDisplay::GenresDisplay(genre_t *genres, int index, QWidget *parent):
     RecordEditorHelper(index, parent)
 {
-    QComboBox *cb = qobject_cast<QComboBox *>(addItem(ftComboBox, trUtf8("Genre")));
-    cb->addItem(genres->at(index).first); // In the future there will be filling out a list of genres
-    cb->setCurrentIndex(cb->findText(genres->at(index).first));
+    QComboBox *cbGenre = qobject_cast<QComboBox *>(addItem(ftComboBox, trUtf8("Genre")));
+    cbGenre->addItem(genres->at(index).first); // In the future there will be filling out a list of genres
+    cbGenre->setCurrentIndex(cbGenre->findText(genres->at(index).first));
 }
 
 GenresDisplay::~GenresDisplay()

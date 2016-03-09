@@ -58,7 +58,8 @@ enum FieldType
  *
  * @~english
  * @brief Base class of helper classes used in the window of the editing of recording file.
- */class RecordEditorHelper : public QGroupBox
+ */
+class RecordEditorHelper : public QGroupBox
 {
     Q_OBJECT
 public:

@@ -180,8 +180,6 @@ SeriesDisplay::SeriesDisplay(sequence_t *series, int index, QWidget *parent):
     edtNumber->setText(QString::number(series->at(index).second));
 }
 
-// TODO Make base class for all helpers
-
 SeriesDisplay::~SeriesDisplay()
 {
 

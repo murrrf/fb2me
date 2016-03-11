@@ -223,9 +223,10 @@ public:
      * @~english
      * @brief Class destructor.
      */
-    ~RecordEditorHelper();
+    ~RecordEditorHelperContainer();
 
 private:
+
 }
 
 #endif // RECORDEDITORHELPER_H

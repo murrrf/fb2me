@@ -112,12 +112,13 @@ QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
 // class RecordEditorHelperContainer
 //==============================================================================
 
-RecordEditorHelperContainer::RecordEditorHelperContainer(QWidget *parent)
+RecordEditorHelperContainer::RecordEditorHelperContainer(QWidget *parent):
+    QGroupBox(parent)
 {
 
 }
 
-RecordEditorHelperContainer::~RecordEditorHelper()
+RecordEditorHelperContainer::~RecordEditorHelperContainer()
 {
 
 }

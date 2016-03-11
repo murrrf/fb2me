@@ -107,3 +107,17 @@ QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
 
     return wgt;
 }
+
+//==============================================================================
+// class RecordEditorHelperContainer
+//==============================================================================
+
+RecordEditorHelperContainer::RecordEditorHelperContainer(QWidget *parent)
+{
+
+}
+
+RecordEditorHelperContainer::~RecordEditorHelper()
+{
+
+}

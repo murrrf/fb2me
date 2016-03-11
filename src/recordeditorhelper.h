@@ -75,6 +75,7 @@ public:
      * @param parent Parent window pointer.
      */
     explicit RecordEditorHelper(int index, QWidget *parent = 0);
+
     /**
      * @~russian
      * @brief Деструктор класса.
@@ -192,5 +193,39 @@ signals:
 public slots:
 
 };
+
+/**
+ * @~russian
+ * @brief Базовый класс вспомогательных классов-контейнеров, использующихся в окне редактирования записи о файле.
+ *
+ * @~english
+ * @brief Base class of helper container classes used in the window of the editing of recording file.
+ */
+class RecordEditorHelperContainer : public QGroupBox
+{
+    Q_OBJECT
+public:
+    /**
+     * @~russian
+     * @brief Конструктор класса.
+     * @param parent Указатель на родительское окно.
+     *
+     * @~english
+     * @brief Class constructor.
+     * @param parent Parent window pointer.
+     */
+    explicit RecordEditorHelperContainer(QWidget *parent = 0);
+
+    /**
+     * @~russian
+     * @brief Деструктор класса.
+     *
+     * @~english
+     * @brief Class destructor.
+     */
+    ~RecordEditorHelper();
+
+private:
+}
 
 #endif // RECORDEDITORHELPER_H

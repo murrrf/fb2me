@@ -144,7 +144,7 @@ void RecordEditor::updateUI()
 //==============================================================================
 
 AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
-    RecordEditorHelper(index,parent)
+    RecordEditorHelper(index, parent)
 {
     QLineEdit *edtFirstName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("First name")));
     edtFirstName->setReadOnly(true); // While there is no XML editing, data about the author only display

@@ -115,10 +115,26 @@ QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
 RecordEditorHelperContainer::RecordEditorHelperContainer(QWidget *parent):
     QGroupBox(parent)
 {
+    boxMain = new QVBoxLayout();
 
+    btnAdd = new QToolButton();
+
+    QHBoxLayout *tmpBtnBox = new QHBoxLayout(this);
+    tmpBtnBox->addStretch();
+    tmpBtnBox->addWidget(btnAdd);
+
+    boxMain->addLayout(tmpBtnBox);
+
+    this->setLayout(boxMain);
 }
 
 RecordEditorHelperContainer::~RecordEditorHelperContainer()
+{
+    delete btnAdd;
+    delete boxMain;
+}
+
+void RecordEditorHelperContainer::addItem(RecordEditorHelper *item)
 {
 
 }

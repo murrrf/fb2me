@@ -225,8 +225,45 @@ public:
      */
     ~RecordEditorHelperContainer();
 
-private:
+    /**
+     * @~russian
+     * @brief Добавление элемента в контейнер.
+     * @param item Добавляемый элемент.
+     *
+     * @~english
+     * @brief Adding an item to the container.
+     * @param item The added item.
+     */
+    void addItem(RecordEditorHelper *item);
 
+private:
+    /**
+     * @~russian
+     * @brief Главный менеджер размещения элементов.
+     *
+     * @~english
+     * @brief Main layout manager.
+     */
+    QVBoxLayout *boxMain;
+
+    /**
+     * @~russian
+     * @brief Кнопка добавления нового элемента контейнера.
+     *
+     * @~english
+     * @brief Button to add a new container item.
+     */
+    QToolButton *btnAdd;
+
+signals:
+    /**
+     * @~russian
+     * @brief Сигнал нажатия на кнопку добавления нового элемента контейнера.
+     *
+     * @~english
+     * @brief Signal of clicking to the button of add a new container element.
+     */
+    void Add();
 }
 
 #endif // RECORDEDITORHELPER_H

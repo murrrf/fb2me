@@ -223,7 +223,7 @@ public:
      * @~english
      * @brief Class destructor.
      */
-    ~RecordEditorHelperContainer();
+    virtual ~RecordEditorHelperContainer();
 
     /**
      * @~russian
@@ -234,7 +234,7 @@ public:
      * @brief Adding an item to the container.
      * @param item The added item.
      */
-    void addItem(RecordEditorHelper *item);
+    virtual void addItem(RecordEditorHelper *item);
 
 private:
     /**
@@ -264,6 +264,6 @@ signals:
      * @brief Signal of clicking to the button of add a new container element.
      */
     void Add();
-}
+};
 
 #endif // RECORDEDITORHELPER_H

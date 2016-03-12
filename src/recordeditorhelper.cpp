@@ -136,5 +136,5 @@ RecordEditorHelperContainer::~RecordEditorHelperContainer()
 
 void RecordEditorHelperContainer::addItem(RecordEditorHelper *item)
 {
-
+    boxMain->insertWidget(boxMain->count() - 1, item);
 }

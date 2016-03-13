@@ -176,7 +176,22 @@ private:
      */
     QVBoxLayout *boxSeriesList;
 
+    /**
+     * @~russian
+     * @brief Рамка списка жанров книги.
+     *
+     * @~english
+     * @brief Frame of book genres list.
+     */
     QGroupBox *gbxGenresList;
+
+    /**
+     * @~russian
+     * @brief Менеджер размещения списка жанров книги.
+     *
+     * @~english
+     * @brief Layout manager of book genres list.
+     */
     QVBoxLayout *boxGenresList;
 
     /**

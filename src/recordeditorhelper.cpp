@@ -112,9 +112,11 @@ QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
 // class RecordEditorHelperContainer
 //==============================================================================
 
-RecordEditorHelperContainer::RecordEditorHelperContainer(QWidget *parent):
+RecordEditorHelperContainer::RecordEditorHelperContainer(QString title, QWidget *parent):
     QGroupBox(parent)
 {
+    this->setTitle(title);
+
     boxMain = new QVBoxLayout();
 
     btnAdd = new QToolButton();

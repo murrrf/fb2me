@@ -51,8 +51,7 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     gbxSeriesList = new QGroupBox(trUtf8("List of series"));
     boxSeriesList = new QVBoxLayout();
 
-    gbxGenresList = new QGroupBox(trUtf8("List of genres"));
-    boxGenresList = new QVBoxLayout();
+    recGenresList = new RecordEditorHelperContainer("List of genres", this);
 
     record = rec;
     updateUI();
@@ -62,8 +61,7 @@ RecordEditor::~RecordEditor()
 {
     delete edtBookTitle;
     delete lblBookTitle;
-    delete boxGenresList;
-    delete gbxGenresList;
+    delete recGenresList;
     delete boxSeriesList;
     delete gbxSeriesList;
     delete boxAuthorList;
@@ -120,13 +118,12 @@ void RecordEditor::updateUI()
         boxSeriesList->addWidget(tmp);
     }
 
-    gbxGenresList->setLayout(boxGenresList);
     genre_t tmpGenres = record->getGenresList();
 
     for (int i = 0; i < tmpGenres.size(); i++)
     {
-        GenresDisplay *tmp = new GenresDisplay(&tmpGenres, i, gbxGenresList);
-        boxGenresList->addWidget(tmp);
+        GenresDisplay *tmp = new GenresDisplay(&tmpGenres, i, recGenresList);
+        recGenresList->addItem(tmp);
     }
 
     // Add new UI components to layout
@@ -135,7 +132,7 @@ void RecordEditor::updateUI()
     boxMain->addWidget(edtBookTitle);
     boxMain->addWidget(gbxAuthorList);
     boxMain->addWidget(gbxSeriesList);
-    boxMain->addWidget(gbxGenresList);
+    boxMain->addWidget(recGenresList);
     boxMain->addWidget(boxButtons);
 }
 

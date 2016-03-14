@@ -214,7 +214,7 @@ public:
      * @brief Class constructor.
      * @param parent Parent window pointer.
      */
-    explicit RecordEditorHelperContainer(QString title = "", QWidget *parent = 0);
+    explicit RecordEditorHelperContainer(const QString &title = "", QWidget *parent = 0);
 
     /**
      * @~russian

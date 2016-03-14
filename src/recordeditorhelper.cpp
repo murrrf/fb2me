@@ -112,7 +112,7 @@ QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
 // class RecordEditorHelperContainer
 //==============================================================================
 
-RecordEditorHelperContainer::RecordEditorHelperContainer(QString title, QWidget *parent):
+RecordEditorHelperContainer::RecordEditorHelperContainer(const QString &title, QWidget *parent):
     QGroupBox(parent)
 {
     this->setTitle(title);

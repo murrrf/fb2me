@@ -121,7 +121,7 @@ RecordEditorHelperContainer::RecordEditorHelperContainer(const QString &title, Q
 
     btnAdd = new QToolButton();
 
-    QHBoxLayout *tmpBtnBox = new QHBoxLayout(this);
+    QHBoxLayout *tmpBtnBox = new QHBoxLayout();
     tmpBtnBox->addStretch();
     tmpBtnBox->addWidget(btnAdd);
 

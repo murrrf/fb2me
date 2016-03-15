@@ -304,7 +304,8 @@ void TableModel::onSelectAll()
         (*it).setSelected(true);
     }
 
-    emit SetSelected(Data.size());
+    cntSelectedRecords = Data.size();
+    emit SetSelected(cntSelectedRecords);
 }
 
 void TableModel::onSelectZip()

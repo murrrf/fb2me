@@ -82,7 +82,14 @@ QString Person::getLastName()
 
 QString Person::getFirstLetterOfLastName() const
 {
-    return last_name.at(0);
+    if (last_name.size() > 0)
+    {
+        return last_name.at(0);
+    }
+    else
+    {
+        return "";
+    }
 }
 
 void Person::setNickname(QString nickName)

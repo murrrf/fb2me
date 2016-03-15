@@ -9,5 +9,6 @@
         <file>img/edit-delete.png</file>
         <file>img/go-down.png</file>
         <file>img/go-up.png</file>
+        <file>img/list-add.png</file>
     </qresource>
 </RCC>

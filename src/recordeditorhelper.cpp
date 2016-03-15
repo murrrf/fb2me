@@ -120,6 +120,7 @@ RecordEditorHelperContainer::RecordEditorHelperContainer(const QString &title, Q
     boxMain = new QVBoxLayout();
 
     btnAdd = new QToolButton();
+    btnAdd->setIcon(QIcon::fromTheme("list-add", QIcon(":/img/list-add.png")));
 
     QHBoxLayout *tmpBtnBox = new QHBoxLayout();
     tmpBtnBox->addStretch();

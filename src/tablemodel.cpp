@@ -439,6 +439,7 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     result.replace("%M", author.getMiddleName());
     result.replace("%L", author.getLastName());
     result.replace("%B", record.getBookTitle());
+    // TODO Add handling of optional parameters
 
     QString sequence;
     QString number;

@@ -47,7 +47,7 @@ class QGridLayout;
 class FileRecord;
 class Person;
 
-class AuthorDisplay;
+class GenresContainer;
 
 /**
  * @~russian
@@ -183,7 +183,7 @@ private:
      * @~english
      * @brief Frame of book genres list.
      */
-    RecordEditorHelperContainer *recGenresList;
+    GenresContainer *recGenresList;
 
     /**
      * @~russian
@@ -311,5 +311,39 @@ public:
      */
     ~GenresDisplay();
 };
+
+/**
+ * @~russian
+ * @brief Вспомогательный класс-контейнер для отображения жанров книги.
+ *
+ * @~english
+ * @brief Helper container class for displaying book genres.
+ */
+class GenresContainer : public RecordEditorHelperContainer
+{
+    Q_OBJECT
+public:
+    /**
+     * @~russian
+     * @brief Конструктор класса.
+     * @param parent Указатель на родительское окно.
+     *
+     * @~english
+     * @brief Class constructor.
+     * @param parent Parent window pointer.
+     */
+    explicit GenresContainer(const QString &title = "", QWidget *parent = 0);
+
+    /**
+     * @~russian
+     * @brief Деструктор класса.
+     *
+     * @~english
+     * @brief Class destructor.
+     */
+    virtual ~GenresContainer();
+
+};
+
 
 #endif // RECORDEDITOR_H

@@ -51,7 +51,7 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     gbxSeriesList = new QGroupBox(trUtf8("List of series"));
     boxSeriesList = new QVBoxLayout();
 
-    recGenresList = new RecordEditorHelperContainer("List of genres", this);
+    recGenresList = new GenresContainer("List of genres", this);
 
     record = rec;
     updateUI();
@@ -195,6 +195,21 @@ GenresDisplay::GenresDisplay(genre_t *genres, int index, QWidget *parent):
 }
 
 GenresDisplay::~GenresDisplay()
+{
+
+}
+
+//==============================================================================
+// class GenresContainer
+//==============================================================================
+
+GenresContainer::GenresContainer(const QString &title, QWidget *parent):
+    RecordEditorHelperContainer(title, parent)
+{
+
+}
+
+GenresContainer::~GenresContainer()
 {
 
 }

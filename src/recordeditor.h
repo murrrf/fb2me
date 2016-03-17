@@ -47,6 +47,7 @@ class QGridLayout;
 class FileRecord;
 class Person;
 
+class SeriesContainer;
 class GenresContainer;
 
 /**
@@ -310,6 +311,39 @@ public:
      * @brief Destructor of class.
      */
     ~GenresDisplay();
+};
+
+/**
+ * @~russian
+ * @brief Вспомогательный класс-контейнер для отображения серий книги.
+ *
+ * @~english
+ * @brief Helper container class for displaying book series.
+ */
+class SeriesContainer : public RecordEditorHelperContainer
+{
+    Q_OBJECT
+public:
+    /**
+     * @~russian
+     * @brief Конструктор класса.
+     * @param parent Указатель на родительское окно.
+     *
+     * @~english
+     * @brief Class constructor.
+     * @param parent Parent window pointer.
+     */
+    explicit SeriesContainer(const QString &title = "", QWidget *parent = 0);
+
+    /**
+     * @~russian
+     * @brief Деструктор класса.
+     *
+     * @~english
+     * @brief Class destructor.
+     */
+    virtual ~SeriesContainer();
+
 };
 
 /**

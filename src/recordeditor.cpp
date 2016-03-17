@@ -200,6 +200,22 @@ GenresDisplay::~GenresDisplay()
 }
 
 //==============================================================================
+// class SeriesContainer
+//==============================================================================
+
+SeriesContainer::SeriesContainer(const QString &title, QWidget *parent):
+    RecordEditorHelperContainer(title, parent)
+{
+
+}
+
+SeriesContainer::~SeriesContainer()
+{
+
+}
+
+
+//==============================================================================
 // class GenresContainer
 //==============================================================================
 

@@ -175,7 +175,7 @@ private:
      * @~english
      * @brief Frame of book genres list.
      */
-    GenresContainer *recGenresList;
+    GenresContainer *gbxGenresList;
 
     /**
      * @~russian

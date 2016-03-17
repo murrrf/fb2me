@@ -50,7 +50,7 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
 
     gbxSeriesList = new SeriesContainer(trUtf8("List of series"));
 
-    recGenresList = new GenresContainer("List of genres", this);
+    gbxGenresList = new GenresContainer(trUtf8("List of genres"), this);
 
     record = rec;
     updateUI();
@@ -60,7 +60,7 @@ RecordEditor::~RecordEditor()
 {
     delete edtBookTitle;
     delete lblBookTitle;
-    delete recGenresList;
+    delete gbxGenresList;
     delete gbxSeriesList;
     delete boxAuthorList;
     delete gbxAuthorList;
@@ -119,8 +119,8 @@ void RecordEditor::updateUI()
 
     for (int i = 0; i < tmpGenres.size(); i++)
     {
-        GenresDisplay *tmp = new GenresDisplay(&tmpGenres, i, recGenresList);
-        recGenresList->addItem(tmp);
+        GenresDisplay *tmp = new GenresDisplay(&tmpGenres, i, gbxGenresList);
+        gbxGenresList->addItem(tmp);
     }
 
     // Add new UI components to layout
@@ -129,7 +129,7 @@ void RecordEditor::updateUI()
     boxMain->addWidget(edtBookTitle);
     boxMain->addWidget(gbxAuthorList);
     boxMain->addWidget(gbxSeriesList);
-    boxMain->addWidget(recGenresList);
+    boxMain->addWidget(gbxGenresList);
     boxMain->addWidget(boxButtons);
 }
 

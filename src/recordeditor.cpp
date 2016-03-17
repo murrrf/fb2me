@@ -48,8 +48,7 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     gbxAuthorList = new QGroupBox(trUtf8("List of authors"));
     boxAuthorList = new QVBoxLayout();
 
-    gbxSeriesList = new QGroupBox(trUtf8("List of series"));
-    boxSeriesList = new QVBoxLayout();
+    gbxSeriesList = new SeriesContainer(trUtf8("List of series"));
 
     recGenresList = new GenresContainer("List of genres", this);
 
@@ -62,7 +61,6 @@ RecordEditor::~RecordEditor()
     delete edtBookTitle;
     delete lblBookTitle;
     delete recGenresList;
-    delete boxSeriesList;
     delete gbxSeriesList;
     delete boxAuthorList;
     delete gbxAuthorList;
@@ -109,13 +107,12 @@ void RecordEditor::updateUI()
     }
 
 
-    gbxSeriesList->setLayout(boxSeriesList);
     sequence_t tmpSequence = record->getSequenceList();
 
     for (int i = 0; i < tmpSequence.size(); i++)
     {
         SeriesDisplay *tmp = new SeriesDisplay(&tmpSequence, i, gbxSeriesList);
-        boxSeriesList->addWidget(tmp);
+        gbxSeriesList->addItem(tmp);
     }
 
     genre_t tmpGenres = record->getGenresList();

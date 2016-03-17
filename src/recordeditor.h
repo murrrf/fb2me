@@ -166,16 +166,7 @@ private:
      * @~english
      * @brief Frame of book series list.
      */
-    QGroupBox *gbxSeriesList;
-
-    /**
-     * @~russian
-     * @brief Менеджер размещения списка книжных серий.
-     *
-     * @~english
-     * @brief Layout manager of book series list.
-     */
-    QVBoxLayout *boxSeriesList;
+    SeriesContainer *gbxSeriesList;
 
     /**
      * @~russian

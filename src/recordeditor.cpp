@@ -48,7 +48,7 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     gbxAuthorList = new QGroupBox(trUtf8("List of authors"));
     boxAuthorList = new QVBoxLayout();
 
-    gbxSeriesList = new SeriesContainer(trUtf8("List of series"));
+    gbxSeriesList = new SeriesContainer(trUtf8("List of series"), this);
 
     gbxGenresList = new GenresContainer(trUtf8("List of genres"), this);
 

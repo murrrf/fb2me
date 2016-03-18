@@ -26,8 +26,6 @@
  * @brief Source file for data model.
  */
 
-// TODO Add method for rename files
-
 #include "tablemodel.h"
 #include <QDir>
 

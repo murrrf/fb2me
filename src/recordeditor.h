@@ -336,6 +336,8 @@ public:
      */
     virtual ~AuthorContainer();
 
+};
+
 /**
  * @~russian
  * @brief Вспомогательный класс-контейнер для отображения серий книги.

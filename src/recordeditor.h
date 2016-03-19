@@ -336,71 +336,71 @@ public:
      */
     virtual ~AuthorContainer();
 
+/**
+ * @~russian
+ * @brief Вспомогательный класс-контейнер для отображения серий книги.
+ *
+ * @~english
+ * @brief Helper container class for displaying book series.
+ */
+class SeriesContainer : public RecordEditorHelperContainer
+{
+    Q_OBJECT
+public:
     /**
      * @~russian
-     * @brief Вспомогательный класс-контейнер для отображения серий книги.
+     * @brief Конструктор класса.
+     * @param parent Указатель на родительское окно.
      *
      * @~english
-     * @brief Helper container class for displaying book series.
+     * @brief Class constructor.
+     * @param parent Parent window pointer.
      */
-    class SeriesContainer : public RecordEditorHelperContainer
-    {
-        Q_OBJECT
-    public:
-        /**
-         * @~russian
-         * @brief Конструктор класса.
-         * @param parent Указатель на родительское окно.
-         *
-         * @~english
-         * @brief Class constructor.
-         * @param parent Parent window pointer.
-         */
-        explicit SeriesContainer(const QString &title = "", QWidget *parent = 0);
-
-        /**
-         * @~russian
-         * @brief Деструктор класса.
-         *
-         * @~english
-         * @brief Class destructor.
-         */
-        virtual ~SeriesContainer();
-
-    };
+    explicit SeriesContainer(const QString &title = "", QWidget *parent = 0);
 
     /**
      * @~russian
-     * @brief Вспомогательный класс-контейнер для отображения жанров книги.
+     * @brief Деструктор класса.
      *
      * @~english
-     * @brief Helper container class for displaying book genres.
+     * @brief Class destructor.
      */
-    class GenresContainer : public RecordEditorHelperContainer
-    {
-        Q_OBJECT
-    public:
-        /**
-         * @~russian
-         * @brief Конструктор класса.
-         * @param parent Указатель на родительское окно.
-         *
-         * @~english
-         * @brief Class constructor.
-         * @param parent Parent window pointer.
-         */
-        explicit GenresContainer(const QString &title = "", QWidget *parent = 0);
+    virtual ~SeriesContainer();
 
-        /**
-         * @~russian
-         * @brief Деструктор класса.
-         *
-         * @~english
-         * @brief Class destructor.
-         */
-        virtual ~GenresContainer();
+};
 
-    };
+/**
+ * @~russian
+ * @brief Вспомогательный класс-контейнер для отображения жанров книги.
+ *
+ * @~english
+ * @brief Helper container class for displaying book genres.
+ */
+class GenresContainer : public RecordEditorHelperContainer
+{
+    Q_OBJECT
+public:
+    /**
+     * @~russian
+     * @brief Конструктор класса.
+     * @param parent Указатель на родительское окно.
+     *
+     * @~english
+     * @brief Class constructor.
+     * @param parent Parent window pointer.
+     */
+    explicit GenresContainer(const QString &title = "", QWidget *parent = 0);
+
+    /**
+     * @~russian
+     * @brief Деструктор класса.
+     *
+     * @~english
+     * @brief Class destructor.
+     */
+    virtual ~GenresContainer();
+
+};
 
 
 #endif // RECORDEDITOR_H

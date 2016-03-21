@@ -149,16 +149,7 @@ private:
      * @~english
      * @brief Frame of author list.
      */
-    QGroupBox *gbxAuthorList;
-
-    /**
-     * @~russian
-     * @brief Менеджер размещения списка авторов.
-     *
-     * @~english
-     * @brief Layout manager of author list.
-     */
-    QVBoxLayout *boxAuthorList;
+    AuthorContainer *gbxAuthorList;
 
     /**
      * @~russian

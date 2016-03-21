@@ -45,8 +45,7 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     edtBookTitle = new QLineEdit();
     edtBookTitle->setReadOnly(true);
 
-    gbxAuthorList = new QGroupBox(trUtf8("List of authors"));
-    boxAuthorList = new QVBoxLayout();
+    gbxAuthorList = new AuthorContainer(trUtf8("List of authors"), this);
 
     gbxSeriesList = new SeriesContainer(trUtf8("List of series"), this);
 
@@ -62,7 +61,6 @@ RecordEditor::~RecordEditor()
     delete lblBookTitle;
     delete gbxGenresList;
     delete gbxSeriesList;
-    delete boxAuthorList;
     delete gbxAuthorList;
     delete boxButtons;
     delete boxMain;
@@ -96,14 +94,11 @@ void RecordEditor::updateUI()
 
     edtBookTitle->setText(record->getBookTitle());
 
-    gbxAuthorList->setLayout(boxAuthorList);
-
     for (int i = 0; i < record->getAuthorCount(); i++)
     {
         Person tmpAuthor = record->getAuthor(i);
         AuthorDisplay *tmp = new AuthorDisplay(&tmpAuthor, i, gbxAuthorList);
-        boxAuthorList->addWidget(tmp);
-//        authorList.append(tmp);
+        gbxAuthorList->addItem(tmp);
     }
 
 

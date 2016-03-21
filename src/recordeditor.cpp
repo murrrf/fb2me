@@ -200,7 +200,8 @@ GenresDisplay::~GenresDisplay()
 // class AuthorContainer
 //==============================================================================
 
-AuthorContainer::AuthorContainer(const QString &title, QWidget *parent)
+AuthorContainer::AuthorContainer(const QString &title, QWidget *parent):
+    RecordEditorHelperContainer(title, parent)
 {
 
 }

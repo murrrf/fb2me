@@ -236,7 +236,6 @@ public:
      */
     virtual void addItem(RecordEditorHelper *item);
 
-private:
     /**
      * @~russian
      * @brief Главный менеджер размещения элементов.
@@ -245,6 +244,8 @@ private:
      * @brief Main layout manager.
      */
     QVBoxLayout *boxMain;
+
+private:
 
     /**
      * @~russian

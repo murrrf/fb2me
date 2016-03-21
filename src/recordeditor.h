@@ -43,6 +43,7 @@ class QLineEdit;
 class QPushButton;
 class QGroupBox;
 class QGridLayout;
+class QComboBox;
 
 class FileRecord;
 class Person;
@@ -326,6 +327,21 @@ public:
      * @brief Class destructor.
      */
     virtual ~AuthorContainer();
+
+private:
+
+    /**
+     * @~russian
+     * @brief Выпадающий список выбора автора.
+     *
+     * Используется для уменьшения вертикального размера окна диалога.
+     *
+     * @~english
+     * @brief The drop-down list select the author.
+     *
+     * It used to reduce the vertical dimension of the dialogue box.
+     */
+    QComboBox *cbAuthorSelect;
 
 };
 

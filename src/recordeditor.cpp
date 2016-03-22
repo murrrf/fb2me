@@ -98,7 +98,7 @@ void RecordEditor::updateUI()
     {
         Person tmpAuthor = record->getAuthor(i);
         AuthorDisplay *tmp = new AuthorDisplay(&tmpAuthor, i, gbxAuthorList);
-        gbxAuthorList->addItem(tmp);
+        gbxAuthorList->addItem(tmp, tmpAuthor.getFullNameLFM());
     }
 
 

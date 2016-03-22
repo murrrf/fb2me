@@ -142,3 +142,8 @@ void RecordEditorHelperContainer::addItem(RecordEditorHelper *item)
 {
     boxMain->insertWidget(boxMain->count() - 1, item);
 }
+
+void RecordEditorHelperContainer::insertWidget(int index, QWidget *widget)
+{
+    boxMain->insertWidget(index, widget);
+}

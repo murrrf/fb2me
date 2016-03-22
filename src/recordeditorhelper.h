@@ -238,14 +238,27 @@ public:
 
     /**
      * @~russian
+     * @brief Вставка виджета в контейнер.
+     * @param index Позиция, в которую вставляется виджет.
+     * @param widget Вставляемый виджет.
+     *
+     * @~english
+     * @brief Inserting a widget into a container.
+     * @param index The position in which to insert the widget.
+     * @param widget The inserted widget.
+     */
+    virtual void insertWidget(int index, QWidget *widget);
+
+private:
+
+    /**
+     * @~russian
      * @brief Главный менеджер размещения элементов.
      *
      * @~english
      * @brief Main layout manager.
      */
     QVBoxLayout *boxMain;
-
-private:
 
     /**
      * @~russian

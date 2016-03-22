@@ -207,6 +207,12 @@ AuthorContainer::~AuthorContainer()
     delete cbAuthorSelect;
 }
 
+void AuthorContainer::addItem(RecordEditorHelper *item, const QString &title)
+{
+    RecordEditorHelperContainer::addItem(item);
+    cbAuthorSelect->addItem(title);
+}
+
 //==============================================================================
 // class SeriesContainer
 //==============================================================================

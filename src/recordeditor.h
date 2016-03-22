@@ -328,6 +328,19 @@ public:
      */
     virtual ~AuthorContainer();
 
+    /**
+     * @~russian
+     * @brief Добавление элемента в контейнер.
+     * @param item Добавляемый элемент.
+     * @param title Заголовок элемента для выпадающего списка.
+     *
+     * @~english
+     * @brief Adding an item to the container.
+     * @param item The added item.
+     * @param title Title of the item for drop-down list.
+     */
+    virtual void addItem(RecordEditorHelper *item, const QString &title);
+
 private:
 
     /**

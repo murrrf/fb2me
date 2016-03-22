@@ -199,7 +199,7 @@ AuthorContainer::AuthorContainer(const QString &title, QWidget *parent):
     RecordEditorHelperContainer(title, parent)
 {
     cbAuthorSelect = new QComboBox(this);
-    boxMain->insertWidget(0, cbAuthorSelect);
+    insertWidget(0, cbAuthorSelect);
 }
 
 AuthorContainer::~AuthorContainer()

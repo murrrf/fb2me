@@ -356,6 +356,19 @@ private:
      */
     QComboBox *cbAuthorSelect;
 
+public slots:
+
+    /**
+     * @~russian
+     * @brief Обработчик смены позиции в выпадающем списке авторов.
+     * @param index Новый выбранный элемент.
+     *
+     * @~english
+     * @brief The handler of changing position in the drop-down list of authors.
+     * @param index New selected item.
+     */
+    void onAuthorSelect(int index);
+
 };
 
 /**

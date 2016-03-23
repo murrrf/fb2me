@@ -211,6 +211,7 @@ AuthorContainer::~AuthorContainer()
 void AuthorContainer::addItem(RecordEditorHelper *item, const QString &title)
 {
     RecordEditorHelperContainer::addItem(item);
+    item->hide();
     cbAuthorSelect->addItem(title);
 }
 

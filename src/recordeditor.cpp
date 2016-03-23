@@ -215,6 +215,11 @@ void AuthorContainer::addItem(RecordEditorHelper *item, const QString &title)
     cbAuthorSelect->addItem(title);
 }
 
+void AuthorContainer::onAuthorSelect(int index)
+{
+
+}
+
 //==============================================================================
 // class SeriesContainer
 //==============================================================================

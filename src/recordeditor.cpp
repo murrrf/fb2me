@@ -201,6 +201,7 @@ AuthorContainer::AuthorContainer(const QString &title, QWidget *parent):
     cbAuthorSelect = new QComboBox(this);
     insertWidget(0, cbAuthorSelect);
     connect(cbAuthorSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(onAuthorSelect(int)));
+    cntItems = 0;
 }
 
 AuthorContainer::~AuthorContainer()

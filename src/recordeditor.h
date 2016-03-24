@@ -356,6 +356,15 @@ private:
      */
     QComboBox *cbAuthorSelect;
 
+    /**
+     * @~russian
+     * @brief Количество авторов, добавленных в контейнер.
+     *
+     * @~english
+     * @brief The number of authors added to the container.
+     */
+    int cntItems;
+
 public slots:
 
     /**

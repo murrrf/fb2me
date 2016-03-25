@@ -198,6 +198,7 @@ GenresDisplay::~GenresDisplay()
 AuthorContainer::AuthorContainer(const QString &title, QWidget *parent):
     RecordEditorHelperContainer(title, parent)
 {
+    // TODO Need to use QStackedLayout here
     cbAuthorSelect = new QComboBox(this);
     insertWidget(0, cbAuthorSelect);
     connect(cbAuthorSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(onAuthorSelect(int)));

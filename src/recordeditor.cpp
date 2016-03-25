@@ -101,7 +101,6 @@ void RecordEditor::updateUI()
         gbxAuthorList->addItem(tmp, tmpAuthor.getFullNameLFM());
     }
 
-
     sequence_t tmpSequence = record->getSequenceList();
 
     for (int i = 0; i < tmpSequence.size(); i++)
@@ -125,6 +124,7 @@ void RecordEditor::updateUI()
     boxMain->addWidget(gbxAuthorList);
     boxMain->addWidget(gbxSeriesList);
     boxMain->addWidget(gbxGenresList);
+    boxMain->addStretch();
     boxMain->addWidget(boxButtons);
 }
 
@@ -225,13 +225,11 @@ void AuthorContainer::onAuthorSelect(int index)
 
         if (tmpAuthor != NULL)
         {
+            tmpAuthor->hide();
+
             if (tmpAuthor->property("author_index").toInt() == index)
             {
                 tmpAuthor->show(); // TODO Look why handler triggered on another containers
-            }
-            else
-            {
-                tmpAuthor->hide();
             }
         }
     }

@@ -227,7 +227,7 @@ void AuthorContainer::onAuthorSelect(int index)
         {
             if (tmpAuthor->property("author_index").toInt() == index)
             {
-                tmpAuthor->show();
+                tmpAuthor->show(); // TODO Look why handler triggered on another containers
             }
             else
             {

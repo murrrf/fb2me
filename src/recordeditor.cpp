@@ -212,13 +212,29 @@ AuthorContainer::~AuthorContainer()
 void AuthorContainer::addItem(RecordEditorHelper *item, const QString &title)
 {
     RecordEditorHelperContainer::addItem(item);
+    item->setProperty("author_index", cntItems++);
     item->hide();
     cbAuthorSelect->addItem(title);
 }
 
 void AuthorContainer::onAuthorSelect(int index)
 {
+    for (int i = 0; i < this->layout()->count(); i++)
+    {
+        AuthorDisplay *tmpAuthor = qobject_cast<AuthorDisplay *>(this->layout()->itemAt(i)->widget());
 
+        if (tmpAuthor != NULL)
+        {
+            if (tmpAuthor->property("author_index").toInt() == index)
+            {
+                tmpAuthor->show();
+            }
+            else
+            {
+                tmpAuthor->hide();
+            }
+        }
+    }
 }
 
 //==============================================================================

@@ -29,6 +29,7 @@
 #include <QGroupBox>
 #include <QGridLayout>
 #include <QComboBox>
+#include <QStackedLayout>
 
 RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     QDialog(parent)

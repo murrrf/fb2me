@@ -44,6 +44,7 @@ class QPushButton;
 class QGroupBox;
 class QGridLayout;
 class QComboBox;
+class QStackedLayout;
 
 class FileRecord;
 class Person;
@@ -364,6 +365,15 @@ private:
      * @brief The number of authors added to the container.
      */
     int cntItems;
+
+    /**
+     * @~russian
+     * @brief Менеджер размещения для переключающихся панелей авторов.
+     *
+     * @~english
+     * @brief Layout manager for switching panels authors.
+     */
+    QStackedLayout *boxStacked;
 
 public slots:
 

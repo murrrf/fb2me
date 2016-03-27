@@ -199,11 +199,11 @@ GenresDisplay::~GenresDisplay()
 AuthorContainer::AuthorContainer(const QString &title, QWidget *parent):
     RecordEditorHelperContainer(title, parent)
 {
-    // TODO Need to use QStackedLayout here
     cbAuthorSelect = new QComboBox(this);
     insertWidget(0, cbAuthorSelect);
-    connect(cbAuthorSelect, SIGNAL(currentIndexChanged(int)), this, SLOT(onAuthorSelect(int)));
-    cntItems = 0;
+    boxStacked = new QStackedLayout();
+    insertLayout(1, boxStacked);
+    connect(cbAuthorSelect, SIGNAL(currentIndexChanged(int)), boxStacked, SLOT(setCurrentIndex(int)));
 }
 
 AuthorContainer::~AuthorContainer()
@@ -213,28 +213,13 @@ AuthorContainer::~AuthorContainer()
 
 void AuthorContainer::addItem(RecordEditorHelper *item, const QString &title)
 {
-    RecordEditorHelperContainer::addItem(item);
-    item->setProperty("author_index", cntItems++);
-    item->hide();
+    boxStacked->addWidget(item);
     cbAuthorSelect->addItem(title);
 }
 
 void AuthorContainer::onAuthorSelect(int index)
 {
-    for (int i = 0; i < this->layout()->count(); i++)
-    {
-        AuthorDisplay *tmpAuthor = qobject_cast<AuthorDisplay *>(this->layout()->itemAt(i)->widget());
 
-        if (tmpAuthor != NULL)
-        {
-            tmpAuthor->hide();
-
-            if (tmpAuthor->property("author_index").toInt() == index)
-            {
-                tmpAuthor->show(); // TODO Look why handler triggered on another containers
-            }
-        }
-    }
 }
 
 //==============================================================================

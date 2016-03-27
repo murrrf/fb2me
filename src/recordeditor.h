@@ -359,34 +359,12 @@ private:
 
     /**
      * @~russian
-     * @brief Количество авторов, добавленных в контейнер.
-     *
-     * @~english
-     * @brief The number of authors added to the container.
-     */
-    int cntItems;
-
-    /**
-     * @~russian
      * @brief Менеджер размещения для переключающихся панелей авторов.
      *
      * @~english
      * @brief Layout manager for switching panels authors.
      */
     QStackedLayout *boxStacked;
-
-public slots:
-
-    /**
-     * @~russian
-     * @brief Обработчик смены позиции в выпадающем списке авторов.
-     * @param index Новый выбранный элемент.
-     *
-     * @~english
-     * @brief The handler of changing position in the drop-down list of authors.
-     * @param index New selected item.
-     */
-    void onAuthorSelect(int index);
 
 };
 

@@ -249,6 +249,19 @@ public:
      */
     virtual void insertWidget(int index, QWidget *widget);
 
+    /**
+     * @~russian
+     * @brief Вставка менеджера размещения в контейнер.
+     * @param index Позиция, в которую вставляется менеджер размещения.
+     * @param widget Вставляемый менеджер размещения.
+     *
+     * @~english
+     * @brief Inserting a layout manager into a container.
+     * @param index The position in which to insert the layout manager.
+     * @param widget The inserted layout manager.
+     */
+    virtual void insertLayout(int index, QLayout *layout);
+
 private:
 
     /**

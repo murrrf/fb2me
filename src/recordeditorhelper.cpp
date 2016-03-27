@@ -147,3 +147,8 @@ void RecordEditorHelperContainer::insertWidget(int index, QWidget *widget)
 {
     boxMain->insertWidget(index, widget);
 }
+
+void RecordEditorHelperContainer::insertLayout(int index, QLayout *layout)
+{
+    boxMain->insertLayout(index, layout);
+}

@@ -208,6 +208,7 @@ AuthorContainer::AuthorContainer(const QString &title, QWidget *parent):
 
 AuthorContainer::~AuthorContainer()
 {
+    delete boxStacked;
     delete cbAuthorSelect;
 }
 

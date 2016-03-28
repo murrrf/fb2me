@@ -185,6 +185,9 @@ GenresDisplay::GenresDisplay(genre_t *genres, int index, QWidget *parent):
     QComboBox *cbGenre = qobject_cast<QComboBox *>(addItem(ftComboBox, trUtf8("Genre")));
     cbGenre->addItem(genres->at(index).first); // In the future there will be filling out a list of genres
     cbGenre->setCurrentIndex(cbGenre->findText(genres->at(index).first));
+
+    QLineEdit *edtGenreMatch = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Genre match")));
+    edtGenreMatch->setText(QString::number(genres->at(index).second));
 }
 
 GenresDisplay::~GenresDisplay()

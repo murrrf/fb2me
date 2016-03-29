@@ -366,6 +366,17 @@ private:
      */
     QStackedLayout *boxStacked;
 
+public slots:
+
+    /**
+     * @~russian
+     * @brief Обработчик кнопки «Добавление нового автора».
+     *
+     * @~english
+     * @brief Handler clicking the «Add a new author» button.
+     */
+    void onAddAuthor();
+
 };
 
 /**

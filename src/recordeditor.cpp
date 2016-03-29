@@ -221,6 +221,11 @@ void AuthorContainer::addItem(RecordEditorHelper *item, const QString &title)
     cbAuthorSelect->addItem(title);
 }
 
+void AuthorContainer::onAddAuthor()
+{
+    // TODO It is necessary to come up with an algorithm to add a new author based on the fact that the authors are displayed at a time, not simultaneously.
+}
+
 //==============================================================================
 // class SeriesContainer
 //==============================================================================

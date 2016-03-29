@@ -243,10 +243,18 @@ SeriesContainer::~SeriesContainer()
 GenresContainer::GenresContainer(const QString &title, QWidget *parent):
     RecordEditorHelperContainer(title, parent)
 {
-
+    connect(this, SIGNAL(Add()), this, SLOT(onAddGenre()));
 }
 
 GenresContainer::~GenresContainer()
 {
 
+}
+
+void GenresContainer::onAddGenre()
+{
+    genre_t tmp;
+    tmp.append(qMakePair(QString(""), 100));
+    GenresDisplay *newGenre = new GenresDisplay(&tmp, 0, this);
+    addItem(newGenre);
 }

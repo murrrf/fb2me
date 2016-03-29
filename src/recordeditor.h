@@ -432,6 +432,17 @@ public:
      */
     virtual ~GenresContainer();
 
+public slots:
+
+    /**
+     * @~russian
+     * @brief Обработчик кнопки «Добавление нового жанра».
+     *
+     * @~english
+     * @brief Handler clicking the «Add a new genre» button.
+     */
+    void onAddGenre();
+
 };
 
 

@@ -399,6 +399,17 @@ public:
      */
     virtual ~SeriesContainer();
 
+public slots:
+
+    /**
+     * @~russian
+     * @brief Обработчик кнопки «Добавление новой серии».
+     *
+     * @~english
+     * @brief Handler clicking the «Add a new series» button.
+     */
+    void onAddSeries();
+
 };
 
 /**

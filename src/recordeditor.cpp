@@ -228,12 +228,20 @@ void AuthorContainer::addItem(RecordEditorHelper *item, const QString &title)
 SeriesContainer::SeriesContainer(const QString &title, QWidget *parent):
     RecordEditorHelperContainer(title, parent)
 {
-
+    connect(this, SIGNAL(Add()), this, SLOT(onAddSeries()));
 }
 
 SeriesContainer::~SeriesContainer()
 {
 
+}
+
+void SeriesContainer::onAddSeries()
+{
+    sequence_t tmp;
+    tmp.append(qMakePair(QString(""), 0));
+    SeriesDisplay *newSeries = new SeriesDisplay(&tmp, 0, this);
+    addItem(newSeries);
 }
 
 //==============================================================================

@@ -432,13 +432,15 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     QString result = pattern;
     Person author = record.getAuthor(0);
 
+    // TODO There must be an easier way the replacement of optional parameters
+
     if (author.getFirstName().isEmpty())
     {
         int posFirstName = result.indexOf("%F");
-        int posLeftBracket = result.indexOf("]", posFirstName);
-        int posRightBracket = result.lastIndexOf("[", posFirstName);
-        int posLeftParam = result.indexOf("%", posFirstName);
-        int posRightParam = result.lastIndexOf("%", posFirstName);
+        int posRightBracket = result.indexOf("]", posFirstName);
+        int posLeftBracket = result.lastIndexOf("[", posFirstName);
+        int posRightParam = result.indexOf("%", posFirstName);
+        int posLeftParam = result.lastIndexOf("%", posFirstName);
 
         if ((posLeftBracket != -1) && (posRightBracket != -1))
         {

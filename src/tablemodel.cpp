@@ -432,6 +432,24 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     QString result = pattern;
     Person author = record.getAuthor(0);
 
+    if (author.getFirstName().isEmpty())
+    {
+        int posFirstName = result.indexOf("%F");
+        int posLeftBracket = result.indexOf("]", posFirstName);
+        int posRightBracket = result.lastIndexOf("[", posFirstName);
+        int posLeftParam = result.indexOf("%", posFirstName);
+        int posRightParam = result.lastIndexOf("%", posFirstName);
+
+        if ((posLeftBracket != -1) && (posRightBracket != -1))
+        {
+            if (((posLeftParam == -1) || (posLeftParam < posLeftBracket)) &&
+                    ((posRightParam == -1) || (posRightParam > posRightBracket)))
+            {
+
+            }
+        }
+    }
+
     result.replace("%A", author.getFirstLetterOfLastName());
     result.replace("%F", author.getFirstName());
     result.replace("%M", author.getMiddleName());

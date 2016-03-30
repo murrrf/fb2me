@@ -445,7 +445,7 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
             if (((posLeftParam == -1) || (posLeftParam < posLeftBracket)) &&
                     ((posRightParam == -1) || (posRightParam > posRightBracket)))
             {
-
+                result.remove(posLeftBracket, posRightBracket - posLeftBracket);
             }
         }
     }

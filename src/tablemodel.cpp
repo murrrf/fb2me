@@ -432,32 +432,11 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     QString result = pattern;
     Person author = record.getAuthor(0);
 
-    // TODO There must be an easier way the replacement of optional parameters
-
-    if (author.getFirstName().isEmpty())
-    {
-        int posFirstName = result.indexOf("%F");
-        int posRightBracket = result.indexOf("]", posFirstName);
-        int posLeftBracket = result.lastIndexOf("[", posFirstName);
-        int posRightParam = result.indexOf("%", posFirstName);
-        int posLeftParam = result.lastIndexOf("%", posFirstName);
-
-        if ((posLeftBracket != -1) && (posRightBracket != -1))
-        {
-            if (((posLeftParam == -1) || (posLeftParam < posLeftBracket)) &&
-                    ((posRightParam == -1) || (posRightParam > posRightBracket)))
-            {
-                result.remove(posLeftBracket, posRightBracket - posLeftBracket);
-            }
-        }
-    }
-
-    result.replace("%A", author.getFirstLetterOfLastName());
-    result.replace("%F", author.getFirstName());
-    result.replace("%M", author.getMiddleName());
-    result.replace("%L", author.getLastName());
-    result.replace("%B", record.getBookTitle());
-    // TODO Add handling of optional parameters
+    fromPathRemoveOptional(result, "%A", author.getFirstLetterOfLastName());
+    fromPathRemoveOptional(result, "%F", author.getFirstName());
+    fromPathRemoveOptional(result, "%M", author.getMiddleName());
+    fromPathRemoveOptional(result, "%L", author.getLastName());
+    fromPathRemoveOptional(result, "%B", record.getBookTitle());
 
     QString sequence;
     QString number;
@@ -466,6 +445,9 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     {
         sequence = record.getSequenceList().at(0).first;
         number = QString::number(record.getSequenceList().at(0).second);
+
+        if (number == "0")
+            number = "";
     }
     else
     {
@@ -473,8 +455,8 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
         number = "";
     }
 
-    result.replace("%S", sequence);
-    result.replace("%N", number);
+    fromPathRemoveOptional(result, "%S", sequence);
+    fromPathRemoveOptional(result, "%N", number);
 
     result.replace("  ", " ");
     result.replace(QString(2, QDir::separator()), QDir::separator());
@@ -485,4 +467,30 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
         result += ".fb2";
 
     return result;
+}
+
+QString TableModel::fromPathRemoveOptional(QString &path, const QString &param, const QString &subst)
+{
+    // TODO There must be an easier way the replacement of optional parameters
+    if (subst.isEmpty())
+    {
+        int posFirstName = path.indexOf(param);
+        int posRightBracket = path.indexOf("]", posFirstName);
+        int posLeftBracket = path.lastIndexOf("[", posFirstName);
+        int posRightParam = path.indexOf("%", posFirstName);
+        int posLeftParam = path.lastIndexOf("%", posFirstName);
+
+        if ((posLeftBracket != -1) && (posRightBracket != -1))
+        {
+            if (((posLeftParam == -1) || (posLeftParam < posLeftBracket)) &&
+                    ((posRightParam == -1) || (posRightParam > posRightBracket)))
+            {
+                path.remove(posLeftBracket, posRightBracket - posLeftBracket); // TODO Check brackets is removed
+            }
+        }
+    }
+    else
+    {
+        path.replace(param, subst);
+    }
 }

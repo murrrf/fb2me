@@ -503,6 +503,26 @@ private:
      */
     QString fromTemplateToPath(const QString &pattern, const FileRecord &record);
 
+    /**
+     * @~russian
+     * @brief Удаление опциональных параметров из строки имени файла.
+     *
+     * Параметры, взятые в квадратные скобки, являются необязательными и заполняются только при наличии.
+     * Весь текст в квадратных скобках вокруг параметра удаляется, если это не затрагивает другие параметры.
+     * @param path Строка имени файла.
+     * @param param Заменяемый опциональный параметр.
+     * @param subst Подставляемая строка - значение параметра.
+     * @return Строка имени файла с подставленным значением параметра.
+     *
+     * @~english
+     * @brief
+     * @param path
+     * @param param
+     * @param subst
+     * @return
+     */
+    QString fromPathRemoveOptional(QString &path, const QString &param, const QString &subst);
+
 };
 
 #endif // TABLEMODEL_H

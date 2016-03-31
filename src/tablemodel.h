@@ -495,7 +495,8 @@ private:
      * @~english
      * @brief Substituting the values of record fields in the string of new filename.
      *
-     * @todo Full description need to be translated.
+     * As for the convenience of the user edit the template line consists of clear human substitutions,
+     * to form the final name of the file being renamed is required to substitute the values of the fields in the template.
      *
      * @param pattern The template string.
      * @param record Data record.
@@ -515,11 +516,14 @@ private:
      * @return Строка имени файла с подставленным значением параметра.
      *
      * @~english
-     * @brief
-     * @param path
-     * @param param
-     * @param subst
-     * @return
+     * @brief Removing the optional parameters of the file name string.
+     *
+     * The parameters in brackets are optional and should be completed only if there is.
+     * All of the text in square brackets around the parameter is removed, if it does not affect the other parameters.
+     * @param path Filename string.
+     * @param param Replacement optional parameter.
+     * @param subst Substituted string - value of the parameter.
+     * @return File name string with a substituted value of the parameter.
      */
     QString fromPathRemoveOptional(QString &path, const QString &param, const QString &subst);
 

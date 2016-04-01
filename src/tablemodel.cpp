@@ -432,6 +432,8 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     QString result = pattern;
     Person author = record.getAuthor(0);
 
+    // TODO Add event processing when the specified nickname instead of a name and surname
+
     fromPathRemoveOptional(result, "%A", author.getFirstLetterOfLastName());
     fromPathRemoveOptional(result, "%F", author.getFirstName());
     fromPathRemoveOptional(result, "%M", author.getMiddleName());

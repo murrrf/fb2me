@@ -74,7 +74,7 @@ public:
      * @param dir The folder in which files will be read.
      * @param recursive Read folder recursively:@n
      * @c true - yes;@n
-     * @ false - no.
+     * @c false - no.
      */
     FileReader(QString dir, bool recursive);
 

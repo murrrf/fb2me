@@ -141,6 +141,7 @@ RecordEditorHelperContainer::~RecordEditorHelperContainer()
 void RecordEditorHelperContainer::addItem(RecordEditorHelper *item)
 {
     boxMain->insertWidget(boxMain->count() - 1, item);
+    connect(item, SIGNAL(Delete()), this, SLOT(onDeleteItem()));
 }
 
 void RecordEditorHelperContainer::insertWidget(int index, QWidget *widget)
@@ -151,4 +152,9 @@ void RecordEditorHelperContainer::insertWidget(int index, QWidget *widget)
 void RecordEditorHelperContainer::insertLayout(int index, QLayout *layout)
 {
     boxMain->insertLayout(index, layout);
+}
+
+void RecordEditorHelperContainer::onDeleteItem()
+{
+    delete sender();
 }

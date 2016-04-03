@@ -63,6 +63,7 @@ class RecordEditorHelper : public QGroupBox
 {
     Q_OBJECT
 public:
+
     /**
      * @~russian
      * @brief Конструктор класса.
@@ -99,6 +100,7 @@ public:
     QWidget *addItem(FieldType ft, QString label);
 
 private:
+
     /**
      * @~russian
      * @brief Главный менеджер размещения элементов.
@@ -163,6 +165,7 @@ private:
     QVector<QWidget *> itemList;
 
 signals:
+
     /**
      * @~russian
      * @brief Сигнал «Передвинуть вверх».
@@ -205,6 +208,7 @@ class RecordEditorHelperContainer : public QGroupBox
 {
     Q_OBJECT
 public:
+
     /**
      * @~russian
      * @brief Конструктор класса.
@@ -283,6 +287,7 @@ private:
     QToolButton *btnAdd;
 
 signals:
+
     /**
      * @~russian
      * @brief Сигнал нажатия на кнопку добавления нового элемента контейнера.
@@ -291,6 +296,17 @@ signals:
      * @brief Signal of clicking to the button of add a new container element.
      */
     void Add();
+
+public slots:
+
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Удалить объект».
+     *
+     * @~english
+     * @brief Handler of signal «Delete item».
+     */
+    void onDeleteItem();
 };
 
 #endif // RECORDEDITORHELPER_H

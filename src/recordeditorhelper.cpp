@@ -110,9 +110,9 @@ QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
 
 void RecordEditorHelper::clearItems()
 {
-    for (int i = 0; i < boxMain->count(); i++)
+    for (int i = 0; i < itemList.count(); i++)
     {
-        QWidget *wgt = boxMain->itemAt(i);
+        QWidget *wgt = itemList.at(i);
 
         if (qobject_cast<QLineEdit *>(wgt) != 0)
         {

@@ -153,6 +153,8 @@ RecordEditorHelperContainer::RecordEditorHelperContainer(const QString &title, Q
     boxMain->addLayout(tmpBtnBox);
 
     this->setLayout(boxMain);
+
+    cntItems = 0;
 }
 
 RecordEditorHelperContainer::~RecordEditorHelperContainer()
@@ -165,6 +167,7 @@ void RecordEditorHelperContainer::addItem(RecordEditorHelper *item)
 {
     boxMain->insertWidget(boxMain->count() - 1, item);
     connect(item, SIGNAL(Delete()), this, SLOT(onDeleteItem()));
+    cntItems++;
 }
 
 void RecordEditorHelperContainer::insertWidget(int index, QWidget *widget)
@@ -179,5 +182,13 @@ void RecordEditorHelperContainer::insertLayout(int index, QLayout *layout)
 
 void RecordEditorHelperContainer::onDeleteItem()
 {
-    delete sender();
+    if (cntItems > 1)
+    {
+        delete sender();
+        cntItems--;
+    }
+    else
+    {
+        qobject_cast<RecordEditorHelper *>(sender())->clearItems();
+    }
 }

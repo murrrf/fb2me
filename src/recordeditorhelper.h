@@ -295,6 +295,15 @@ private:
      */
     QToolButton *btnAdd;
 
+    /**
+     * @~russian
+     * @brief Счетчик элементов в контейнере.
+     *
+     * @~english
+     * @brief Number of items in the container.
+     */
+    int cntItems;
+
 signals:
 
     /**

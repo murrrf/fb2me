@@ -99,6 +99,15 @@ public:
      */
     QWidget *addItem(FieldType ft, QString label);
 
+    /**
+     * @~russian
+     * @brief Очистка всех полей панели.
+     *
+     * @~english
+     * @brief Clear of contents of all items.
+     */
+    virtual void clearItems();
+
 private:
 
     /**

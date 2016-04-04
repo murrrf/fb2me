@@ -108,6 +108,29 @@ QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
     return wgt;
 }
 
+void RecordEditorHelper::clearItems()
+{
+    for (int i = 0; i < boxMain->count(); i++)
+    {
+        QWidget *wgt = boxMain->itemAt(i);
+
+        if (qobject_cast<QLineEdit *>(wgt) != 0)
+        {
+            qobject_cast<QLineEdit *>(wgt)->clear();
+        }
+
+        if (qobject_cast<QSpinBox *>(wgt) != 0)
+        {
+            qobject_cast<QSpinBox *>(wgt)->clear();
+        }
+
+        if (qobject_cast<QComboBox *>(wgt) != 0)
+        {
+            qobject_cast<QComboBox *>(wgt)->setCurrentIndex(-1);
+        }
+    }
+}
+
 //==============================================================================
 // class RecordEditorHelperContainer
 //==============================================================================

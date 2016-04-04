@@ -136,7 +136,7 @@ void RecordEditorHelper::clearItems()
 //==============================================================================
 
 RecordEditorHelperContainer::RecordEditorHelperContainer(const QString &title, QWidget *parent):
-    QGroupBox(parent)
+    QGroupBox(parent), cntItems(0)
 {
     this->setTitle(title);
 
@@ -153,8 +153,6 @@ RecordEditorHelperContainer::RecordEditorHelperContainer(const QString &title, Q
     boxMain->addLayout(tmpBtnBox);
 
     this->setLayout(boxMain);
-
-    cntItems = 0;
 }
 
 RecordEditorHelperContainer::~RecordEditorHelperContainer()

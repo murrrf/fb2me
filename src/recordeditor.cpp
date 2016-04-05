@@ -207,6 +207,7 @@ AuthorContainer::AuthorContainer(const QString &title, QWidget *parent):
     boxStacked = new QStackedLayout();
     insertLayout(1, boxStacked);
     connect(cbAuthorSelect, SIGNAL(currentIndexChanged(int)), boxStacked, SLOT(setCurrentIndex(int)));
+    this->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 }
 
 AuthorContainer::~AuthorContainer()

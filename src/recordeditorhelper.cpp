@@ -33,7 +33,6 @@ RecordEditorHelper::RecordEditorHelper(int index, QWidget *parent) :
     QGroupBox(parent)
 {
     boxLeft = new QVBoxLayout();
-    boxLeft->addStretch();
 
     boxRight = new QVBoxLayout();
 
@@ -55,13 +54,12 @@ RecordEditorHelper::RecordEditorHelper(int index, QWidget *parent) :
     connect(btnDelete, SIGNAL(clicked()), this, SIGNAL(Delete()));
     boxRight->addWidget(btnDelete);
 
-    boxRight->addStretch();
-
     boxMain = new QHBoxLayout();
     boxMain->addLayout(boxLeft);
     boxMain->addLayout(boxRight);
 
     this->setLayout(boxMain);
+    this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 }
 
 RecordEditorHelper::~RecordEditorHelper()

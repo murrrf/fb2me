@@ -101,7 +101,7 @@ QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
     box->addWidget(lbl);
     box->addWidget(wgt);
 
-    boxLeft->insertLayout(boxLeft->count() - 1, box);
+    boxLeft->addLayout(box);
 
     return wgt;
 }

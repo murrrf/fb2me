@@ -37,9 +37,6 @@ RecordEditorHelper::RecordEditorHelper(int index, QWidget *parent) :
 
     boxRight = new QVBoxLayout();
 
-    boxRight->addWidget(new QLabel()); // Hack for positioning of items
-    // TODO Requires replaced by a better solution in the future
-
     btnMoveUp = new QToolButton();
     btnMoveUp->setIcon(QIcon::fromTheme("go-up", QIcon(":/img/go-up.png")));
     btnMoveUp->setProperty("index", index);
@@ -102,8 +99,11 @@ QWidget *RecordEditorHelper::addItem(FieldType ft, QString label)
 
     QLabel *lbl = new QLabel(label, this);
 
-    boxLeft->insertWidget(boxLeft->count() - 1, lbl);
-    boxLeft->insertWidget(boxLeft->count() - 1, wgt);
+    QHBoxLayout *box = new QHBoxLayout();
+    box->addWidget(lbl);
+    box->addWidget(wgt);
+
+    boxLeft->insertLayout(boxLeft->count() - 1, box);
 
     return wgt;
 }

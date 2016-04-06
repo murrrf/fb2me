@@ -28,6 +28,7 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QSpinBox>
+#include <QDialog>
 
 RecordEditorHelper::RecordEditorHelper(int index, QWidget *parent) :
     QGroupBox(parent)
@@ -187,4 +188,7 @@ void RecordEditorHelperContainer::onDeleteItem()
     {
         qobject_cast<RecordEditorHelper *>(sender())->clearItems();
     }
+
+    if (qobject_cast<QDialog *>(parent()) != 0)
+        (qobject_cast<QDialog *>(parent()))->adjustSize();
 }

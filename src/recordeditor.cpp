@@ -40,6 +40,7 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
 
     boxMain = new QVBoxLayout();
     this->setLayout(boxMain);
+    this->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
 
     lblBookTitle = new QLabel(trUtf8("Book title"));
 

@@ -183,6 +183,7 @@ void RecordEditorHelperContainer::onDeleteItem()
     {
         delete sender();
         cntItems--;
+        adjustSize();
     }
     else
     {

@@ -497,4 +497,6 @@ QString TableModel::fromPathRemoveOptional(QString &path, const QString &param, 
     {
         path.replace(param, subst);
     }
+
+    return path;
 }

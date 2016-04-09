@@ -40,7 +40,7 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
 
     boxMain = new QVBoxLayout();
     this->setLayout(boxMain);
-    this->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
+    this->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
 
     lblBookTitle = new QLabel(trUtf8("Book title"));
 
@@ -208,7 +208,7 @@ AuthorContainer::AuthorContainer(const QString &title, QWidget *parent):
     boxStacked = new QStackedLayout();
     insertLayout(1, boxStacked);
     connect(cbAuthorSelect, SIGNAL(currentIndexChanged(int)), boxStacked, SLOT(setCurrentIndex(int)));
-    this->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+    this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 }
 
 AuthorContainer::~AuthorContainer()

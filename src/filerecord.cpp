@@ -330,9 +330,10 @@ QString FileRecord::getNewName(QString fileName)
 {
     int cntFile = 1;
 
+    QFileInfo newFile(fileName);
+
     while (QFile::exists(fileName))
     {
-        QFileInfo newFile(fileName);
         fileName = newFile.canonicalPath() + QDir::separator() + newFile.baseName() +
                    "(" + QString::number(cntFile) + ")" + "." + newFile.completeSuffix();
         cntFile++;

@@ -345,7 +345,7 @@ QString FileRecord::getNewName(QString fileName)
 bool FileRecord::makeDir(QString fileName)
 {
     QFileInfo file(fileName);
-    return QDir().mkpath(file.absolutePath());
+    return QDir().mkpath(file.canonicalPath());
 }
 
 QString FileRecord::msgResult(QString message)

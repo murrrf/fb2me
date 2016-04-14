@@ -145,7 +145,7 @@ AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
     edtMiddleName->setReadOnly(true);
     edtMiddleName->setText(author->getMiddleName());
 
-    QLineEdit *edtLastName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Middle name")));
+    QLineEdit *edtLastName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Last name")));
     edtLastName->setReadOnly(true);
     edtLastName->setText(author->getLastName());
 }

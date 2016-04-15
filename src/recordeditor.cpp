@@ -42,16 +42,16 @@ RecordEditor::RecordEditor(FileRecord *rec, QWidget *parent) :
     this->setLayout(boxMain);
     this->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
 
-    lblBookTitle = new QLabel(trUtf8("Book title"));
+    lblBookTitle = new QLabel(tr("Book title"));
 
     edtBookTitle = new QLineEdit();
     edtBookTitle->setReadOnly(true);
 
-    gbxAuthorList = new AuthorContainer(trUtf8("List of authors"), this);
+    gbxAuthorList = new AuthorContainer(tr("List of authors"), this);
 
-    gbxSeriesList = new SeriesContainer(trUtf8("List of series"), this);
+    gbxSeriesList = new SeriesContainer(tr("List of series"), this);
 
-    gbxGenresList = new GenresContainer(trUtf8("List of genres"), this);
+    gbxGenresList = new GenresContainer(tr("List of genres"), this);
 
     record = rec;
     updateUI();
@@ -137,15 +137,15 @@ void RecordEditor::updateUI()
 AuthorDisplay::AuthorDisplay(Person *author, int index, QWidget *parent):
     RecordEditorHelper(index, parent)
 {
-    QLineEdit *edtFirstName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("First name")));
+    QLineEdit *edtFirstName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, tr("First name")));
     edtFirstName->setReadOnly(true); // While there is no XML editing, data about the author only display
     edtFirstName->setText(author->getFirstName());
 
-    QLineEdit *edtMiddleName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Middle name")));
+    QLineEdit *edtMiddleName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, tr("Middle name")));
     edtMiddleName->setReadOnly(true);
     edtMiddleName->setText(author->getMiddleName());
 
-    QLineEdit *edtLastName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Last name")));
+    QLineEdit *edtLastName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, tr("Last name")));
     edtLastName->setReadOnly(true);
     edtLastName->setText(author->getLastName());
 }
@@ -162,11 +162,11 @@ AuthorDisplay::~AuthorDisplay()
 SeriesDisplay::SeriesDisplay(sequence_t *series, int index, QWidget *parent):
     RecordEditorHelper(index, parent)
 {
-    QLineEdit *edtName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Name of sequence")));
+    QLineEdit *edtName = qobject_cast<QLineEdit *>(addItem(ftLineEdit, tr("Name of sequence")));
     edtName->setReadOnly(true);
     edtName->setText(series->at(index).first);
 
-    QLineEdit *edtNumber = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Number of book in sequence")));
+    QLineEdit *edtNumber = qobject_cast<QLineEdit *>(addItem(ftLineEdit, tr("Number of book in sequence")));
     edtNumber->setReadOnly(true);
     edtNumber->setText(QString::number(series->at(index).second));
 }
@@ -183,11 +183,11 @@ SeriesDisplay::~SeriesDisplay()
 GenresDisplay::GenresDisplay(genre_t *genres, int index, QWidget *parent):
     RecordEditorHelper(index, parent)
 {
-    QComboBox *cbGenre = qobject_cast<QComboBox *>(addItem(ftComboBox, trUtf8("Genre")));
+    QComboBox *cbGenre = qobject_cast<QComboBox *>(addItem(ftComboBox, tr("Genre")));
     cbGenre->addItem(genres->at(index).first); // In the future there will be filling out a list of genres
     cbGenre->setCurrentIndex(cbGenre->findText(genres->at(index).first));
 
-    QLineEdit *edtGenreMatch = qobject_cast<QLineEdit *>(addItem(ftLineEdit, trUtf8("Genre match")));
+    QLineEdit *edtGenreMatch = qobject_cast<QLineEdit *>(addItem(ftLineEdit, tr("Genre match")));
     edtGenreMatch->setText(QString::number(genres->at(index).second));
 }
 

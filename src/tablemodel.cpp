@@ -95,11 +95,11 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
         case colIsArchive:
             if (Data.value(index.row()).isArchive())
             {
-                return trUtf8("yes");
+                return tr("yes");
             }
             else
             {
-                return trUtf8("no");
+                return tr("no");
             }
 
             break;
@@ -140,31 +140,31 @@ QVariant TableModel::headerData(int section, Qt::Orientation orientation, int ro
             switch (section)
             {
             case colBookTitle:
-                return trUtf8("Book title");
+                return tr("Book title");
                 break;
 
             case colBookAuthor:
-                return trUtf8("Book author");
+                return tr("Book author");
                 break;
 
             case colSeries:
-                return trUtf8("Series");
+                return tr("Series");
                 break;
 
             case colGenres:
-                return trUtf8("Genres");
+                return tr("Genres");
                 break;
 
             case colEncoding:
-                return trUtf8("Encoding");
+                return tr("Encoding");
                 break;
 
             case colIsArchive:
-                return trUtf8("Archived");
+                return tr("Archived");
                 break;
 
             case colFileSize:
-                return trUtf8("File size");
+                return tr("File size");
                 break;
 
             default:
@@ -225,7 +225,7 @@ void TableModel::onEndReading()
 void TableModel::onAppendRecord(const FileRecord &record)
 {
     Data.append(record);
-    emit EventMessage(trUtf8("File \"%1\" added").arg(record.getFileName()));
+    emit EventMessage(tr("File \"%1\" added").arg(record.getFileName()));
     // TODO Replace QVector to QMap for avoiding record duplication
 }
 
@@ -240,7 +240,7 @@ void TableModel::onUnzipSelected()
         {
             if (!(*it).isArchive())
             {
-                emit EventMessage(trUtf8("File %1 already uncompressed").arg((*it).getFileName()));
+                emit EventMessage(tr("File %1 already uncompressed").arg((*it).getFileName()));
             }
             else
             {
@@ -258,7 +258,7 @@ void TableModel::onUnzipCurrent()
     if (Data.value(ind.row()).isArchive())
         emit EventMessage(Data[ind.row()].unzipFile());
     else
-        emit EventMessage(trUtf8("File %1 already uncompressed").arg(Data.value(ind.row()).getFileName()));
+        emit EventMessage(tr("File %1 already uncompressed").arg(Data.value(ind.row()).getFileName()));
 }
 
 void TableModel::onZipSelected()
@@ -272,7 +272,7 @@ void TableModel::onZipSelected()
         {
             if ((*it).isArchive())
             {
-                emit EventMessage(trUtf8("File %1 already compressed").arg((*it).getFileName()));
+                emit EventMessage(tr("File %1 already compressed").arg((*it).getFileName()));
             }
             else
             {
@@ -290,7 +290,7 @@ void TableModel::onZipCurrent()
     if (!Data.value(ind.row()).isArchive())
         emit EventMessage(Data[ind.row()].zipFile());
     else
-        emit EventMessage(trUtf8("File %1 already compressed").arg(Data.value(ind.row()).getFileName()));
+        emit EventMessage(tr("File %1 already compressed").arg(Data.value(ind.row()).getFileName()));
 }
 
 void TableModel::onSelectAll()

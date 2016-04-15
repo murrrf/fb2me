@@ -58,16 +58,16 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     this->resize(1024, 768);
-    this->setWindowTitle(trUtf8("FB2 Metadata Editor"));
+    this->setWindowTitle(tr("FB2 Metadata Editor"));
 
     // Panels setup
 
     barMainMenu = new QMenuBar();
 
-    menuFile = new QMenu(trUtf8("File"), this);
-    menuSelect = new QMenu(trUtf8("Select"), this);
-    menuTools = new QMenu(trUtf8("Tools"), this);
-    menuHelp = new QMenu(trUtf8("Help"), this);
+    menuFile = new QMenu(tr("File"), this);
+    menuSelect = new QMenu(tr("Select"), this);
+    menuTools = new QMenu(tr("Tools"), this);
+    menuHelp = new QMenu(tr("Help"), this);
 
     barMainMenu->addMenu(menuFile);
     barMainMenu->addMenu(menuSelect);
@@ -91,65 +91,65 @@ MainWindow::MainWindow(QWidget *parent)
     // Setup Files menu
 
     actnFileOpen = new QAction(QIcon::fromTheme("document-open", QIcon(":/img/document-open.png")),
-                               trUtf8("Open file..."), this);
+                               tr("Open file..."), this);
     connect(actnFileOpen, SIGNAL(triggered()), this, SLOT(onFileOpen()));
     menuFile->addAction(actnFileOpen);
 
     actnFileAppendDir = new QAction(QIcon::fromTheme("folder-open", QIcon(":/img/document-open-folder.png")),
-                                    trUtf8("Append directory..."), this);
+                                    tr("Append directory..."), this);
     connect(actnFileAppendDir, SIGNAL(triggered()), this, SLOT(onFileAppendDir()));
     menuFile->addAction(actnFileAppendDir);
 
     actnFileAppendDirRecursively = new QAction(QIcon::fromTheme("folder-open", QIcon(":/img/folder-open.png")),
-            trUtf8("Append directory recursively..."), this);
+            tr("Append directory recursively..."), this);
     connect(actnFileAppendDirRecursively, SIGNAL(triggered()), this, SLOT(onFileAppendDirRecursively()));
     menuFile->addAction(actnFileAppendDirRecursively);
 
     menuFile->addSeparator();
 
-    actnFileClearFileList = new QAction(trUtf8("Clear list of files"), this);
+    actnFileClearFileList = new QAction(tr("Clear list of files"), this);
     connect(actnFileClearFileList, SIGNAL(triggered()), this, SLOT(onFileClearFileList()));
     menuFile->addAction(actnFileClearFileList);
 
     menuFile->addSeparator();
 
     actnFileExit = new QAction(QIcon::fromTheme("application-exit", QIcon(":/img/application-exit.png")),
-                               trUtf8("Exit"), this);
+                               tr("Exit"), this);
     connect(actnFileExit, SIGNAL(triggered()), this, SLOT(onFileExit()));
     menuFile->addAction(actnFileExit);
 
     // Setup Select menu
 
-    actnSelectAllFiles = new QAction(trUtf8("Select all"), this);
+    actnSelectAllFiles = new QAction(tr("Select all"), this);
     menuSelect->addAction(actnSelectAllFiles);
 
-    actnSelectOnlyCompressed = new QAction(trUtf8("Select compressed files only"), this);
+    actnSelectOnlyCompressed = new QAction(tr("Select compressed files only"), this);
     menuSelect->addAction(actnSelectOnlyCompressed);
 
-    actnSelectInvertSelection = new QAction(trUtf8("Invert selection"), this);
+    actnSelectInvertSelection = new QAction(tr("Invert selection"), this);
     menuSelect->addAction(actnSelectInvertSelection);
 
     // Setup Tools menu
 
-    actnToolsUncompress = new QAction(trUtf8("Uncompress"), this);
+    actnToolsUncompress = new QAction(tr("Uncompress"), this);
     actnToolsUncompress->setEnabled(false);
     menuTools->addAction(actnToolsUncompress);
 
-    actnToolsCompress = new QAction(trUtf8("Compress"), this);
+    actnToolsCompress = new QAction(tr("Compress"), this);
     actnToolsCompress->setEnabled(false);
     menuTools->addAction(actnToolsCompress);
 
-    subToolsMoveTo = new QMenu(trUtf8("Move to"), this);
+    subToolsMoveTo = new QMenu(tr("Move to"), this);
     menuTools->addMenu(subToolsMoveTo);
-    subToolsCopyTo = new QMenu(trUtf8("Copy to"), this);
+    subToolsCopyTo = new QMenu(tr("Copy to"), this);
     menuTools->addMenu(subToolsCopyTo);
-    subToolsInplaceRename = new QMenu(trUtf8("In-place rename"), this);
+    subToolsInplaceRename = new QMenu(tr("In-place rename"), this);
     menuTools->addMenu(subToolsInplaceRename);
 
     menuTools->addSeparator();
 
     actnToolsSettings = new QAction(QIcon::fromTheme("preferences-system", QIcon(":/img/preferences-system.png")),
-                                    trUtf8("Settings..."), this);
+                                    tr("Settings..."), this);
     connect(actnToolsSettings, SIGNAL(triggered()), this, SLOT(onToolsSettings()));
     menuTools->addAction(actnToolsSettings);
 
@@ -168,7 +168,7 @@ MainWindow::MainWindow(QWidget *parent)
     // Setup Help menu
 
     actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/img/help-about.png")),
-                                trUtf8("About..."), this);
+                                tr("About..."), this);
     connect(actnHelpAbout, SIGNAL(triggered()), this, SLOT(onHelpAbout()));
     menuHelp->addAction(actnHelpAbout);
 
@@ -178,7 +178,7 @@ MainWindow::MainWindow(QWidget *parent)
 #else
         QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"),
 #endif
-        trUtf8("About Qt..."), this);
+        tr("About Qt..."), this);
     connect(actnHelpAboutQt, SIGNAL(triggered()), this, SLOT(onHelpAboutQt()));
     menuHelp->addAction(actnHelpAboutQt);
 
@@ -227,7 +227,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     edtLog = new QTextEdit();
     edtLog->setReadOnly(true);
-    tabInfo->addTab(edtLog, trUtf8("Message Log"));
+    tabInfo->addTab(edtLog, tr("Message Log"));
 
     // TODO Add context menu for Message Log
 
@@ -397,8 +397,8 @@ void MainWindow::onSetSelected(int count)
 
 void MainWindow::onFileOpen()
 {
-    QStringList filenames = QFileDialog::getOpenFileNames(this, trUtf8("Open file"), workingDir,
-                            trUtf8("Fictionbook files(*.fb2 *.fb2.zip)"));
+    QStringList filenames = QFileDialog::getOpenFileNames(this, tr("Open file"), workingDir,
+                            tr("Fictionbook files(*.fb2 *.fb2.zip)"));
 
     FileReader *reader = new FileReader(filenames);
     setReaderSigSlots(reader);
@@ -406,7 +406,7 @@ void MainWindow::onFileOpen()
 
 void MainWindow::onFileAppendDir()
 {
-    QString dir = QFileDialog::getExistingDirectory(this, trUtf8("Append Directory"), workingDir,
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Append Directory"), workingDir,
                   QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     FileReader *reader = new FileReader(dir, false);
     setReaderSigSlots(reader);
@@ -414,7 +414,7 @@ void MainWindow::onFileAppendDir()
 
 void MainWindow::onFileAppendDirRecursively()
 {
-    QString dir = QFileDialog::getExistingDirectory(this, trUtf8("Append Directory"), workingDir,
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Append Directory"), workingDir,
                   QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     FileReader *reader = new FileReader(dir, true);
     setReaderSigSlots(reader);
@@ -432,7 +432,7 @@ void MainWindow::onFileExit()
 
 void MainWindow::onToolsMoveTo()
 {
-    QString basedir = QFileDialog::getExistingDirectory(this, trUtf8("Move files to folder"), workingDir,
+    QString basedir = QFileDialog::getExistingDirectory(this, tr("Move files to folder"), workingDir,
                       QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     QString pattern = sender()->property("template").toString();
     emit mdlData->MoveTo(basedir, pattern);
@@ -440,7 +440,7 @@ void MainWindow::onToolsMoveTo()
 
 void MainWindow::onToolsCopyTo()
 {
-    QString basedir = QFileDialog::getExistingDirectory(this, trUtf8("Copy files to folder"), workingDir,
+    QString basedir = QFileDialog::getExistingDirectory(this, tr("Copy files to folder"), workingDir,
                       QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
     QString pattern = sender()->property("template").toString();
     emit mdlData->CopyTo(basedir, pattern);
@@ -467,7 +467,7 @@ void MainWindow::onToolsSettings()
 
 void MainWindow::onHelpAbout()
 {
-    QString caption = trUtf8("About FB2ME");
+    QString caption = tr("About FB2ME");
 
     QString header = "<p align='center'>"
                      "<big><b>%1</b></big><br/>"
@@ -477,18 +477,18 @@ void MainWindow::onHelpAbout()
 
     QString record = "<p>%1<br/><small>%2</small></p>";
 
-    QString message = header.arg(trUtf8("FB2 Metadata Editor"),
-                                 trUtf8("Version"), QApplication::applicationVersion(),
-                                 trUtf8("A metadata editor for FictionBook files"));
+    QString message = header.arg(tr("FB2 Metadata Editor"),
+                                 tr("Version"), QApplication::applicationVersion(),
+                                 tr("A metadata editor for FictionBook files"));
     message += record.arg(
-                   trUtf8("Copyright &copy; %1 Veter").arg("2015, 2016"),
-                   trUtf8("Released under the <a href=%1>GPL 3</a> license").arg("\"http://www.gnu.org/licenses/gpl.html\""));
+                   tr("Copyright &copy; %1 Veter").arg("2015, 2016"),
+                   tr("Released under the <a href=%1>GPL 3</a> license").arg("\"http://www.gnu.org/licenses/gpl.html\""));
     message += record.arg(
-                   trUtf8("Fallback icons from the <a href=%1>Oxygen</a> icon theme").arg("\"https://techbase.kde.org/Projects/Oxygen\""),
-                   trUtf8("Used under the <a href=%1>LGPL 3</a> license").arg("\"http://www.gnu.org/licenses/lgpl.html\""));
+                   tr("Fallback icons from the <a href=%1>Oxygen</a> icon theme").arg("\"https://techbase.kde.org/Projects/Oxygen\""),
+                   tr("Used under the <a href=%1>LGPL 3</a> license").arg("\"http://www.gnu.org/licenses/lgpl.html\""));
     message += record.arg(
-                   trUtf8("ZIP archive support from <a href=%1>miniz.c</a> library").arg("\"https://github.com/richgel999/miniz\""),
-                   trUtf8("Released as <a href=%1>public domain</a>").arg("\"http://unlicense.org\""));
+                   tr("ZIP archive support from <a href=%1>miniz.c</a> library").arg("\"https://github.com/richgel999/miniz\""),
+                   tr("Released as <a href=%1>public domain</a>").arg("\"http://unlicense.org\""));
 
     QMessageBox::about(this, caption, message);
 }
@@ -507,17 +507,17 @@ void MainWindow::onTableContextMenuRequested(const QPoint &point)
 
     QMenu *menu = new QMenu(this);
 
-    QAction *edit = new QAction(trUtf8("Edit metadata"), this);
+    QAction *edit = new QAction(tr("Edit metadata"), this);
     menu->addAction(edit);
     edit->setProperty("index", QVariant(ind));
     connect(edit, SIGNAL(triggered()), this, SLOT(onTableOpenEditor()));
 
-    QAction *uncompress = new QAction(trUtf8("Uncompress"), this);
+    QAction *uncompress = new QAction(tr("Uncompress"), this);
     menu->addAction(uncompress);
     uncompress->setProperty("index", QVariant(ind));
     connect(uncompress, SIGNAL(triggered()), mdlData, SLOT(onUnzipCurrent()));
 
-    QAction *compress = new QAction(trUtf8("Compress"), this);
+    QAction *compress = new QAction(tr("Compress"), this);
     menu->addAction(compress);
     compress->setProperty("index", QVariant(ind));
     connect(compress, SIGNAL(triggered()), mdlData, SLOT(onZipCurrent()));

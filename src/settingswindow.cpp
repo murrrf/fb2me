@@ -36,16 +36,16 @@ SettingsWindow::SettingsWindow(QWidget *parent)
 {
     // Set up UI
 
-    QGroupBox *gbxPatterns = new QGroupBox(trUtf8("Rename templates"));
-    QLabel *lblPatternsHelp = new QLabel(trUtf8("%F - author's first name; %M - author's middle name;<br/>"
-                                         "%L - author's last name; %A - first letter of author's last name;<br/>"
-                                         "%B - book title; %S - sequence name; %N - sequence number"));
+    QGroupBox *gbxPatterns = new QGroupBox(tr("Rename templates"));
+    QLabel *lblPatternsHelp = new QLabel(tr("%F - author's first name; %M - author's middle name;<br/>"
+                                            "%L - author's last name; %A - first letter of author's last name;<br/>"
+                                            "%B - book title; %S - sequence name; %N - sequence number"));
     lstPatterns = new QListWidget();
-    QPushButton *btnPatternAdd = new QPushButton(trUtf8("Add"));
+    QPushButton *btnPatternAdd = new QPushButton(tr("Add"));
     connect(btnPatternAdd, SIGNAL(clicked()), this, SLOT(onPatternAdd()));
-    QPushButton *btnPatternEdit = new QPushButton(trUtf8("Edit"));
+    QPushButton *btnPatternEdit = new QPushButton(tr("Edit"));
     connect(btnPatternEdit, SIGNAL(clicked()), this, SLOT(onPatternEdit()));
-    QPushButton *btnPatternDelete = new QPushButton(trUtf8("Delete"));
+    QPushButton *btnPatternDelete = new QPushButton(tr("Delete"));
     connect(btnPatternDelete, SIGNAL(clicked()), this, SLOT(onPatternDelete()));
     QHBoxLayout *boxPatternsButtons = new QHBoxLayout();
     boxPatternsButtons->addWidget(btnPatternAdd);
@@ -117,7 +117,7 @@ void SettingsWindow::accept()
 void SettingsWindow::onPatternAdd()
 {
     bool ok;
-    QString text = QInputDialog::getText(this, trUtf8("Add new template"), trUtf8("Enter template"), QLineEdit::Normal,
+    QString text = QInputDialog::getText(this, tr("Add new template"), tr("Enter template"), QLineEdit::Normal,
                                          "", &ok).trimmed();
 
     if (ok && !text.isEmpty())
@@ -130,8 +130,8 @@ void SettingsWindow::onPatternAdd()
         }
         else
         {
-            if (QMessageBox::question(this, trUtf8("The template already exists"),
-                                      trUtf8("The template \"%1\" already exists. Do you want to add it again?").arg(text),
+            if (QMessageBox::question(this, tr("The template already exists"),
+                                      tr("The template \"%1\" already exists. Do you want to add it again?").arg(text),
                                       QMessageBox::Ok | QMessageBox::Cancel) == QMessageBox::Ok)
             {
                 lstPatterns->addItem(text);
@@ -145,7 +145,7 @@ void SettingsWindow::onPatternEdit()
     if (lstPatterns->currentRow() > -1)
     {
         bool ok;
-        QString text = QInputDialog::getText(this, trUtf8("Edit template"), trUtf8("Enter template"), QLineEdit::Normal,
+        QString text = QInputDialog::getText(this, tr("Edit template"), tr("Enter template"), QLineEdit::Normal,
                                              lstPatterns->item(lstPatterns->currentRow())->text(), &ok).trimmed();
 
         if (ok && !text.isEmpty())
@@ -164,8 +164,8 @@ void SettingsWindow::onPatternDelete()
 {
     if (lstPatterns->currentRow() > -1)
     {
-        if (QMessageBox::question(this, trUtf8("Delete template"),
-                                  trUtf8("Delete template \"%1\"?").arg(lstPatterns->item(lstPatterns->currentRow())->text()),
+        if (QMessageBox::question(this, tr("Delete template"),
+                                  tr("Delete template \"%1\"?").arg(lstPatterns->item(lstPatterns->currentRow())->text()),
                                   QMessageBox::Ok | QMessageBox::Cancel) == QMessageBox::Ok)
         {
             delete lstPatterns->takeItem(lstPatterns->currentRow());

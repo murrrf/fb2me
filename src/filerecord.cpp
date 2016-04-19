@@ -242,15 +242,14 @@ QString FileRecord::zipFile()
     status = mz_zip_writer_add_file(&archive, tmp.completeBaseName().toStdString().c_str(), filename.toStdString().c_str(),
                                     "", (mz_uint16)strlen(""), MZ_BEST_COMPRESSION);
 
-    if (status < MZ_OK)
-    {
-        mz_zip_writer_finalize_archive(&archive);
-        mz_zip_writer_end(&archive);
-        return msgError(qApp->tr("Cannot compress file %2  to archive %1").arg(archiveName, filename));
-    }
-
     mz_zip_writer_finalize_archive(&archive);
     mz_zip_writer_end(&archive);
+
+    if (status < MZ_OK)
+    {
+        QFile::remove(archiveName);
+        return msgError(qApp->tr("Cannot compress file %2  to archive %1").arg(archiveName, filename));
+    }
 
     QString oldFileName = getFileName();
     setFileName(archiveName);

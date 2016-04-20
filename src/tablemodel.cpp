@@ -478,18 +478,21 @@ QString TableModel::fromPathRemoveOptional(QString &path, const QString &param, 
     // TODO There must be an easier way the replacement of optional parameters
     if (subst.isEmpty())
     {
-        int posFirstName = path.indexOf(param);
-        int posRightBracket = path.indexOf("]", posFirstName);
-        int posLeftBracket = path.lastIndexOf("[", posFirstName);
-        int posRightParam = path.indexOf("%", posFirstName);
-        int posLeftParam = path.lastIndexOf("%", posFirstName);
-
-        if ((posLeftBracket != -1) && (posRightBracket != -1))
+        while (path.contains(param))
         {
-            if (((posLeftParam == -1) || (posLeftParam < posLeftBracket)) &&
-                    ((posRightParam == -1) || (posRightParam > posRightBracket)))
+            int posFirstName = path.indexOf(param);
+            int posRightBracket = path.indexOf("]", posFirstName);
+            int posLeftBracket = path.lastIndexOf("[", posFirstName);
+            int posRightParam = path.indexOf("%", posFirstName);
+            int posLeftParam = path.lastIndexOf("%", posFirstName);
+
+            if ((posLeftBracket != -1) && (posRightBracket != -1))
             {
-                path.remove(posLeftBracket, posRightBracket - posLeftBracket); // TODO Check brackets is removed
+                if (!(((posLeftParam == -1) || (posLeftParam < posLeftBracket)) &&
+                        ((posRightParam == -1) || (posRightParam > posRightBracket))))
+                {
+                    path.remove(posLeftBracket, posRightBracket - posLeftBracket); // TODO Check brackets is removed
+                }
             }
         }
     }

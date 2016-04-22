@@ -482,11 +482,27 @@ QString TableModel::fromPathRemoveOptional(QString &path, const QString &param, 
         {
             int posFirstName = path.indexOf(param);
             int posRightBracket = path.indexOf("]", posFirstName);
+            int posRightLeftBracket = path.indexOf("[", posFirstName);
+
+            if (posRightLeftBracket == -1)
+            {
+                posRightLeftBracket = path.length();
+            }
+
             int posLeftBracket = path.lastIndexOf("[", posFirstName);
+            int posLeftRightBracket = path.lastIndexOf("]", posFirstName);
+
+            if (posLeftRightBracket = -1)
+            {
+                posLeftRightBracket = 0;
+            }
+
             int posRightParam = path.indexOf("%", posFirstName);
             int posLeftParam = path.lastIndexOf("%", posFirstName);
 
-            if ((posLeftBracket != -1) && (posRightBracket != -1))
+            if ((posLeftBracket != -1) && (posRightBracket != -1) &&
+                    (posRightBracket < posRightLeftBracket) &&
+                    (posLeftBracket > posLeftRightBracket))
             {
                 if (!(((posLeftParam == -1) || (posLeftParam < posLeftBracket)) &&
                         ((posRightParam == -1) || (posRightParam > posRightBracket))))

@@ -494,6 +494,10 @@ QString TableModel::fromPathRemoveOptional(QString &path, const QString &param, 
                     path.remove(posLeftBracket, posRightBracket - posLeftBracket); // TODO Check brackets is removed
                 }
             }
+            else
+            {
+                path.remove(posFirstName, param.length());
+            }
         }
     }
     else

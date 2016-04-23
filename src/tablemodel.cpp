@@ -460,10 +460,10 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     fromPathRemoveOptional(result, "%S", sequence);
     fromPathRemoveOptional(result, "%N", number);
 
-    result.replace("  ", " ");
-    result.replace(QString(2, QDir::separator()), QDir::separator());
     result.replace("[", "");
     result.replace("]", "");
+    result.replace("  ", " ");
+    result.replace(QString(2, QDir::separator()), QDir::separator());
 
     if (record.isArchive())
         result += ".fb2.zip";

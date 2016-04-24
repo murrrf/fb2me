@@ -39,7 +39,8 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     QGroupBox *gbxPatterns = new QGroupBox(tr("Rename templates"));
     QLabel *lblPatternsHelp = new QLabel(tr("%F - author's first name; %M - author's middle name;<br/>"
                                             "%L - author's last name; %A - first letter of author's last name;<br/>"
-                                            "%B - book title; %S - sequence name; %N - sequence number"));
+                                            "%B - book title; %S - sequence name; %N - sequence number.<br/>"
+                                            "Optional parameters are written in square brackets."));
     lstPatterns = new QListWidget();
     QPushButton *btnPatternAdd = new QPushButton(tr("Add"));
     connect(btnPatternAdd, SIGNAL(clicked()), this, SLOT(onPatternAdd()));

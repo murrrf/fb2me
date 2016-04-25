@@ -221,6 +221,7 @@ QString FileRecord::unzipFile()
 
 QString FileRecord::zipFile()
 {
+    //TODO Escape symbols in filename because files with non-valid names can't be compressed
     mz_bool status;
     mz_zip_archive archive;
     memset(&archive, 0, sizeof(archive));

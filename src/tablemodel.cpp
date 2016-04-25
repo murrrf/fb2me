@@ -462,13 +462,13 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
 
     result.replace("[", "");
     result.replace("]", "");
-    result.replace("  ", " ");
     result.replace(QString(2, QDir::separator()), QDir::separator());
+    result.replace("  ", " ");
+
+    result += ".fb2";
 
     if (record.isArchive())
-        result += ".fb2.zip";
-    else
-        result += ".fb2";
+        result += ".zip";
 
     return result;
 }

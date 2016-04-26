@@ -32,7 +32,7 @@ FileReader::FileReader(QStringList files)
     filenames.clear();
     QStringList::iterator it;
 
-    for (it = files.begin(); it != files.end(); it++)
+    for (it = files.begin(); it != files.end(); ++it)
     {
         filenames.append(*it);
     }
@@ -69,7 +69,7 @@ void FileReader::run()
 {
     QStringList::iterator it;
 
-    for (it = filenames.begin(); it != filenames.end(); it++)
+    for (it = filenames.begin(); it != filenames.end(); ++it)
     {
         FileRecord *rec = new FileRecord();
         QFileInfo f(*it);

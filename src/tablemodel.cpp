@@ -234,7 +234,7 @@ void TableModel::onUnzipSelected()
     QVector<FileRecord>::iterator it;
     QString result;
 
-    for (it = Data.begin(); it != Data.end(); it++)
+    for (it = Data.begin(); it != Data.end(); ++it)
     {
         if ((*it).isSelected())
         {
@@ -266,7 +266,7 @@ void TableModel::onZipSelected()
     QVector<FileRecord>::iterator it;
     QString result;
 
-    for (it = Data.begin(); it != Data.end(); it++)
+    for (it = Data.begin(); it != Data.end(); ++it)
     {
         if ((*it).isSelected())
         {
@@ -297,7 +297,7 @@ void TableModel::onSelectAll()
 {
     QVector<FileRecord>::iterator it;
 
-    for (it = Data.begin(); it != Data.end(); it++)
+    for (it = Data.begin(); it != Data.end(); ++it)
     {
         (*it).setSelected(true);
     }
@@ -311,7 +311,7 @@ void TableModel::onSelectZip()
     QVector<FileRecord>::iterator it;
     cntSelectedRecords = 0;
 
-    for (it = Data.begin(); it != Data.end(); it++)
+    for (it = Data.begin(); it != Data.end(); ++it)
     {
         (*it).setSelected((*it).isArchive());
 
@@ -327,7 +327,7 @@ void TableModel::onInvertSelection()
     QVector<FileRecord>::iterator it;
     cntSelectedRecords = 0;
 
-    for (it = Data.begin(); it != Data.end(); it++)
+    for (it = Data.begin(); it != Data.end(); ++it)
     {
         (*it).setSelected(!(*it).isSelected());
 
@@ -342,7 +342,7 @@ void TableModel::onMoveTo(QString basedir, QString pattern)
 {
     QVector<FileRecord>::iterator it;
 
-    for (it = Data.begin(); it != Data.end(); it++)
+    for (it = Data.begin(); it != Data.end(); ++it)
     {
         if ((*it).isSelected())
         {
@@ -356,7 +356,7 @@ void TableModel::onCopyTo(QString basedir, QString pattern)
 {
     QVector<FileRecord>::iterator it;
 
-    for (it = Data.begin(); it != Data.end(); it++)
+    for (it = Data.begin(); it != Data.end(); ++it)
     {
         if ((*it).isSelected())
         {
@@ -372,7 +372,7 @@ void TableModel::onInplaceRename(QString basedir, QString pattern)
 
     QVector<FileRecord>::iterator it;
 
-    for (it = Data.begin(); it != Data.end(); it++)
+    for (it = Data.begin(); it != Data.end(); ++it)
     {
         if ((*it).isSelected())
         {
@@ -396,7 +396,7 @@ QString TableModel::getFormattedGenresList(int index) const
     genre_t tmp = Data.value(index).getGenresList();
     genre_t::iterator it;
 
-    for (it = tmp.begin(); it != tmp.end(); it++)
+    for (it = tmp.begin(); it != tmp.end(); ++it)
     {
         if ((*it).second == 100)
             res.append(QString("%1").arg((*it).first));
@@ -413,7 +413,7 @@ QString TableModel::getFormattedSeriesList(int index) const
     sequence_t tmp = Data.value(index).getSequenceList();
     sequence_t::iterator it;
 
-    for (it = tmp.begin(); it != tmp.end(); it++)
+    for (it = tmp.begin(); it != tmp.end(); ++it)
     {
         res.append(QString("%1 - %2").arg((*it).first, QString::number((*it).second)));
     }

@@ -96,7 +96,7 @@ void RecordEditor::updateUI()
 
     edtBookTitle->setText(record->getBookTitle());
 
-    for (int i = 0; i < record->getAuthorCount(); i++)
+    for (int i = 0; i < record->getAuthorCount(); ++i)
     {
         Person tmpAuthor = record->getAuthor(i);
         AuthorDisplay *tmp = new AuthorDisplay(&tmpAuthor, i, gbxAuthorList);
@@ -105,7 +105,7 @@ void RecordEditor::updateUI()
 
     sequence_t tmpSequence = record->getSequenceList();
 
-    for (int i = 0; i < tmpSequence.size(); i++)
+    for (int i = 0; i < tmpSequence.size(); ++i)
     {
         SeriesDisplay *tmp = new SeriesDisplay(&tmpSequence, i, gbxSeriesList);
         gbxSeriesList->addItem(tmp);
@@ -113,7 +113,7 @@ void RecordEditor::updateUI()
 
     genre_t tmpGenres = record->getGenresList();
 
-    for (int i = 0; i < tmpGenres.size(); i++)
+    for (int i = 0; i < tmpGenres.size(); ++i)
     {
         GenresDisplay *tmp = new GenresDisplay(&tmpGenres, i, gbxGenresList);
         gbxGenresList->addItem(tmp);

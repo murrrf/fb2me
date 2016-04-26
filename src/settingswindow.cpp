@@ -71,7 +71,7 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
     int size = settings.beginReadArray(NAMES::nameTemplateGroup);
 
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < size; ++i)
     {
         settings.setArrayIndex(i);
         lstPatterns->addItem(settings.value(NAMES::nameTemplate).toString());
@@ -91,7 +91,7 @@ QStringList SettingsWindow::getTemplatesList()
 {
     QStringList result;
 
-    for (int i = 0; i < lstPatterns->count(); i++)
+    for (int i = 0; i < lstPatterns->count(); ++i)
     {
         result.append(lstPatterns->item(i)->text());
     }
@@ -104,7 +104,7 @@ void SettingsWindow::accept()
     QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
     settings.beginWriteArray(NAMES::nameTemplateGroup);
 
-    for (int i = 0; i < lstPatterns->count(); i++)
+    for (int i = 0; i < lstPatterns->count(); ++i)
     {
         settings.setArrayIndex(i);
         settings.setValue(NAMES::nameTemplate, lstPatterns->item(i)->text());

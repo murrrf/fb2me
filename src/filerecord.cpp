@@ -135,7 +135,7 @@ QStringList FileRecord::getAuthorList()
     QStringList tmp;
     QVector<Person>::iterator it;
 
-    for (it = BookAuthor.begin(); it != BookAuthor.end(); it++)
+    for (it = BookAuthor.begin(); it != BookAuthor.end(); ++it)
     {
         tmp.append((*it).getFullNameLFM());
     }

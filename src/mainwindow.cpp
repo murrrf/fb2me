@@ -157,7 +157,7 @@ MainWindow::MainWindow(QWidget *parent)
     int size = settings.beginReadArray(NAMES::nameTemplateGroup);
     QStringList templates;
 
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < size; ++i)
     {
         settings.setArrayIndex(i);
         templates.append(settings.value(NAMES::nameTemplate).toString());
@@ -356,17 +356,17 @@ void MainWindow::onSetSelected(int count)
 
         QList<QAction *>::iterator it;
 
-        for (it = subToolsMoveTo->actions().begin(); it < subToolsMoveTo->actions().end(); it++)
+        for (it = subToolsMoveTo->actions().begin(); it < subToolsMoveTo->actions().end(); ++it)
         {
             (*it)->setEnabled(true);
         }
 
-        for (it = subToolsCopyTo->actions().begin(); it < subToolsCopyTo->actions().end(); it++)
+        for (it = subToolsCopyTo->actions().begin(); it < subToolsCopyTo->actions().end(); ++it)
         {
             (*it)->setEnabled(true);
         }
 
-        for (it = subToolsInplaceRename->actions().begin(); it < subToolsInplaceRename->actions().end(); it++)
+        for (it = subToolsInplaceRename->actions().begin(); it < subToolsInplaceRename->actions().end(); ++it)
         {
             (*it)->setEnabled(true);
         }
@@ -378,17 +378,17 @@ void MainWindow::onSetSelected(int count)
 
         QList<QAction *>::iterator it;
 
-        for (it = subToolsMoveTo->actions().begin(); it < subToolsMoveTo->actions().end(); it++)
+        for (it = subToolsMoveTo->actions().begin(); it < subToolsMoveTo->actions().end(); ++it)
         {
             (*it)->setEnabled(false);
         }
 
-        for (it = subToolsCopyTo->actions().begin(); it < subToolsCopyTo->actions().end(); it++)
+        for (it = subToolsCopyTo->actions().begin(); it < subToolsCopyTo->actions().end(); ++it)
         {
             (*it)->setEnabled(false);
         }
 
-        for (it = subToolsInplaceRename->actions().begin(); it < subToolsInplaceRename->actions().end(); it++)
+        for (it = subToolsInplaceRename->actions().begin(); it < subToolsInplaceRename->actions().end(); ++it)
         {
             (*it)->setEnabled(false);
         }

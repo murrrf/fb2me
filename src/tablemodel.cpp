@@ -492,7 +492,7 @@ QString TableModel::fromPathRemoveOptional(QString &path, const QString &param, 
             int posLeftBracket = path.lastIndexOf("[", posFirstName);
             int posLeftRightBracket = path.lastIndexOf("]", posFirstName);
 
-            if (posLeftRightBracket = -1)
+            if (posLeftRightBracket == -1)
             {
                 posLeftRightBracket = 0;
             }

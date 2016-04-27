@@ -400,24 +400,35 @@ void MainWindow::onFileOpen()
     QStringList filenames = QFileDialog::getOpenFileNames(this, tr("Open file"), workingDir,
                             tr("Fictionbook files(*.fb2 *.fb2.zip)"));
 
-    FileReader *reader = new FileReader(filenames);
-    setReaderSigSlots(reader);
+    if (!filenames.isEmpty())
+    {
+        FileReader *reader = new FileReader(filenames);
+        setReaderSigSlots(reader);
+    }
 }
 
 void MainWindow::onFileAppendDir()
 {
     QString dir = QFileDialog::getExistingDirectory(this, tr("Append Directory"), workingDir,
                   QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    FileReader *reader = new FileReader(dir, false);
-    setReaderSigSlots(reader);
+
+    if (!dir.isEmpty())
+    {
+        FileReader *reader = new FileReader(dir, false);
+        setReaderSigSlots(reader);
+    }
 }
 
 void MainWindow::onFileAppendDirRecursively()
 {
     QString dir = QFileDialog::getExistingDirectory(this, tr("Append Directory"), workingDir,
                   QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    FileReader *reader = new FileReader(dir, true);
-    setReaderSigSlots(reader);
+
+    if (!dir.isEmpty())
+    {
+        FileReader *reader = new FileReader(dir, true);
+        setReaderSigSlots(reader);
+    }
 }
 
 void MainWindow::onFileClearFileList()
@@ -434,16 +445,24 @@ void MainWindow::onToolsMoveTo()
 {
     QString basedir = QFileDialog::getExistingDirectory(this, tr("Move files to folder"), workingDir,
                       QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    QString pattern = sender()->property("template").toString();
-    emit mdlData->MoveTo(basedir, pattern);
+
+    if (!basedir.isEmpty())
+    {
+        QString pattern = sender()->property("template").toString();
+        emit mdlData->MoveTo(basedir, pattern);
+    }
 }
 
 void MainWindow::onToolsCopyTo()
 {
     QString basedir = QFileDialog::getExistingDirectory(this, tr("Copy files to folder"), workingDir,
                       QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
-    QString pattern = sender()->property("template").toString();
-    emit mdlData->CopyTo(basedir, pattern);
+
+    if (!basedir.isEmpty())
+    {
+        QString pattern = sender()->property("template").toString();
+        emit mdlData->CopyTo(basedir, pattern);
+    }
 }
 
 void MainWindow::onToolsInplaceRename()

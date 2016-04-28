@@ -111,6 +111,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(actnFileClearFileList, SIGNAL(triggered()), this, SLOT(onFileClearFileList()));
     menuFile->addAction(actnFileClearFileList);
 
+    actnFileClearLog = new QAction(tr("Clear log"), this);
+    connect(actnFileClearLog, SIGNAL(triggered()), this, SLOT(onFileClearLog()));
+    menuFile->addAction(actnFileClearLog);
+
     menuFile->addSeparator();
 
     actnFileExit = new QAction(QIcon::fromTheme("application-exit", QIcon(":/img/application-exit.png")),
@@ -268,6 +272,7 @@ MainWindow::~MainWindow()
     delete actnSelectInvertSelection;
     delete actnSelectOnlyCompressed;
     delete actnSelectAllFiles;
+    delete actnFileClearLog;
     delete actnFileClearFileList;
     delete actnFileAppendDirRecursively;
     delete actnFileAppendDir;
@@ -434,6 +439,11 @@ void MainWindow::onFileAppendDirRecursively()
 void MainWindow::onFileClearFileList()
 {
     emit mdlData->onClearList();
+}
+
+void MainWindow::onFileClearLog()
+{
+    edtLog->clear();
 }
 
 void MainWindow::onFileExit()

@@ -210,6 +210,15 @@ private:
 
     /**
      * @~russian
+     * @brief Действие «Очистить список файлов и журнал» меню «Файл».
+     *
+     * @~english
+     * @brief Clear file list and log action.
+     */
+    QAction *actnFileClearFileListLog;
+
+    /**
+     * @~russian
      * @brief Действие «Выход» меню «Файл».
      *
      * @~english
@@ -480,6 +489,15 @@ private slots:
      * @brief Clear log action handler.
      */
     void onFileClearLog();
+
+    /**
+     * @~russian
+     * @brief Обработчик действия «Очистить список файлов и журнал».
+     *
+     * @~english
+     * @brief Clear file list and log action handler.
+     */
+    void onFileClearFileListLog();
 
     /**
      * @~russian

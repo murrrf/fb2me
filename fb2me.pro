@@ -20,6 +20,7 @@ SOURCES += src/main.cpp\
     src/person.cpp \
     src/filereader.cpp \
     src/settingswindow.cpp \
+    src/settingshelper.cpp \
     src/recordeditor.cpp \
     src/recordeditorhelper.cpp
 
@@ -29,10 +30,11 @@ HEADERS  += src/mainwindow.h \
     src/person.h \
     src/filereader.h \
     src/settingswindow.h \
+    src/settingshelper.h \
     src/recordeditor.h \
+    src/recordeditorhelper.h \
     src/consts.h \
-    src/types.h \
-    src/recordeditorhelper.h
+    src/types.h
 
 # 3rd party components
 HEADERS += 3rdparty/miniz.h

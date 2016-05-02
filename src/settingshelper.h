@@ -29,4 +29,45 @@
  * @brief The module of the settings widget.
  */
 
+#include <QGroupBox>
+#include <QWidget>
+
+// Forward class declarations
+class QVBoxLayout;
+class QHBoxLayout;
+class QPushButton;
+class QGroupBox;
+
+/**
+ * @~russian
+ * @brief Базовый класс вспомогательных классов, использующихся в окне настроек.
+ *
+ * @~english
+ * @brief Base class of helper classes used in the settings window.
+ */
+class SettingsHelper : public QGroupBox
+{
+    Q_OBJECT
+public:
+    /**
+     * @~russian
+     * @brief Конструктор класса.
+     * @param parent Указатель на родительское окно.
+     *
+     * @~english
+     * @brief Class constructor.
+     * @param parent Parent window pointer.
+     */
+    explicit SettingsHelper(QWidget *parent = 0);
+
+    /**
+     * @~russian
+     * @brief Деструктор класса.
+     *
+     * @~english
+     * @brief Class destructor.
+     */
+    virtual ~SettingsHelper();
+};
+
 #endif // SETTINGSHELPER_H

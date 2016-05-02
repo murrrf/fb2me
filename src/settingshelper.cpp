@@ -18,3 +18,15 @@
  ***********************************************************************/
 
 #include "settingshelper.h"
+
+
+SettingsHelper::SettingsHelper(QWidget *parent) :
+    QGroupBox(parent)
+{
+
+}
+
+SettingsHelper::~SettingsHelper()
+{
+
+}

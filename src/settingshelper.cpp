@@ -19,14 +19,54 @@
 
 #include "settingshelper.h"
 
+#include <QTableWidget>
+#include <QPushButton>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QLabel>
 
-SettingsHelper::SettingsHelper(QWidget *parent) :
+SettingsHelper::SettingsHelper(const QString &title, QWidget *parent) :
     QGroupBox(parent)
 {
+    this->setTitle(title);
 
+    tblData = new QTableWidget();
+    tblData->setColumnCount(2);
+    tblData->setHorizontalHeaderLabels(QStringList() << tr("Key") << tr("Value"));
+
+    QPushButton *btnAdd = new QPushButton(tr("Add"));
+    connect(btnAdd, SIGNAL(clicked()), this, SIGNAL(Add()));
+    QPushButton *btnEdit = new QPushButton(tr("Edit"));
+    connect(btnEdit, SIGNAL(clicked()), this, SIGNAL(Edit()));
+    QPushButton *btnDelete = new QPushButton(tr("Delete"));
+    connect(btnDelete, SIGNAL(clicked()), this, SIGNAL(Delete()));
+    QHBoxLayout *boxButtons = new QHBoxLayout();
+    boxButtons->addWidget(btnAdd);
+    boxButtons->addWidget(btnEdit);
+    boxButtons->addWidget(btnDelete);
+
+    boxMain = new QVBoxLayout();
+    boxMain->addWidget(tblData);
+    boxMain->addLayout(boxButtons);
+    this->setLayout(boxMain);
 }
 
 SettingsHelper::~SettingsHelper()
 {
+    delete tblData;
+    delete boxMain;
+}
 
+void SettingsHelper::AddHelp(const QString &help)
+{
+    if (qobject_cast<QLabel *>(boxMain->itemAt(0)->widget()) != 0)
+    {
+        qobject_cast<QLabel *>(boxMain->itemAt(0)->widget())->setText(help);
+    }
+    else
+    {
+        QLabel *lblHelp = new QLabel();
+        lblHelp->setText(help);
+        boxMain->insertWidget(0, lblHelp);
+    }
 }

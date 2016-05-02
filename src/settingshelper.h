@@ -33,10 +33,11 @@
 #include <QWidget>
 
 // Forward class declarations
+class QGroupBox;
 class QVBoxLayout;
 class QHBoxLayout;
+class QTableWidget;
 class QPushButton;
-class QGroupBox;
 
 /**
  * @~russian
@@ -52,13 +53,15 @@ public:
     /**
      * @~russian
      * @brief Конструктор класса.
+     * @param title Заголовок виджета.
      * @param parent Указатель на родительское окно.
      *
      * @~english
      * @brief Class constructor.
+     * @param title Widget caption.
      * @param parent Parent window pointer.
      */
-    explicit SettingsHelper(QWidget *parent = 0);
+    explicit SettingsHelper(const QString &title, QWidget *parent = 0);
 
     /**
      * @~russian
@@ -68,6 +71,58 @@ public:
      * @brief Class destructor.
      */
     virtual ~SettingsHelper();
+
+    void AddHelp(const QString &help);
+
+private:
+
+    /**
+     * @~russian
+     * @brief Главный менеджер размещения элементов.
+     *
+     * @~english
+     * @brief Main layout manager.
+     */
+    QVBoxLayout *boxMain;
+
+    /**
+     * @~russian
+     * @brief Таблица данных настроек.
+     *
+     * @~english
+     * @brief Table of settings data.
+     */
+    QTableWidget *tblData;
+
+signals:
+
+    /**
+     * @~russian
+     * @brief Сигнал «Передвинуть вверх».
+     *
+     * @~english
+     * @brief «Move up» signal.
+     */
+    void Add();
+
+    /**
+     * @~russian
+     * @brief Сигнал «Передвинуть вниз».
+     *
+     * @~english
+     * @brief «Move down» signal.
+     */
+    void Edit();
+
+    /**
+     * @~russian
+     * @brief Сигнал «Удалить».
+     *
+     * @~english
+     * @brief «Delete» signal.
+     */
+    void Delete();
+
 };
 
 #endif // SETTINGSHELPER_H

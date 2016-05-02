@@ -29,6 +29,8 @@
  * @brief The module of the settings window.
  */
 
+#include "settingshelper.h"
+
 #include <QDialog>
 
 // Forward class declarations

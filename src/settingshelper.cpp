@@ -59,14 +59,21 @@ SettingsHelper::~SettingsHelper()
 
 void SettingsHelper::AddHelp(const QString &help)
 {
-    if (qobject_cast<QLabel *>(boxMain->itemAt(0)->widget()) != 0)
+    if (qobject_cast<QLabel *>(boxMain->itemAt(0)->widget()) == 0)
     {
-        qobject_cast<QLabel *>(boxMain->itemAt(0)->widget())->setText(help);
+        boxMain->insertWidget(0, new QLabel());
     }
-    else
-    {
-        QLabel *lblHelp = new QLabel();
-        lblHelp->setText(help);
-        boxMain->insertWidget(0, lblHelp);
-    }
+
+    qobject_cast<QLabel *>(boxMain->itemAt(0)->widget())->setText(help);
+
+//    if (qobject_cast<QLabel *>(boxMain->itemAt(0)->widget()) != 0)
+//    {
+//        qobject_cast<QLabel *>(boxMain->itemAt(0)->widget())->setText(help);
+//    }
+//    else
+//    {
+//        QLabel *lblHelp = new QLabel();
+//        lblHelp->setText(help);
+//        boxMain->insertWidget(0, lblHelp);
+//    }
 }

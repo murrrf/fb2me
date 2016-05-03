@@ -72,7 +72,16 @@ public:
      */
     virtual ~SettingsHelper();
 
-    void AddHelp(const QString &help);
+    /**
+     * @~russian
+     * @brief SetHelp
+     * @param help
+     *
+     * @~english
+     * @brief SetHelp
+     * @param help
+     */
+    void SetHelp(const QString &help);
 
 private:
 

@@ -81,7 +81,7 @@ public:
      * @brief SetHelp
      * @param help
      */
-    void SetHelp(const QString &help);
+    void setHelpString(const QString &help);
 
 private:
 

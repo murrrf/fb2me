@@ -57,7 +57,7 @@ SettingsHelper::~SettingsHelper()
     delete boxMain;
 }
 
-void SettingsHelper::SetHelp(const QString &help)
+void SettingsHelper::setHelpString(const QString &help)
 {
     if (qobject_cast<QLabel *>(boxMain->itemAt(0)->widget()) == 0)
     {

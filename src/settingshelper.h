@@ -74,12 +74,12 @@ public:
 
     /**
      * @~russian
-     * @brief SetHelp
-     * @param help
+     * @brief Установка текста подсказки в виджете настроек.
+     * @param help Текст подсказки.
      *
      * @~english
-     * @brief SetHelp
-     * @param help
+     * @brief Setting the help text in the settings widget.
+     * @param help Help text.
      */
     void setHelpString(const QString &help);
 

@@ -31,7 +31,7 @@ SettingsHelper::SettingsHelper(const QString &title, QWidget *parent) :
     this->setTitle(title);
 
     tblData = new QTableWidget();
-    tblData->setColumnCount(2);
+    tblData->setColumnCount(2); // Magic number. We don't need more (or less) columns
     tblData->setHorizontalHeaderLabels(QStringList() << tr("Key") << tr("Value"));
 
     QPushButton *btnAdd = new QPushButton(tr("Add"));
@@ -76,4 +76,23 @@ void SettingsHelper::setHelpString(const QString &help)
 //        lblHelp->setText(help);
 //        boxMain->insertWidget(0, lblHelp);
 //    }
+}
+
+int SettingsHelper::currentRow()
+{
+    return tblData->currentRow();
+}
+
+void SettingsHelper::addItem(const QString &key, const QString &value)
+{
+    tblData->setRowCount(tblData->rowCount() + 1);
+    editItem(tblData->rowCount() - 1, key, value);
+}
+
+void SettingsHelper::editItem(const int row, const QString &key, const QString &value)
+{
+    QTableWidgetItem *keyItem = new QTableWidgetItem(key);
+    QTableWidgetItem *valueItem = new QTableWidgetItem(value);
+    tblData->setItem(row, 0, keyItem);
+    tblData->setItem(row, 1, valueItem);
 }

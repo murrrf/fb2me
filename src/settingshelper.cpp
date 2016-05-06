@@ -94,4 +94,6 @@ void SettingsHelper::addItem(const QString &key, const QString &value)
 
 void SettingsHelper::editItem(const int row, const QString &key, const QString &value)
 {
+    tblData->item(row, 0)->setText(key);
+    tblData->item(row, 1)->setText(value);
 }

@@ -86,13 +86,12 @@ int SettingsHelper::currentRow()
 void SettingsHelper::addItem(const QString &key, const QString &value)
 {
     tblData->setRowCount(tblData->rowCount() + 1);
-    editItem(tblData->rowCount() - 1, key, value);
-}
-
-void SettingsHelper::editItem(const int row, const QString &key, const QString &value)
-{
     QTableWidgetItem *keyItem = new QTableWidgetItem(key);
     QTableWidgetItem *valueItem = new QTableWidgetItem(value);
     tblData->setItem(row, 0, keyItem);
     tblData->setItem(row, 1, valueItem);
+}
+
+void SettingsHelper::editItem(const int row, const QString &key, const QString &value)
+{
 }

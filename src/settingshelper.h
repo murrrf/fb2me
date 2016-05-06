@@ -97,15 +97,11 @@ public:
     /**
      * @~russian
      * @brief Добавление нового элемента в конец таблицы.
-     *
-     * Реализовано через вызов функции editItem().
      * @param key Текст первого столбца таблицы - ключ элемента.
      * @param value Текст второго столбца таблицы - значение элемента.
      *
      * @~english
      * @brief Adding new item in the end of table.
-     *
-     * Realized by editItem() function.
      * @param key Text of first column - key of item.
      * @param value Text of second column - value of item.
      */

@@ -88,8 +88,8 @@ void SettingsHelper::addItem(const QString &key, const QString &value)
     tblData->setRowCount(tblData->rowCount() + 1);
     QTableWidgetItem *keyItem = new QTableWidgetItem(key);
     QTableWidgetItem *valueItem = new QTableWidgetItem(value);
-    tblData->setItem(row, 0, keyItem);
-    tblData->setItem(row, 1, valueItem);
+    tblData->setItem(tblData->rowCount() - 1, 0, keyItem);
+    tblData->setItem(tblData->rowCount() - 1, 1, valueItem);
 }
 
 void SettingsHelper::editItem(const int row, const QString &key, const QString &value)

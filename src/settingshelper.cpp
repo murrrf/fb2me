@@ -32,7 +32,7 @@ SettingsHelper::SettingsHelper(const QString &title, QWidget *parent) :
 
     tblData = new QTableWidget();
     tblData->setColumnCount(2); // Magic number. We don't need more (or less) columns
-    tblData->setHorizontalHeaderLabels(QStringList() << tr("Key") << tr("Value"));
+    setColumnHeaders(tr("Key"), tr("Value"));
 
     QPushButton *btnAdd = new QPushButton(tr("Add"));
     connect(btnAdd, SIGNAL(clicked()), this, SIGNAL(Add()));

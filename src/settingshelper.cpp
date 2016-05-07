@@ -75,7 +75,12 @@ void SettingsHelper::setHelpString(const QString &help)
 //        QLabel *lblHelp = new QLabel();
 //        lblHelp->setText(help);
 //        boxMain->insertWidget(0, lblHelp);
-//    }
+    //    }
+}
+
+void SettingsHelper::setColumnHeaders(const QString &key, const QString &value)
+{
+    tblData->setHorizontalHeaderLabels(QStringList() << key << value);
 }
 
 int SettingsHelper::currentRow()

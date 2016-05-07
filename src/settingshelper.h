@@ -85,6 +85,19 @@ public:
 
     /**
      * @~russian
+     * @brief Установка заголовков столбцов таблицы.
+     * @param key Заголовок столбца "Ключ".
+     * @param value Заголовок столбца "Значение".
+     *
+     * @~english
+     * @brief Setting of the column headers of the table.
+     * @param key The column heading "Key".
+     * @param value The column heading "Value".
+     */
+    void setColumnHeaders(const QString &key, const QString &value);
+
+    /**
+     * @~russian
      * @brief Получение номера строки, в которой расположен выбранный элемент.
      * @return Номер строки.
      *

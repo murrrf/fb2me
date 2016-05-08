@@ -122,6 +122,15 @@ private:
      */
     QListWidget *lstPatterns;
 
+    /**
+     * @~russian
+     * @brief Список шаблонов переименования.
+     *
+     * @~english
+     * @brief List of rename templates.
+     */
+    SettingsHelper *gbxPatterns;
+
 private slots:
 
     /**

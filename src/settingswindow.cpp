@@ -36,27 +36,16 @@ SettingsWindow::SettingsWindow(QWidget *parent)
 {
     // Set up UI
 
-    QGroupBox *gbxPatterns = new QGroupBox(tr("Rename templates"));
-    QLabel *lblPatternsHelp = new QLabel(tr("%F - author's first name; %M - author's middle name;<br/>"
-                                            "%L - author's last name; %A - first letter of author's last name;<br/>"
-                                            "%B - book title; %S - sequence name; %N - sequence number.<br/>"
-                                            "Optional parameters are written in square brackets."));
-    lstPatterns = new QListWidget();
-    QPushButton *btnPatternAdd = new QPushButton(tr("Add"));
-    connect(btnPatternAdd, SIGNAL(clicked()), this, SLOT(onPatternAdd()));
-    QPushButton *btnPatternEdit = new QPushButton(tr("Edit"));
-    connect(btnPatternEdit, SIGNAL(clicked()), this, SLOT(onPatternEdit()));
-    QPushButton *btnPatternDelete = new QPushButton(tr("Delete"));
-    connect(btnPatternDelete, SIGNAL(clicked()), this, SLOT(onPatternDelete()));
-    QHBoxLayout *boxPatternsButtons = new QHBoxLayout();
-    boxPatternsButtons->addWidget(btnPatternAdd);
-    boxPatternsButtons->addWidget(btnPatternEdit);
-    boxPatternsButtons->addWidget(btnPatternDelete);
-    QVBoxLayout *boxPatterns = new QVBoxLayout();
-    boxPatterns->addWidget(lblPatternsHelp);
-    boxPatterns->addWidget(lstPatterns);
-    boxPatterns->addLayout(boxPatternsButtons);
-    gbxPatterns->setLayout(boxPatterns);
+    gbxPatterns = new SettingsHelper(tr("Rename templates"));
+    gbxPatterns->setHelpString(tr("%F - author's first name; %M - author's middle name;<br/>"
+                                  "%L - author's last name; %A - first letter of author's last name;<br/>"
+                                  "%B - book title; %S - sequence name; %N - sequence number.<br/>"
+                                  "Optional parameters are written in square brackets."));
+
+    connect(gbxPatterns, SIGNAL(Add()), this, SLOT(onPatternAdd()));
+
+    connect(gbxPatterns, SIGNAL(Edit()), this, SLOT(onPatternEdit()));
+    connect(gbxPatterns, SIGNAL(Delete()), this, SLOT(onPatternDelete()));
 
     boxButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     connect(boxButtons, SIGNAL(accepted()), this, SLOT(accept()));
@@ -71,6 +60,9 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
     int size = settings.beginReadArray(NAMES::nameTemplateGroup);
 
+    lstPatterns = new QListWidget();
+
+
     for (int i = 0; i < size; ++i)
     {
         settings.setArrayIndex(i);
@@ -83,6 +75,7 @@ SettingsWindow::SettingsWindow(QWidget *parent)
 SettingsWindow::~SettingsWindow()
 {
     delete lstPatterns;
+    delete gbxPatterns;
     delete boxButtons;
     delete boxMain;
 }

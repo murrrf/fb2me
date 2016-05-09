@@ -65,15 +65,6 @@ public:
      */
     FileRecord();
 
-    /*
-     * @~russian
-     * @brief Деструктор записи.
-     *
-     * @~english
-     * @brief Destructor of a record.
-     */
-//    ~FileRecord();
-
     /**
      * @~russian
      * @brief Установка размера файла.
@@ -409,13 +400,6 @@ public:
     QString renameFile(QString newName);
 
 private:
-    /*
-     * @~russian
-     * @brief
-     *
-     * @~english
-     * @brief
-     */
     /**
      * @~russian
      * @brief Состояние записи - для различных отображений.

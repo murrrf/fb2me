@@ -102,3 +102,18 @@ void SettingsHelper::editItem(const int row, const QString &key, const QString &
     tblData->item(row, 0)->setText(key);
     tblData->item(row, 1)->setText(value);
 }
+
+//==============================================================================
+// class SettingsInputHelper
+//==============================================================================
+
+SettingsInputHelper::SettingsInputHelper(QWidget *parent, Qt::WindowFlags flags):
+    QDialog(parent, flags)
+{
+
+}
+
+SettingsInputHelper::~SettingsInputHelper()
+{
+
+}

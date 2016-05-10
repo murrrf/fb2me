@@ -31,6 +31,7 @@
 
 #include <QGroupBox>
 #include <QWidget>
+#include <QDialog>
 
 // Forward class declarations
 class QGroupBox;
@@ -184,6 +185,40 @@ signals:
      */
     void Delete();
 
+};
+
+/**
+ * @~russian
+ * @brief Вспомогательный класс, создающий диалоговые окна для ввода значений в окне настроек.
+ *
+ * @~english
+ * @brief Helper class for creating dialogs enter values in the settings window.
+ */
+class SettingsInputHelper : public QDialog
+{
+    Q_OBJECT
+public:
+    /**
+     * @~russian
+     * @brief Конструктор класса.
+     * @param parent Указатель на родительское окно.
+     * @param flags Флаги настройки отображения диалогового окна.
+     *
+     * @~english
+     * @brief Class constructor.
+     * @param parent Parent window pointer.
+     * @param flags Type and hints to the window system settings for dialog.
+     */
+    explicit SettingsInputHelper(QWidget * parent = 0, Qt::WindowFlags flags = Qt::Dialog);
+
+    /**
+     * @~russian
+     * @brief Деструктор класса.
+     *
+     * @~english
+     * @brief Class destructor.
+     */
+    virtual ~SettingsInputHelper();
 };
 
 #endif // SETTINGSHELPER_H

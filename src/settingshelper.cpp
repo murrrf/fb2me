@@ -25,6 +25,8 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QDialog>
+#include <QLineEdit>
+#include <QDialogButtonBox>
 
 SettingsHelper::SettingsHelper(const QString &title, QWidget *parent) :
     QGroupBox(parent)
@@ -106,7 +108,28 @@ void SettingsHelper::editItem(const int row, const QString &key, const QString &
 
 void SettingsHelper::onAdd()
 {
+    QDialog *input = new QDialog();
+    QVBoxLayout *inputBox = new QVBoxLayout();
+    QLabel *keyHelp = new QLabel(tr("Key"));
+    QLineEdit *keyText = new QLineEdit();
+    QLabel *valueHelp = new QLabel(tr("Value"));
+    QLineEdit *valueText = new QLineEdit();
+    QDialogButtonBox *btnBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    inputBox->addWidget(keyHelp);
+    inputBox->addWidget(keyText);
+    inputBox->addWidget(valueHelp);
+    inputBox->addWidget(valueText);
+    inputBox->addWidget(btnBox);
+    input->setLayout(inputBox);
+    connect(btnBox, SIGNAL(accepted()), input, SLOT(accept()));
+    connect(btnBox, SIGNAL(rejected()), input, SLOT(reject()));
 
+    if (input->exec() == QDialog::Accepted)
+    {
+
+    }
+
+    delete input;
 }
 
 void SettingsHelper::onEdit()

@@ -31,7 +31,6 @@
 
 #include <QGroupBox>
 #include <QWidget>
-#include <QDialog>
 
 // Forward class declarations
 class QGroupBox;
@@ -136,6 +135,35 @@ public:
      */
     void editItem(const int row, const QString &key, const QString &value);
 
+public slots:
+
+    /**
+     * @~russian
+     * @brief Обработчик кнопки «Добавление нового значения».
+     *
+     * @~english
+     * @brief Handler clicking the «Add a new settings value» button.
+     */
+    void onAdd();
+
+    /**
+     * @~russian
+     * @brief Обработчик кнопки «Редактирование существующего значения».
+     *
+     * @~english
+     * @brief Handler clicking the «Edit the existing value» button.
+     */
+    void onEdit();
+
+    /**
+     * @~russian
+     * @brief Обработчик кнопки «Удаление существующего значения».
+     *
+     * @~english
+     * @brief Handler clicking the «Delete the existing value» button.
+     */
+    void onDelete();
+
 private:
 
     /**
@@ -155,35 +183,6 @@ private:
      * @brief Table of settings data.
      */
     QTableWidget *tblData;
-
-signals:
-
-    /**
-     * @~russian
-     * @brief Сигнал «Передвинуть вверх».
-     *
-     * @~english
-     * @brief «Move up» signal.
-     */
-    void Add();
-
-    /**
-     * @~russian
-     * @brief Сигнал «Передвинуть вниз».
-     *
-     * @~english
-     * @brief «Move down» signal.
-     */
-    void Edit();
-
-    /**
-     * @~russian
-     * @brief Сигнал «Удалить».
-     *
-     * @~english
-     * @brief «Delete» signal.
-     */
-    void Delete();
 
 };
 

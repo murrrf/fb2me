@@ -24,6 +24,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QDialog>
 
 SettingsHelper::SettingsHelper(const QString &title, QWidget *parent) :
     QGroupBox(parent)
@@ -35,11 +36,11 @@ SettingsHelper::SettingsHelper(const QString &title, QWidget *parent) :
     setColumnHeaders(tr("Key"), tr("Value"));
 
     QPushButton *btnAdd = new QPushButton(tr("Add"));
-    connect(btnAdd, SIGNAL(clicked()), this, SIGNAL(Add()));
+    connect(btnAdd, SIGNAL(clicked()), this, SLOT(onAdd()));
     QPushButton *btnEdit = new QPushButton(tr("Edit"));
-    connect(btnEdit, SIGNAL(clicked()), this, SIGNAL(Edit()));
+    connect(btnEdit, SIGNAL(clicked()), this, SLOT(onEdit()));
     QPushButton *btnDelete = new QPushButton(tr("Delete"));
-    connect(btnDelete, SIGNAL(clicked()), this, SIGNAL(Delete()));
+    connect(btnDelete, SIGNAL(clicked()), this, SLOT(onDelete()));
     QHBoxLayout *boxButtons = new QHBoxLayout();
     boxButtons->addWidget(btnAdd);
     boxButtons->addWidget(btnEdit);
@@ -101,4 +102,19 @@ void SettingsHelper::editItem(const int row, const QString &key, const QString &
 {
     tblData->item(row, 0)->setText(key);
     tblData->item(row, 1)->setText(value);
+}
+
+void SettingsHelper::onAdd()
+{
+
+}
+
+void SettingsHelper::onEdit()
+{
+
+}
+
+void SettingsHelper::onDelete()
+{
+
 }

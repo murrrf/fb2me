@@ -115,18 +115,21 @@ void SettingsHelper::onAdd()
     QLabel *valueHelp = new QLabel(tr("Value"));
     QLineEdit *valueText = new QLineEdit();
     QDialogButtonBox *btnBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+
     inputBox->addWidget(keyHelp);
     inputBox->addWidget(keyText);
     inputBox->addWidget(valueHelp);
     inputBox->addWidget(valueText);
     inputBox->addWidget(btnBox);
     input->setLayout(inputBox);
+
     connect(btnBox, SIGNAL(accepted()), input, SLOT(accept()));
     connect(btnBox, SIGNAL(rejected()), input, SLOT(reject()));
 
     if (input->exec() == QDialog::Accepted)
     {
-
+        if ((!keyText->text().trimmed().isEmpty()) && (!valueText->text().trimmed().isEmpty()))
+            addItem(keyText->text().trimmed(), valueText->text().trimmed());
     }
 
     delete input;

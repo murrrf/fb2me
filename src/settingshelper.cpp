@@ -137,7 +137,31 @@ void SettingsHelper::onAdd()
 
 void SettingsHelper::onEdit()
 {
+    QDialog *input = new QDialog();
+    QVBoxLayout *inputBox = new QVBoxLayout();
+    QLabel *keyHelp = new QLabel(tr("Key"));
+    QLineEdit *keyText = new QLineEdit(tblData->item(currentRow(), 0)->text());
+    QLabel *valueHelp = new QLabel(tr("Value"));
+    QLineEdit *valueText = new QLineEdit(tblData->item(currentRow(), 1)->text());
+    QDialogButtonBox *btnBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 
+    inputBox->addWidget(keyHelp);
+    inputBox->addWidget(keyText);
+    inputBox->addWidget(valueHelp);
+    inputBox->addWidget(valueText);
+    inputBox->addWidget(btnBox);
+    input->setLayout(inputBox);
+
+    connect(btnBox, SIGNAL(accepted()), input, SLOT(accept()));
+    connect(btnBox, SIGNAL(rejected()), input, SLOT(reject()));
+
+    if (input->exec() == QDialog::Accepted)
+    {
+        if ((!keyText->text().trimmed().isEmpty()) && (!valueText->text().trimmed().isEmpty()))
+            editItem(currentRow(), keyText->text().trimmed(), valueText->text().trimmed());
+    }
+
+    delete input;
 }
 
 void SettingsHelper::onDelete()

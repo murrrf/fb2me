@@ -51,5 +51,13 @@ typedef QVector<QPair<QString, int> > genre_t;
  */
 typedef QVector<QPair<QString, int> > sequence_t;
 
+/**
+ * @~russian
+ * @brief Псевдоним типа для списка настроек.
+ *
+ * @~english
+ * @brief Type definition for settings list.
+ */
+typedef QVector<QPair<QString, QString> > setting_t;
 
 #endif // TYPES_H

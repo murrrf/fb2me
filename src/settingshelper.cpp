@@ -106,6 +106,30 @@ void SettingsHelper::editItem(const int row, const QString &key, const QString &
     tblData->item(row, 1)->setText(value);
 }
 
+setting_t SettingsHelper::getSettingsList()
+{
+    setting_t list;
+
+    for (int i = 0; i < tblData->rowCount() - 1; ++i)
+    {
+        list.append(qMakePair(tblData->item(i, 0)->text(), tblData->item(i, 1)->text()));
+    }
+
+    return list;
+}
+
+void SettingsHelper::setSettingsList(setting_t list)
+{
+    tblData->clear();
+    tblData->setRowCount(0);
+    setting_t::iterator it;
+
+    for (it = list.begin(); it != list.end(); ++it)
+    {
+        addItem((*it).first, (*it).second);
+    }
+}
+
 void SettingsHelper::onAdd()
 {
     QDialog *input = new QDialog();

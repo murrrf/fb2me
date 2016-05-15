@@ -29,6 +29,8 @@
  * @brief The module of the settings widget.
  */
 
+#include "types.h"
+
 #include <QGroupBox>
 #include <QWidget>
 
@@ -134,6 +136,28 @@ public:
      * @param value Text of second column - value of item.
      */
     void editItem(const int row, const QString &key, const QString &value);
+
+    /**
+     * @~russian
+     * @brief Получение списка пар ключ-значение, сформированных в виджете.
+     * @return Список пар ключ-значение.
+     *
+     * @~english
+     * @brief Getting a list of key-value pairs formed in the widget.
+     * @return List of key-value pairs.
+     */
+    setting_t getSettingsList();
+
+    /**
+     * @~russian
+     * @brief Внесение в виджет списка пар ключ-значение.
+     * @param list Список пар ключ-значение.
+     *
+     * @~english
+     * @brief Adding to the widget list of key-value pairs.
+     * @param list List of key-value pairs.
+     */
+    void setSettingsList(setting_t list);
 
 public slots:
 

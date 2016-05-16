@@ -27,6 +27,7 @@
 #include <QDialog>
 #include <QLineEdit>
 #include <QDialogButtonBox>
+#include <QMessageBox>
 
 SettingsHelper::SettingsHelper(const QString &title, QWidget *parent) :
     QGroupBox(parent)
@@ -110,7 +111,7 @@ setting_t SettingsHelper::getSettingsList()
 {
     setting_t list;
 
-    for (int i = 0; i < tblData->rowCount() - 1; ++i)
+    for (int i = 0; i < tblData->rowCount(); ++i)
     {
         list.append(qMakePair(tblData->item(i, 0)->text(), tblData->item(i, 1)->text()));
     }

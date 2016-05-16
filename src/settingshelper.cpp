@@ -121,7 +121,6 @@ setting_t SettingsHelper::getSettingsList()
 
 void SettingsHelper::setSettingsList(setting_t list)
 {
-    tblData->clear();
     tblData->setRowCount(0);
     setting_t::iterator it;
 
@@ -129,11 +128,14 @@ void SettingsHelper::setSettingsList(setting_t list)
     {
         addItem((*it).first, (*it).second);
     }
+
+    tblData->setCurrentCell(-1, -1);
 }
 
 void SettingsHelper::onAdd()
 {
     QDialog *input = new QDialog();
+    input->setWindowTitle(tr("Add template"));
     QVBoxLayout *inputBox = new QVBoxLayout();
     QLabel *keyHelp = new QLabel(tr("Key"));
     QLineEdit *keyText = new QLineEdit();
@@ -165,6 +167,7 @@ void SettingsHelper::onEdit()
     if (currentRow() > -1)
     {
         QDialog *input = new QDialog();
+        input->setWindowTitle(tr("Edit template"));
         QVBoxLayout *inputBox = new QVBoxLayout();
         QLabel *keyHelp = new QLabel(tr("Key"));
         QLineEdit *keyText = new QLineEdit(tblData->item(currentRow(), 0)->text());
@@ -197,7 +200,13 @@ void SettingsHelper::onDelete()
 {
     if (currentRow() > -1)
     {
-        tblData->removeRow(currentRow());
-        tblData->setCurrentCell(-1, -1);
+        if (QMessageBox::question(this, tr("Delete template"),
+                                  tr("Delete template \"%1\"?").arg(tblData->item(currentRow(), 0)->text()),
+                                  QMessageBox::Ok | QMessageBox::Cancel) == QMessageBox::Ok)
+
+        {
+            tblData->removeRow(currentRow());
+            tblData->setCurrentCell(-1, -1);
+        }
     }
 }

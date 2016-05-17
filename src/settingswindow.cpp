@@ -41,12 +41,6 @@ SettingsWindow::SettingsWindow(QWidget *parent)
                                   "%L - author's last name; %A - first letter of author's last name;<br/>"
                                   "%B - book title; %S - sequence name; %N - sequence number.<br/>"
                                   "Optional parameters are written in square brackets."));
-
-    connect(gbxPatterns, SIGNAL(Add()), this, SLOT(onPatternAdd()));
-
-    connect(gbxPatterns, SIGNAL(Edit()), this, SLOT(onPatternEdit()));
-    connect(gbxPatterns, SIGNAL(Delete()), this, SLOT(onPatternDelete()));
-
     boxButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     connect(boxButtons, SIGNAL(accepted()), this, SLOT(accept()));
     connect(boxButtons, SIGNAL(rejected()), this, SLOT(reject()));
@@ -59,22 +53,20 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     // Read settings from file
     QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
     int size = settings.beginReadArray(NAMES::nameTemplateGroup);
-
-    lstPatterns = new QListWidget();
-
+    setting_t list;
 
     for (int i = 0; i < size; ++i)
     {
         settings.setArrayIndex(i);
-        lstPatterns->addItem(settings.value(NAMES::nameTemplate).toString());
+        list.append(qMakePair(settings.value(NAMES::nameKey).toString(), settings.value(NAMES::nameValue).toString()));
     }
 
+    gbxPatterns->setSettingsList(list);
     settings.endArray();
 }
 
 SettingsWindow::~SettingsWindow()
 {
-    delete lstPatterns;
     delete gbxPatterns;
     delete boxButtons;
     delete boxMain;
@@ -84,10 +76,10 @@ QStringList SettingsWindow::getTemplatesList()
 {
     QStringList result;
 
-    for (int i = 0; i < lstPatterns->count(); ++i)
-    {
-        result.append(lstPatterns->item(i)->text());
-    }
+//    for (int i = 0; i < lstPatterns->count(); ++i)
+//    {
+//        result.append(lstPatterns->item(i)->text());
+//    }
 
     return result;
 }
@@ -97,73 +89,19 @@ void SettingsWindow::accept()
     QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
     settings.beginWriteArray(NAMES::nameTemplateGroup);
 
-    for (int i = 0; i < lstPatterns->count(); ++i)
+    setting_t list = gbxPatterns->getSettingsList();
+
+    setting_t::iterator it;
+    int cntIndex = 0;
+
+    for (it = list.begin(); it != list.end(); ++it)
     {
-        settings.setArrayIndex(i);
-        settings.setValue(NAMES::nameTemplate, lstPatterns->item(i)->text());
+        settings.setArrayIndex(cntIndex++);
+        settings.setValue(NAMES::nameKey, (*it).first);
+        settings.setValue(NAMES::nameValue, (*it).second);
     }
 
     settings.endArray();
 
     QDialog::accept();
 }
-
-void SettingsWindow::onPatternAdd()
-{
-    bool ok;
-    QString text = QInputDialog::getText(this, tr("Add new template"), tr("Enter template"), QLineEdit::Normal,
-                                         "", &ok).trimmed();
-
-    if (ok && !text.isEmpty())
-    {
-        QList<QListWidgetItem *> found = lstPatterns->findItems(text, Qt::MatchExactly);
-
-        if (found.size() == 0)
-        {
-            lstPatterns->addItem(text);
-        }
-        else
-        {
-            if (QMessageBox::question(this, tr("The template already exists"),
-                                      tr("The template \"%1\" already exists. Do you want to add it again?").arg(text),
-                                      QMessageBox::Ok | QMessageBox::Cancel) == QMessageBox::Ok)
-            {
-                lstPatterns->addItem(text);
-            }
-        }
-    }
-}
-
-void SettingsWindow::onPatternEdit()
-{
-    if (lstPatterns->currentRow() > -1)
-    {
-        bool ok;
-        QString text = QInputDialog::getText(this, tr("Edit template"), tr("Enter template"), QLineEdit::Normal,
-                                             lstPatterns->item(lstPatterns->currentRow())->text(), &ok).trimmed();
-
-        if (ok && !text.isEmpty())
-        {
-            if (text != lstPatterns->item(lstPatterns->currentRow())->text())
-            {
-                lstPatterns->insertItem(lstPatterns->currentRow(), text);
-                delete lstPatterns->takeItem(lstPatterns->currentRow());
-                lstPatterns->setCurrentRow(lstPatterns->currentRow() - 1);
-            }
-        }
-    }
-}
-
-void SettingsWindow::onPatternDelete()
-{
-    if (lstPatterns->currentRow() > -1)
-    {
-        if (QMessageBox::question(this, tr("Delete template"),
-                                  tr("Delete template \"%1\"?").arg(lstPatterns->item(lstPatterns->currentRow())->text()),
-                                  QMessageBox::Ok | QMessageBox::Cancel) == QMessageBox::Ok)
-        {
-            delete lstPatterns->takeItem(lstPatterns->currentRow());
-        }
-    }
-}
-

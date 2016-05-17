@@ -66,6 +66,8 @@ const QString nameTemplateGroup = "Rename Templates";
  * @brief Name of setting «Template of rename».
  */
 const QString nameTemplate = "Template";
+const QString nameKey = "Key";
+const QString nameValue = "Value";
 }
 
 #endif // CONSTS_H

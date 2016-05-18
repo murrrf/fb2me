@@ -46,5 +46,6 @@ RESOURCES += \
 OTHER_FILES += \
     README.md \
     Doxyfile \
+    doxy.sh \
     .gitignore
 

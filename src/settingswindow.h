@@ -80,7 +80,7 @@ public:
      * @brief Getting a list of renaming templates.
      * @return List of templates.
      */
-    QStringList getTemplatesList();
+    setting_t getTemplatesList();
 
 public slots:
 

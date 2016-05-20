@@ -72,16 +72,9 @@ SettingsWindow::~SettingsWindow()
     delete boxMain;
 }
 
-QStringList SettingsWindow::getTemplatesList()
+setting_t SettingsWindow::getTemplatesList()
 {
-    QStringList result;
-
-//    for (int i = 0; i < lstPatterns->count(); ++i)
-//    {
-//        result.append(lstPatterns->item(i)->text());
-//    }
-
-    return result;
+    return gbxPatterns->getSettingsList();
 }
 
 void SettingsWindow::accept()

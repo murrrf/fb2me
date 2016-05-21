@@ -163,12 +163,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
     int size = settings.beginReadArray(NAMES::nameTemplateGroup);
-    QStringList templates;
+    setting_t templates;
 
     for (int i = 0; i < size; ++i)
     {
         settings.setArrayIndex(i);
-        templates.append(settings.value(NAMES::nameTemplate).toString());
+        templates.append(qMakePair(settings.value(NAMES::nameKey).toString(), settings.value(NAMES::nameValue).toString()));
     }
 
     settings.endArray();
@@ -305,28 +305,34 @@ void MainWindow::setReaderSigSlots(FileReader *rd)
     rd->start();
 }
 
-void MainWindow::addTemplatesListToMenu(const QStringList &list)
+void MainWindow::addTemplatesListToMenu(const setting_t &list)
 {
     subToolsMoveTo->clear();
     subToolsCopyTo->clear();
     subToolsInplaceRename->clear();
 
-    foreach(QString name, list)
+    setting_t::const_iterator it;
+    QString key, value;
+
+    for (it = list.begin(); it != list.end(); ++it)
     {
-        QAction *move = new QAction(name, this);
-        move->setProperty("template", name);
+        key=(*it).first;
+        value=(*it).second;
+
+        QAction *move = new QAction(key, this);
+        move->setProperty("template", value);
         move->setEnabled(false);
         connect(move, SIGNAL(triggered()), this, SLOT(onToolsMoveTo()));
         subToolsMoveTo->addAction(move);
 
-        QAction *copy = new QAction(name, this);
-        copy->setProperty("template", name);
+        QAction *copy = new QAction(key, this);
+        copy->setProperty("template", value);
         copy->setEnabled(false);
         connect(copy, SIGNAL(triggered()), this, SLOT(onToolsCopyTo()));
         subToolsCopyTo->addAction(copy);
 
-        QAction *rename = new QAction(name, this);
-        rename->setProperty("template", name);
+        QAction *rename = new QAction(key, this);
+        rename->setProperty("template", value);
         rename->setEnabled(false);
         connect(rename, SIGNAL(triggered()), this, SLOT(onToolsInplaceRename()));
         subToolsInplaceRename->addAction(rename);

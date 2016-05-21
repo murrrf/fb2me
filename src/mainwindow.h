@@ -29,6 +29,8 @@
  * @brief The module of the main window.
  */
 
+#include "types.h"
+
 #include <QMainWindow>
 
 // Forward class declarations
@@ -380,7 +382,7 @@ private:
      * @brief Create submenu of rename files.
      * @param list List of renaming templates.
      */
-    void addTemplatesListToMenu(const QStringList &list);
+    void addTemplatesListToMenu(const setting_t &list);
 
 public slots:
 

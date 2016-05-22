@@ -320,18 +320,21 @@ void MainWindow::addTemplatesListToMenu(const setting_t &list)
         value=(*it).second;
 
         QAction *move = new QAction(key, this);
+        move->setToolTip(value);
         move->setProperty("template", value);
         move->setEnabled(false);
         connect(move, SIGNAL(triggered()), this, SLOT(onToolsMoveTo()));
         subToolsMoveTo->addAction(move);
 
         QAction *copy = new QAction(key, this);
+        copy->setToolTip(value);
         copy->setProperty("template", value);
         copy->setEnabled(false);
         connect(copy, SIGNAL(triggered()), this, SLOT(onToolsCopyTo()));
         subToolsCopyTo->addAction(copy);
 
         QAction *rename = new QAction(key, this);
+        rename->setToolTip(value);
         rename->setProperty("template", value);
         rename->setEnabled(false);
         connect(rename, SIGNAL(triggered()), this, SLOT(onToolsInplaceRename()));

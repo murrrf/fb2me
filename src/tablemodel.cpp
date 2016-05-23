@@ -29,6 +29,9 @@
 #include "tablemodel.h"
 #include <QDir>
 
+const char lbracket = '{'; // Left and right brackets for optional parameters. Should be moved to a more appropriate place.
+const char rbracket = '}';
+
 TableModel::TableModel(QObject *parent): QAbstractTableModel(parent)
 {
     cntSelectedRecords = 0;
@@ -460,8 +463,8 @@ QString TableModel::fromTemplateToPath(const QString &pattern, const FileRecord 
     fromPathRemoveOptional(result, "%S", sequence);
     fromPathRemoveOptional(result, "%N", number);
 
-    result.replace("[", "");
-    result.replace("]", "");
+    result.replace(lbracket, "");
+    result.replace(rbracket, "");
     result.replace(QString(2, QDir::separator()), QDir::separator());
     result.replace("  ", " ");
 
@@ -481,16 +484,16 @@ QString TableModel::fromPathRemoveOptional(QString &path, const QString &param, 
         while (path.contains(param))
         {
             int posFirstName = path.indexOf(param);
-            int posRightBracket = path.indexOf("]", posFirstName);
-            int posRightLeftBracket = path.indexOf("[", posFirstName);
+            int posRightBracket = path.indexOf(rbracket, posFirstName);
+            int posRightLeftBracket = path.indexOf(lbracket, posFirstName);
 
             if (posRightLeftBracket == -1)
             {
                 posRightLeftBracket = path.length();
             }
 
-            int posLeftBracket = path.lastIndexOf("[", posFirstName);
-            int posLeftRightBracket = path.lastIndexOf("]", posFirstName);
+            int posLeftBracket = path.lastIndexOf(lbracket, posFirstName);
+            int posLeftRightBracket = path.lastIndexOf(rbracket, posFirstName);
 
             if (posLeftRightBracket == -1)
             {

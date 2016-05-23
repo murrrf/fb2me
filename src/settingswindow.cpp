@@ -40,7 +40,7 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     gbxPatterns->setHelpString(tr("%F - author's first name; %M - author's middle name;<br/>"
                                   "%L - author's last name; %A - first letter of author's last name;<br/>"
                                   "%B - book title; %S - sequence name; %N - sequence number.<br/>"
-                                  "Optional parameters are written in square brackets."));
+                                  "Optional parameters are written in curly brackets."));
     boxButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     connect(boxButtons, SIGNAL(accepted()), this, SLOT(accept()));
     connect(boxButtons, SIGNAL(rejected()), this, SLOT(reject()));

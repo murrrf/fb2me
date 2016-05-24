@@ -37,8 +37,8 @@ SettingsWindow::SettingsWindow(QWidget *parent)
 {
     // Set up UI
 
-    gbxPatterns = new SettingsHelper(tr("Rename templates"));
-    gbxPatterns->setHelpString(tr("%F - author's first name; %M - author's middle name;<br/>"
+    hlpRenameTemplates = new SettingsHelper(tr("Rename templates"));
+    hlpRenameTemplates->setHelpString(tr("%F - author's first name; %M - author's middle name;<br/>"
                                   "%L - author's last name; %A - first letter of author's last name;<br/>"
                                   "%B - book title; %S - sequence name; %N - sequence number.<br/>"
                                   "Optional parameters are written in curly brackets."));
@@ -47,7 +47,7 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     connect(boxButtons, SIGNAL(rejected()), this, SLOT(reject()));
 
     tbMain = new QTabWidget();
-    tbMain->addTab(gbxPatterns,tr("Rename"));
+    tbMain->addTab(hlpRenameTemplates,tr("Rename"));
 
     boxMain = new QVBoxLayout();
     boxMain->addWidget(tbMain);
@@ -65,13 +65,13 @@ SettingsWindow::SettingsWindow(QWidget *parent)
         list.append(qMakePair(settings.value(NAMES::nameKey).toString(), settings.value(NAMES::nameValue).toString()));
     }
 
-    gbxPatterns->setSettingsList(list);
+    hlpRenameTemplates->setSettingsList(list);
     settings.endArray();
 }
 
 SettingsWindow::~SettingsWindow()
 {
-    delete gbxPatterns;
+    delete hlpRenameTemplates;
     delete tbMain;
     delete boxButtons;
     delete boxMain;
@@ -79,7 +79,7 @@ SettingsWindow::~SettingsWindow()
 
 setting_t SettingsWindow::getTemplatesList()
 {
-    return gbxPatterns->getSettingsList();
+    return hlpRenameTemplates->getSettingsList();
 }
 
 void SettingsWindow::accept()
@@ -87,7 +87,7 @@ void SettingsWindow::accept()
     QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
     settings.beginWriteArray(NAMES::nameTemplateGroup);
 
-    setting_t list = gbxPatterns->getSettingsList();
+    setting_t list = hlpRenameTemplates->getSettingsList();
 
     setting_t::iterator it;
     int cntIndex = 0;

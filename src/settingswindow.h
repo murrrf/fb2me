@@ -130,7 +130,7 @@ private:
      * @~english
      * @brief List of rename templates.
      */
-    SettingsHelper *gbxPatterns;
+    SettingsHelper *hlpRenameTemplates;
 
 private slots:
 

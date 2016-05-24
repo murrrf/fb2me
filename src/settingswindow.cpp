@@ -30,6 +30,7 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QSettings>
+#include <QTabWidget>
 
 SettingsWindow::SettingsWindow(QWidget *parent)
     : QDialog(parent)
@@ -45,8 +46,11 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     connect(boxButtons, SIGNAL(accepted()), this, SLOT(accept()));
     connect(boxButtons, SIGNAL(rejected()), this, SLOT(reject()));
 
+    tbMain = new QTabWidget();
+    tbMain->addTab(gbxPatterns,tr("Rename"));
+
     boxMain = new QVBoxLayout();
-    boxMain->addWidget(gbxPatterns);
+    boxMain->addWidget(tbMain);
     boxMain->addWidget(boxButtons);
     this->setLayout(boxMain);
 
@@ -68,6 +72,7 @@ SettingsWindow::SettingsWindow(QWidget *parent)
 SettingsWindow::~SettingsWindow()
 {
     delete gbxPatterns;
+    delete tbMain;
     delete boxButtons;
     delete boxMain;
 }

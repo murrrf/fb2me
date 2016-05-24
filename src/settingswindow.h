@@ -38,6 +38,7 @@ class QVBoxLayout;
 class QDialogButtonBox;
 class QPushButton;
 class QListWidget;
+class QTabWidget;
 
 /**
  * @~russian
@@ -103,6 +104,15 @@ private:
      * @brief Layout manager for dialog.
      */
     QVBoxLayout *boxMain;
+
+    /**
+     * @~russian
+     * @brief Панель с закладками для размещения различных параметров.
+     *
+     * @~english
+     * @brief Tabbed panel for placing various settings.
+     */
+    QTabWidget *tbMain;
 
     /**
      * @~russian

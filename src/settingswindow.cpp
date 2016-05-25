@@ -37,7 +37,7 @@ SettingsWindow::SettingsWindow(QWidget *parent)
 {
     // Set up UI
 
-    hlpRenameTemplates = new SettingsHelper(tr("Rename templates"));
+    hlpRenameTemplates = new SettingsHelper();
     hlpRenameTemplates->setHelpString(tr("%F - author's first name; %M - author's middle name;<br/>"
                                   "%L - author's last name; %A - first letter of author's last name;<br/>"
                                   "%B - book title; %S - sequence name; %N - sequence number.<br/>"
@@ -47,7 +47,7 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     connect(boxButtons, SIGNAL(rejected()), this, SLOT(reject()));
 
     tbMain = new QTabWidget();
-    tbMain->addTab(hlpRenameTemplates,tr("Rename"));
+    tbMain->addTab(hlpRenameTemplates,tr("Rename templates"));
 
     boxMain = new QVBoxLayout();
     boxMain->addWidget(tbMain);

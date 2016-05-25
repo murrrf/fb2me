@@ -48,22 +48,20 @@ class QPushButton;
  * @~english
  * @brief Base class of helper classes used in the settings window.
  */
-class SettingsHelper : public QGroupBox
+class SettingsHelper : public QWidget
 {
     Q_OBJECT
 public:
     /**
      * @~russian
      * @brief Конструктор класса.
-     * @param title Заголовок виджета.
      * @param parent Указатель на родительское окно.
      *
      * @~english
      * @brief Class constructor.
-     * @param title Widget caption.
      * @param parent Parent window pointer.
      */
-    explicit SettingsHelper(const QString &title, QWidget *parent = 0);
+    explicit SettingsHelper(QWidget *parent = 0);
 
     /**
      * @~russian

@@ -29,11 +29,9 @@
 #include <QDialogButtonBox>
 #include <QMessageBox>
 
-SettingsHelper::SettingsHelper(const QString &title, QWidget *parent) :
-    QGroupBox(parent)
+SettingsHelper::SettingsHelper(QWidget *parent) :
+    QWidget(parent)
 {
-    this->setTitle(title);
-
     tblData = new QTableWidget();
     tblData->setColumnCount(2); // Magic number. We don't need more (or less) columns
     setColumnHeaders(tr("Key"), tr("Value"));

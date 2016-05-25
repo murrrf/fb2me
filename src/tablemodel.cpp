@@ -29,7 +29,8 @@
 #include "tablemodel.h"
 #include <QDir>
 
-const char lbracket = '{'; // Left and right brackets for optional parameters. Should be moved to a more appropriate place.
+const char lbracket =
+    '{'; // Left and right brackets for optional parameters. Should be moved to a more appropriate place.
 const char rbracket = '}';
 
 TableModel::TableModel(QObject *parent): QAbstractTableModel(parent)

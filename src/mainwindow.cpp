@@ -316,8 +316,8 @@ void MainWindow::addTemplatesListToMenu(const setting_t &list)
 
     for (it = list.begin(); it != list.end(); ++it)
     {
-        key=(*it).first;
-        value=(*it).second;
+        key = (*it).first;
+        value = (*it).second;
 
         QAction *move = new QAction(key, this);
         move->setToolTip(value);

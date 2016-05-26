@@ -66,8 +66,27 @@ const QString nameTemplateGroup = "Rename Templates";
  * @brief Name of setting «Template of rename».
  */
 const QString nameTemplate = "Template";
+/**
+ * @~russian
+ * @brief Заголовок столбца «Параметр».
+ * @~english
+ * @brief Column header «Parameter».
+ */
 const QString nameKey = "Key";
+/**
+ * @~russian
+ * @brief Заголовок столбца «Значение».
+ * @~english
+ * @brief Column header «Value».
+ */
 const QString nameValue = "Value";
+/**
+ * @~russian
+ * @brief Имя группы настроек «Внешние редакторы».
+ * @~english
+ * @brief Name of group of settings «External editors».
+ */
+const QString nameExtEditorGroup = "External editors";
 }
 
 #endif // CONSTS_H

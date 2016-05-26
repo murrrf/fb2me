@@ -83,6 +83,17 @@ public:
      */
     setting_t getTemplatesList();
 
+    /**
+     * @~russian
+     * @brief Получение списка внешних редакторов.
+     * @return Список редакторов.
+     *
+     * @~english
+     * @brief Getting a list of external editors.
+     * @return List of editors.
+     */
+    setting_t getEditorsList();
+
 public slots:
 
     /**

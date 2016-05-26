@@ -80,7 +80,7 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     {
         settings.setArrayIndex(i);
         lstExtEditors.append(qMakePair(settings.value(NAMES::nameKey).toString(),
-                                            settings.value(NAMES::nameValue).toString()));
+                                       settings.value(NAMES::nameValue).toString()));
     }
 
     hlpExternalEditors->setSettingsList(lstExtEditors);
@@ -99,6 +99,11 @@ SettingsWindow::~SettingsWindow()
 setting_t SettingsWindow::getTemplatesList()
 {
     return hlpRenameTemplates->getSettingsList();
+}
+
+setting_t SettingsWindow::getEditorsList()
+{
+    return hlpExternalEditors->getSettingsList();
 }
 
 void SettingsWindow::accept()

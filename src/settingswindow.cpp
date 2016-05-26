@@ -61,15 +61,29 @@ SettingsWindow::SettingsWindow(QWidget *parent)
     // Read settings from file
     QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
     int size = settings.beginReadArray(NAMES::nameTemplateGroup);
-    setting_t list;
+    setting_t lstRenameTemplates;
 
     for (int i = 0; i < size; ++i)
     {
         settings.setArrayIndex(i);
-        list.append(qMakePair(settings.value(NAMES::nameKey).toString(), settings.value(NAMES::nameValue).toString()));
+        lstRenameTemplates.append(qMakePair(settings.value(NAMES::nameKey).toString(),
+                                            settings.value(NAMES::nameValue).toString()));
     }
 
-    hlpRenameTemplates->setSettingsList(list);
+    hlpRenameTemplates->setSettingsList(lstRenameTemplates);
+    settings.endArray();
+
+    size = settings.beginReadArray(NAMES::nameExtEditorGroup);
+    setting_t lstExtEditors;
+
+    for (int i = 0; i < size; ++i)
+    {
+        settings.setArrayIndex(i);
+        lstExtEditors.append(qMakePair(settings.value(NAMES::nameKey).toString(),
+                                            settings.value(NAMES::nameValue).toString()));
+    }
+
+    hlpExternalEditors->setSettingsList(lstExtEditors);
     settings.endArray();
 }
 
@@ -90,14 +104,28 @@ setting_t SettingsWindow::getTemplatesList()
 void SettingsWindow::accept()
 {
     QSettings settings(NAMES::nameDeveloper, NAMES::nameApplication);
-    settings.beginWriteArray(NAMES::nameTemplateGroup);
-
-    setting_t list = hlpRenameTemplates->getSettingsList();
 
     setting_t::iterator it;
-    int cntIndex = 0;
+    int cntIndex;
 
-    for (it = list.begin(); it != list.end(); ++it)
+    settings.beginWriteArray(NAMES::nameTemplateGroup);
+    setting_t lstRenameTemplates = hlpRenameTemplates->getSettingsList();
+    cntIndex = 0;
+
+    for (it = lstRenameTemplates.begin(); it != lstRenameTemplates.end(); ++it)
+    {
+        settings.setArrayIndex(cntIndex++);
+        settings.setValue(NAMES::nameKey, (*it).first);
+        settings.setValue(NAMES::nameValue, (*it).second);
+    }
+
+    settings.endArray();
+
+    settings.beginWriteArray(NAMES::nameExtEditorGroup);
+    setting_t lstExtEditors = hlpExternalEditors->getSettingsList();
+    cntIndex = 0;
+
+    for (it = lstExtEditors.begin(); it != lstExtEditors.end(); ++it)
     {
         settings.setArrayIndex(cntIndex++);
         settings.setValue(NAMES::nameKey, (*it).first);

@@ -132,6 +132,15 @@ private:
      */
     SettingsHelper *hlpRenameTemplates;
 
+    /**
+     * @~russian
+     * @brief Список внешних редакторов.
+     *
+     * @~english
+     * @brief List of external editors.
+     */
+    SettingsHelper *hlpExternalEditors;
+
 private slots:
 
 };

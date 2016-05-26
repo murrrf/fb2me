@@ -42,12 +42,16 @@ SettingsWindow::SettingsWindow(QWidget *parent)
                                          "%L - author's last name; %A - first letter of author's last name;<br/>"
                                          "%B - book title; %S - sequence name; %N - sequence number.<br/>"
                                          "Optional parameters are written in curly brackets."));
-    boxButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-    connect(boxButtons, SIGNAL(accepted()), this, SLOT(accept()));
-    connect(boxButtons, SIGNAL(rejected()), this, SLOT(reject()));
+
+    hlpExternalEditors = new SettingsHelper();
 
     tbMain = new QTabWidget();
     tbMain->addTab(hlpRenameTemplates, tr("Rename templates"));
+    tbMain->addTab(hlpExternalEditors, tr("External Editors"));
+
+    boxButtons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    connect(boxButtons, SIGNAL(accepted()), this, SLOT(accept()));
+    connect(boxButtons, SIGNAL(rejected()), this, SLOT(reject()));
 
     boxMain = new QVBoxLayout();
     boxMain->addWidget(tbMain);
@@ -71,6 +75,7 @@ SettingsWindow::SettingsWindow(QWidget *parent)
 
 SettingsWindow::~SettingsWindow()
 {
+    delete hlpExternalEditors;
     delete hlpRenameTemplates;
     delete tbMain;
     delete boxButtons;

@@ -364,6 +364,15 @@ private:
 
     /**
      * @~russian
+     * @brief Список внешних редакторов для отображения во всплывающем меню.
+     *
+     * @~english
+     * @brief List of external editors for popup menu.
+     */
+    setting_t extEditors;
+
+    /**
+     * @~russian
      * @brief Соединение сигналов потока чтения со слотами обработки.
      * @param rd Указатель на поток чтения.
      *
@@ -536,6 +545,15 @@ private slots:
      * @brief Handler for «In-place rename according to the template» action of Tools menu.
      */
     void onToolsInplaceRename();
+
+    /**
+     * @~russian
+     * @brief Обработчик сигнала «Вызвать внешний редактор».
+     *
+     * @~english
+     * @brief Handler for «Run external editor» action.
+     */
+    void onToolsExternalEditor();
 
     /**
      * @~russian

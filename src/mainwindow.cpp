@@ -173,6 +173,16 @@ MainWindow::MainWindow(QWidget *parent)
 
     settings.endArray();
 
+    size = settings.beginReadArray(NAMES::nameExtEditorGroup);
+
+    for (int i = 0; i < size; ++i)
+    {
+        settings.setArrayIndex(i);
+        extEditors.append(qMakePair(settings.value(NAMES::nameKey).toString(), settings.value(NAMES::nameValue).toString()));
+    }
+
+    settings.endArray();
+
     // Setup Help menu
 
     actnHelpAbout = new QAction(QIcon::fromTheme("help-about", QIcon(":/img/help-about.png")),
@@ -502,6 +512,11 @@ void MainWindow::onToolsInplaceRename()
     emit mdlData->InplaceRename(basedir, pattern);
 }
 
+void MainWindow::onToolsExternalEditor()
+{
+
+}
+
 void MainWindow::onToolsSettings()
 {
     SettingsWindow *settings = new SettingsWindow();
@@ -509,6 +524,7 @@ void MainWindow::onToolsSettings()
     if (settings->exec() == QDialog::Accepted)
     {
         addTemplatesListToMenu(settings->getTemplatesList());
+        extEditors = settings->getEditorsList();
     }
 
     delete settings;
@@ -570,6 +586,25 @@ void MainWindow::onTableContextMenuRequested(const QPoint &point)
     menu->addAction(compress);
     compress->setProperty("index", QVariant(ind));
     connect(compress, SIGNAL(triggered()), mdlData, SLOT(onZipCurrent()));
+
+    QMenu *subExtEditors = new QMenu(tr("External editors"), this);
+
+    setting_t::const_iterator it;
+    QString key, value;
+
+    for (it = extEditors.begin(); it != extEditors.end(); ++it)
+    {
+        key = (*it).first;
+        value = (*it).second;
+
+        QAction *editor = new QAction(key, this);
+        editor->setToolTip(value);
+        editor->setProperty("template", value);
+        connect(editor, SIGNAL(triggered()), this, SLOT(onToolsExternalEditor()));
+        subExtEditors->addAction(editor);
+    }
+
+    menu->addMenu(subExtEditors);
 
     tblData->selectRow(ind.row());
     menu->popup(tblData->viewport()->mapToGlobal(point));

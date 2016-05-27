@@ -599,7 +599,7 @@ void MainWindow::onTableContextMenuRequested(const QPoint &point)
 
         QAction *editor = new QAction(key, this);
         editor->setToolTip(value);
-        editor->setProperty("template", value);
+        editor->setProperty("command", value);
         connect(editor, SIGNAL(triggered()), this, SLOT(onToolsExternalEditor()));
         subExtEditors->addAction(editor);
     }

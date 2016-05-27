@@ -53,6 +53,7 @@
 #include <QTabWidget>
 #include <QDialog>
 #include <QSettings>
+#include <QProcess>
 #include <QDebug>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -514,7 +515,10 @@ void MainWindow::onToolsInplaceRename()
 
 void MainWindow::onToolsExternalEditor()
 {
-
+    QString command = sender()->property("command").toString();
+    QProcess process;
+    process.start(command, QStringList() << mdlData->getRecord(sender()->property("index").toModelIndex()).getFileName());
+    process.waitForFinished(-1);
 }
 
 void MainWindow::onToolsSettings()
@@ -599,6 +603,7 @@ void MainWindow::onTableContextMenuRequested(const QPoint &point)
 
         QAction *editor = new QAction(key, this);
         editor->setToolTip(value);
+        editor->setProperty("index", QVariant(ind));
         editor->setProperty("command", value);
         connect(editor, SIGNAL(triggered()), this, SLOT(onToolsExternalEditor()));
         subExtEditors->addAction(editor);

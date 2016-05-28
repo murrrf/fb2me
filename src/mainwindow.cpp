@@ -508,6 +508,7 @@ void MainWindow::onToolsCopyTo()
 
 void MainWindow::onToolsInplaceRename()
 {
+    //TODO This function not working properly. It should rename the file in-place, and not move it to subdirectory.
     QString basedir = QString();
     QString pattern = sender()->property("template").toString();
     emit mdlData->InplaceRename(basedir, pattern);

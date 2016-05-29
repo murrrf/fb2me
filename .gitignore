@@ -1,5 +1,6 @@
 # Ignore generated documentation files
 doc/
+refman.pdf
 # Ignore Qt user project settings
 *.user
 # Ignore backup source code files created by Artistic Style

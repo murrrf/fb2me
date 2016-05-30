@@ -44,6 +44,7 @@ SettingsWindow::SettingsWindow(QWidget *parent)
                                          "Optional parameters are written in curly brackets."));
 
     hlpExternalEditors = new SettingsHelper();
+    hlpExternalEditors->setHelpString(tr("%1 - name of book file substituted to command line"));
 
     tbMain = new QTabWidget();
     tbMain->addTab(hlpRenameTemplates, tr("Rename templates"));

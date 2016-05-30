@@ -516,9 +516,10 @@ void MainWindow::onToolsInplaceRename()
 
 void MainWindow::onToolsExternalEditor()
 {
-    QString command = sender()->property("command").toString();
+    QString filename = mdlData->getRecord(sender()->property("index").toModelIndex()).getFileName();
+    QString command = sender()->property("command").toString().arg("\"" + filename + "\"");
     QProcess process;
-    process.start(command, QStringList() << mdlData->getRecord(sender()->property("index").toModelIndex()).getFileName());
+    process.start(command);
     process.waitForFinished(-1);
 }
 

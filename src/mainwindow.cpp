@@ -516,11 +516,16 @@ void MainWindow::onToolsInplaceRename()
 
 void MainWindow::onToolsExternalEditor()
 {
-    QString filename = mdlData->getRecord(sender()->property("index").toModelIndex()).getFileName();
-    QString command = sender()->property("command").toString().arg("\"" + filename + "\"");
-    QProcess process;
-    process.start(command);
-    process.waitForFinished(-1);
+    QString command = sender()->property("command").toString();
+
+    if (command.indexOf("%1") != -1)
+    {
+        QString filename = mdlData->getRecord(sender()->property("index").toModelIndex()).getFileName();
+        command = command.arg("\"" + filename + "\"");
+        QProcess process;
+        process.start(command);
+        process.waitForFinished(-1);
+    }
 }
 
 void MainWindow::onToolsSettings()

@@ -331,11 +331,27 @@ QString FileRecord::getNewName(QString fileName)
     int cntFile = 1;
 
     QFileInfo newFile(fileName);
+    QString name;
+    QString suffix;
 
     while (QFile::exists(fileName))
     {
-        fileName = newFile.canonicalPath() + QDir::separator() + newFile.baseName() +
-                   "(" + QString::number(cntFile) + ")" + "." + newFile.completeSuffix();
+        name = newFile.fileName();
+        suffix = "";
+
+        if (name.lastIndexOf(".zip") != -1)
+        {
+            suffix = ".zip";
+            name.truncate(name.lastIndexOf(".zip"));
+        }
+
+        if (name.lastIndexOf(".fb2") != -1)
+        {
+            suffix = ".fb2" + suffix;
+            name.truncate(name.lastIndexOf(".fb2"));
+        }
+
+        fileName = newFile.canonicalPath() + QDir::separator() + name + "(" + QString::number(cntFile) + ")" + suffix;
         cntFile++;
     }
 

@@ -37,8 +37,16 @@
  * @~russian
  * @brief Псевдоним типа для списка жанров книги.
  *
+ * Первый параметр - наименование жанра.@n
+ * Второй параметр - совпадение с жанром в процентах:@n
+ * 100 - полное совпадение с жанром.
+ *
  * @~english
  * @brief Type definition for genres list of the book.
+ *
+ * First parameter - name of the genre.@n
+ * Second parameter - the match with the genre as a percentage:@n
+ * 100 - full match.
  */
 typedef QVector<QPair<QString, int> > genre_t;
 
@@ -46,8 +54,14 @@ typedef QVector<QPair<QString, int> > genre_t;
  * @~russian
  * @brief Псевдоним типа для списка серий книги.
  *
+ * Первый параметр - наименование серии.@n
+ * Второй параметр - номер произведения в серии.
+ *
  * @~english
  * @brief Type definition for series list of the book.
+ *
+ * First parameter - name of the sequence.@n
+ * Second parameter - book number in the sequence.
  */
 typedef QVector<QPair<QString, int> > sequence_t;
 
@@ -55,8 +69,14 @@ typedef QVector<QPair<QString, int> > sequence_t;
  * @~russian
  * @brief Псевдоним типа для списка настроек.
  *
+ * Первый параметр - имя ключа (отображаемое значение).@n
+ * Второй параметр - значение ключа (применяемое значение).
+ *
  * @~english
  * @brief Type definition for settings list.
+ *
+ * First parameter - key name (displayed value).@n
+ * Second parameter - key value (used value).
  */
 typedef QVector<QPair<QString, QString> > setting_t;
 

@@ -183,9 +183,9 @@ public:
      * @~english
      * @brief Adding genre to the list of genres.
      * @param genre_name Name of the genre.
-     * @param genre_match The coincidence with the genre as a percentage.
+     * @param genre_match The match with the genre as a percentage.
      *
-     * If not specified, the 100% (complete agreement).
+     * If not specified, the 100% (full match).
      */
     void addGenre(QString genre_name, int genre_match = 100);
 

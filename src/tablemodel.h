@@ -207,6 +207,8 @@ public:
      */
     int getSelectedRecordsCount();
 
+    int getRecordsCount();
+
 signals:
 
     /**

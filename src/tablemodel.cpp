@@ -216,6 +216,11 @@ int TableModel::getSelectedRecordsCount()
     return cntSelectedRecords;
 }
 
+int TableModel::getRecordsCount()
+{
+    return Data.count();
+}
+
 void TableModel::onBeginReading()
 {
     beginResetModel();
@@ -391,6 +396,8 @@ void TableModel::onClearList()
 {
     emit onBeginReading();
     Data.clear();
+    cntSelectedRecords = 0;
+    emit SetSelected(cntSelectedRecords);
     emit onEndReading();
 }
 

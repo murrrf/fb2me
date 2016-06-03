@@ -54,6 +54,7 @@
 #include <QDialog>
 #include <QSettings>
 #include <QProcess>
+#include <QLabel>
 #include <QDebug>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -82,6 +83,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     barStatus = new QStatusBar();
     barStatus->setSizeGripEnabled(true);
+
+    statusCounter = new QLabel();
+    barStatus->addPermanentWidget(statusCounter);
 
     this->setMenuBar(barMainMenu);
     this->addToolBar(barTools);
@@ -293,6 +297,7 @@ MainWindow::~MainWindow()
     delete actnFileAppendDirRecursively;
     delete actnFileAppendDir;
     delete actnFileOpen;
+    delete statusCounter;
     delete barStatus;
     delete barTools;
     delete menuHelp;
@@ -375,6 +380,7 @@ void MainWindow::onBlockInput()
 void MainWindow::onUnblockInput()
 {
     QApplication::restoreOverrideCursor();
+    onSetSelected(mdlData->getSelectedRecordsCount());
 }
 
 void MainWindow::onSetSelected(int count)
@@ -423,6 +429,8 @@ void MainWindow::onSetSelected(int count)
             (*it)->setEnabled(false);
         }
     }
+
+    statusCounter->setText(QString::number(count) + "/" + QString::number(mdlData->getRecordsCount()));
 }
 
 void MainWindow::onFileOpen()

@@ -38,6 +38,7 @@ class QSplitter;
 class QTableView;
 class QTextEdit;
 class QTabWidget;
+class QLabel;
 
 class TableModel;
 class FileReader;
@@ -164,6 +165,8 @@ private:
      * @brief The status bar.
      */
     QStatusBar *barStatus;
+
+    QLabel *statusCounter;
 
     /**
      * @~russian

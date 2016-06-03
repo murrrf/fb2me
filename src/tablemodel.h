@@ -207,6 +207,15 @@ public:
      */
     int getSelectedRecordsCount();
 
+    /**
+     * @~russian
+     * @brief Получить общее количество записей в таблице.
+     * @return Количество записей.
+     *
+     * @~english
+     * @brief Get the total number of records in table.
+     * @return Number of records.
+     */
     int getRecordsCount();
 
 signals:

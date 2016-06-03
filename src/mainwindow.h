@@ -166,6 +166,17 @@ private:
      */
     QStatusBar *barStatus;
 
+    /**
+     * @~russian
+     * @brief Поле строки состояния, отображающее количество файлов в таблице.
+     *
+     * Формат поля: количество выбранных файлов/общее количество файлов.
+     *
+     * @~english
+     * @brief Status bar field that displays the number of files in the table.
+     *
+     * Field format: number of selected files/total number of files.
+     */
     QLabel *statusCounter;
 
     /**

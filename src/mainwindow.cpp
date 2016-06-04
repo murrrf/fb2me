@@ -360,6 +360,11 @@ void MainWindow::addTemplatesListToMenu(const setting_t &list)
     onSetSelected(mdlData->getSelectedRecordsCount());
 }
 
+void MainWindow::setStatusBarCounter(int selected, int total)
+{
+    statusCounter->setText(QString::number(selected) + "/" + QString::number(total));
+}
+
 void MainWindow::onEventMessage(const QString &msg)
 {
     edtLog->append(QString("%1: %2").arg(QDateTime::currentDateTime().toString("hh:mm:ss:zzz"), msg));
@@ -430,7 +435,7 @@ void MainWindow::onSetSelected(int count)
         }
     }
 
-    statusCounter->setText(QString::number(count) + "/" + QString::number(mdlData->getRecordsCount()));
+    setStatusBarCounter(count, mdlData->getRecordsCount());
 }
 
 void MainWindow::onFileOpen()

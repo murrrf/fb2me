@@ -407,6 +407,19 @@ private:
      */
     void addTemplatesListToMenu(const setting_t &list);
 
+    /**
+     * @~russian
+     * @brief Вывод количества файлов в таблице в строку состояния.
+     * @param selected Количество выбранных файлов.
+     * @param total Общее количество файлов в таблице.
+     *
+     * @~english
+     * @brief Displaying the number of files in the table in the status bar.
+     * @param selected Number of selected files.
+     * @param total Total number of files in the table.
+     */
+    void setStatusBarCounter(int selected, int total);
+
 public slots:
 
     /**

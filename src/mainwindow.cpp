@@ -87,6 +87,9 @@ MainWindow::MainWindow(QWidget *parent)
     statusCounter = new QLabel();
     barStatus->addPermanentWidget(statusCounter);
 
+    tmrLoadTime = new QTime();
+    cntPreviousLoaded = 0;
+
     this->setMenuBar(barMainMenu);
     this->addToolBar(barTools);
     this->setStatusBar(barStatus);
@@ -298,6 +301,7 @@ MainWindow::~MainWindow()
     delete actnFileAppendDir;
     delete actnFileOpen;
     delete statusCounter;
+    delete tmrLoadTime;
     delete barStatus;
     delete barTools;
     delete menuHelp;
@@ -311,9 +315,11 @@ void MainWindow::setReaderSigSlots(FileReader *rd)
 {
     connect(rd, SIGNAL(started()), mdlData, SLOT(onBeginReading()));
     connect(rd, SIGNAL(started()), this, SLOT(onBlockInput()));
-    connect(rd, SIGNAL(finished()), mdlData, SLOT(onEndReading()));
+    connect(rd, SIGNAL(started()), this, SLOT(onBeginReading()));
     connect(rd, SIGNAL(finished()), rd, SLOT(deleteLater()));
+    connect(rd, SIGNAL(finished()), mdlData, SLOT(onEndReading()));
     connect(rd, SIGNAL(finished()), this, SLOT(onUnblockInput()));
+    connect(rd, SIGNAL(finished()), this, SLOT(onEndReading()));
     connect(rd, SIGNAL(AppendRecord(FileRecord)), mdlData, SLOT(onAppendRecord(FileRecord)));
     connect(rd, SIGNAL(EventMessage(QString)), this, SLOT(onEventMessage(QString)));
     connect(rd, SIGNAL(ErrorMessage(QString)), this, SLOT(onErrorMessage(QString)));
@@ -385,7 +391,20 @@ void MainWindow::onBlockInput()
 void MainWindow::onUnblockInput()
 {
     QApplication::restoreOverrideCursor();
+}
+
+void MainWindow::onBeginReading()
+{
+    tmrLoadTime->start();
+}
+
+void MainWindow::onEndReading()
+{
     onSetSelected(mdlData->getSelectedRecordsCount());
+    int count = mdlData->getRecordsCount() - cntPreviousLoaded;
+    int sec = tmrLoadTime->elapsed() / 1000;
+    barStatus->showMessage(tr("%1 files loaded in %2 seconds").arg(QString::number(count), QString::number(sec)), 5000);
+    cntPreviousLoaded = mdlData->getRecordsCount();
 }
 
 void MainWindow::onSetSelected(int count)
@@ -477,6 +496,7 @@ void MainWindow::onFileAppendDirRecursively()
 void MainWindow::onFileClearFileList()
 {
     emit mdlData->onClearList();
+    cntPreviousLoaded = 0;
 }
 
 void MainWindow::onFileClearFileListLog()

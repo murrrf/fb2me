@@ -385,6 +385,10 @@ private:
      */
     setting_t extEditors;
 
+    QTime *tmrLoadTime;
+
+    int cntPreviousLoaded;
+
     /**
      * @~russian
      * @brief Соединение сигналов потока чтения со слотами обработки.
@@ -469,6 +473,24 @@ public slots:
      * Switches mouse pointer for clarity.
      */
     void onUnblockInput();
+
+    /**
+     * @~russian
+     * @brief Обработчик события начала чтения файлов.
+     *
+     * @~english
+     * @brief The event handler start reading files.
+     */
+    void onBeginReading();
+
+    /**
+     * @~russian
+     * @brief Обработчик события окончания чтения файлов.
+     *
+     * @~english
+     * @brief The event handler finish reading files.
+     */
+    void onEndReading();
 
     /**
      * @~russian

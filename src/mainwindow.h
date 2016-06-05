@@ -385,8 +385,26 @@ private:
      */
     setting_t extEditors;
 
+    /**
+     * @~russian
+     * @brief Таймер учета времени, затраченного на загрузку файлов.
+     *
+     * @~english
+     * @brief Timer accounting for time spent on file loading.
+     */
     QTime *tmrLoadTime;
 
+    /**
+     * @~russian
+     * @brief Количество файлов, загруженных в прошлый раз.
+     *
+     * Используется для определения количества файлов, загруженных в этот раз.
+     *
+     * @~english
+     * @brief Number of files loaded last time.
+     *
+     * Used to determine the number of files loaded this time.
+     */
     int cntPreviousLoaded;
 
     /**

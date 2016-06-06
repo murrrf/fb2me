@@ -238,6 +238,11 @@ void TableModel::onAppendRecord(const FileRecord &record)
     // TODO Replace QVector to QMap for avoiding record duplication
 }
 
+void TableModel::onReplaceRecord(const QModelIndex &index, const FileRecord &record)
+{
+
+}
+
 void TableModel::onUnzipSelected()
 {
     QVector<FileRecord>::iterator it;

@@ -326,6 +326,19 @@ public slots:
 
     /**
      * @~russian
+     * @brief Обработчик события редактирования существующей записи.
+     * @param index Индекс существующей записи.
+     * @param record Запись, содержащая новые данные.
+     *
+     * @~english
+     * @brief The event handler for editing an existing record.
+     * @param index Index of existing record.
+     * @param record A record containing new data.
+     */
+    void onReplaceRecord(const QModelIndex &index, const FileRecord &record);
+
+    /**
+     * @~russian
      * @brief Обработчик сигнала «Распаковать отмеченные файлы».
      *
      * @~english
